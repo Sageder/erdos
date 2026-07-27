@@ -14,3 +14,5 @@ Group by mathematical idea, not wording. Keep YES and NO routes alive until one 
 | R7 | Compactness/limit over extension tree with explicit order-type-ω control | both | active | limit arguments preserving all-predecessor-sets-finite |
 | R8 | Transfer analysis ℕ vs ℤ at length 4 | expl. | active | which mechanism separates one-sided from two-sided; folding obstructions |
 | R9 | Structural census of finite avoiders (DP/transfer statistics, LIS, displacement, blocks) | both | active | conjecture the true sign early; steer portfolio |
+| R10 | Displacement-compactness frame: NO ⟺ ∃φ-uniform finite avoiders; YES via FIN(K) or ∀φ-extinction | both | active | CORE.md Lemmas 6-7; feeds R4 |
+| R11 | Asymmetric strategy: no dec-3AP + no inc-4AP (⟹ NO-witness); descent-word + leader-spine structure | NO | active | ASYM.md A1-A2; finite existence N>27?; multi-scale descent-word realization |
