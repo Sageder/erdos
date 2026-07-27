@@ -1,0 +1,17 @@
+--- Grid B: {V1, 26, 80}, vary V1
+cuts [3, 26, 80] SAT   (0.5s) 
+cuts [4, 26, 80] SAT   (0.3s) 
+cuts [5, 26, 80] SAT   (0.3s) 
+cuts [6, 26, 80] SAT   (0.3s) 
+cuts [7, 26, 80] UNSAT (0.3s) 
+cuts [9, 26, 80] UNSAT (0.3s) 
+cuts [10, 26, 80] UNSAT (0.3s) 
+cuts [12, 26, 80] UNSAT (0.3s) 
+--- Grid A: {8, 26, V3}, vary V3
+cuts [8, 26, 54] GEOM_DEAD (0.0s) 
+cuts [8, 26, 60] GEOM_DEAD (0.1s) 
+cuts [8, 26, 70] GEOM_DEAD (0.1s) 
+cuts [8, 26, 90] UNSAT (0.6s) 
+cuts [8, 26, 110] UNSAT (2.1s) 
+cuts [8, 26, 140] SAT   (9.3s) 
+cuts [8, 26, 180] UNSAT (120.9s) 

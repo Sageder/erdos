@@ -1,0 +1,13 @@
+pattern: [2, 4, 1, 6, 3, 8, 5, 10, 7, 12, 9, 14, 11, 16]
+[equal-6 T=2] covered=[2, 4] nvals=12 maxblock=6: SAT (0.0s)
+[equal-6 T=4] covered=[2, 4, 1, 6] nvals=24 maxblock=6: GEOM_DEAD (0.0s)
+
+[equal-10 T=2] covered=[2, 4] nvals=20 maxblock=10: SAT (0.0s)
+[equal-10 T=4] covered=[2, 4, 1, 6] nvals=40 maxblock=10: GEOM_DEAD (0.0s)
+
+[equal-16 T=2] covered=[2, 4] nvals=32 maxblock=16: SAT (0.0s)
+[equal-16 T=4] covered=[2, 4, 1, 6] nvals=64 maxblock=16: GEOM_DEAD (0.0s)
+
+[geom2 T=2] covered=[2, 4] nvals=10 maxblock=8: SAT (0.0s)
+[geom2 T=4] covered=[2, 4, 1, 6] nvals=43 maxblock=32: SAT (0.1s)
+[geom2 T=6] covered=[2, 4, 1, 6, 3, 8] nvals=175 maxblock=128: SAT (32.5s)

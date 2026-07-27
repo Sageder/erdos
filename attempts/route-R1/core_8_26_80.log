@@ -1,0 +1,7 @@
+families total: 18  in first core: 6
+greedy-minimal family core (order matters not):
+    ('+', 0, 1, 2, 2)  #clauses: 88
+    ('+', 2, 2, 2, 2)  #clauses: 459
+    ('-', 2, 2, 2, 2)  #clauses: 459
+    ('ext+', 1, 2, 2)  #clauses: 189
+    ('ext+', 2, 2, 2)  #clauses: 243

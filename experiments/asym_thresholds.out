@@ -1,0 +1,6 @@
+C=1.0: minimal UNSAT N = 8  (max SAT N = 7)
+C=1.25: minimal UNSAT N = 14  (max SAT N = 13)
+C=1.5: minimal UNSAT N = 20  (max SAT N = 19)
+C=2.0: minimal UNSAT N = 34  (max SAT N = 33)
+C=2.5: minimal UNSAT N = 56  (max SAT N = 55)
+C=3.0: minimal UNSAT N = 75  (max SAT N = 74)

@@ -1,0 +1,3 @@
+plain C=1.0: minimal UNSAT N = 8  (max SAT N = 7)
+plain C=1.25: minimal UNSAT N = 14  (max SAT N = 13)
+plain C=1.5: minimal UNSAT N = 22  (max SAT N = 21)

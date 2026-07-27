@@ -1,0 +1,9 @@
+level 63 -> 64 : children generated 0 (from subsampled beam: lower-bound evidence)
+beam EXTINCT after level 63
+---
+level 59 -> 60 : children generated 0 (from subsampled beam: lower-bound evidence)
+beam EXTINCT after level 59
+---
+level 75 -> 76 : children generated 0 (from subsampled beam: lower-bound evidence)
+beam EXTINCT after level 75
+---

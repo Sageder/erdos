@@ -246,3 +246,4 @@ minimal (irreducible) core: 245 APs
   x= 60 d=  9 terms=[60, 69, 78, 87] blocks=[3, 3, 3, 4]
   x= 54 d= 11 terms=[54, 65, 76, 87] blocks=[3, 3, 3, 4]
   x= 21 d= 22 terms=[21, 43, 65, 87] blocks=[2, 3, 3, 4]
+core re-verified UNSAT by CP-SAT (independent 3rd check)

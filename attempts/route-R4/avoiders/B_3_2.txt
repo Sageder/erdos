@@ -1,0 +1,13 @@
+N=4 how=heur-ord1-seed1 perm=1,3,4,2
+N=5 how=heur-ord1-seed1 perm=1,3,4,5,2
+N=6 how=heur-ord1-seed1 perm=1,3,4,6,5,2
+N=7 how=heur-ord1-seed1 perm=1,3,4,6,7,5,2
+N=8 how=heur-ord1-seed1 perm=1,3,4,6,7,8,5,2
+N=9 how=heur-ord1-seed1 perm=1,3,4,6,7,9,8,5,2
+N=10 how=heur-ord1-seed1 perm=1,3,4,6,2,9,10,8,7,5
+N=11 how=heur-ord1-seed1 perm=1,3,4,6,2,9,10,11,8,7,5
+N=12 how=heur-ord1-seed1 perm=1,3,2,6,7,5,10,12,11,9,8,4
+N=13 how=heur-ord1-seed1 perm=1,3,2,6,7,5,10,12,13,11,9,8,4
+N=14 how=heur-ord1-seed1 perm=1,3,2,6,7,5,4,12,13,14,10,11,9,8
+N=15 how=heur-ord1-seed1 perm=1,3,2,6,7,5,4,12,13,15,14,10,11,9,8
+N=16 how=heur-ord1-seed1 perm=1,3,2,6,7,5,4,12,13,15,16,14,10,11,9,8
