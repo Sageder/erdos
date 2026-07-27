@@ -1,0 +1,2 @@
+PN Prop-N == brute force (k=2,3, n<=3e4): PASS
+LO Lemma O (20950 valid random cases): PASS

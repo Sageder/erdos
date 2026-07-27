@@ -1,5 +1,31 @@
 # NOTES.md — lab notebook (newest entries at top)
 
+## 2026-07-27 ~23:40 UTC — Prop N verified; quartic→octic calibration; K2 program viable
+
+- Prop N (master reduction) + Lemma O VERIFIED (attempts/route-R1/verify_propN.py: PASS,
+  brute force k=2,3 to 3e4; 2e4 random Lemma-O cases).
+- Quartic scan (n = z^4−2, z in [1e3, 9e3]): density 1.2% overall, 19.9% among sqrt-smooth z
+  with p<=13 ignored. E[#fail] = 1.19. CORRECTION to Discovery 2: the +1-shift danger is NOT
+  fixed by z = x^2 — binomial digits of (ap+1)^4 = (a^4, 4a^3, 6a^2, 4a, 1) are all < p/2
+  when a^4 < p: primes p | z−1 with p > z^{2/3}-ish are near-certain failures (measured 94%
+  at D=4). ASYMMETRY CONFIRMED: (ap−1)^{even} patterns are safe (z+1 source: ~0 failures).
+- OCTIC FIX: m = w^8, n = w^8−2: window {w^8−1, w^8}, w^8−1 = (w−1)(w+1)(w^2+1)(w^4+1):
+  the z−1 danger inherits only from w−1's factors > w^{8/9} (Dickman weight log(9/8)=0.118).
+  Octic scan (w in [300, 4200], theta=0.42, P0=13): conditional density 48.15%,
+  TOTAL E = 0.63 < 1 (w: 0.33 [cut to ~0.07 with theta=1/3], w−1: 0.25 [asymp ~0.12,
+  small-sample inflated], w4+1: 0.05, w+1/w2+1: ZERO across all exposures).
+  ASYMPTOTIC BUDGET ≈ 0.25 << 1 ⟹ first-moment + Markov strategy is empirically SOLID.
+- Small-prime engineering at p ≤ 13 reduces to FINITE existence checks: at p=7,11,13 choose
+  w mod p avoiding the ≤8 roots of w^8=1 (no condition at all); p=5 forced (w^8≡1 mod 5
+  always) — engineer J=1 via w mod 25 + one carry via digits of w^8 mod 5^L; p=2,3 similar
+  explicit classes. All machine-checkable.
+- DECISION: proof target = "S_2 infinite via octic family + first moment". Tools: Dickman-in-
+  fixed-AP (base count), exact AP counting (w−1 zone), quartic/octic Weyl mod p^t (w-source
+  digit cylinders), divisor-switch + Selberg upper (w^4+1 source), finite checks (p ≤ P0).
+  Wave-2 agent R8 is verifying the exact citable forms in parallel.
+- Waves running: wave1 = R2 (Lemma SP), R3 (Balakran), R5 (big sieve), R7 (NO-side),
+  R9 (digit dynamics); wave2 = R8 (toolbox), R10 (headline/general-k BW injection).
+
 ## 2026-07-27 ~22:20 UTC — Aristotle-728 paper digested; structural discoveries (TO VERIFY NUMERICALLY)
 
 Paper (arXiv 2601.07421 v5, Sothanaphan): proves log-gap 728 via reduction to

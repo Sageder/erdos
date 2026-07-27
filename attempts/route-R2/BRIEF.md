@@ -6,7 +6,7 @@ other attempts/ directories.
 
 Licensed background (methods only; import techniques, never any conclusion about problem
 727): arXiv 2601.07421 (writeup of the Erdős-728 resolution). A local text copy is at
-/tmp/claude-0/-home-user-erdos/49f04ef0-a63d-55e0-b5d7-ad8e910eb3fe/scratchpad/aristotle728.txt
+/home/user/erdos/references/aristotle728.txt
 Its Lemmas 6-15 develop: forced carries from large digits, Chernoff bounds for digit/carry
 counts, residue-class counting in [M, 2M], spike exclusion. Port this machinery to 727.
 
