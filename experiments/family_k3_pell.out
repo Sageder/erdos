@@ -1,0 +1,6 @@
+x=10 n=97 window-smooth(sqrt(2n)=13): True in_S3: False failing_primes: [2, 3, 5, 7]
+x=58 n=3361 window-smooth(sqrt(2n)=81): True in_S3: False failing_primes: [2, 19, 29, 41]
+x=338 n=114241 window-smooth(sqrt(2n)=477): True in_S3: False failing_primes: [13, 239, 337]
+x=1970 n=3880897 window-smooth(sqrt(2n)=2785): True in_S3: False failing_primes: [197, 199]
+x=11482 n=131836321 window-smooth(sqrt(2n)=16237): True in_S3: False failing_primes: [353, 5741]
+x=66922 n=4478554081 window-smooth(sqrt(2n)=94641): True in_S3: False failing_primes: [599, 22307, 33461]
