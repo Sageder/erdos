@@ -1,0 +1,8 @@
+C1a digit==bigint on k<=4, n<=300: PASS
+C1b fast==digit on k<=4, n<=4000: PASS
+C2 S_1 start+count: PASS (got start [5, 14, 27, 41, 44, 65, 76, 90, 109, 125, 139, 152, 155, 169], count 40)
+C3 S_2: PASS (first20 match True, count 1981)
+C4 S_3: PASS (start [3475, 8174, 8175, 15195, 16168, 18682, 18743, 19290], count 41)
+C5 S_4: PASS (got [8174, 51984])
+C6 bigint spot checks: PASS
+CALIBRATION: ALL PASS

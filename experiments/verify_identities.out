@@ -1,0 +1,4 @@
+I1 Legendre digit form: PASS
+I2 per-prime digit equivalence: PASS
+I3 Kummer form A (low addition): PASS
+I4 Kummer form B (doubling): PASS
