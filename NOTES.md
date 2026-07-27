@@ -1,5 +1,35 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 ~00:20 UTC — session 1, SAT probe campaign: displacement laws
+- ORDER-ENCODED SAT (experiments/sat_order.py: order vars + transitivity + one 3-clause
+  per AP) massively outperforms search: plain avoiders found at N=120 in 2s; asym
+  (no dec-3AP + no inc-4AP) witnesses at N=100 in 1s; asym alive N=160 with pos<=5v.
+- EXTINCTION THRESHOLDS (minimal UNSAT N; cadical; C=2 row independently confirmed by
+  CP-SAT direct-positional model):
+    asym + pos<=ceil(Cv): C=1: 4 (hand-proved: pos<=v forces identity; script row '8'
+    was a bracketing artifact, only affects C=1); C=1.25: 14; C=1.5: 20; C=2: 34;
+    C=2.5: 56; C=3: 75; (C=3.5, 4 running).
+    plain + pos<=ceil(Cv): C=1: 4 (same argument); C=1.25: 14; C=1.5: 22 — plain
+    tracks asym closely at small C (dec-3AP constraints nearly free there).
+  Fits: both quadratic ~8C^2 and exponential ~e^{~C} fit mid-range; C=4 will
+  discriminate. plain C=8 SAT through N=200 (304s) — no large-C extinction reachable.
+- Superlinear probe: asym + pos<=ceil(D v^1.5): D=1 dies by N=60 (small-value pinch:
+  v^1.5 tighter than 3v for v<=8 — thresholds are dominated by small-value slack);
+  D=2 alive at N=130+.
+- MORAL: (i) profile-bounded avoider extinction is a real finite phenomenon at every
+  tested tightness — a provable-looking 'LP theorem' family (any 4-AP-free permutation
+  of N has pos(v)/v unbounded? and quantitatively more) — YES-side flagship target,
+  connects to R5's staircase (L10) planted inversions; (ii) NO-side constructions need
+  built-in superlinear displacement; contiguous-block architectures (BLOCKS.md) have
+  LINEAR profiles => likely dead if LP holds — gate stays: prove-or-refute LP before
+  investing in R12 blocks CSP. (iii) SOLVER-GRADE vs THEOREM-GRADE: any extinction
+  used in a final argument needs DRAT-logged UNSAT + drat-trim verification + second
+  engine — protocol TODO.
+- R5 DONE (first wave-1 return): Generic Escape Proposition PROVES no finite forcing
+  tree from one-point-anchored supply can close => R5 blocked with two hand-offs:
+  two-point supply hunt (R13, wave 2), staircase-vs-displacement global counting
+  (feeds LP hunt). 19 verified structural lemmas + staircase L10 are keepers.
+
 ## 2026-07-27 ~23:10 UTC — session 1, inline core theory + portfolio launched
 - 8 background route agents launched (R1 blocks, R2 DEGS, R3 digits, R4 displacement
   search, R5 Ramsey-YES, R6 density-YES, R8 Z-transfer, R9 census), each with

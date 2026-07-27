@@ -156,6 +156,38 @@ def has_monotone_4ap_np(perm):
     _, total = monotone_4ap_violations(perm, max_report=0, collect=False)
     return total > 0
 
+def monotone_4ap_violations_general(seq, max_report=50):
+    """Exact scan of ALL monotone 4-APs among an arbitrary set of distinct positive
+    values given in position order (need not be a permutation of [1..M]).
+    Vectorized like monotone_4ap_violations, with masking for absent values.
+    Cross-validated against apcheck.has_monotone_kap_general in _selfcheck."""
+    seq = list(seq)
+    Vmax = max(seq)
+    pos = np.full(Vmax + 2, -1, dtype=np.int64)
+    pos[np.asarray(seq, dtype=np.int64)] = np.arange(len(seq), dtype=np.int64)
+    viol = []
+    total = 0
+    for d in range(1, (Vmax - 1) // 3 + 1):
+        top = Vmax - 3 * d
+        if top < 1:
+            break
+        p1 = pos[1:top + 1]
+        p2 = pos[1 + d:top + d + 1]
+        p3 = pos[1 + 2 * d:top + 2 * d + 1]
+        p4 = pos[1 + 3 * d:top + 3 * d + 1]
+        present = (p1 >= 0) & (p2 >= 0) & (p3 >= 0) & (p4 >= 0)
+        inc = present & (p1 < p2) & (p2 < p3) & (p3 < p4)
+        dec = present & (p1 > p2) & (p2 > p3) & (p3 > p4)
+        ni, nd = int(inc.sum()), int(dec.sum())
+        total += ni + nd
+        if max_report and (ni or nd):
+            for x in (np.nonzero(inc)[0] + 1):
+                viol.append((int(x), d, '+'))
+            for x in (np.nonzero(dec)[0] + 1):
+                viol.append((int(x), d, '-'))
+    viol.sort(key=lambda t: (t[0] + 3 * t[1], t[1], t[0]))
+    return viol[:max_report], total
+
 # ---------------------------------------------------------------- case classification
 
 def block_index_of(blocks, v):
@@ -201,6 +233,13 @@ def _selfcheck():
         assert fast == trusted, (p,)
         if n <= 9:
             assert fast == has_monotone_kap_brute(p, 4), (p,)
+    # general checker vs trusted general checker on random value sets
+    from apcheck import has_monotone_kap_general
+    for _ in range(400):
+        n = rng.randint(4, 12)
+        vals = rng.sample(range(1, 60), n)
+        _, tot = monotone_4ap_violations_general(vals, max_report=0)
+        assert (tot > 0) == has_monotone_kap_general(vals, 4), vals
     # violation list correctness on a couple of tiny hand cases
     v, t = monotone_4ap_violations([1, 2, 3, 4])
     assert v == [(1, 1, '+')] and t == 1

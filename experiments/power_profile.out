@@ -1,0 +1,6 @@
+asym D=1.0 v^1.5: N=40: SAT (0.2s)
+asym D=1.0 v^1.5: N=60: UNSAT (1.8s)
+asym D=2.0 v^1.5: N=40: SAT (0.1s)
+asym D=2.0 v^1.5: N=60: SAT (0.6s)
+asym D=2.0 v^1.5: N=90: SAT (4.4s)
+asym D=2.0 v^1.5: N=130: SAT (7.7s)

@@ -103,8 +103,10 @@ class StagedLayoutSAT:
                         dead.append((x + 2 * d, x + d, x, '-ext'))
                     else:
                         cls.append(c)
-        # transitivity (eager, all blocks)
+        # transitivity (eager for blocks of size <= eager_max)
         for b, (lo, hi) in self.blocks.items():
+            if hi - lo > getattr(self, '_eager_max', 10**9):
+                continue
             rng = range(lo, hi)
             for u in rng:
                 for v in rng:
@@ -114,13 +116,49 @@ class StagedLayoutSAT:
                                         self.lit_before(u, w)])
         return cls, dead
 
-    def solve(self):
-        cls, dead = self.clauses()
+    def solve(self, eager_max=10**9, max_rounds=3000):
+        cls, dead = self.clauses(eager_max=eager_max)
         if dead:
             return 'GEOM_DEAD', dead[:8]
         sol = Cadical153(bootstrap_with=cls)
-        if not sol.solve():
-            return 'UNSAT', None
+        lazy_blocks = [b for b, (lo, hi) in self.blocks.items() if hi - lo > eager_max]
+        import numpy as np
+        for rnd in range(max_rounds):
+            if not sol.solve():
+                return 'UNSAT', None
+            if not lazy_blocks:
+                break
+            model = sol.get_model()
+            val = {abs(l): (l > 0) for l in model}
+            added = 0
+            for b in lazy_blocks:
+                lo, hi = self.blocks[b]
+                n = hi - lo
+                A = np.zeros((n, n), dtype=bool)       # A[i,j] = (lo+i before lo+j)
+                for i in range(n):
+                    for j in range(i + 1, n):
+                        t = self.varid[(lo + i, lo + j)]
+                        A[i, j] = val[t]
+                        A[j, i] = not val[t]
+                # cyclic triangles: i->j->k->i ; enumerate via boolean matmul witness
+                # For each ordered pair (i,j) with A[i,j], find k with A[j,k] and A[k,i].
+                idx_i, idx_j = np.nonzero(A)
+                for i, j in zip(idx_i, idx_j):
+                    if i < j:                          # each cyclic triangle found from its min? not guaranteed; just dedupe roughly
+                        ks = np.nonzero(A[j] & A[:, i])[0]
+                        for k in ks[:2]:
+                            u, v, w = lo + i, lo + j, lo + int(k)
+                            for (a, bb, c) in ((u, v, w), (v, w, u), (w, u, v)):
+                                sol.add_clause([-self.lit_before(a, bb),
+                                                -self.lit_before(bb, c),
+                                                self.lit_before(a, c)])
+                            added += 1
+                    if added > 20000:
+                        break
+            if added == 0:
+                break
+        else:
+            return 'CEGAR_LIMIT', None
         val = {abs(l): (l > 0) for l in sol.get_model()}
         seq = []
         for b in self.slot_order:
