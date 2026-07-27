@@ -193,3 +193,62 @@ feasible positions for v form the interval (Lo(v), Hi(v)) minus occupied slots.
 (ii) A NO-witness is exactly an assignment v ↦ pos(v) (bijective onto ℕ) with
 Lo(v) < pos(v) < Hi(v) for all v: "Hi-pressure" (inc-steps) pushes values into early
 slots, which are consumed; "Lo-pressure" pushes late. The design tension is explicit.
+
+## Lemma 9 (slot relaxation — surjectivity onto positions is free)
+
+196-NO ⟺ there exists an injective map pos : ℕ → ℕ (values to "slots", NOT required
+to be surjective) such that for every v and every d ≥ 1 with v − 3d ≥ 1:
+  ¬( pos(v−3d) < pos(v−2d) < pos(v−d) < pos(v) )  and
+  ¬( pos(v−3d) > pos(v−2d) > pos(v−d) > pos(v) ).
+
+Proof. (⇒) The position map of a NO-witness is such a map (Lemma 8's condition,
+regrouped by largest AP element, is exactly displayed above).
+(⇐) Given such a pos, list the used slots in increasing order and let b(n) := the value
+occupying the n-th used slot. Every value w with pos(w) < pos(v) satisfies
+pos(w) ∈ [1, pos(v)−1], so each value has at most pos(v) − 1 values before it: the
+induced order on values has all predecessor sets finite, and b is a bijection ℕ → ℕ
+(Lemma 1). Relative slot order equals relative position order in b, and the displayed
+condition forbids exactly the monotone 4-APs (unique-largest-element grouping as in
+Lemma 8). So b is a NO-witness. ∎
+
+Equivalently (order-density version): 196-NO ⟺ there is an injective pos : ℕ → ℚ with
+(i) {w : pos(w) < pos(v)} finite for every v, and (ii) the same two forbidden patterns.
+(ℚ can be re-embedded into ℕ preserving order on the used set: enumerate used slots in
+increasing order — well-ordered by (i)… precisely, (i) makes the induced value-order
+have finite predecessor sets, and only the order matters.)
+
+Moral: the difficulty of the NO branch is NOT "filling every position" — it is that
+every VALUE must be placed with only finitely many values below it. "Skipping slots"
+buys nothing structurally but makes greedy/online constructions cleaner: values arrive
+in increasing order 1, 2, 3, … and each v must be inserted into the current order
+inside the open order-interval (Lo(v), Hi(v)) of Lemma 8.
+
+## Lemma 10 (stuckness = X-configuration)
+
+Place values 1, …, v−1 injectively (any linear order with the above conventions).
+Call d an inc-step / dec-step for v as in Lemma 8. Then there is NO admissible
+order-position for v (i.e. the open order-interval (Lo(v), Hi(v)) is empty, even
+allowing arbitrary insertion between existing elements à la the ℚ-version) if and only
+if there exist d₁, d₂ with:
+  (v−3d₁, v−2d₁, v−d₁) positionally increasing,   [inc-step d₁]
+  (v−3d₂, v−2d₂, v−d₂) positionally decreasing,   [dec-step d₂]
+  pos(v−d₁) < pos(v−d₂).
+We call this an X-configuration aimed at v.
+
+Proof. In the dense (ℚ) setting an admissible slot exists iff Lo(v) < Hi(v), where
+Lo(v) = max{pos(v−d) : d dec-step} and Hi(v) = min{pos(v−d) : d inc-step}
+(max ∅ = −∞, min ∅ = +∞). Emptiness Lo(v) ≥ Hi(v) happens iff some dec-step's pos
+exceeds some inc-step's pos (equality impossible: pos injective, v−d₁ ≠ v−d₂ for
+d₁ ≠ d₂), which is the displayed configuration. ∎
+
+Consequences.
+(a) YES-strategy target: prove that any type-ω placement of ℕ eventually creates an
+    X-configuration aimed at a yet-unplaced value all three of whose "aiming" terms
+    v−3dᵢ, v−2dᵢ, v−dᵢ are already placed before v — OR forces infinitely many values
+    below one point (violating finite predecessors). NOTE the adversary places values
+    in increasing order, so "aimed at v" configurations use only values < v: the first
+    failure mode is fully finitary.
+(b) NO-strategy invariant: maintain, for all (not-yet-reached) v and all step pairs,
+    the absence of bad pairs; i.e., whenever an increasing 3-AP (a, a+d, a+2d) and a
+    decreasing 3-AP (b, b+e, b+2e) satisfy a+3d = b+3e (common target) and the target
+    exceeds all four... (both targets not yet placed), keep pos(a+2d) > pos(b+2e).

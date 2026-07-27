@@ -1,0 +1,119 @@
+== tame DFS: k=3, constraint pos(v) <= floor(num*v/den), depth<=64, budget=1000000000 ==
+   (num=3 den=2)
+n         tame_count    tame_dead maxbranch
+1                  1            0        1
+2                  1            0        1
+3                  1            0        1
+4                  1            1        0
+5                  0            0        0
+EXTINCT at n=5 (no tame avoiders)
+total nodes visited: 4
+== tame DFS: k=3, constraint pos(v) <= floor(num*v/den), depth<=64, budget=1000000000 ==
+   (num=2 den=1)
+n         tame_count    tame_dead maxbranch
+1                  1            0        2
+2                  2            0        2
+3                  3            0        2
+4                  5            2        2
+5                  5            0        1
+6                  5            2        2
+7                  4            2        2
+8                  4            3        1
+9                  1            1        0
+10                 0            0        0
+EXTINCT at n=10 (no tame avoiders)
+total nodes visited: 30
+== tame DFS: k=3, constraint pos(v) <= floor(num*v/den), depth<=64, budget=1000000000 ==
+   (num=5 den=2)
+n         tame_count    tame_dead maxbranch
+1                  1            0        2
+2                  2            0        2
+3                  3            0        2
+4                  5            0        2
+5                  8            0        3
+6                 13            9        3
+7                  9            2        2
+8                 14           10        3
+9                 10            0        1
+10                10            5        1
+11                 5            5        0
+12                 0            0        0
+EXTINCT at n=12 (no tame avoiders)
+total nodes visited: 80
+== tame DFS: k=3, constraint pos(v) <= floor(num*v/den), depth<=64, budget=1000000000 ==
+   (num=3 den=1)
+n         tame_count    tame_dead maxbranch
+1                  1            0        2
+2                  2            0        2
+3                  4            1        3
+4                  8            1        3
+5                 12            1        4
+6                 24           11        4
+7                 35            4        2
+8                 52           32        4
+9                 38            1        1
+10                37           17        5
+11                44           36        3
+12                20           20        0
+13                 0            0        0
+EXTINCT at n=13 (no tame avoiders)
+total nodes visited: 277
+== tame DFS: k=3, constraint pos(v) <= floor(num*v/den), depth<=64, budget=1000000000 ==
+   (num=4 den=1)
+n         tame_count    tame_dead maxbranch
+1                  1            0        2
+2                  2            0        2
+3                  4            0        3
+4                 10            0        3
+5                 18            4        4
+6                 32            6        4
+7                 61            8        5
+8                141           42        4
+9                183           20        3
+10               275          129        5
+11               354           38        3
+12               632          431        4
+13               454           26        3
+14               828          408        6
+15               800           40        4
+16              2128         1898        4
+17               552          264        1
+18               288          144        1
+19               144          144        0
+20                 0            0        0
+EXTINCT at n=20 (no tame avoiders)
+total nodes visited: 6907
+== tame DFS: k=3, constraint pos(v) <= floor(num*v/den), depth<=64, budget=1000000000 ==
+   (num=6 den=1)
+n         tame_count    tame_dead maxbranch
+1                  1            0        2
+2                  2            0        2
+3                  4            0        3
+4                 10            0        3
+5                 20            0        4
+6                 48           11        4
+7                 94           22        5
+8                216           28        4
+9                354           66        5
+10               616           47        6
+11              1350          120        6
+12              3064         1035        7
+13              5317         1006        8
+14              9939         4041        8
+15             18190         2836        8
+16             40876        15944        5
+17             48264         9488        4
+18             65524        28204        6
+19             83000         7296        4
+20            155646       108052        6
+21            113436            0        4
+22            261044       153026        6
+23            255082        40200        5
+24            524586       453018        8
+25            208404        61198        3
+26            294412       162492        9
+27            272544       255624        7
+28             51700        51700        0
+29                 0            0        0
+EXTINCT at n=29 (no tame avoiders)
+total nodes visited: 2413743

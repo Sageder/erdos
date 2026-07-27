@@ -1,0 +1,11 @@
+N=3: 6 avoiders checked, failures so far: 0
+N=4: 22 avoiders checked, failures so far: 0
+N=5: 102 avoiders checked, failures so far: 0
+N=6: 564 avoiders checked, failures so far: 0
+N=7: 3336 avoiders checked, failures so far: 0
+N=8: 22266 avoiders checked, failures so far: 0
+N=9: 168864 avoiders checked, failures so far: 0
+N=10: 1307470 avoiders checked, failures so far: 0
+N=11: 11066766 avoiders checked, failures so far: 0
+firing counts: {'L1': 24080662, 'L2': 24080662, 'L3a': 24080662, 'L3b': 24080662, 'L4a': 24080662, 'L4b': 16465430, 'L4bd': 16465430, 'L5': 8012223, 'L5d': 8012223, 'L6': 962992, 'L7': 1593657, 'L7d': 1593657, 'L8': 8012223, 'L8d': 8012223}
+ALL LEMMAS PASS on all 4-AP-free permutations up to N=11.
