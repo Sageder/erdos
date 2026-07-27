@@ -1,0 +1,52 @@
+== beam: k=4, pos(v)<=floor(num*v/den) (num=2 den=1), cap=1000000, seed=196 ==
+level  1 ->  2 : children generated 2 (EXACT width)
+level  2 ->  3 : children generated 4 (EXACT width)
+level  3 ->  4 : children generated 11 (EXACT width)
+level  4 ->  5 : children generated 30 (EXACT width)
+level  5 ->  6 : children generated 102 (EXACT width)
+level  6 ->  7 : children generated 276 (EXACT width)
+level  7 ->  8 : children generated 915 (EXACT width)
+level  8 ->  9 : children generated 3641 (EXACT width)
+level  9 -> 10 : children generated 12443 (EXACT width)
+level 10 -> 11 : children generated 41660 (EXACT width)
+level 11 -> 12 : children generated 165563 (EXACT width)
+level 12 -> 13 : children generated 504289 (EXACT width)
+level 13 -> 14 : children generated 1885521 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 14 -> 15 : children generated 3695248 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 15 -> 16 : children generated 3297160 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 16 -> 17 : children generated 3463023 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 17 -> 18 : children generated 3908067 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 18 -> 19 : children generated 2064846 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 19 -> 20 : children generated 2259498 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 20 -> 21 : children generated 3644900 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 21 -> 22 : children generated 2431281 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 22 -> 23 : children generated 2936426 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 23 -> 24 : children generated 3213328 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 24 -> 25 : children generated 2579686 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 25 -> 26 : children generated 2973953 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 26 -> 27 : children generated 3061751 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 27 -> 28 : children generated 2203578 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 28 -> 29 : children generated 2583673 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 29 -> 30 : children generated 3201722 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 30 -> 31 : children generated 1703545 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 31 -> 32 : children generated 1207403 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 32 -> 33 : children generated 2794006 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 33 -> 34 : children generated 1880238 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 34 -> 35 : children generated 2662319 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 35 -> 36 : children generated 1155134 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 36 -> 37 : children generated 1549266 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 37 -> 38 : children generated 2129173 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 38 -> 39 : children generated 1312202 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 39 -> 40 : children generated 2537361 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 40 -> 41 : children generated 4198331 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 41 -> 42 : children generated 1346805 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 42 -> 43 : children generated 726392 (from subsampled beam: lower-bound evidence)
+level 43 -> 44 : children generated 1267250 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 44 -> 45 : children generated 1509733 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 45 -> 46 : children generated 2605805 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 46 -> 47 : children generated 1607034 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 47 -> 48 : children generated 573494 (from subsampled beam: lower-bound evidence)
+level 48 -> 49 : children generated 1933240 (from subsampled beam: lower-bound evidence) [subsampled to cap]
+level 49 -> 50 : children generated 29281 (from subsampled beam: lower-bound evidence)
+level 50 -> 51 : children generated 0 (from subsampled beam: lower-bound evidence)
+beam EXTINCT after level 50

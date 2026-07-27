@@ -1,0 +1,28 @@
+=== ratio r=3
+  block j=1 [s=1]: SAT     (0.0s)  order=[2, 1]
+  block j=2 [s=3]: SAT     (0.0s)  order=[8, 6, 7, 3, 5, 4]
+  block j=3 [s=9]: UNSAT   (0.0s)
+  block j=4 [s=27]: UNSAT   (0.3s)
+  block j=5 [s=81]: UNSAT   (10.6s)
+  L(s=243, r=3) skipped (n=486 too big for full transitivity here)
+=== ratio r=4
+  block j=1 [s=1]: SAT     (0.0s)  order=[3, 2, 1]
+  block j=2 [s=4]: SAT     (0.0s)  order=[15, 13, 14, 9, 12, 8, 10, 11, 4, 6, 5, 7]
+  block j=3 [s=16]: UNSAT   (0.2s)
+  block j=4 [s=64]: UNSAT   (19.0s)
+  L(s=256, r=4) skipped (n=768 too big for full transitivity here)
+  L(s=1024, r=4) skipped (n=3072 too big for full transitivity here)
+=== ratio r=5
+  block j=1 [s=1]: SAT     (0.0s)  order=[4, 3, 1, 2]
+  block j=2 [s=5]: UNSAT   (0.0s)
+  block j=3 [s=25]: UNSAT   (2.8s)
+  L(s=125, r=5) skipped (n=500 too big for full transitivity here)
+  L(s=625, r=5) skipped (n=2500 too big for full transitivity here)
+  L(s=3125, r=5) skipped (n=12500 too big for full transitivity here)
+=== ratio r=6
+  block j=1 [s=1]: SAT     (0.0s)  order=[5, 4, 1, 2, 3]
+  block j=2 [s=6]: UNSAT   (0.0s)
+  block j=3 [s=36]: UNSAT   (14.7s)
+  L(s=216, r=6) skipped (n=1080 too big for full transitivity here)
+  L(s=1296, r=6) skipped (n=6480 too big for full transitivity here)
+  L(s=7776, r=6) skipped (n=38880 too big for full transitivity here)

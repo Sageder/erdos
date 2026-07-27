@@ -1,0 +1,80 @@
+== I6 geometric x4 / all reflect / in-order  (M=10000, blocks=8)
+   DIES: 2330394 monotone 4-APs among values 1..10000. Minimal witnesses:
+     + AP 2,7,12,17  (d=5)  blocks=(0, 1, 1, 2)  case=B3
+     + AP 1,7,13,19  (d=6)  blocks=(0, 1, 1, 2)  case=B3
+     + AP 11,14,17,20  (d=3)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 7,12,17,22  (d=5)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 9,14,19,24  (d=5)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 6,12,18,24  (d=6)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 3,10,17,24  (d=7)  blocks=(0, 1, 2, 2)  case=B4
+     + AP 7,13,19,25  (d=6)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 5,12,19,26  (d=7)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 7,14,21,28  (d=7)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 1,10,19,28  (d=9)  blocks=(0, 1, 2, 2)  case=B4
+     + AP 3,12,21,30  (d=9)  blocks=(0, 1, 2, 2)  case=B4
+   case profile of first 4000 violations: {'B3+': 1186, 'B2+': 2294, 'B4+': 520}
+
+== I7 factorial / sigma / in-order  (M=5039, blocks=6)
+   DIES: 70093 monotone 4-APs among values 1..5039. Minimal witnesses:
+     + AP 4,5,6,7  (d=1)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 1,3,5,7  (d=2)  blocks=(0, 1, 1, 2)  case=B3
+     + AP 2,4,6,8  (d=2)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 3,5,7,9  (d=2)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 2,5,8,11  (d=3)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 1,5,9,13  (d=4)  blocks=(0, 1, 2, 2)  case=B4
+     + AP 3,10,17,24  (d=7)  blocks=(1, 2, 2, 3)  case=B3
+     + AP 22,23,24,25  (d=1)  blocks=(2, 2, 3, 3)  case=B2
+     + AP 1,9,17,25  (d=8)  blocks=(0, 2, 2, 3)  case=B3
+     + AP 5,12,19,26  (d=7)  blocks=(1, 2, 2, 3)  case=B3
+     + AP 2,10,18,26  (d=8)  blocks=(1, 2, 2, 3)  case=B3
+     + AP 18,21,24,27  (d=3)  blocks=(2, 2, 3, 3)  case=B2
+   case profile of first 4000 violations: {'B2+': 1808, 'B3+': 1535, 'B4+': 657}
+
+== I8 geometric x4 / sigma / adjacent-swap interleave  (M=10000, blocks=8)
+   DIES: 1514391 monotone 4-APs among values 1..10000. Minimal witnesses:
+     + AP 14,15,16,17  (d=1)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 12,14,16,18  (d=2)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 13,15,17,19  (d=2)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 10,13,16,19  (d=3)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 12,15,18,21  (d=3)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 6,11,16,21  (d=5)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 4,10,16,22  (d=6)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 8,13,18,23  (d=5)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 5,11,17,23  (d=6)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 10,15,20,25  (d=5)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 4,11,18,25  (d=7)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 8,14,20,26  (d=6)  blocks=(1, 1, 2, 2)  case=B2
+   case profile of first 4000 violations: {'B2+': 3274, 'B2-': 224, 'B3+': 319, 'B4+': 183}
+
+== I9 geometric x4 / tophalf-sigma / in-order  (M=10000, blocks=8)
+   DIES: 1276888 monotone 4-APs among values 1..10000. Minimal witnesses:
+     + AP 2,3,4,5  (d=1)  blocks=(0, 0, 1, 1)  case=B2
+     - AP 5,8,11,14  (d=3)  blocks=(1, 1, 1, 1)  case=A
+     + AP 14,15,16,17  (d=1)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 10,13,16,19  (d=3)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 12,15,18,21  (d=3)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 10,14,18,22  (d=4)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 11,15,19,23  (d=4)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 2,9,16,23  (d=7)  blocks=(0, 1, 2, 2)  case=B4
+     + AP 10,15,20,25  (d=5)  blocks=(1, 1, 2, 2)  case=B2
+     + AP 1,9,17,25  (d=8)  blocks=(0, 1, 2, 2)  case=B4
+     + AP 2,10,18,26  (d=8)  blocks=(0, 1, 2, 2)  case=B4
+     + AP 3,11,19,27  (d=8)  blocks=(0, 1, 2, 2)  case=B4
+   case profile of first 4000 violations: {'B2+': 1369, 'A-': 705, 'B4+': 1926}
+
+== I10 geometric x4 / tophalf-recursive / in-order  (M=10000, blocks=8)
+   DIES: 7484226 monotone 4-APs among values 1..10000. Minimal witnesses:
+     - AP 4,5,6,7  (d=1)  blocks=(1, 1, 1, 1)  case=A
+     - AP 5,6,7,8  (d=1)  blocks=(1, 1, 1, 1)  case=A
+     - AP 6,7,8,9  (d=1)  blocks=(1, 1, 1, 1)  case=A
+     - AP 7,8,9,10  (d=1)  blocks=(1, 1, 1, 1)  case=A
+     - AP 4,6,8,10  (d=2)  blocks=(1, 1, 1, 1)  case=A
+     - AP 8,9,10,11  (d=1)  blocks=(1, 1, 1, 1)  case=A
+     - AP 5,7,9,11  (d=2)  blocks=(1, 1, 1, 1)  case=A
+     - AP 9,10,11,12  (d=1)  blocks=(1, 1, 1, 1)  case=A
+     - AP 6,8,10,12  (d=2)  blocks=(1, 1, 1, 1)  case=A
+     - AP 10,11,12,13  (d=1)  blocks=(1, 1, 1, 1)  case=A
+     - AP 7,9,11,13  (d=2)  blocks=(1, 1, 1, 1)  case=A
+     - AP 4,7,10,13  (d=3)  blocks=(1, 1, 1, 1)  case=A
+   case profile of first 4000 violations: {'A-': 4000}
+

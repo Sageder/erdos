@@ -42,7 +42,7 @@
 typedef uint64_t u64;
 typedef uint8_t u8;
 
-#define MX 72          /* max n+2 for tame mode; exact mode uses <= ~16 */
+#define MX 200        /* max depth+2; u8 values suffice to 255 */
 #define RATB 100       /* ratio histogram bins, width 0.25 starting at 1.0 */
 #define N3B 400        /* 3-AP-count histogram cap */
 
@@ -315,7 +315,14 @@ static inline int bound_int(int v) {
 }
 
 static void tdfs(int n) {
-    if (++tnodes > tbudget) { budget_hit = 1; return; }
+    if (++tnodes > tbudget) {
+        if (!budget_hit) {  /* report where in the tree the abort happened */
+            printf("BUDGET ABORT at level %d, current permutation:", n);
+            for (int i = 0; i < n; i++) printf(" %d", tperm[n][i]);
+            printf("\n");
+        }
+        budget_hit = 1; return;
+    }
     tcnt[n]++;
     if (n == TL) return;
     int m = n + 1, lo = 0, hi = n;
@@ -380,6 +387,197 @@ static void run_tame(int k, int L, char type, long num, long den, u64 budget) {
     printf("total nodes visited: %llu\n", (unsigned long long)tnodes);
 }
 
+/* ------------------------------------------------------------------ dive mode:
+ * random restarts down the tame tree; unbiased view of reachable depth independent
+ * of DFS (lexicographic) order.  Child chosen uniformly among tame-allowed slots. */
+static void run_dive(int k, int L, char type, long num, long den, long M, u64 seed) {
+    TK = k; TTYPE = type; TNUM = num; TDEN = den;
+    u64 depth_hist[MX]; memset(depth_hist, 0, sizeof depth_hist);
+    int best = 0; u8 bestp[MX];
+    u8 pm[MX], ps[MX];
+    sm_state = seed;
+    for (long s = 0; s < M; s++) {
+        pm[0] = 1; ps[1] = 0;
+        int n = 1;
+        while (n < L) {
+            int m = n + 1, lo = 0, hi = n;
+            for (int d = 1; (TK - 1) * d < m; d++) {
+                int inc = 1, dec = 1;
+                int prev = ps[m - (TK - 1) * d];
+                for (int j = TK - 2; j >= 1; j--) {
+                    int q = ps[m - j * d];
+                    if (!(prev < q)) inc = 0;
+                    if (!(prev > q)) dec = 0;
+                    prev = q;
+                }
+                int c = ps[m - d];
+                if (inc && c < hi) hi = c;
+                if (dec && c + 1 > lo) lo = c + 1;
+                if (lo > hi) break;
+            }
+            int pmax = bound_int(m) - 1; if (pmax > n) pmax = n;
+            if (pmax < hi) hi = pmax;
+            for (int v = 1; v <= n; v++)
+                if (ps[v] + 1 == bound_int(v) && ps[v] + 1 > lo) lo = ps[v] + 1;
+            int b = hi - lo + 1; if (b < 0) b = 0;
+            if (b == 0) break;
+            int p = lo + (int)(sm_next() % (u64)b);
+            memmove(pm + p + 1, pm + p, (size_t)(n - p));
+            pm[p] = (u8)m;
+            for (int v = 1; v <= n; v++) ps[v] += (ps[v] >= p);
+            ps[m] = (u8)p;
+            n++;
+        }
+        depth_hist[n]++;
+        if (n > best) { best = n; memcpy(bestp, pm, (size_t)n); }
+    }
+    printf("== dive: k=%d, %s (num=%ld den=%ld), L=%d, M=%ld dives, seed=%llu ==\n",
+           k, type == 'm' ? "pos(v)<=floor(num*v/den)" : "pos(v)<=v+K", num, den, L, M,
+           (unsigned long long)seed);
+    printf("reached-depth histogram:");
+    for (int n = 0; n < MX; n++) if (depth_hist[n]) printf(" %d:%llu", n, (unsigned long long)depth_hist[n]);
+    printf("\nmax depth reached: %d\n", best);
+    printf("deepest permutation found:");
+    for (int i = 0; i < best; i++) printf(" %d", bestp[i]);
+    printf("\n");
+}
+
+/* ------------------------------------------------------------------ tsis mode:
+ * SIS restricted to the tame tree: unbiased estimator of the number of tame
+ * k-AP-free avoiders at every level n <= NMAX, with batch error bars. */
+static void run_tsis(int k, int NMAX, char type, long num, long den, int B, long M, u64 seed) {
+    TK = k; TTYPE = type; TNUM = num; TDEN = den;
+    double *bw = calloc((size_t)B * (NMAX + 2), sizeof(double));
+    u8 pm[MX], ps[MX];
+    for (int bt = 0; bt < B; bt++) {
+        sm_state = seed + 0x1000000ULL * (u64)(bt + 1);
+        double *W = bw + (size_t)bt * (NMAX + 2);
+        for (long s = 0; s < M; s++) {
+            pm[0] = 1; ps[1] = 0;
+            double w = 1.0;
+            for (int n = 1; n <= NMAX; n++) {
+                W[n] += w;
+                if (n == NMAX) break;
+                int m = n + 1, lo = 0, hi = n;
+                for (int d = 1; (TK - 1) * d < m; d++) {
+                    int inc = 1, dec = 1;
+                    int prev = ps[m - (TK - 1) * d];
+                    for (int j = TK - 2; j >= 1; j--) {
+                        int q = ps[m - j * d];
+                        if (!(prev < q)) inc = 0;
+                        if (!(prev > q)) dec = 0;
+                        prev = q;
+                    }
+                    int c = ps[m - d];
+                    if (inc && c < hi) hi = c;
+                    if (dec && c + 1 > lo) lo = c + 1;
+                    if (lo > hi) break;
+                }
+                int pmax = bound_int(m) - 1; if (pmax > n) pmax = n;
+                if (pmax < hi) hi = pmax;
+                for (int v = 1; v <= n; v++)
+                    if (ps[v] + 1 == bound_int(v) && ps[v] + 1 > lo) lo = ps[v] + 1;
+                int b = hi - lo + 1; if (b < 0) b = 0;
+                if (b == 0) break;
+                int p = lo + (int)(sm_next() % (u64)b);
+                w *= (double)b;
+                memmove(pm + p + 1, pm + p, (size_t)(n - p));
+                pm[p] = (u8)m;
+                for (int v = 1; v <= n; v++) ps[v] += (ps[v] >= p);
+                ps[m] = (u8)p;
+            }
+        }
+    }
+    printf("== tsis: k=%d, %s (num=%ld den=%ld), %d batches x %ld, seed=%llu ==\n",
+           k, type == 'm' ? "pos(v)<=floor(num*v/den)" : "pos(v)<=v+K", num, den, B, M,
+           (unsigned long long)seed);
+    printf("%-3s %16s %13s %10s\n", "n", "est_tame_count", "stderr", "rel");
+    for (int n = 1; n <= NMAX; n++) {
+        double mean = 0, m2 = 0;
+        for (int bt = 0; bt < B; bt++) {
+            double v = bw[(size_t)bt * (NMAX + 2) + n] / (double)M;
+            mean += v; m2 += v * v;
+        }
+        mean /= B;
+        double var = (m2 / B - mean * mean) * (double)B / (double)(B - 1);
+        double se = sqrt(var / B);
+        printf("%-3d %16.6e %13.3e %9.3f%%\n", n, mean, se, mean > 0 ? 100.0 * se / mean : 0.0);
+        if (mean == 0.0 && n > 5) { printf("(no surviving samples beyond n=%d)\n", n); break; }
+    }
+    free(bw);
+}
+
+/* ------------------------------------------------------------------ beam mode:
+ * wide beam search down the tame tree.  Exact level widths until the first
+ * subsampling event; thereafter lower-bound evidence.  Reservoir sampling keeps
+ * the beam uniform among generated children. */
+static void run_beam(int k, int L, char type, long num, long den, long CAP, u64 seed) {
+    TK = k; TTYPE = type; TNUM = num; TDEN = den;
+    sm_state = seed;
+    size_t stride = MX;
+    u8 *cur = malloc((size_t)CAP * stride), *nxt = malloc((size_t)CAP * stride);
+    if (!cur || !nxt) { fprintf(stderr, "beam alloc failed\n"); exit(1); }
+    long ncur = 1; cur[0] = 1;
+    int exact = 1;
+    printf("== beam: k=%d, %s (num=%ld den=%ld), cap=%ld, seed=%llu ==\n",
+           k, type == 'm' ? "pos(v)<=floor(num*v/den)" : "pos(v)<=v+K", num, den, CAP,
+           (unsigned long long)seed);
+    u8 ps[MX];
+    for (int n = 1; n < L && ncur > 0; n++) {
+        long gen = 0, kept = 0;
+        for (long i = 0; i < ncur; i++) {
+            u8 *pm = cur + (size_t)i * stride;
+            for (int j = 0; j < n; j++) ps[pm[j]] = (u8)j;
+            int m = n + 1, lo = 0, hi = n;
+            for (int d = 1; (TK - 1) * d < m; d++) {
+                int inc = 1, dec = 1;
+                int prev = ps[m - (TK - 1) * d];
+                for (int j = TK - 2; j >= 1; j--) {
+                    int q = ps[m - j * d];
+                    if (!(prev < q)) inc = 0;
+                    if (!(prev > q)) dec = 0;
+                    prev = q;
+                }
+                int c = ps[m - d];
+                if (inc && c < hi) hi = c;
+                if (dec && c + 1 > lo) lo = c + 1;
+                if (lo > hi) break;
+            }
+            int pmax = bound_int(m) - 1; if (pmax > n) pmax = n;
+            if (pmax < hi) hi = pmax;
+            for (int v = 1; v <= n; v++)
+                if (ps[v] + 1 == bound_int(v) && ps[v] + 1 > lo) lo = ps[v] + 1;
+            for (int p = lo; p <= hi; p++) {
+                gen++;
+                long slot;
+                if (kept < CAP) slot = kept++;
+                else {
+                    u64 r = sm_next() % (u64)gen;
+                    if (r >= (u64)CAP) continue;
+                    slot = (long)r;
+                }
+                u8 *cp = nxt + (size_t)slot * stride;
+                memcpy(cp, pm, (size_t)p);
+                cp[p] = (u8)m;
+                memcpy(cp + p + 1, pm + p, (size_t)(n - p));
+            }
+        }
+        if (gen > CAP) exact = 0;
+        printf("level %2d -> %2d : children generated %ld%s%s\n", n, n + 1, gen,
+               exact ? " (EXACT width)" : " (from subsampled beam: lower-bound evidence)",
+               gen > CAP ? " [subsampled to cap]" : "");
+        u8 *t = cur; cur = nxt; nxt = t;
+        ncur = kept;
+        if (ncur == 0) { printf("beam EXTINCT after level %d\n", n); break; }
+        if (n + 1 == L) {
+            printf("beam reached depth L=%d with %ld nodes; example:", L, ncur);
+            for (int j = 0; j < L; j++) printf(" %d", cur[j]);
+            printf("\n");
+        }
+    }
+    free(cur); free(nxt);
+}
+
 /* ------------------------------------------------------------------ main */
 int main(int argc, char **argv) {
     if (argc < 2) { fprintf(stderr, "usage: census exact|dump|sis|tame ...\n"); return 1; }
@@ -401,6 +599,24 @@ int main(int argc, char **argv) {
         long num = atol(argv[5]), den = atol(argv[6]);
         u64 budget = strtoull(argv[7], NULL, 10);
         run_tame(k, L, type, num, den, budget);
+    } else if (!strcmp(argv[1], "tsis")) {
+        int k = atoi(argv[2]), nmax = atoi(argv[3]); char type = argv[4][0];
+        long num = atol(argv[5]), den = atol(argv[6]);
+        int B = atoi(argv[7]); long M = atol(argv[8]); u64 seed = strtoull(argv[9], NULL, 10);
+        if (nmax >= MX - 2) { fprintf(stderr, "NMAX too large\n"); return 1; }
+        run_tsis(k, nmax, type, num, den, B, M, seed);
+    } else if (!strcmp(argv[1], "beam")) {
+        int k = atoi(argv[2]), L = atoi(argv[3]); char type = argv[4][0];
+        long num = atol(argv[5]), den = atol(argv[6]);
+        long cap = atol(argv[7]); u64 seed = strtoull(argv[8], NULL, 10);
+        if (L >= MX - 2) { fprintf(stderr, "L too large\n"); return 1; }
+        run_beam(k, L, type, num, den, cap, seed);
+    } else if (!strcmp(argv[1], "dive")) {
+        int k = atoi(argv[2]), L = atoi(argv[3]); char type = argv[4][0];
+        long num = atol(argv[5]), den = atol(argv[6]);
+        long M = atol(argv[7]); u64 seed = strtoull(argv[8], NULL, 10);
+        if (L >= MX - 2) { fprintf(stderr, "L too large\n"); return 1; }
+        run_dive(k, L, type, num, den, M, seed);
     } else { fprintf(stderr, "unknown mode\n"); return 1; }
     return 0;
 }

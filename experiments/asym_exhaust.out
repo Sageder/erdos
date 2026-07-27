@@ -7,3 +7,4 @@ N=25: EXISTS  nodes=1171514  (2.8s)
 N=26: EXISTS  nodes=2088002  (5.1s)
 N=27: EXISTS  nodes=3166890  (6.3s)
 N=28: EXISTS  nodes=100706318  (181.2s)
+N=29: node cap hit (517.4s) — inconclusive

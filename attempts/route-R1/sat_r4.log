@@ -1,0 +1,6 @@
+[r4 k2] V=15 blocks=[(1, 4), (4, 16)] layout=in-order
+  SAT — witness verified 4-AP-free on [1..15] with no fatal extension 3-AP
+[r4 k3] V=63 blocks=[(1, 4), (4, 16), (16, 64)] layout=in-order
+  SAT — witness verified 4-AP-free on [1..63] with no fatal extension 3-AP
+[r4 k4] V=255 blocks=[(1, 4), (4, 16), (16, 64), (64, 256)] layout=in-order
+  UNSAT

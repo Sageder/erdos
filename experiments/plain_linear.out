@@ -1,0 +1,3 @@
+plain C=8 N=60: SAT (0.3s)
+plain C=8 N=100: SAT (1.3s)
+plain C=8 N=150: SAT (10.3s)

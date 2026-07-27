@@ -252,3 +252,49 @@ Consequences.
     the absence of bad pairs; i.e., whenever an increasing 3-AP (a, a+d, a+2d) and a
     decreasing 3-AP (b, b+e, b+2e) satisfy a+3d = b+3e (common target) and the target
     exceeds all four... (both targets not yet placed), keep pos(a+2d) > pos(b+2e).
+
+## Lemma 11 (universal structure of any 4-AP-free permutation)
+
+Let a be ANY monotone-4-AP-free permutation of ℕ, D(u,e) := [u+e ≺ u] its drop
+indicator. Then:
+
+(a) [words] For every u, e ≥ 1: ¬(D(u,e) ∧ D(u+e,e) ∧ D(u+2e,e)) and
+    ¬(¬D(u,e) ∧ ¬D(u+e,e) ∧ ¬D(u+2e,e)). Hence along every arithmetic progression, at
+    every step e, the descent word avoids the factors 000 and 111; its 1-density lies
+    in [1/3, 2/3].
+
+(b) [two spines] Call w a *value-record* (w ∈ Λ) if w is larger than every value placed
+    before it — equivalently w ≺ w + e for all e ≥ 1. Call g *grounded* (g ∈ Γ) if
+    pos(g) > pos(v) for all v < g (placed after all smaller values). Then:
+    - Λ and Γ are both infinite;
+    - value order and position order agree on Λ, and on Γ (each is an increasing
+      subsequence of a);
+    - neither Λ nor Γ contains a 4-term AP; by Szemerédi's theorem (4-AP case), both
+      have upper density 0;
+    - pos(w) ≤ w on Λ, and pos(g) ≥ g on Γ.
+
+Proof. (a) Three consecutive drops along step e give pos(u) > pos(u+e) > pos(u+2e) >
+pos(u+3e): the values u+3e, u+2e, u+e, u read in increasing position order form a
+decreasing 4-AP. Three consecutive non-drops give an increasing 4-AP. Densities:
+in any window of 3 letters there is a 0 and a 1.
+
+(b) Λ: the equivalence — if some value placed before w exceeded w, that value is w + e
+for some e ≥ 1 with w + e ≺ w; conversely if w + e ≺ w then a larger value precedes w.
+Λ is infinite: the running maximum M(n) := max(a(1..n)) is unbounded (a is surjective)
+and strictly increases exactly at positions holding value-records. Order agreement: for
+records w < w', w ≺ w' by the defining property of w (w ≺ w + e with e = w' − w).
+No 4-AP in Λ: four records in value-AP appear in increasing position order — a monotone
+increasing 4-AP. pos(w) ≤ w: all values before w are smaller than w, and there are
+pos(w) − 1 distinct such values, so pos(w) − 1 ≤ w − 1.
+Γ: g is grounded iff pos(g) > max(pos(1), …, pos(g−1)), i.e. iff g is a record of the
+bijection pos : ℕ → ℕ; the running maximum of pos on [1..v] is unbounded and jumps
+exactly at grounded values, so Γ is infinite. For grounded g < g': pos(g') > pos(g) by
+definition of g' grounded. Four grounded values in AP: again an increasing 4-AP.
+pos(g) ≥ g: the g − 1 smaller values occupy distinct positions < pos(g). ∎
+
+Remarks. (i) In the asymmetric setting (ASYM.md) Λ is exactly the leader set; Lemma 11
+shows the two-spine structure is universal, not special to the asymmetric strategy.
+(ii) Any NO-witness therefore contains two infinite increasing subsequences whose value
+sets are 4-AP-free density-0 sets with pos ≤ v (resp. pos ≥ v) — quantitative handles
+for YES-side counting arguments: e.g. with r₄(M) := max size of a 4-AP-free subset of
+[1..M], |Λ ∩ [1..M]| ≤ r₄(M) and |Γ ∩ [1..M]| ≤ r₄(M) for every M.

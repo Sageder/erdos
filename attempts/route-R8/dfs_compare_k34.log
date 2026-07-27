@@ -1,0 +1,22 @@
+=== k = 3 ===
+one-sided (N):
+  C=1: depth     4  nodes       24  EXTINCT(exhaustive)  [0.0s]
+  C=2: depth     7  nodes      270  EXTINCT(exhaustive)  [0.0s]
+  C=3: depth     9  nodes     3136  EXTINCT(exhaustive)  [0.1s]
+  C=4: depth    11  nodes    34885  EXTINCT(exhaustive)  [0.6s]
+  C=5: depth    13  nodes   373932  EXTINCT(exhaustive)  [5.7s]
+  C=6: depth    15  nodes  3762185  EXTINCT(exhaustive)  [70.5s]
+  C=7: depth    16  nodes  4000007  budget/depth hit  [85.6s]
+two-sided (Z):
+  C=1: steps     4  nodes       44  EXTINCT(exhaustive)  [0.0s]
+  C=2: steps     8  nodes     1225  EXTINCT(exhaustive)  [0.0s]
+  C=3: steps    10  nodes    38965  EXTINCT(exhaustive)  [0.7s]
+  C=4: steps    12  nodes  1207714  EXTINCT(exhaustive)  [18.4s]
+  C=5: steps    16  nodes  4000004  budget/depth hit  [58.3s]
+  C=6: steps    16  nodes  4000002  budget/depth hit  [60.0s]
+  C=7: steps    18  nodes  4000012  budget/depth hit  [93.8s]
+=== k = 4 ===
+one-sided (N):
+  C=1: depth     6  nodes       68  EXTINCT(exhaustive)  [0.0s]
+  C=2: depth    12  nodes     4491  EXTINCT(exhaustive)  [0.2s]
+  C=3: depth    16  nodes   536976  EXTINCT(exhaustive)  [28.7s]
