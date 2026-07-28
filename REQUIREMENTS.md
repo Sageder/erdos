@@ -99,8 +99,10 @@ by an arithmetic sign: such rules are not transitive (exhaustive classification 
 a convex partition, i.e. carried by blocks. (Remarks 23, 25; Theorem 21.)
 
 **B6. It must have superlinear displacement.** Certified extinction of pos(v) ≤ Cv at
-C = 1.25, 1.5, 1.75, 2 (thresholds N* = 4, 15, 31, 74; three independent methods, two
-solvers). Also the profile ⌈0.5·v·log₂ 2v⌉ dies at N = 130, so "Θ(v log v)" is not a
+C = 1.25, 1.5, 1.75, 2 (thresholds N* = 4, 15, 31, 74). Verification standard differs by
+entry: C = 1.5 and 1.75 agree between exhaustive extension-tree enumeration and SAT;
+C = 2's threshold was located by route R18 and independently re-verified here (SAT at
+N = 70, 72 and UNSAT at N = 74, cadical and glucose agreeing on an eager encoding). Also the profile ⌈0.5·v·log₂ 2v⌉ dies at N = 130, so "Θ(v log v)" is not a
 target either. (Theorem 12; Remarks 17, 28.)
 
 **B7. It must come with a PROOF, not a verification.** From the certified extinction law
