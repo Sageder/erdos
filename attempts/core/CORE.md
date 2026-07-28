@@ -1224,3 +1224,53 @@ The open case is a Z that is neither.
 Status: (a), (b), (c) are proved. The rigidity step is CONJECTURED and is exactly what the
 running experiment (experiments/t01_full.py, full-(ii) encoding with a positive
 descent-rate proxy and a non-periodicity requirement) is testing.
+
+## Proposition 38 (a proof route for Conjecture R21-C at T = 1) — one step still conjectural
+
+Setting as in Proposition 37: c = j + t, t : ℕ → {0,1}, Z := t^{-1}(0), b = 3. Recall the
+two rules extracted there (each valid for the (u,d) whose block geometry and step-1
+condition apply):
+
+    (R↓)  u ∈ Z  and  u+d ∈ Z    ⟹  u+2d ∈ Z        [the (1,0) pattern]
+    (R↑)  u ∈ Z  and  u+d ∉ Z    ⟹  u+2d ∈ Z        [the (0,1) pattern]
+
+Note both rules conclude membership in Z: the constraints push everything TOWARD the zero
+set. The route:
+
+**Case 1 — Z misses some progression eventually.** Then along that progression t ≡ 1, so
+c = j + 1 is non-decreasing there: the progression is TAME, and Proposition 29 gives linear
+displacement. Done.
+
+**Case 2 — Z meets every progression infinitely often.** Then (CONJECTURAL STEP) the
+closure under (R↓) forces the density of Z to tend to 1. Granting that, Z^c has density → 0;
+but rule (R↑) says that for every u ∈ Z and every w ∈ Z^c with w−u in the valid range,
+2w−u ∈ Z. With Z of density → 1 the points 2w−u sweep almost everything, so Z^c must be
+finite. Then t ≡ 0 on a tail, c = j is non-decreasing along every progression, and every
+progression is TAME. Done.
+
+So both cases produce a tame progression, which is exactly Conjecture R21-C at T = 1.
+
+**Evidence for the conjectural step** (experiments in this session, exact arithmetic, b = 3,
+closure computed inside [1..N]):
+- Residue classes are FIXED POINTS of the closure (0 mod 2 stays at density 0.5, 1 mod 3 at
+  0.333) — as they must be, since they are the congruence solutions Corollary 30 handles.
+- Random seeds show a sharp percolation-like threshold, and **the threshold moves toward 0
+  as N grows**: at seed density 0.002 the closure reaches density 0.002, 0.046, 0.333 for
+  N = 1500, 4500, 13500; at 0.005 it reaches 0.081, 0.271, 0.607; at 0.01 it reaches 0.022,
+  0.546, 0.665.
+- The decisive case: a DENSITY-ZERO set that still meets every progression infinitely often
+  (Z₀ = ⋃_k {v ∈ [2^k, 2^{k+1}) : v ≡ k mod (k+1)}, density ≍ 1/log N, AP-dense by CRT)
+  blows up to density **0.908, 0.936, 0.964** at N = 2000, 6000, 18000, and its closure
+  misses NO progression of step ≤ 8 in the top half of the range.
+
+So the numerics support exactly the statement Case 2 needs, and the trend in N is the right
+one. What is missing is a proof that AP-density forces the closure to have density → 1;
+that is an additive-combinatorics statement about sets closed under range-restricted
+AP-completion, and it is the single remaining gap at T = 1.
+
+**Caveats, explicitly.** (i) All of the above is the T = 1 case; the conjecture is about
+arbitrary bounded (indeed arbitrary finite-valued) delays. (ii) The numerics are finite and
+this project has repeatedly shown that finite evidence about asymptotic statements can
+mislead — see Remarks 17, 27, 31, 36. (iii) Even a complete proof of R21-C at T = 1 would
+not resolve Erdős 196; it would close one architecture family (block-index-plus-bounded-
+binary-delay) on the negative branch.

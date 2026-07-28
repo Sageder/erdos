@@ -1,0 +1,2 @@
+window [9..81] L=73: SAT (4s, 680 rounds) (model verified)
+window [9..120] L=112: SAT (51s, 2886 rounds) (model verified)
