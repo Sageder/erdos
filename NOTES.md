@@ -1,5 +1,43 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 (Opus-5) — R20 RETURNS: v log v FALSIFIED; AP-uniformity is the real filter
+- MY v log v HYPOTHESIS IS FALSIFIED for the natural family. R20's alpha-wall: with
+  phi_alpha(v)=ceil(alpha*v*log2(2v)), the minimal admissible alpha*(N) = 0.45, 0.50,
+  0.50, 0.50, 0.50, >0.50 at N = 20, 30, 45, 60, 90, 130. So phi_{0.5} DIES at N=130
+  (CEGAR UNSAT) — v log v profiles hit a wall exactly like linear ones, just ~9x slower
+  per unit parameter. (Audit item R20 flagged: that UNSAT was single-solver; I have an
+  eager two-solver re-verification running: experiments/verify_r20_alpha.out.)
+- Also falsified: the STRUCTURAL picture. The optimal finite witnesses are NOT log-lag
+  interleavings — the phi_{0.5} witness at N=90 has cut points {1,2,4,11,90} and emission
+  order [1..11][12..31][61..90][44..60][32..43]: geometric ratio~2.8 blocks in order then
+  a REVERSED tail. Delay is not concentrated on high 2-adic valuation values.
+- NEW PROVED THEORY (folded into CORE.md as Corollary 26 + Remark 27):
+  * Prop R20-2 = Corollary 26 (AP-restriction for displacement): every infinite AP
+    restriction of a 4-AP-free permutation is itself one, of order type omega. Hence
+    Theorem 12 and every certified extinction apply to EVERY AP separately, giving
+    limsup pos_P(n)/n >= 9/8 for all P. DESIGN PRINCIPLE D1: a NO-witness needs unbounded
+    relative displacement along EVERY AP, not just globally.
+  * Lemma R20-1: the first NON-INTERVAL block architecture (class c(v)=floor(log_b v)+t(v)
+    with t AP-alternating) — proved, with sharpness witnesses.
+  * Prop R20-3 (dichotomy): every member of that family either has an AP on which it is
+    linear (dies by D1) or has O(log v)-thin classes (no reduction). Kills the natural
+    'delay by 2-adic valuation' designs: the odds carry constant delay, so the odd
+    restriction is an in-order geometric block ordering.
+- REMARK 27 — SEARCH BLIND SPOT (qualifies several earlier readings, including mine):
+  from N*(C) ~ 4 e^{4.15(C-1.25)}, a design with AP-restriction displacement constant C
+  cannot die before N ~ 6e3 (C=3), 1e7 (C=5), 1e9 (C=6). So verification to M=1e4-1e5
+  CANNOT certify or refute any design with C >~ 3. R1's ratio-5/6 corridor (incl. the
+  depth-5 feasible cuts [1,2,4,10,90..92]) and R20's CLS(5,a) (alive at N=250) BOTH sit
+  in this blind spot — their survival at reachable N is NOT evidence. Conversely CLS(3,a)
+  dying at N=250, and the ratio-3 shoulder chain 1,2,5,14,41,122 dying at 160 values, ARE
+  informative (low C should die early) — and the latter is evidence against R1's
+  Conjecture W for ratio-3 chains.
+- R20's own next-step recommendation, which I endorse: switch from profile-SHAPE search to
+  AP-UNIFORMITY search — look directly for a class function c with finite fibres, no
+  strictly monotone 4-AP class sequence, and unbounded displacement on every AP r+qN
+  (q <= 8). Either it produces the first D1-compatible architecture, or it converts D1
+  into a genuine YES-side obstruction. First experiment that could bear on both branches.
+
 ## 2026-07-28 (Opus-5) — CORRECTION: depth-5 block layouts are ALIVE (island moves)
 - R1-final scanning other prefixes found DEPTH-5 FEASIBLE cut sequences
   [1,2,4,10,90], [1,2,4,10,91], [1,2,4,10,92] — ratios 2, 2, 2.5, 9, ACCELERATING and
