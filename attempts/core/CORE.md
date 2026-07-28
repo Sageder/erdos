@@ -480,6 +480,12 @@ which u is open, and let Cl(u) be the forward closure of {u}.
     forcing chain** (equivalently, an infinite ≺-descending chain, which order type ω
     forbids).
 
+    ⚠ SEE THE TWO LATER CORRECTIONS BEFORE USING (c): it is VACUOUS (P ⟺ P) — see
+    "Correction to Theorem 16(c)" below — and the programme built on it is DEAD, since
+    co-supply is refuted and every forced-descent digraph has a sink (Theorems 44, 47).
+    Parts (a) and (b) stand; the quantitative reading of (b) is also corrected in
+    Theorem 44.
+
 Proof. (a) (u−2d, u−d, u, u+d) is a 4-AP with difference d; its first three terms are
 positionally increasing by openness, so pos(u+d) > pos(u) would make it an increasing
 monotone 4-AP. Hence pos(u+d) < pos(u) (positions are distinct). (b) Induction along
