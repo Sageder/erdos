@@ -1459,3 +1459,31 @@ profile_cegar.py).
    routes R1/R3; the valuation delays are the CLS families, with CLS(3,a) dead at N = 250
    (route R20). An UNSAT at moderate N would be an impossibility theorem for the entire
    binary-delay architecture family, quantified over all delays and all within-class orders.
+
+## Remark 42 (scoping: how much the T = 1 case can possibly matter)
+
+An honest limit on the value of the T = 1 work above. With t ∈ {0,1} the class of a value
+is either j(v) or j(v)+1, and classes are emitted in increasing order — so the architecture
+is exactly a contiguous block layout in which each value may be delayed by AT MOST ONE
+phase. That is a bounded-lag layout, and route R1 already established that bounded-lag
+interleavings die (its lag-2 pattern dies at stage 7, with debt propagating backwards as
+decreasing-AP pressure), while the zero-delay case is the plain in-order block layout, dead
+at ratios 3 and 4 for every gadget.
+
+So whichever way experiments/t01_realize2.py resolves, the consequence for Erdős 196 is
+limited: an UNSAT would be a clean impossibility theorem for a family already believed dead
+on independent grounds, and a SAT persisting to large N would be surprising but would sit
+inside the Remark 27 blind spot.
+
+**Where the real question lives.** The negative branch needs UNBOUNDED delay — the growing
+debt that R20's CLS families and R1's accelerating corridor both exhibit — and by Remark 27
+no finite search can settle designs in that regime. So the genuinely open negative-branch
+question requires an explicit rule together with a proof, not a search. The propositions
+that survive from this stretch and DO apply there are the general ones: Lemma 34 (far-left
+reduction), Lemma 35 (the delay cannot rise twice in a row), Proposition 40 (every sublevel
+set is closed under AP-completion, for arbitrary finite-valued delays), and Proposition 41
+(condition (ii) is necessary, not sufficient — the realizability layer is a separate and
+apparently severe constraint).
+
+This remark is recorded so that the effort spent on T = 1 is not mistaken, later, for
+progress on the problem itself.
