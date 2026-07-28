@@ -1,0 +1,3 @@
+=== G-A: EXACT |BadS_p| at large M vs the proved bound ===
+  exact BadS checks: 25920  violations: 0   worst exact/bound ratio: 0.8889
+=== G-B: EXHAUSTIVE |BadC_p|, |BadS_p| over all of [M,2M] at reachable M ===

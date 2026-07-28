@@ -137,7 +137,8 @@ such positions, whence $J\le \log_p m-J+1$.
 Theorem~\ref{thm:mirror} shows the residual content of 727 is a condition on \emph{cofactors}.
 
 \begin{theorem}[Cofactor engine]\label{thm:engine}
-Fix $k\ge2$ and $P_0\ge 2k$. Let $n$ satisfy
+Fix $k\ge2$ and let $P_0$ be such that every prime $\ell>P_0$ satisfies $\ell>2k$
+(equivalently $P_0\ge 2k-1$). Let $n$ satisfy
 \begin{enumerate}
 \item[\textup{(i)}] $\kappa_\ell(n)\ \ge\ 2\sum_{j=1}^{k}\nu_\ell(n+j)$ for every prime
   $\ell\le P_0$; and
@@ -159,12 +160,15 @@ $2\big((W-1)\bmod\ell\big)+1\ge\ell$ by (ii), a second carry. Hence $\kappa_\ell
 \end{proof}
 
 \begin{remark}
-Condition (ii) is sufficient but not necessary (carries at higher positions also count):
-over all even $n\le 6\cdot10^4$ the predicate of Theorem~\ref{thm:engine} has zero false
-positives and certifies $45$ of the $263$ members of $S_2$; for $k=3$ it certifies $10$ of the
-$41$ members of $S_3\cap[1,6\cdot10^4]$, including the least member $3475$. A prime-parametrized
-specialization (each window element a balanced semiprime in an explicit ratio box) was verified
-on $123$ solutions and independently regenerated.
+The hypothesis on $P_0$ is load-bearing, not cosmetic: if a prime $\ell\le 2k$ is allowed to
+exceed $P_0$ it may divide two window elements and the demand at $\ell$ exceeds $2$.
+Condition (ii) is sufficient but not necessary (carries at higher digit positions also count).
+Numerically, with $P_0=2k$: over all even $n\le6\cdot10^4$ the predicate has \emph{zero} false
+positives and certifies $45$ of the $263$ even members of $S_2$; for $k=3$ it certifies $10$ of
+the $41$ members of $S_3\cap[1,6\cdot10^4]$, including the least member $3475$. An independent
+adversarial audit reproduced zero false positives for Lemma R$'''$ up to $n=10^6$ and $k=2,\dots,6$.
+A prime-parametrized specialization, in which each window element is a balanced semiprime in an
+explicit ratio box, was verified on $123$ solutions and independently regenerated.
 \end{remark}
 
 \section{A first-moment obstruction}
