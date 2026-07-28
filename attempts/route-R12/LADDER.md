@@ -135,3 +135,16 @@ smooth average — the other side Vaughan-decomposed), or a Chen-style weighted 
 "n, n+1 both P₂ with smooth-parts and localized prime factors" — STRICTLY above Titchmarsh
 (primality on both sides), below twins (dense smooth averaging available on both sides).
 Waiting on R11 literature verdict to calibrate feasibility.
+
+## 6. R‴ certification data + the supply boundary (2026-07-28 ~02:20)
+
+- R‴ predicate, k=3, P₀=5: certifies 10/41 of the S₃ members ≤ 6·10⁴ (incl. 3475),
+  zero false positives. The engine is correct for all k; supply is the fight.
+- Supply boundary (via Hildebrand's thresholds, cf. BW98 intro): positive-density
+  k-strings of n^α-smooth integers are known for α > e^{−1/(k−1)}:
+  k=2: 0.368 < 1/2 ✓ (Hildebrand 1985 pairs cover the needed exponent 1/2);
+  k=3: 0.607 > 1/2 ✗ — positive-density supply at exponent 1/2 is itself OPEN for k ≥ 3;
+  only thin BW-strings exist there. So: k=2 = injection problem (R13);
+  k ≥ 3 = supply + injection, both beyond current published technology.
+- B_3 box-form search: zero structural hits ≤ 3·10⁷ (consistent with ~1/log⁶ onset;
+  the R‴ form is much less restrictive and certifies real members as above).
