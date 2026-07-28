@@ -1,4 +1,34 @@
-# L4A.md — route R14: the k = 2 carry conditions inside the smooth pairs
+# L4A.md — route R14
+
+> **AUDIT STATUS (2026-07-28, `AUDIT_L4A.md`, verdict MIXED). Read before using anything below.**
+> * **Lemmas 1, 2, 2′, 3, 3′, 4, 5 — CONFIRMED CORRECT** by an independent adversarial auditor
+>   (1.5M+ verified instances, zero counterexamples; every table reproduced to the exact integer).
+>   These are the route's real, unconditional contribution.
+> * **§7 Proposition O1 — NOT PROVED.** It is a Dickman-*model* computation plus measurements;
+>   the step `S(x,b) ≍ x·ρ(1/b)²` is an unproved independence heuristic. Its *measurements* were
+>   reproduced exactly and are reliable; the Proposition is downgraded to a heuristic, and §9's
+>   listing of it under "proved unconditionally" is retracted. Its sieve corollary is a heuristic
+>   about two particular strategies, not a statement about all proofs.
+> * **§4 Theorem A — FATALLY BROKEN.** It applies Hypothesis U to an `ℓ`-dependent family
+>   (right-hand side normalised by `#{n : ℓ ∥ n+1, P(n+1) = ℓ}`), which U does not cover; the
+>   `P(n+1) = ℓ` constraint is load-bearing because only it makes the sum over `ℓ` telescope, and
+>   it is a multiplicative condition on the cofactor, not a congruence mod `ℓ^J`. With what U
+>   legitimately supplies the bound costs `E[#{ℓ>4 : ℓ ∥ n+1}]` ≈ 2.65/2.77/2.49/1.94 at
+>   `b = .5/.4/.3/.25`, i.e. `≈ 1.3·#S(x)` — worse than trivial. Raising `J₀` cannot repair it.
+> * **Hypothesis U at `θ = 1` is FALSE** for every `C`, `b`; `θ < 1` strictly is forced, and the
+>   `θ = 1` column of the §5 corollary is vacuous.
+> * **§5 Theorem B's derivation from U + L1 is SOUND**, but inherits the above restriction.
+> * **Framing correction.** "Any `θ > 0` and any `C` suffice because `b` is free" is misleading:
+>   the binding constraint is the ratio `θ/b ≥ 62.8`, i.e. moduli `q ≥ y^{62.8}` with `y = x^b`,
+>   against `y^{6.59}` known for a *single* smooth number — and Soundararajan's range condition at
+>   `u = 1/b ≈ 63` caps `y ≲ 2·10⁷`, so that theorem cannot be invoked as `x → ∞`.
+>   Highest-value open repair: sharpening Lemma 3′ at prime powers `a ≥ 2` would lower the demand
+>   to `θ/b ≈ 7.3`; the crude prime-power step is the sole reason the route asks for `y^{63}`.
+> * **Status of the reduction.** Hypothesis U is the conjunction of two things PROBLEM.md excludes
+>   by name ("smooth-neighbor conjectures", "digit equidistribution along sparse families"), has no
+>   known case for pairs above `(log x)^c`, and is implied by no standard conjecture. It therefore
+>   **counts as a reduction to an unproved statement of comparable strength and is NOT progress on
+>   727.** Nothing in this file resolves 727 or its k = 2 variant.
 
 Erdős problem 727, named variant `k = 2`. Session 2026-07-28. Continues
 `attempts/route-R13/ANATOMY.md` (findings L0–L6) and `attempts/route-R12/LADDER.md` §4.5.
@@ -502,7 +532,8 @@ is the correct normalisation.
 
 ## 9. Honest verdict, and the first open input
 
-**Proved unconditionally in this route (new):**
+**Proved unconditionally in this route (new)** — NOTE: Proposition O1 was listed here
+in error and has been retracted per the audit; it is a heuristic, not a theorem:
 * **Lemma 2 / 2′** — the exact failure characterisation "cofactor minus one is digit-poor
   base `ℓ`", for `ℓ ∥ n+j` and for `ℓ^e ∥ n+j`. Verified on `223 111` instances, zero violations.
 * **Lemma 3 / 3′** — the truncation of that condition to a *congruence mod `ℓ^J`*, with the
