@@ -33,8 +33,10 @@ compactness lemma quantifies over ALL profiles φ, so killing every linear one l
 v log v, v^{1+ε}, … untouched. (ii) The same extinction signature appears in the
 KNOWN-NEGATIVE case at length 5 — 5-AP-free permutations under pos(v) ≤ 1.25v die at
 N = 13, two solvers agreeing — so the signature does not discriminate the branches.
-Additionally the unweighted ledger is capped at exactly 2, and Theorem 16's forcing step IS
-the ledger's demand step, so those are one tool, not two. (Remarks 17, 27; Theorem 46.)
+Additionally no unweighted-ledger argument reaches C ≥ 2 (exact triadic evaluation), and the
+forcing step coincides with the ledger's demand step, so those are very likely one tool
+rather than two — the auditor downgraded that last point from theorem to remark, so treat it
+as strong guidance, not a barrier. (Remarks 17, 27; Theorem 46 as corrected.)
 
 **A5. It cannot rest on shallow/prefix criteria.** The FIN-type statements are dead at all
 reachable scales: the minimum achievable position of the first L values stays exactly L for
@@ -122,8 +124,14 @@ for the same reason.
 
 ## Part C — the single most useful methodological rule
 
-Every substantive error in this run — six of them, all recorded — had one root cause:
+Every substantive error in this run — SEVEN of them, all recorded, the last found by an
+adversarial auditor in a table I had copied into the core file — had one root cause:
 **reading finite or partial evidence as though it settled an asymptotic statement.** Before
 believing any claim here, ask: does this finite computation actually bound the infinite
 object, or only the family it happens to quantify over? The certified extinction law (B7)
 makes that question quantitative, and it is usually the answer.
+
+A second rule, learned the same way: **a single UNSAT witnesses extinction at that size,
+never minimality.** Minimality requires the SAT point immediately below. I published a table
+headed "minimal N" whose last entry was merely the first size I happened to test — the true
+value was 74, not 90. Report the bracketing SAT/UNSAT pair, not one endpoint.
