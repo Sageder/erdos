@@ -1081,3 +1081,47 @@ eager two-solver encoding, the low-C extinction table now rests on three methodo
 independent computations. The audit also found two data-integrity defects in that route's
 own artifacts (one bad table row and five stored witnesses that do not verify) — those are
 recorded in its AUDIT.md and do not affect the confirmed certificates.
+
+## Lemma 34 (far-left reduction of condition (ii)) — proved, machine-verified
+
+Setting: class architecture c = j + t, j(v) = ⌊log_b v⌋, t : ℕ → ℤ≥0 finite-valued.
+Fix x ≥ 1 and let d be large enough that
+
+    (FL)    j(x) + t(x) < j(x+d)
+
+— true for all d beyond a finite threshold, since t(x) is a fixed number and
+j(x+d) → ∞. Write u_i = x + i·d (i = 1,2,3) and k = j(u_1). Then:
+
+**(1) Far-left APs constrain only the INCREASING orientation.** (FL) gives
+c(x) = j(x)+t(x) < j(u_1) ≤ c(u_1), so c(x) > c(u_1) is impossible and the decreasing
+pattern cannot occur. (A genuine asymmetry: the architecture's decreasing orientation is
+free at far-left APs, all the content is in the increasing one.)
+
+**(2) On these APs condition (ii) is EQUIVALENT to a condition on t alone.** By the
+block-gap lemma (j₃ ≤ j₁+1 since x+3d < 3(x+d) ≤ b(x+d) for b ≥ 3) the pattern
+(j(u_1), j(u_2), j(u_3)) is one of (k,k,k), (k,k,k+1), (k,k+1,k+1), and (ii) says exactly
+
+    (k,k,k)      :  ¬( t(u_1) <  t(u_2) <  t(u_3) )
+    (k,k,k+1)    :  ¬( t(u_1) <  t(u_2) ≤  t(u_3) )
+    (k,k+1,k+1)  :  ¬( t(u_1) ≤  t(u_2) <  t(u_3) )
+
+**(3) The constrained triples are the "geometric" ones.** Taking x small, d = u−x with
+u = u_1, the triple is (u, 2u−x, 3u−2x) — for x = 1, exactly (u, 2u−1, 3u−2). So (ii)
+constrains t on every triple of the shape (u, ≈2u, ≈3u), at every scale.
+
+Verification (experiments/farleft.py, exact integer arithmetic, x ≤ 3, values to 20 000,
+b ∈ {3,4,5}, five delay families): (1), (2) and the block-gap lemma hold in every one of
+≈300 000 far-left instances, with zero exceptions. Measured pattern frequencies (b=3):
+(k,k,k) 0%, (k,k,k+1) 26%, (k,k+1,k+1) 74%; (b=5): 39% / 32% / 29%. Delay families
+t = v₂(v), t ≡ 0 and t = 1_{odd} have zero (ii)-violations; t = v mod 3 and a random
+delay violate on ≈11% of far-left APs.
+
+**Specialization to t ∈ {0,1} (the first open case beyond Corollary 30).** With two values
+the (k,k,k) constraint is vacuous, and the other two read: pattern (k,k,k+1) forbids
+(t(u), t(2u−1), t(3u−2)) = (0,1,1); pattern (k,k+1,k+1) forbids (0,0,1). For b = 3 the
+pattern is (k,k,k+1) for u in the lower part of block k and (k,k+1,k+1) in the upper part,
+so: whenever t(u) = 0 and t(3u−2) = 1, the value t(2u−1) is FORCED — to 0 for u low in its
+block, to 1 for u high. The congruence solution t = 1_{odd} satisfies this (its triples read
+(0,1,0), which is neither forbidden pattern) but is killed by Corollary 30. So the sharp
+open question for T = 1 is whether a NON-congruence-determined 0/1 delay can satisfy these
+forcings while leaving no progression on which t is eventually non-decreasing.
