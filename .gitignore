@@ -18,3 +18,6 @@ attempts/route-B/sols_N180_j*.txt
 experiments/f[0-9]*.out
 experiments/far[0-9]*.out
 experiments/p[0-9]*.txt
+# transient search-problem scratch files emitted by running workflow agents;
+# regenerable from their (T,N,mode,u,v,D) parameters
+attempts/wf-*/*.prob
