@@ -1,0 +1,12 @@
+# P2_exact  L in [3200,60000]  minm = 3   (minm=3 == THE PIVOT: modulus 2 banned)
+# stages: budget>1  ->  exact Phi_q>=1 for q | L  ->  exhaustive modulus-ordered DFS
+# SCOPE: infeasibility at L only excludes pivot coverings with lcm | L.
+  L=3240     |S|= 22 bud 1.24198  INFEASIBLE by exhaustive search (831 nodes)
+  L=3360     |S|= 21 bud 1.21548  INFEASIBLE by exhaustive search (191 nodes)
+  L=3600     |S|= 19 bud 1.25417  INFEASIBLE by exhaustive search (1497 nodes)
+  L=3780     |S|= 25 bud 1.28228  INFEASIBLE by exhaustive search (266202 nodes)
+  L=3960     |S|= 22 bud 1.36288  INFEASIBLE by exhaustive search (37423 nodes)
+  L=4200     |S|= 25 bud 1.22548  INFEASIBLE by exhaustive search (335 nodes)
+  L=4320     |S|= 21 bud 1.25903  INFEASIBLE by exhaustive search (1873 nodes)
+  L=4620     |S|= 23 bud 1.18268  INFEASIBLE by exhaustive search (18 nodes)
+  L=4680     |S|= 23 bud 1.29786  INFEASIBLE by exhaustive search (14860 nodes)

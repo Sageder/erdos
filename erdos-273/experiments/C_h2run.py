@@ -22,7 +22,12 @@ VERDICTS OBTAINED BY THIS ROUTE (see experiments/C_out/):
    L = 660   budget 1.0045   UNSAT exhaustive     ( 88 103 nodes)
    L = 720   budget 1.2097   UNSAT exhaustive     (46 021 340 nodes)
    L = 810   budget 1.0235   UNSAT exhaustive     (128 879 911 nodes)
-   L = 630, 840, 900, 960, 1260, 2520, 27720, ...  NOT DECIDED (time-outs)
+   L = 960   budget 1.0177   UNSAT exhaustive     (111 609 nodes)
+   L = 630   budget 1.1587   NOT DECIDED (stopped at   43 663 360 nodes, 960 s)
+   L = 840   budget 1.1762   NOT DECIDED (stopped at  164 085 760 nodes, 960 s)
+   L = 900   budget 1.0933   NOT DECIDED (stopped at  422 019 072 nodes, 960 s)
+   L = 990   budget 1.1253   NOT DECIDED (stopped at  772 866 048 nodes, 860 s)
+   L = 1260, 2520, 27720, 360360, 720720, 2162160, 10810800: NOT DECIDED
    no covering avoiding 2 was FOUND in any lattice tried, up to L = 10 810 800.
 
 CAVEAT, stated explicitly: UNSAT for a particular divisor lattice is NOT a proof of
