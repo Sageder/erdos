@@ -45,3 +45,4 @@ PLAIN C=7/4 (1.7500): minimal UNSAT N = 31  (max SAT N = 30)  [exact, 36s]
     C=2 N=21: SAT
     C=2 N=28: SAT
     C=2 N=37: SAT
+    C=2 N=49: SAT

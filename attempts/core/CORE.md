@@ -718,3 +718,42 @@ the problem statement and no route history, re-derived Lemma 13(a) (the record s
 monotone-k-AP-free permutation is infinite and contains no (k−1)-term AP) and rediscovered
 that the one-base-point argument cannot work at length 4 — matching route R5's Generic
 Escape Proposition. Two independent derivations of both facts.
+
+## Remark 23 (the pair-counting reason the length-5 mechanism has no length-4 analogue)
+
+Theorem 21's contradiction is a PAIR argument, and it needs TWO pairs.
+
+In a contiguous in-order block layout of ratio r ≥ 3, consider a monotone k-AP
+t₁ < ⋯ < t_k. Since t_k < (k−1)·t₂ (because d < t₂), the terms t₂, …, t_k occupy at most
+⌈log_r(k−1)⌉ + 1 blocks. So:
+
+- k = 5, r = 4: t₂…t₅ occupy at most 2 blocks, and being four terms in two blocks they
+  split as PAIR + PAIR. The pair criterion (u before u+d in π_m iff bit_l(u) = m mod 2,
+  l = v₂(d)) applies to BOTH pairs; since the two pairs' first elements differ by 2d,
+  which is divisible by 2^{l+1}, their bit_l agree, while adjacent blocks demand opposite
+  parities. Contradiction — this is exactly Theorem 21's argument.
+- k = 4, r = 3 (or 4): t₂, t₃, t₄ occupy at most 2 blocks, and being THREE terms in two
+  blocks they split as PAIR + SINGLETON. Only one pair criterion is available, so it
+  yields one condition and no contradiction. The surviving cases (R1's patterns 2+1+1,
+  1+2+1, 1+1+2) instead impose "this pair must be inverted" demands on the gadgets, and
+  route R1 proved those demands are jointly unsatisfiable at ratios 3 and 4 for EVERY
+  gadget choice.
+
+Machine confirmation (this session, independent implementation): the natural length-4
+analogues of Theorem 21 — ratio-3 blocks with a van der Corput internal order, base 2 or
+base 3, with or without alternating reversal — all contain monotone 4-APs at once:
+
+    ratio 3, base-2 vdC, alternating : (2, 5, 8, 11)   increasing
+    ratio 3, base-2 vdC, no reversal : (5, 7, 9, 11)   increasing
+    ratio 3, base-3 vdC, alternating : (8, 9, 10, 11)  increasing
+    ratio 3, base-3 vdC, no reversal : (1, 2, 3, 4)    increasing
+
+and (2, 5, 8, 11) is precisely a 1+2+1 pattern (2 ∈ B₀, 5, 8 ∈ B₁, 11 ∈ B₂) — the
+pair-plus-singleton case with no second pair to play against it. The same script
+reconfirms the control: the ratio-4 base-2 alternating construction has no monotone 5-AP.
+
+Reading: the length-5 solution is a two-pair parity argument, and four terms simply do
+not supply two pairs at any ratio ≥ 3. A negative answer at length 4 therefore needs a
+mechanism that extracts a contradiction from ONE pair plus singletons, or an architecture
+in which 4-APs are forced to straddle blocks in pairs — which is what route R1's cut-set
+and island analysis was probing, and where its certificates currently say no.
