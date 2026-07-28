@@ -1,0 +1,4 @@
+joint blocks 0..2 (values 1..63): SAT
+prefix: [3, 1, 2, 15, 13, 14, 10, 9, 11, 12, 6, 4, 5, 7, 8, 50, 48, 49, 53, 60, 51, 62, 61, 59, 55, 52, 63, 57, 56, 58, 54, 35, 31, 33, 36, 32, 34, 42, 38, 40, 37, 44, 46, 43, 45, 47, 23, 26, 24, 25, 18, 16, 29, 17, 20, 30, 41, 39, 28, 27, 22, 21, 19]
+monotone 4-AP in 63-prefix: False
+COMPLETENESS TEST OK: all-constraints-satisfying orders give a 4-AP-free 63-prefix

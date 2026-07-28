@@ -3,3 +3,7 @@
 EXTINCT at n=30 (no tame avoiders)
 total nodes visited: 3664617879
 === exact C=9/5 (1.8) ===
+34                 0            0        0
+EXTINCT at n=34 (no tame avoiders)
+total nodes visited: 57006572
+=== exact C=15/8 (1.875) ===

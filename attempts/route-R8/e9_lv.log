@@ -1,0 +1,21 @@
+W prefix (permutation of [1..666]): monotone 4-APs with odd d: NONE
+W prefix (permutation of [1..3334]): monotone 4-APs with odd d: NONE
+W prefix (permutation of [1..13334]): monotone 4-APs with odd d: NONE
+W: examples of even-d monotone 4-APs (expected to exist): [(1, 2, '+1'), (2, 2, '+1'), (3, 2, '+1')]
+mod-4 rate-vector search (kill all d with d % 4 != 0), prefix ~ 2400:
+  rates (1, 4, 2, 8): NO violating 4-AP on [1..800]  *** CANDIDATE
+  rates (1, 8, 2, 4): NO violating 4-AP on [1..800]  *** CANDIDATE
+  rates (2, 4, 1, 8): NO violating 4-AP on [1..802]  *** CANDIDATE
+  rates (2, 8, 1, 4): NO violating 4-AP on [1..802]  *** CANDIDATE
+  rates (2, 8, 4, 16): NO violating 4-AP on [1..800]  *** CANDIDATE
+  rates (2, 16, 4, 8): NO violating 4-AP on [1..800]  *** CANDIDATE
+  rates (4, 1, 8, 2): NO violating 4-AP on [1..801]  *** CANDIDATE
+  rates (4, 2, 8, 1): NO violating 4-AP on [1..803]  *** CANDIDATE
+  rates (4, 8, 2, 16): NO violating 4-AP on [1..802]  *** CANDIDATE
+  rates (4, 16, 2, 8): NO violating 4-AP on [1..802]  *** CANDIDATE
+  rates (8, 1, 4, 2): NO violating 4-AP on [1..801]  *** CANDIDATE
+  rates (8, 2, 4, 1): NO violating 4-AP on [1..803]  *** CANDIDATE
+  rates (8, 2, 16, 4): NO violating 4-AP on [1..801]  *** CANDIDATE
+  rates (8, 4, 16, 2): NO violating 4-AP on [1..803]  *** CANDIDATE
+  rates (16, 2, 8, 4): NO violating 4-AP on [1..801]  *** CANDIDATE
+  rates (16, 4, 8, 2): NO violating 4-AP on [1..803]  *** CANDIDATE

@@ -1,4 +1,7 @@
 cuts [8, 26, 150] SAT (197s)
-cuts [8, 26, 160] UNSAT (425s)
-
-EXTRA DONE
+cuts [8, 26, 160] UNSAT (421s)
+cuts [2, 8, 26, 130] SAT (36s)
+ISLAND EDGES DONE
+SAT (37s)
+cuts [2, 8, 26, 150] SAT (188s)
+ISLAND EDGES DONE

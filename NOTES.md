@@ -1,5 +1,26 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 ~harvest wave-1 continued (R6, R3, R1-corridors in; corrections)
+- R6 COMPLETE: ceiling theorem (CORE Thm 14, independently re-proved): triadic
+  reversed-block has pos<=3v-1, NO increasing 4-AP => increasing-only methods cap at
+  C*_inc in [43/24, 3]; dyadic calibration example CORRECTED (contains (1,6,11,16)).
+  Density-alone provably insufficient (Behrend slack); two-orientation invariant needed.
+- R3 COMPLETE: Lemma T (base-3 priority comparator kills ALL 4-APs on EVERY subset,
+  both orientations — proof re-verified by me); DRUP-certified death of contiguous
+  base-3/4 block orderings; {8,26,80}={3^j-1} coherence with R1. => R16 launched
+  (tau-repair). FRAMING: k-adic comparators kill k-APs on every subset; DEGS77 = repair
+  impossible at 3, possible at 5; 196 = the repair threshold at 4.
+- R1 CORRIDOR REVISION (major): ratio-3/4 in-order dead BUT robust SAT ISLAND at ratio
+  ~5: UNSAT notch [3.2,4.35]V2 then SAT island [4.8,~5.8]V2; {5,25,125} SAT,
+  {2,8,26,140} SAT; {2,8,26,140,700} UNSAT (edge); banded gadget template. E(V)
+  settled for ALL V. R1 resumed: decide depth-5 island, hand-build banded rule to 1e5.
+- CORRECTION (plain thresholds): plain C=2 SAT at N=60 (36s; N=90 timed out) — plain
+  extinction only CERTIFIED at C<=1.5 (N=22); 'kill C<=3' was ASYM-only. Plain
+  C in [2,5] open; ratio-5 island consistent with all data. NO side healthier.
+- AUDIT: 13/15 SOUND, 2 gaps repaired. asym pos(2)<=5 pin SAT at N=305.
+- Load: box oversubscribed; killed my leftover solver; in flight: R2, R4, R8,
+  R9-final, R1-island, R16.
+
 ## 2026-07-28 later (route R1): MAJOR REVISION — in-order corridor at ratio 5-6 is ALIVE
 - Window law refined (attempts/route-R1/windows*.log): after cuts (V1,V2):
   geometry-dead (V2, 3V2-3] (exact lemma, machine-checked); 1-2 point SAT shoulder at

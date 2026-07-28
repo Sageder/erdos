@@ -15,3 +15,4 @@
 
 === varying C at (16, 64, *) ===
   c'= 16 c= 64 C= 256 size 192 : UNSAT (1.8s)
+  c'= 16 c= 64 C= 320 size 256 : UNSAT (105.1s)
