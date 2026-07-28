@@ -145,29 +145,38 @@ By (T1), and because $2 \in H$ can lie in at most one of $M_0, M_1$:
 > A **negative** answer proves Erdős 273 has answer **NO**. A positive answer is a finite
 > certificate that removes the single biggest obstacle to **YES**.
 
-State of the pivot after this run: the fiber test at threshold 1 (`experiments/M_pivot.py`)
-**eliminates 91 of the 107 lattices $M \le 5580$** whose pool has budget $> 1$ (51 via $q=2$, 32
-via $q=3$, 8 via $q=5$), reproducing route G's SAT-UNSAT results for $M \le 720$ instantly and
-extending them far beyond. The 16 undecided lattices are
-$1080, 1260, 1680, 2160, 2520, 3240, 3360, 3600, 3780, 3960, 4200, 4320, 4620, 4680, 5040, 5400$.
-Deciding even $M = 1080$ exactly is hard: SAT solves $M=180$ in 0.9 s, $M=360$ in 10.5 s,
-$M=720$ in 14.9 s, and does not finish $M=1080$ in hours — the UNSAT witness is a counting
-argument, which resolution reproduces only exponentially.
+State of the pivot after this run: it is **infeasible on every lattice $L \le 14490$** (259
+candidate lattices with pool budget $>1$: 203 killed by the exact $q$-adic fiber test, 56 by
+exhaustive search, none undecided, none satisfiable), on 134 further lattices up to 51240, and on
+$L_H = 27720$ — the first lattice where it could hold on budget grounds, and the one that three
+separate routes failed to decide. The five lattices left open by the fiber scan
+($1080, 1260, 1680, 2160, 2520$) are all infeasible, decided by **three independent
+implementations with identical node counts**, including a deliberately reduction-free exhaustive
+enumerator that I re-read and reran myself (1080: 71 837 nodes; 1680: 7 997; 2160: 629 162), with a
+positive control (modulus 2 permitted at $L=288$) correctly returning a re-verified certificate.
 
-**This elimination cannot close the problem, and must not be read as evidence that it will.**
-$\Phi_q(S) \ge \sum_{m \in S,\ q \nmid m} 1/m$, so the test at $q$ is vacuous once that sub-budget
-exceeds 1. Worse, route C checked the *first genuinely relevant* lattice directly and the test
-**already fails there**: at $M = 27720$ the pool $H$-divisors $\setminus\{2\}$ satisfies
-$\Phi_2, \Phi_3 \ge 1$ comfortably ($q=2$: the odd part alone gives 0.9605 per leaf against a
-deficit of 0.0395 with supply 2.81; $q=3$: base 0.6192, deficit 0.3808, supply 6.5). So the long
-run of kills up to $M = 5580$ does **not** continue — it is an artefact of small lattices being
-budget-starved, not a trend. (My frontier estimate said the test *could* bite at 27720 since
-$A_3 = 0.619 \le 1$; "can bite" is not "does bite", and I record the correction.)
+These are **not near misses**: the exact minimum number of uncovered residues, over *all* choices
+of classes, is $76/1080$ (7.04\%), $94/1260$ (7.46\%), $180/1680$ (10.71\%), $129/2160$ (5.97\%).
+A fixed 6–11\% of $\mathbb Z/L$ is unreachable however the residues are chosen.
 
-Route C independently searched for an $H$-covering avoiding the modulus 2 at
-$L = 360, 630, 660, 720, 810, 840, 900, 960, 990, 1260, 2520, 5040, 27720, 151200, 360360,
-720720, 2162160, 10810800$ by three different methods and found **none** — search failure, which
-per the problem's own ground rules is zero evidence for a negative answer.
+**Why $4\notin H$ bites, precisely.** In $\Phi_q$ a modulus contributes weight $q^{\nu_q(m)}/m\le1$,
+with equality iff $m$ is a power of $q$. Since $2^j\in H$ iff $2^{j+1}+1$ is a Fermat prime, the
+only powers of $2$ in $H$ are $2,8,128,32768$. With $2$ banned, the best 2-adic weight available at
+level $j=2$ is $1/5$ (at $m=20$), where unrestricted it would be $1$ (at $m=4$): the level-2 slot,
+where a cheap least-modulus-3 covering buys its 2-adic mass, costs a factor 5. This is an
+explanation of the computations, not a theorem, and by (T7) no argument local at a fixed finite set
+of primes can be turned into one.
+
+**This is emphatically not a proof, and the elimination provably cannot become one.**
+$H\setminus\{2\}$ is infinite and a covering's lcm may be arbitrarily large, so each verdict is a
+lemma about one lattice. Quantitatively: $\Phi_Q(S)\ge B_Q(L):=\sum 1/m$ over pool elements coprime
+to $\prod Q$, so the $Q$-local test is vacuous once $B_Q\ge1$; the smallest $L$ with $B_2(L)\ge1$ is
+$45045$, and $\max B_2$ over $L\le10^7$ is only $1.11399$ — the divergence guaranteed by (T7) is
+real but log-log slow. Route C also checked directly that at $L_H=27720$ the fiber test does *not*
+bite ($\Phi_2,\Phi_3\ge1$ comfortably); that lattice fell to exhaustive search instead. Separately,
+route C hunted for a pivot certificate at eighteen lattices up to $10810800$ by three different
+methods and found none — search failure, which per the problem's own ground rules is zero evidence
+for a negative answer.
 
 **A further structural fact about $H$** (route C, verified independently): for every odd prime $q$,
 $2m+1 \equiv 0 \pmod q \iff m \equiv (q-1)/2 \pmod q$, so $H$ meets that class only at the single

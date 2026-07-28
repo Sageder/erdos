@@ -162,3 +162,7 @@
   L=53820    |S|= 34 bud 1.24548  INFEASIBLE by exhaustive search (1778 nodes)
   L=54000    |S|= 32 bud 1.30243  INFEASIBLE by exhaustive search (282 nodes)
   L=54180    |S|= 35 bud 1.26918  INFEASIBLE by exhaustive search (928 nodes)
+  L=54600    |S|= 42 bud 1.33995  TIME CAP -- UNDECIDED (39936 nodes)
+  L=54720    |S|= 33 bud 1.26292  INFEASIBLE by exhaustive search (127 nodes)
+  L=54810    |S|= 31 bud 1.24441  INFEASIBLE by exhaustive search (143 nodes)
+  L=55080    |S|= 40 bud 1.30040  INFEASIBLE by exhaustive search (4328 nodes)

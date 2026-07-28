@@ -70,7 +70,20 @@ Last updated 2026-07-28. See NOTES.md (newest first) and AUDITS.md.
   open Erdős–Selfridge odd covering problem.
 - **Flat SAT/local search beyond L ≈ 10⁷** — BLOCKED by instance size; needs the hierarchical route.
 
-## Status of the problem
+## Final status (all routes reported)
 
-**Unresolved.** Proved so far: M1, M2, M3, M4 and the verified H-covering / even-integer artifact.
-The entire remaining difficulty is the disjointness requirement of Lemma M3.
+**UNRESOLVED.** Neither branch proved. See `VERDICT.md`.
+
+Wave 1: A, B, C, D, E, F, G, H all COMPLETE. Wave 2: P2 (pivot) and AUD (adversarial audit) both
+COMPLETE. Every findings file is transcribed under `attempts/route-*/FINDINGS.md`.
+
+Proved and audited: Lemma M1 (lcm ≥ 55440, strengthened to ≥ 181440 by the fiber test),
+Lemma M2 / Theorem inf = 1, Lemma M3 (parity split, six independent derivations), Observation M4
+(the pivot), route A's Lemma A2 + Theorems A3/A3+, route D's fiber test and fixed-Q barrier,
+route F's rigidity theorem, route H's Lemma L5 and Theorem T2 (no E-covering with all moduli ≤ 254;
+route H additionally claims ≤ 724, not independently audited).
+
+The crux — whether ℤ admits a covering with distinct moduli in H ∖ {2} — is decided NEGATIVELY on
+every lattice L ≤ 14490, on 134 more up to 51240, and on 27720, with exact optimal gaps of 6–11 %.
+This is a list of per-lattice lemmas, NOT a proof: H ∖ {2} is infinite, and route D proved that no
+test local at a fixed finite set of primes can ever close it.
