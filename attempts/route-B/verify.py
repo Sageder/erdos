@@ -29,6 +29,9 @@ def check(U):
     for n in U:
         if (n - 1) not in S and (n + 1) not in S:
             errs.append(f"isolated point {n}")
+    if errs:
+        # a line truncated by a killed writer can contain 0 or 1; do not divide by it
+        return errs, [], [], None
     tot = Fraction(0)
     for n in U:
         tot += Fraction(1, n)
@@ -60,7 +63,17 @@ def main():
     nok = 0
     nbad = 0
     for text in texts:
-        for line in text.splitlines():
+        lines = text.splitlines()
+        # If a file uses the "SOL ..." certificate format, ignore everything else
+        # (search programs also print headers such as "N=180 |A|=95 L=... (44 bits)").
+        if any(l.startswith("SOL") for l in lines):
+            lines = [l for l in lines if l.startswith("SOL")]
+        else:
+            # bare lists of integers only; drop program output such as
+            # "N=180 |A|=95 L=... (44 bits)" or "done job=0/4 nodes=..."
+            lines = [l for l in lines
+                     if l.strip() and all(c.isdigit() or c in " ,\t" for c in l)]
+        for line in lines:
             line = line.strip()
             if not line:
                 continue

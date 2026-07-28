@@ -83,7 +83,7 @@ static int inEmit = 0, quiet = 0;
 static int nsplitw = 1, ipart = 0, splitdepth = 6;
 static long long taskctr = 0;
 static long long budget = 0, budleft = 0, tabcapmax = 80000000LL;
-static int randmode = 0, stopflag = 0;
+static int randmode = 0, stopflag = 0, takepct = 50;
 static unsigned long long rng = 0x243F6A8885A308D3ULL;
 static double tlimit = 0;
 static clock_t t_start;
@@ -267,7 +267,7 @@ static void dfs(int i, int s)
     if (s == 0) { if (!adj[i]) cantake = 0; else nst = 1; }
     else nst = adj[i] ? 2 : 0;
     int canskip = (s != 1);
-    int first = (randmode && !inEmit) ? (int)(xr() & 1) : 1;   /* 1 = take first */
+    int first = (randmode && !inEmit) ? (int)((xr() % 100) < (unsigned)takepct) : 1;
 
     for (int pass = 0; pass < 2; pass++) {
         int dotake = (pass == 0) ? first : !first;
@@ -307,6 +307,7 @@ int main(int argc, char **argv)
         else if (!strcmp(argv[a], "-R")) { randmode = 1;
             rng = (unsigned long long)atoll(argv[++a]) * 2862933555777941757ULL + 3037000493ULL; }
         else if (!strcmp(argv[a], "-B")) budget = atoll(argv[++a]);
+        else if (!strcmp(argv[a], "-p")) takepct = atoi(argv[++a]);
         else if (!strcmp(argv[a], "-t")) tlimit = atof(argv[++a]);
         else if (!strcmp(argv[a], "-q")) quiet = 1;
         else { fprintf(stderr, "unknown option %s\n", argv[a]); return 1; }

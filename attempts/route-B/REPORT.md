@@ -281,7 +281,18 @@ See section 6 for the k coverage achieved.
 | `pairsearch.c`, `pairhunt.c` | search restricted to *all runs of length exactly 2* (fixes `k` exactly) |
 | `verify.py` | **independent** Fraction verifier of certificates |
 | `analyze.py` | re-verifies a pool and reports run lengths / k coverage |
-| `sols_N*.txt`, `pool/` | certificates |
+| `fewruns.c` / `fewruns2` | as `bsearch` plus a cap on the number of maximal runs (bounds k from below) |
+| `mitm.py` | **independent** meet-in-the-middle counter (cross-checks the exhaustive counts) |
+| `summarize.py` | final consolidation: `certificates_all.txt`, `kcoverage.txt`, `runlengths.txt` |
+| `winbatch*.sh`, `huntbatch*.sh`, `kpush.sh`, `kfocus.sh` | campaign drivers |
+| `sols_N*.txt`, `pool/` | certificates (`pool/partial_N180.txt` is a PARTIAL, non-exhaustive N=180 run) |
+
+### Not achieved
+* Exhaustive `max(U) <= 180`: launched (4-way), reached ~16,000 certificates and was
+  stopped unfinished (the machine was shared with other long jobs, load average ~20).
+  Its output is kept as `pool/partial_N180.txt` and is **not** an exhaustive claim.
+* `k = 2,3,4,5`: still open (only "no witness with `max(U) <= 400`").
+* No infinite family, hence no proof of the YES branch.
 
 ## 6. k coverage
 

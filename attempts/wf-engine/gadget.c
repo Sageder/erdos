@@ -52,7 +52,7 @@ static u64 *Vv, *HiB, *LoB, *Zs;
 
 static long long nodes = 0, nsol = 0, maxsol = (1LL << 60);
 static int chosen[MAXC], nch = 0;
-static int quiet = 0, randmode = 0, stopflag = 0;
+static int quiet = 0, randmode = 0, stopflag = 0, takepct = 50;
 static long long budget = 30000000LL, budleft = 0;
 static unsigned long long rng = 0x9E3779B97F4A7C15ULL;
 static double tlimit = 0;
@@ -182,7 +182,7 @@ static void dfs(int i, int s)
     if (s == 0) { if (!adj[i]) cantake = 0; else nst = 1; }
     else nst = adj[i] ? 2 : 0;
     int canskip = (s != 1);
-    int first = randmode ? (int)(xr() & 1) : 1;
+    int first = randmode ? (int)((xr() % 100) < (unsigned)takepct) : 1;
     for (int pass = 0; pass < 2; pass++) {
         int dotake = (pass == 0) ? first : !first;
         if (dotake) {
@@ -210,6 +210,7 @@ int main(int argc, char **argv)
         else if (!strcmp(argv[a], "-hi")) parse_rat(argv[++a], &HIN, &HID);
         else if (!strcmp(argv[a], "-R")) { randmode = 1; rng = (unsigned long long)atoll(argv[++a]) * 6364136223846793005ULL + 1442695040888963407ULL; }
         else if (!strcmp(argv[a], "-B")) budget = atoll(argv[++a]);
+        else if (!strcmp(argv[a], "-p")) takepct = atoi(argv[++a]);
         else if (!strcmp(argv[a], "-t")) tlimit = atof(argv[++a]);
         else if (!strcmp(argv[a], "-m")) maxsol = atoll(argv[++a]);
         else if (!strcmp(argv[a], "-q")) quiet = 1;
