@@ -29,10 +29,11 @@ from pysat.card import CardEnc, EncType
 from pysat.formula import IDPool
 
 
-def find_cycle(order_of, N):
-    """order_of(u,w) -> True if u before w. Return a cycle (list of values) or None.
-    Uses iterative DFS over the tournament restricted to a topological attempt."""
-    # Kahn-style: repeatedly remove a source. If stuck, extract a cycle from the rest.
+def find_cycles(order_of, N, max_cycles=400):
+    """Return vertex-disjoint cycles of the tournament implied by order_of (empty list
+    iff acyclic). Kahn peels sources; every surviving vertex has an alive IN-neighbour,
+    so a BACKWARD walk always repeats and yields a cycle. Extracting many disjoint cycles
+    per CEGAR round (not one) is what makes the loop converge at useful sizes."""
     indeg = [0] * (N + 1)
     adj = [[] for _ in range(N + 1)]
     for u in range(1, N + 1):
@@ -43,8 +44,8 @@ def find_cycle(order_of, N):
                 adj[w].append(u); indeg[u] += 1
     from collections import deque
     q = deque(v for v in range(1, N + 1) if indeg[v] == 0)
+    alive = [True] * (N + 1); alive[0] = False
     removed = 0
-    alive = [True] * (N + 1)
     while q:
         v = q.popleft(); removed += 1; alive[v] = False
         for w in adj[v]:
@@ -52,29 +53,38 @@ def find_cycle(order_of, N):
             if indeg[w] == 0:
                 q.append(w)
     if removed == N:
-        return None
-    # A cycle lives among the alive vertices. After Kahn every alive vertex has residual
-    # in-degree >= 1, so it has an alive IN-neighbour: walk BACKWARD (always defined)
-    # until a vertex repeats. Walking forward can dead-end and would falsely report
-    # acyclicity.
+        return []
     rev = [[] for _ in range(N + 1)]
     for u in range(1, N + 1):
-        if not alive[u]:
+        if alive[u]:
+            for w in adj[u]:
+                if alive[w]:
+                    rev[w].append(u)
+    cycles, used = [], [False] * (N + 1)
+    for start in range(1, N + 1):
+        if len(cycles) >= max_cycles:
+            break
+        if not alive[start] or used[start]:
             continue
-        for w in adj[u]:
-            if alive[w]:
-                rev[w].append(u)
-    start = next(v for v in range(1, N + 1) if alive[v])
-    seen, path, cur = {}, [], start
-    while cur not in seen:
-        seen[cur] = len(path); path.append(cur)
-        cur = rev[cur][0]
-    cyc = path[seen[cur]:]
-    cyc.reverse()          # reverse of a backward walk is a forward cycle
-    return cyc
+        seen, path, cur, ok = {}, [], start, True
+        while cur not in seen:
+            if used[cur]:
+                ok = False; break
+            seen[cur] = len(path); path.append(cur)
+            nxts = [p for p in rev[cur] if alive[p] and not used[p]]
+            if not nxts:
+                ok = False; break
+            cur = nxts[0]
+        if not ok:
+            continue
+        cyc = path[seen[cur]:]; cyc.reverse()
+        for v in cyc:
+            used[v] = True
+        cycles.append(cyc)
+    return cycles
 
 
-def solve(N, C, max_rounds=4000, verbose=False):
+def solve(N, C, max_rounds=200000, verbose=False):
     pool = IDPool()
     def var(u, w):
         return pool.id(('x', u, w))          # u < w ; true means u before w
@@ -104,9 +114,8 @@ def solve(N, C, max_rounds=4000, verbose=False):
         model = set(S.get_model())
         def order_of(u, w):                    # u < w assumed
             return var(u, w) in model
-        cyc = find_cycle(order_of, N)
-        if cyc is None:
-            # acyclic: decode
+        cycs = find_cycles(order_of, N)
+        if not cycs:
             import functools
             vals = list(range(1, N + 1))
             def cmp(u, w):
@@ -116,20 +125,16 @@ def solve(N, C, max_rounds=4000, verbose=False):
             vals.sort(key=functools.cmp_to_key(cmp))
             S.delete()
             return "SAT", vals, rounds
-        # forbid this cycle: for consecutive triples along it add transitivity
-        added = 0
-        L = len(cyc)
-        for i in range(L):
-            u, w, z = cyc[i], cyc[(i + 1) % L], cyc[(i + 2) % L]
-            if len({u, w, z}) < 3:
-                continue
-            S.add_clause([-lit(u, w), -lit(w, z), lit(u, z)])
-            added += 1
-        # also forbid the whole cycle directly
-        S.add_clause([-lit(cyc[i], cyc[(i + 1) % L]) for i in range(L)])
+        for cyc in cycs:
+            L = len(cyc)
+            for i in range(L):
+                u, w, z = cyc[i], cyc[(i + 1) % L], cyc[(i + 2) % L]
+                if len({u, w, z}) == 3:
+                    S.add_clause([-lit(u, w), -lit(w, z), lit(u, z)])
+            S.add_clause([-lit(cyc[i], cyc[(i + 1) % L]) for i in range(L)])
         rounds += 1
-        if verbose and rounds % 50 == 0:
-            print(f"    [cegar round {rounds}, cycle len {L}]", flush=True)
+        if verbose and rounds % 200 == 0:
+            print(f"    [round {rounds}: {len(cycs)} cycles]", flush=True)
         if rounds > max_rounds:
             S.delete()
             return "UNKNOWN", None, rounds
