@@ -1,5 +1,45 @@
 # NOTES.md — lab notebook (newest entries at top)
 
+## 2026-07-28 ~12:40 UTC — R14 + its audit: reduction to Hypothesis U, and why it does NOT count
+
+- R14 (attempts/route-R14/L4A.md) attacked L4a and **falsified R13's "hard-but-classical"**
+  verdict: the moduli needed are ℓ^J = a POWER of x, while the only AP-restricted smooth-PAIR
+  theorem (Tao–Teräväinen Thm 3.1) allows only (log x)^c; all classical smooth-in-AP results
+  (Fouvry–Tenenbaum, Granville, Soundararajan, Harman, Drappeau, Pascadi) are for ONE smooth
+  number. L4a is OPEN.
+- **SURVIVED AUDIT (unconditional, the route's real contribution):** Lemma 2 (failure at ℓ ∥ n+j
+  ⟺ cofactor−1 is digit-poor base ℓ), Lemma 2′ (prime powers), Lemma 3/3′ (TRUNCATION: the
+  failure event restricted to J digits is a pure congruence mod ℓ^J of relative size exactly
+  (1/2)((ℓ+1)/2ℓ)^{J−1}), Lemma 4 (distribution-free budget, uses only Σβ_ℓ ≤ 1), Lemma 5
+  (explicit class n ≡ 157 mod 648 killing p = 2,3 identically). Auditor: 1.5M+ instances, zero
+  counterexamples, every table exact. I independently re-verified Lemma 5 (< 5·10⁶) and its 8
+  members (2 by exact factorial division). ⟹ ALL digit/carry combinatorics is now retired.
+- **AUDIT BROKE THREE THINGS I HAD ALREADY WRITTEN INTO VERDICT.md (now corrected):**
+  * Proposition O1 (second neighbour cannot be dropped/sieved) is NOT PROVED — Dickman-MODEL
+    plus measurements; the model step S(x,b) ≍ xρ(1/b)² is itself an unproved heuristic.
+    Measurements correct and reproduced exactly; the Proposition is not. Downgraded to heuristic.
+  * Theorem A (= L4a) FATALLY BROKEN: U applied to an ℓ-dependent family (RHS normalised by
+    P(n+1)=ℓ) that U does not cover; honest union bound costs E[#{ℓ ∥ n+1}] ≈ 2.65 ⟹ 1.3·#S(x),
+    worse than trivial. Not repairable by raising J₀ (needs J₀ ≍ log log x ⟹ b → 0 with x).
+  * "Any θ>0 and any C suffice since b is free" MISLEADING: binding constraint is the RATIO
+    θ/b ≥ 62.8, i.e. moduli y^{62.8} (y = x^b) vs y^{6.59} known for a SINGLE smooth number;
+    and Soundararajan's u ≥ (log log y)^4 at u = 63 caps y ≲ 2·10⁷ — unusable as x → ∞.
+    Also U(θ=1) is OUTRIGHT FALSE (explicit construction). θ < 1 strictly.
+- **Theorem B's derivation from U + L1 is SOUND** (quantifiers, R never depends on n, coverage of
+  p=2,3 and all ℓ≥5 incl. prime powers and the boundary ℓ≈x^b, summation interchange — all check).
+- **DECISION (auditor's, and adopted): Hypothesis U counts as a reduction to an unproved statement
+  of COMPARABLE STRENGTH.** It is the conjunction of two items PROBLEM.md excludes BY NAME
+  ("smooth-neighbor conjectures" + "digit equidistribution along sparse families"), has no known
+  case for pairs above (log x)^c, and is implied by no standard conjecture (GRH/EH/ABC).
+  ⟹ NOT progress on 727. Recorded as such everywhere.
+- Highest-value unexploited repair (identified, not done): sharpen Lemma 3′ at prime powers a ≥ 2
+  — it alone is why the route demands y^{63} instead of y^{7.3}. Even at y^{7.3} the PAIR problem
+  stays open (single-smooth is known only to y^{6.59}), so this improves numerology, not status.
+- NET STATE: digit side fully retired; residual = smooth-PAIR equidistribution beyond polylog
+  moduli, a recognized open problem with no known route (the only path to smooth-pair asymptotics
+  runs through multiplicative-function correlations, where the modulus enters as a dilation
+  n ↦ Wn+b and costs a power of W, capping W at polylog).
+
 ## 2026-07-28 ~11:25 UTC — R13 verdict: TWO of my claims overturned; target re-scoped; new lead
 
 - R13 obtained Hildebrand 1985 IN FULL (AMS open archive) and reconstructed it, plus
