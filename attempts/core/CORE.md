@@ -903,3 +903,19 @@ The methodological upshot: for the negative branch, only an explicit rule with a
 can settle anything in the C ≳ 3 regime; finite verification is structurally incapable of
 it. For the affirmative branch, extinction certificates at small C say nothing about
 large C (and by Remark 17 would not decide the problem even if extended to all C).
+
+
+## Remark 28 (audit discharge: the v log v falsification is verified)
+
+Route R20's α-wall UNSAT at φ_{0.5}(v) = ⌈0.5·v·log₂(2v)⌉, N = 130, was obtained by
+single-solver CEGAR and was flagged by its own author as the outstanding audit item. It is
+now independently re-verified with the eager O(N³)-transitivity encoding (932 414 clauses)
+by TWO solvers, cadical and glucose, both returning UNSAT and agreeing
+(experiments/verify_r20_alpha.out).
+
+So the following is certified to the project's verification standard: there is NO
+monotone-4-AP-free permutation of [1..130] with pos(v) ≤ ⌈0.5·v·log₂(2v)⌉ for all v.
+By Lemma 6 that profile is dead as a candidate for the negative branch, and the
+"displacement Θ(v log v)" target proposed earlier in this run is falsified for the natural
+one-parameter family. The surviving negative-branch question is not the SHAPE of the
+profile but AP-uniformity (Corollary 26, design principle D1).
