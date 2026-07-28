@@ -61,6 +61,10 @@ typedef struct {
     u64 sum_n3[18][2];
     u8 perm[18][18], pos[18][18];
     u64 asserts_failed;
+    /* empirical phi: per level, minimum over avoiders of max_v pos(v)/v (1-indexed),
+     * with an argmin example; minratio_ext restricts to extendable (b>=1) avoiders. */
+    double minratio[18], minratio_ext[18];
+    u8 argmin[18][18], argmin_ext[18][18];
 } Ctx;
 
 static void collect_stats(Ctx *C, int n, int has3) {
@@ -125,6 +129,12 @@ static void dfs(Ctx *C, int n, int has3) {
     int b = hi - lo + 1; if (b < 0) b = 0;
     if (!DUMPLEVEL) {
         C->bhist[n][b]++;
+        if (n <= 15) { /* empirical phi tracking */
+            double mr = 0;
+            for (int v = 1; v <= n; v++) { double r = (double)(ps[v] + 1) / v; if (r > mr) mr = r; }
+            if (mr < C->minratio[n]) { C->minratio[n] = mr; memcpy(C->argmin[n], C->perm[n], (size_t)n); }
+            if (b >= 1 && mr < C->minratio_ext[n]) { C->minratio_ext[n] = mr; memcpy(C->argmin_ext[n], C->perm[n], (size_t)n); }
+        }
         if (b == 0) { C->dead[n]++; return; }
         if (n == D) { C->cnt[n + 1] += (u64)b; return; }
     } else if (b == 0) return;
@@ -163,6 +173,7 @@ static void run_exact(int Din, int statsmax) {
     D = Din; STATSMAX = statsmax;
     static Ctx C;               /* zero-initialized, in BSS (large) */
     memset(&C, 0, sizeof C);
+    for (int n = 0; n < 18; n++) C.minratio[n] = C.minratio_ext[n] = 1e18;
     C.perm[1][0] = 1; C.pos[1][1] = 0;
     dfs(&C, 1, 0);
     printf("== exact DFS to depth D=%d (STATSMAX=%d) ==\n", D, STATSMAX);
@@ -174,6 +185,16 @@ static void run_exact(int Din, int statsmax) {
     }
     printf("%-3d %20llu   (children of level %d; = exact count at n=%d)\n",
            D + 1, (unsigned long long)C.cnt[D + 1], D, D + 1);
+    printf("\n== empirical phi: minimum over avoiders of [1..n] of max_v pos(v)/v ==\n");
+    for (int n = 1; n <= D && n <= 15; n++) {
+        printf("n=%2d : min maxratio = %.6f (over all)  %.6f (over extendable)\n",
+               n, C.minratio[n], C.minratio_ext[n]);
+        printf("   argmin:");
+        for (int i = 0; i < n; i++) printf(" %d", C.argmin[n][i]);
+        printf("\n   argmin-extendable:");
+        for (int i = 0; i < n; i++) printf(" %d", C.argmin_ext[n][i]);
+        printf("\n");
+    }
     printf("\n== branching histograms (n -> {b: #avoiders of [1..n] with exactly b valid insertions of n+1}) ==\n");
     for (int n = 1; n <= D; n++) {
         printf("n=%2d :", n);

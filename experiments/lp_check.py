@@ -72,29 +72,27 @@ for p in permutations(range(1, 10)):
         check_V1_V2(list(p)); cnt += 1
 print(f"V2 exhaustive on {cnt} avoiders of [1..9]: OK")
 
-# V3: find N0(C) for C=1.1 from the exact finite inequality, then SAT-check
+# V3: ceiling-corrected finite prediction. For the SAT family (bound ceil(C*v)) the
+# ledger gives: Sum e*(w) <= (1-1/C)*N(N+1)/2 + N/C  [pos(w) <= ceil(C(w-e*)) <= C(w-e*)+1].
+# Demand: Sum_e ceil((N-3e)/3). Predict UNSAT when demand > supply; cross-check by SAT.
 C = 1.1
 def demand(N):
     return sum(math.ceil((N - 3 * e) / 3) for e in range(1, (N - 1) // 3 + 1))
 def supply(N):
-    # Sum_w e*(w) <= sum_w (w - pos_min...) exact bound: (1-1/C)*N(N+1)/2 via ledger
-    return (1 - 1 / C) * N * (N + 1) / 2
+    return (1 - 1 / C) * N * (N + 1) / 2 + N / C
 N0 = None
 for N in range(4, 4000):
     if demand(N) > supply(N):
         N0 = N
-if N0 is not None:
-    # smallest N where inequality fails FOR ALL larger? demand-supply gap is monotone-ish;
-    # find first failure
-    for N in range(4, 4000):
-        if demand(N) > supply(N):
-            N0 = N; break
-print(f"C={C}: theorem predicts UNSAT (no inc4-free perm with pos<=Cv) for N >= {N0}")
+        break
+print(f"C={C}: ceiling-corrected theorem predicts UNSAT for N >= {N0} "
+      f"(demand {demand(N0)} > supply {supply(N0):.1f}); monotone beyond: "
+      f"{all(demand(N) > supply(N) for N in range(N0, N0+200))}")
 sat = solve_profile_frac(N0, C)
-print(f"SAT check at N={N0}, C={C} (plain target): {'SAT (!!PROBLEM!!)' if sat else 'UNSAT (consistent with theorem)'}")
-# also check the theorem isn't vacuously early: N0-10 should still be SAT or at least
-# not contradict (SAT means theorem bound not tight there - fine)
-for Ntest in (N0 - 20, N0 - 10):
-    if Ntest >= 8:
-        s = solve_profile_frac(Ntest, C)
-        print(f"  N={Ntest}: {'SAT' if s else 'UNSAT'} (either is consistent; UNSAT means SAT-threshold is below theorem's N0)")
+print(f"SAT check at N={N0}, C={C}: {'SAT (!!PROBLEM!!)' if sat else 'UNSAT (consistent)'}")
+# theorem slack: find the actual SAT threshold for C=1.1 (should be well below N0)
+N = 4; last = None
+while N < N0:
+    if solve_profile_frac(N, C): last = N; N += 2
+    else: break
+print(f"actual SAT frontier for C=1.1: last SAT ~ N={last}, first UNSAT ~ N={N} (theorem N0={N0}: slack factor ~{N0/max(N,1):.1f})")

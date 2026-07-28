@@ -34,6 +34,8 @@ NMAX = 512                  # stop pushing N here even if avoiders persist
 
 
 def log(rec):
+    if ROUND != "f":
+        rec = {**rec, "round": ROUND}
     with open(RES, "a") as f:
         f.write(json.dumps(rec) + "\n")
 
@@ -53,13 +55,17 @@ def load_done():
 FASTSEQ = os.path.join(HERE, "fastseq")
 
 
+ROUND = "f"          # 'f': hi=floor(Cv); 'c': hi=ceil(Cv) (sat_order.py plain profile)
+
+
 def run_fast2(N, cls, C, mode, cap, maxprint, order, seed, timeout):
     if cls == "S":       # class Bp: injective sequences, engine fastseq
+        assert ROUND == "f"
         cmd = [FASTSEQ, str(N), str(C.numerator), str(C.denominator), mode,
                str(cap), str(maxprint), str(order), str(seed)]
     else:
         cmd = [FAST2, str(N), cls, str(C.numerator), str(C.denominator), mode,
-               str(cap), str(maxprint), str(order), str(seed)]
+               str(cap), str(maxprint), str(order), str(seed), ROUND]
     t0 = time.time()
     try:
         out = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout).stdout
@@ -76,8 +82,9 @@ def run_fast2(N, cls, C, mode, cap, maxprint, order, seed, timeout):
 
 
 def save_avoider(cls, C, N, perm, how):
+    suf = "" if ROUND == "f" else "_ceil"
     name = f"seq_B_{C.numerator}_{C.denominator}.txt" if cls == "S" else \
-        f"{cls}_{C.numerator}_{C.denominator}.txt"
+        f"{cls}_{C.numerator}_{C.denominator}{suf}.txt"
     fn = os.path.join(AVD, name)
     with open(fn, "a") as f:
         f.write(f"N={N} how={how} perm=" + ",".join(map(str, perm)) + "\n")
@@ -147,4 +154,7 @@ if __name__ == "__main__":
     cls = sys.argv[1]
     C = Fraction(sys.argv[2])
     n_start = int(sys.argv[3]) if len(sys.argv) > 3 else 4
+    if len(sys.argv) > 4:
+        ROUND = sys.argv[4]
+        assert ROUND in ("f", "c")
     stream(cls, C, n_start)

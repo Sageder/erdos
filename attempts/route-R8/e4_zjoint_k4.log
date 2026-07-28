@@ -1,0 +1,11 @@
+  M=2 k=4: SAT (136 clauses); window |15| covers [-7,7]; independent check monotone 4-AP present: False
+    tau_0: [-1, 1, 0]
+    tau_1: [-2, -3, 2, 3]
+    tau_2: [-7, -5, -6, -4, 5, 7, 4, 6]
+  M=3 k=4: SAT (1314 clauses); window |31| covers [-15,15]; independent check monotone 4-AP present: False
+    tau_0: [-1, 1, 0]
+    tau_1: [-2, 2, -3, 3]
+    tau_2: [-7, -5, -6, -4, 5, 7, 4, 6]
+    tau_3: [-8, -9, -15, -14, -12, -11, -10, -13, 8, 9, 11, 10, 14, 12, 15, 13]
+  M=4 k=4: MACRO REFUTED, APs with all-constant monotone comparisons: [(-16, 9, 'dec'), (-11, 9, 'inc'), (-17, 10, 'dec'), (-13, 10, 'inc')]  (total 4)
+  M=5 k=4: MACRO REFUTED, APs with all-constant monotone comparisons: [(-16, 9, 'dec'), (-11, 9, 'inc'), (-17, 10, 'dec'), (-13, 10, 'inc'), (-32, 17, 'inc'), (-19, 17, 'dec'), (-33, 18, 'inc'), (-32, 18, 'inc')] ...  (total 28)

@@ -27,24 +27,26 @@ def solve_profile_frac(N, C):
     S.delete()
     return sat
 
-results = {}
-for C in (1.0, 1.25, 1.5, 2.0, 2.5, 3.0):
-    N = 8; last_sat = None
-    while True:
-        t0 = time.time(); sat = solve_profile_frac(N, C); dt = time.time() - t0
-        if sat:
-            last_sat = N; N += max(1, N // 8)
-        else:
-            lo, hi = (last_sat or 7), N
-            while hi - lo > 1:
-                mid = (lo + hi) // 2
-                if solve_profile_frac(mid, C): lo = mid
-                else: hi = mid
-            results[C] = hi
-            print(f"plain C={C}: minimal UNSAT N = {hi}  (max SAT N = {lo})", flush=True)
-            break
-        if dt > 300 or N > 500:
-            print(f"plain C={C}: still SAT at N={last_sat}, stopping", flush=True)
-            results[C] = None
-            break
-print("RESULTS:", results)
+if __name__ == "__main__":
+    results = {}
+    for C in (1.0, 1.25, 1.5, 2.0, 2.5, 3.0):
+        N = 8; last_sat = None
+        while True:
+            t0 = time.time(); sat = solve_profile_frac(N, C); dt = time.time() - t0
+            if sat:
+                last_sat = N; N += max(1, N // 8)
+            else:
+                lo, hi = (last_sat or 7), N
+                while hi - lo > 1:
+                    mid = (lo + hi) // 2
+                    if solve_profile_frac(mid, C): lo = mid
+                    else: hi = mid
+                results[C] = hi
+                print(f"plain C={C}: minimal UNSAT N = {hi}  (max SAT N = {lo})", flush=True)
+                break
+            if dt > 300 or N > 500:
+                print(f"plain C={C}: still SAT at N={last_sat}, stopping", flush=True)
+                results[C] = None
+                break
+    print("RESULTS:", results)
+    
