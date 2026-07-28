@@ -2,3 +2,4 @@ N=150: SAT (1s) |Z|=39 density=0.260 recheck=OK
 N=200: SAT (1s) |Z|=53 density=0.265 recheck=OK
 N=260: SAT (5s) |Z|=135 density=0.519 recheck=OK
 N=340: SAT (13s) |Z|=188 density=0.553 recheck=OK
+N=440: SAT (64s) |Z|=235 density=0.534 recheck=OK

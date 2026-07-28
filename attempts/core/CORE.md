@@ -1384,3 +1384,43 @@ Corollary 30 — now applies level by level to an arbitrary finite-valued delay,
 a binary one. The obligations listed in Proposition 39 are unchanged and remain open; what
 this adds is that discharging them would settle Conjecture R21-C in general rather than in
 the first case only.
+
+## Correction to Proposition 38 (Case 2 is NOT supported — fourth self-correction of this run)
+
+Proposition 38's Case 2 asserted that if the zero set meets every progression infinitely
+often then the closure forces its density to tend to 1. The evidence I gave for it came
+from closing RANDOM seeds, which does blow up. That was the wrong experiment: the object
+we care about is a set that is ALREADY closed and consistent with all the constraints, not
+the closure of an arbitrary seed. Residue classes are the obvious counterexample to the
+naive reading — they are closed and have density 1/m — and the solver finds much better
+ones.
+
+**What the direct test shows.** Solving the full T = 1 system (condition (ii) in full, a
+positive descent rate along every progression of step ≤ 4, no level set periodic mod m ≤ 6)
+gives SAT at N = 150, 200, 260, 340, 440 with zero-set densities 0.260, 0.265, 0.519,
+0.553, 0.534 — climbing at first and then PLATEAUING near 0.55, not tending to 1. Every
+model was re-verified against the literal definition of (ii).
+
+**And the solutions are not structured either.** Measuring the best agreement of the
+N = 340 solution with any union of residue classes: 63.2% (mod 19), 60.9% (mod 23), 60.0%
+(mod 22), and below 60% for all other moduli up to 24. A structured set would score near
+100%. So this zero set is genuinely aperiodic.
+
+**Consequence.** At N = 340 the solver exhibits a zero set that escapes BOTH branches of the
+Proposition 39 dichotomy — it neither densifies toward 1 nor sits close to a union of
+residue classes. That does not refute Proposition 39, which is an asymptotic statement and
+whose Freiman branch concerns bounded doubling rather than exact periodicity; but it
+removes the empirical support for Case 2 as I stated it, and it means the dichotomy is not
+visible at reachable sizes. Anyone continuing this line should treat "the closure densifies"
+as unsupported, and should note that the T = 1 case now looks at least as promising as a
+REFUTATION route for Conjecture R21-C as it does as a proof route.
+
+Propositions 37, 40 and Lemmas 34, 35 are unaffected — they are proved statements about the
+constraint structure, verified two-sidedly. What is withdrawn is the heuristic in
+Proposition 38 Case 2 and the confidence it lent to Proposition 39's first branch.
+
+Running tally of self-corrections in this run: the meaning of linear-profile extinction
+(Remark 17), the claim that block layouts were dead (correction to Remark 22), the
+vacuity of Theorem 16(c) (self-audit), the degenerate objective and dropped clauses
+(Remarks 31, 36), and now this. Every one had the same root cause: reading finite or
+partial evidence as if it settled an asymptotic statement.
