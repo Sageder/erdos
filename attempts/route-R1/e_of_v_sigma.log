@@ -1,0 +1,15 @@
+PARITY CONSTRUCTION VERIFIED: sigma_N is a 3-AP-free (hence 4-AP-free) permutation of [1..N] for all N <= 256 and N in {512,1024,1536,2048}; sigma_8 matches PROMPT.
+E(63): witnessed by sigma_63 (3-AP-free; 0 increasing 3-APs with x+3d>63)
+E(80): witnessed by sigma_80 (3-AP-free; 0 increasing 3-APs with x+3d>80)
+E(120): witnessed by sigma_120 (3-AP-free; 0 increasing 3-APs with x+3d>120)
+E(121): witnessed by sigma_121 (3-AP-free; 0 increasing 3-APs with x+3d>121)
+E(200): witnessed by sigma_200 (3-AP-free; 0 increasing 3-APs with x+3d>200)
+E(255): witnessed by sigma_255 (3-AP-free; 0 increasing 3-APs with x+3d>255)
+E(256): witnessed by sigma_256 (3-AP-free; 0 increasing 3-APs with x+3d>256)
+E(500): witnessed by sigma_500 (3-AP-free; 0 increasing 3-APs with x+3d>500)
+E(1000): witnessed by sigma_1000 (3-AP-free; 0 increasing 3-APs with x+3d>1000)
+E(2048): witnessed by sigma_2048 (3-AP-free; 0 increasing 3-APs with x+3d>2048)
+E(3000): witnessed by sigma_3000 (3-AP-free; 0 increasing 3-APs with x+3d>3000)
+E(4096): witnessed by sigma_4096 (3-AP-free; 0 increasing 3-APs with x+3d>4096)
+CONCLUSION: E(V) is satisfiable for EVERY V (explicit witness sigma_V).
+Single cuts NEVER obstruct; the cut obstruction is irreducibly multi-cut.

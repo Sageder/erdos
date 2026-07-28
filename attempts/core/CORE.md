@@ -375,3 +375,24 @@ constants — Behrend-type sets are too dense; the true C ≥ 2 extinction mecha
 be something else (UNSAT-core distillation of the C=2, N=34 instance is the designated
 probe). (iii) Finite shadow for machine tests: records w, w+e, w+2e of σ_N with
 w + 3e ≤ N; grounded g₁, g₂, g₃ with g₁ − e ≥ 1.
+
+## Lemma 7b (FINlin criterion — scaled variant of Lemma 7)
+
+For K ≥ 1 consider
+
+  FINlin(K): for every c ≥ 1 there is N such that EVERY monotone-4-AP-free permutation
+             of [1..N] has some value v ≤ K with pos(v) > c·v.
+
+If FINlin(K) holds for some fixed K, then 196-YES holds.
+
+Proof. Suppose a is a 4-AP-free permutation of ℕ. For each c, the restriction
+σ_{N(c)} is a 4-AP-free permutation of [1..N(c)], so some v_c ≤ K has
+pos_{σ}(v_c) > c·v_c ≥ c. By pigeonhole some fixed v* ≤ K occurs for unboundedly many
+c; since pos_a(v*) ≥ pos_{σ_N}(v*) for every N, pos_a(v*) > c for unboundedly many c —
+impossible. ∎
+
+Motivation (experiments/mus_profile.py): the asym C=2 extinction at N=34 is driven
+EXACTLY by the profile constraints on the initial segment [1..15] — the minimal
+sufficient constraint set is an initial segment. If that pattern persists as c grows
+(extinction always driven by an initial segment of bounded length), FINlin is the
+natural finite target. Probe: experiments/shallow_scan.py.

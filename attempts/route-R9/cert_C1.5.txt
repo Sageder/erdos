@@ -1,0 +1,20 @@
+== tame DFS: k=4, constraint pos(v) <= floor(num*v/den), depth<=64, budget=100000000 ==
+   (num=3 den=2)
+n         tame_count    tame_dead maxbranch
+1                  1            0        1
+2                  1            0        2
+3                  2            0        2
+4                  3            0        2
+5                  4            0        3
+6                  9            2        3
+7                 13            5        4
+8                 13            0        5
+9                 33           23        3
+10                17            5        3
+11                24            0        4
+12                50           27        5
+13                78           50        1
+14                28           28        0
+15                 0            0        0
+EXTINCT at n=15 (no tame avoiders)
+total nodes visited: 276

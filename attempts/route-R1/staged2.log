@@ -1,2 +1,2 @@
-[geom3-lag2 T=2] covered=[2, 4] nvals=60 maxblock=54: SAT (2.3s)
-[geom3-lag2 T=3] covered=[2, 4, 1] nvals=62 maxblock=54: SAT (1.5s)
+[geom3-lag2 T=2] covered=[2, 4] nvals=60 maxblock=54: SAT (2.2s)
+[geom3-lag2 T=3] covered=[2, 4, 1] nvals=62 maxblock=54: SAT (1.0s)
