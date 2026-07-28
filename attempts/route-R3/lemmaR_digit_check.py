@@ -66,3 +66,9 @@ print(f"Lemma R digit claims verified on all {len(sols)} solutions: OK")
 for t in sols[:5]:
     assert in_Sk(t[4], 2)
 print("full PROBLEM.md criterion re-confirmed on 5 smallest solutions: OK")
+# strongest possible check on the smallest solution: direct big-integer divisibility
+from math import factorial
+n0 = sols[0][4]
+assert n0 == 21036
+assert factorial(2 * n0) % (factorial(n0 + 2) ** 2) == 0
+print("DIRECT big-integer ((n+2)!)^2 | (2n)! confirmed for smallest solution n = 21036")

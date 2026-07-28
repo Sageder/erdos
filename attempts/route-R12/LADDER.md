@@ -85,6 +85,38 @@ growth ≍ Q²/log⁴Q). For k = 3: 0 structural hits below 4·10⁵ — consist
 - The ladder itself is (we believe) a genuinely new structural localization of 727:
   every digit/carry aspect is discharged elementarily; what remains is prime equations.
 
+## 4.5 Lemma R‴ — the definitive membership engine (proved; verified, 0 false positives
+on all even n ≤ 6·10⁴: attempts/route-R12/, run 2026-07-28)
+
+**Lemma R‴.** Fix k ≥ 2 and P₀ ≥ 2k. Suppose:
+ (a) for every prime ℓ ≤ P₀: c_ℓ(n) ≥ 2 Σ_{j=1}^k ν_ℓ(n+j)  [class-forceable when the
+     small parts are bounded; else checked/counted];
+ (b) for every j ≤ k and every prime ℓ > P₀ dividing n+j: ℓ ∥ n+j, and
+     C_ℓ:  ((n+j)/ℓ − 1) mod ℓ ≥ (ℓ−1)/2.
+Then n ∈ S_k.
+Proof. ℓ ≤ P₀: (a). ℓ > P₀ ≥ 2k divides exactly one window element, demand 2. With
+W = (n+j)/ℓ: n = (W−1)ℓ + (ℓ−j), digits (…, (W−1) mod ℓ, ℓ−j). Doubling: position 0:
+2(ℓ−j) ≥ ℓ (ℓ > 2k ≥ 2j): carry; position 1 with carry-in: 2((W−1) mod ℓ) + 1 ≥ ℓ ⟸ C_ℓ:
+carry. ∎
+Remarks. (i) Subsumes Lemma R_k: the boxes force C_ℓ when the window part is a balanced
+pair. (ii) For ℓ > √(2(n+k)): C_ℓ ⟺ W ≥ (ℓ+1)/2: balancedness = the necessary smoothness.
+(iii) C_ℓ is one sufficient route to the second carry (higher-digit carries also count);
+hence R‴ is sufficient, not necessary (coverage 45/263 of even S₂ members ≤ 6·10⁴).
+
+## 4.6 The difficulty triangle (why k=2 is open; structural summary)
+
+Any YES proof needs a supply of n with (necessarily) √-smooth windows AND the per-prime
+second-carry conditions. Three corners, each blocked differently:
+ (i) DENSE unstructured supply (all n, first moment): contains "n+1, n+2 both
+     √(2n)-smooth in positive density" = open correlation problem; measured E > 1.
+ (ii) RIGID algebraic supply (powers, Pell): infinitude known, but zero averaging freedom;
+     squares double valuations past digit supply (Lemma Q); structural primes fail.
+ (iii) PRIME-PARAMETRIZED supply (Lemma R_k/R‴ with each window part built from chosen
+     primes): all digit content discharged elementarily; remaining task = prime-equation
+     statements (B_k / B″ / shift-1 correlations of smooth∗prime sequences) at the
+     dispersion/Chen frontier for k=2, beyond current technology for k ≥ 3.
+Corner (iii) is the closest to current technology for the k=2 named variant.
+
 ## 5. Sharpest analytic form for k=2 (B†; lead analysis 2026-07-28)
 
 Generalize Lemma R_2 to accept smooth-times-prime window parts (the balanced partner of a

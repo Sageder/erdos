@@ -171,12 +171,13 @@ At 2: c₂(n) = ν₂(binom(2n,n)) = 2s₂(n) − s₂(2n) = s₂(n) ≥ 2, sinc
 (indeed rs odd ⇒ n = 2rs − 2 ≡ 0 mod 4) and not a power of 2 (hypothesis 5). 
 No other prime divides (n+1)(n+2). ∎
 
-**Numerical status (breakage_test2.py B4', lemmaR_digit_check.py).** Among family
-pairs with q ≤ 4000 there are 8916 members with n+2 = 2rs (r, s distinct odd
-primes); 123 of them satisfy all hypotheses of Lemma R, and ALL 123 are confirmed in
-S_2 (fast equivalent criterion for all; verbatim PROBLEM.md all-primes criterion for
-22 of them including the 5 smallest; every internal digit claim of the proof checked
-on all 123). First solutions (q, p, s, r, n): (109, 193, 67, 157, 21036),
+**Numerical status (breakage_test.py B4, breakage_test2.py B4', lemmaR_digit_check.py).**
+Among family pairs with q ≤ 4000 there are 8916 members with n+2 = 2rs (r, s distinct
+odd primes); 123 of them satisfy all hypotheses of Lemma R, and ALL 123 are confirmed
+in S_2 (fast equivalent criterion for all 123; verbatim PROBLEM.md all-primes
+criterion for 32 of them — the 10 with q ≤ 1000 in B4, plus 22 in B4' including the
+5 smallest; DIRECT big-integer divisibility ((n+2)!)² | (2n)! for the smallest
+solution n = 21036; every internal digit claim of the proof checked on all 123). First solutions (q, p, s, r, n): (109, 193, 67, 157, 21036),
 (389, 773, 251, 599, 300696), (439, 787, 227, 761, 345492), … Growth of the solution
 count: 10 at q ≤ 1000, 38 at q ≤ 2000, 123 at q ≤ 4000 — consistent with the
 heuristic count ≍ Q²/log⁴Q (four prime conditions, one equation, one ≈1/2 digit
@@ -222,9 +223,9 @@ implies S_2 is infinite, resolving the open k = 2 variant of Erdős 727 affirmat
 
 | script | contents |
 |---|---|
-| breakage_test.py (B1, B2) | localization of k=2 failures to primes of n+2 (0 exceptions/699); failure taxonomy counts; Pell(−1) small solutions with per-prime carry deficits |
-| breakage_test2.py (B3', B4') | 30+30 Pell solutions both signs (fast criterion, proved equivalent and re-checked vs. full criterion for n < 4000); Lemma-R solution search q ≤ 4000: 123 solutions, 0 counterexamples |
-| lemmaR_digit_check.py | every internal digit claim of Lemma R verified on all 123 solutions; full PROBLEM.md criterion on the smallest 5 |
+| breakage_test.py (B1–B4) | localization of k=2 failures to primes of n+2 (0 exceptions/699); failure taxonomy counts 82/403/214; Pell chains x < 10⁹ with per-prime carry deficits (verbatim criterion for the solutions with n < 2·10⁷, deficit analysis for all); Lemma-R search q ≤ 1000: 10 solutions, each verified by the verbatim all-primes criterion |
+| breakage_test2.py (B3', B4') | 30+30 Pell solutions both signs (fast criterion, proved equivalent and re-checked vs. full criterion for n < 4000); Lemma-R solution search q ≤ 4000: 123 solutions, 0 counterexamples (fast test for all, slow re-check on 22) |
+| lemmaR_digit_check.py | every internal digit claim of Lemma R verified on all 123 solutions; full PROBLEM.md criterion on the smallest 5; direct big-integer ((n+2)!)² \| (2n)! for n = 21036 |
 | balanced_smooth_test.py | carry-budget phase transition in t = number of odd primes of n+2 |
 | reductions.py | equivalence of all criterion forms used here (R1–R5), n ≤ 3000 |
 
