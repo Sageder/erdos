@@ -1,0 +1,16 @@
+Construction A baseline N=16383: 1304268 monotone 4-APs, 5-AP: none (verified)
+
+variant 3a swap(1,0)(3,2)(5,4)(7,6) (N=16383):
+  monotone 4-APs: 338752 (baseline 1304268)  first witness: (14, 81, 'inc')
+  monotone 5-AP: NONE
+  orientations: 338752 inc, 0 dec
+
+variant 3b delay B0 after B4 (N=16383):
+  monotone 4-APs: 1302918 (baseline 1304268)  first witness: (13, 17, 'inc')
+  monotone 5-AP: NONE
+  orientations: 1302918 inc, 0 dec
+
+variant 3c rolling delay 1,2,0,4,3,6,5 (N=16383):
+  monotone 4-APs: 20985 (baseline 1304268)  first witness: (13, 17, 'inc')
+  monotone 5-AP: NONE
+  orientations: 20985 inc, 0 dec

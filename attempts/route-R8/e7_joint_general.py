@@ -113,12 +113,8 @@ def solve_joint(base, M, k, dpred, slot, verbose=True, dname=""):
     seq = []
     for m in sorted(range(M + 1), key=slot):
         seq.extend(taus[m])
-    # independent verification on the assembled sequence (a permutation of [1..V] iff slot
-    # order is the ascending one; otherwise a permutation of the same SET in scrambled band
-    # order -- use the general checker via ranks)
-    wits = find_kaps_perm_np(rerank(seq), k, limit=10 ** 9)
-    # rerank preserves AP structure? NO -- must check on raw values.  Use exact scan:
-    from zcheck import has_monotone_kap_window, find_monotone_kaps
+    # independent verification on the assembled raw-value sequence (exact scan)
+    from zcheck import find_monotone_kaps
     badall = find_monotone_kaps(seq, k, limit=10 ** 6)
     bad = [w for w in badall if dpred(abs(w[0][1] - w[0][0]))]
     print(f"  {tag}: SAT ({ncl} cls); assembled |{len(seq)}|; filtered monotone {k}-APs: "
@@ -142,6 +138,7 @@ SLOTS = {
     "swap23": lambda m: m if m < 2 else (m + 1 if m % 2 == 0 else m - 1),   # 0,1,3,2,5,4,...
     "swap01": lambda m: (m + 1 if m % 2 == 0 else m - 1),                   # 1,0,3,2,...
     "swap12": lambda m: m if m == 0 else (m + 1 if m % 2 == 1 else m - 1),  # 0,2,1,4,3,...
+    "swap34": lambda m: m if m < 3 else (m + 1 if (m - 3) % 2 == 0 else m - 1),  # 0,1,2,4,3,6,5,...
 }
 
 if __name__ == "__main__":

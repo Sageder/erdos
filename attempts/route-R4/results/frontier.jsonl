@@ -451,3 +451,4 @@
 {"cls": "A", "C": "5/2", "N": 55, "phase": "sat", "secs": 108.7, "round": "c", "verdict": "EXISTS"}
 {"cls": "A", "C": "3/1", "N": 60, "phase": "sat", "secs": 200.9, "verdict": "EXISTS"}
 {"cls": "A", "C": "5/2", "N": 60, "phase": "sat", "secs": 212.2, "round": "c", "verdict": "EXISTS"}
+{"cls": "A", "C": "3/1", "N": 65, "phase": "sat", "secs": 167.3, "verdict": "EXISTS"}

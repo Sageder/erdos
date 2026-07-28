@@ -1,5 +1,26 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 R4 displacement-class thresholds (attempts/route-R4/)
+- CERTIFIED extinction thresholds (min N with NO 4-AP-free permutation of [1..N]), each
+  by >=2 independent engines (fast/fast2 DFS + CaDiCaL order-encoding + CP-SAT spot checks;
+  witnesses re-verified by apcheck): pi(v)<=floor(Cv): C=1 -> N=4, 3/2 -> 15, 7/4 -> 31,
+  15/8 -> 37. Ceil profile (sat_order "plain"): 5/4 -> 14, 3/2 -> 22 (reproduces the SAT
+  campaign exactly, cross-toolchain). a(i)<=floor(Ci): 3/2 -> 17. BOTH bounds (C=2!):
+  max SAT N=49, UNSAT N=50..56 (CaDiCaL; N=50 also CP-SAT). Sequences a(i)<=Ci (no
+  surjectivity): 5/4 -> 6 (5-node tree, hand-checkable), 4/3 -> 18 => THEOREM: every
+  permutation of N with a(i) <= 4i/3 for all i contains a monotone 4-AP.
+- Corollary chain: any 4-AP-free permutation of N has some v<=37 with pos(v) > 15v/8;
+  cannot satisfy pos(v)<=2v AND a(i)<=2i jointly beyond N=49-prefixes.
+- Frontier still ALIVE (witnesses): one-sided pi(v)<=2v at N>=49 (pending @50), C=5/2
+  ceil at N>=60, C=3 at N>=60; sequences 3/2 at N>=34.
+- Survivor structure (complete populations + SAT enumeration, results/mining.txt):
+  rigid forced heads (all 6472 last A-7/4 survivors share positions 1-8 =
+  1,7,2,4,3,9,8,5), both walls saturated, dyadic upper-half-first blocks with defect
+  values parked exactly at pi(v)=2v; clean UL rule fails at N=15 (verified) — defects
+  are essential. LIS ~ 2 sqrt(N).
+- Data: route-R4/results/{frontier.jsonl,counts.jsonl,thresholds.tsv,mining.txt},
+  avoiders/ (377 verified witnesses), survivors/ (complete last populations).
+
 ## 2026-07-28 ~audit+scan update
 - AUDIT COMPLETE (fresh-context agent, appended to AUDITS.md): 13/15 items SOUND, no
   circularity, compactness step genuinely preserves order type ω. Two REPAIRABLE gaps,
