@@ -559,3 +559,32 @@ A YES proof must attack ∀φ-extinction (or avoid Lemma 6 entirely, e.g. via th
 chains of Theorem 16). Conversely the NO side gains a concrete, data-driven target:
 a construction with displacement pos(v) = Θ(v log v) is consistent with every
 certificate obtained so far.
+
+## Remark 18 (where the profile constraint actually bites — the shape of any NO-witness)
+
+Two facts, taken together, locate a candidate NO-witness precisely.
+
+(i) **Small values need not be delayed.** Machine search (experiments/shallow_scan.py)
+finds monotone-4-AP-free permutations of [1..N] with pos(v) ≤ 2v for ALL v ≤ 8, at
+N = 355 (and with pos(v) ≤ 3v for v ≤ 8 at N = 305). So the FIN/FINlin criteria of
+Lemmas 7 and 7b are not realized at accessible parameters: the obstruction to a
+counterexample is not "some fixed small value is pushed to infinity".
+
+(ii) **Linear profiles die because they constrain the LARGE values.** pos(v) ≤ Cv for
+v comparable to N forces the top of the board into the tail of the position axis, and
+that is what the certified extinctions (N* = 4, 15, 31, 90 at C = 1.25, 1.5, 1.75, 2)
+are detecting.
+
+A profile of the form φ(v) = v·log₂ v behaves completely differently from a linear one
+on a board of size N: since φ(v) ≥ N as soon as v ≳ N/log₂ N, it imposes NO constraint
+on the top ~(1 − 1/log₂ N) fraction of values, and constrains only the smaller ones —
+i.e. exactly the regime that (i) shows to be unproblematic. This is why v log v is the
+natural candidate profile, and why the linear-profile certificates say nothing against
+it. The direct test (experiments/vlogv_probe.py: is there a 4-AP-free permutation of
+[1..N] with pos(v) ≤ v log₂ v for all v?) is therefore the decisive feasibility question
+for the negative branch under Lemma 6; results are recorded in NOTES.md.
+
+Caution for the write-up: none of this is a proof of either branch. (i) and (ii) are
+finite computations; the infinite statement needs a construction (with the three
+obligations of PROBLEM.md: no monotone 4-AP, bijectivity, order type ω) or an
+∀φ-extinction theorem.

@@ -1,2 +1,3 @@
 plain C=2 N=68 [cadical]: SAT (6.5s)
 plain C=2 N=70 [cadical]: SAT (42.9s)
+plain C=2 N=72 [cadical]: SAT (103.1s)
