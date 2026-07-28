@@ -1,3 +1,6 @@
 [A C=3/1] N=55: SAT (73s)
 [A C=3/1] N=60: SAT (201s)
 [A C=3/1] N=65: SAT (167s)
+[A C=3/1] N=70: SAT (1169s)
+[A C=3/1] N=75: SAT-timeout after 1200s (step 5)
+[A C=3/1] N=75: SAT (643s)

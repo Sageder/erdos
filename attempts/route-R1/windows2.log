@@ -39,3 +39,5 @@ cuts [8, 26, 78] UNSAT (2s)
 cuts [8, 26, 125] SAT (23s)
 cuts [8, 26, 135] SAT (34s)
 cuts [8, 26, 145] SAT (67s)
+cuts [8, 26, 220] UNSAT (2012s)
+REFINE DONE

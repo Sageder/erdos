@@ -124,6 +124,21 @@ MUS in `mus_top_segment.log`: ~60 forced inversions (u+d before u; u ∈ [27,53]
 d ≈ 10–27) build a descent web; transitivity manufactures decreasing 4-APs (55 F4−
 bans) while ascending escapes are blocked by F3/F4+ bans.
 
+**Joint statement with Route R3 (base-3).** {8,26,80} = {3²−1, 3³−1, 3⁴−1}, and the
+top segment S = [27,80] IS the base-3 block D₃ = [27,81) whose internal-order system
+R3 proved UNSAT independently (their Theorem B; CP-SAT + Glucose + DRUP-certified
+CaDiCaL, 738-line proof). Joint Lemma (both certifications apply): *no linear order
+of S = [27,80] satisfies (a) no monotone 4-AP inside S; (b) no increasing 3-AP
+(u,u+d,u+2d) ⊂ S with u+3d ≥ 81; (c1) u+d before u whenever 1 ≤ u−d ≤ 26 and
+u+2d ≥ 81; (c2′) u+d before u whenever u−d ∈ [9,26] and u−2d ∈ [1,8]* — and (a),
+(b), (c1), (c2′) are necessary for the top block of ANY 4-AP-free permutation of ℕ
+decomposing at 8, 26, 80 (in particular any contiguous base-3 ordering). My 120-clause
+MUS lives inside this reduced system. **Correction to R3's dissection**: their claim
+"every proper sub-conjunction of the five families {4AP, g3bot, g3top, F1, F2} is
+SAT" is CONTRADICTED by direct computation — their own system minus g3bot is UNSAT
+(this session, CaDiCaL, family counts 918/243/290/64); bottom-grounded 3-APs are NOT
+needed for the base-3 death. Flagged for R3.
+
 ### 3.7 T-WINDOWS (the window law; `windows.log`, `windows2.log`, `windows3.log`)
 **Geometry lemma (machine-checked, `geometry_lemma.log`)**: for V1 ≥ 2, V2 ≥ 2V1 the
 third cuts killed by forced chains alone are EXACTLY V2 < V3 ≤ 3V2−3 (dead intervals
@@ -152,12 +167,15 @@ First-cut memory (fixed (V2,V3), vary V1):
 Depth-4 memory {2,8,26,V4}: 100 U, 120 U, **140 S, 150 S**, 160 U (130 in flight).
 Compare 3-cut level: {8,26,140/145/150} all S — the island survives full prefix
 memory as an interval (≥ {140,150}), trimmed at most at the outer edge (160).
-Depth-5 {2,8,26,140,V5}: **700 UNSAT** (sound: lazy-transitivity UNSAT is a
-relaxation UNSAT); 760 ≈ 5.4·140 (island center) and the triple-level controls
-{26,140,700/756} did not resolve within this session's compute — the depth-5
-island question is THE open frontier. Note 700 = 5.0·140 sits at the island's lower
-edge, where depth-4 also showed death (100 = 3.8·26 U), so 700's death is consistent
-with BOTH conjectures; 760's verdict would discriminate.
+Depth-5 {2,8,26,140,V5}: **700 UNSAT and 760 UNSAT** (760 ≈ 5.43·140 is the island
+CENTER; both sound — lazy-transitivity UNSAT is relaxation-UNSAT). The island-hopping
+chain 2,8,26,140 therefore CANNOT continue through its predicted center; 740/780/800
+and the pure ratio-5 point {5,25,125,625} are being decided by a faster local-probe
+(`depth5.py`, `depth5_local.log`, `depth5_full.log`) — a sound sub-system on the top
+segment only (validated: reproduces {8,26,80} U, {8,26,140} S, {2,8,26,120} U).
+Triple-level controls {26,140,700/760} distinguish 'depth-5 memory kills' from
+'W(26,140) has no island there'. As of this writing the anti-conjecture (islands die
+under prefix memory at depth 5) is AHEAD on points.
 
 **Window shape (empirical law)**: after (V1,V2) with V2 ≥ 2V1 ≥ 4:
 geometry-dead (V2, 3V2−3] (exact); a 1–2 point SAT shoulder from 3V2−2, widening as

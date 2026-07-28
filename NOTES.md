@@ -1,5 +1,21 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 ~limit-hit checkpoint (agents terminated by session limit, resets 05:40 UTC)
+- ALL five in-flight agents killed by usage limit mid-work: R2 (was: mod4 complete,
+  checking 2 background computations), R4 (headline certification instances running,
+  completion-watcher armed), R8 (core work done, writing REPORT.md with proofs),
+  R1-island (depth-5 probes running; comparing (26..80] system with R3 Sigma_3 for the
+  joint lemma), R16 (starting: reusing R3 tau machinery). R9 also pending finalization
+  (certification batch was computing).
+- RESUME PLAN (wake scheduled ~05:45 UTC via send_later): SendMessage-resume each of
+  R2, R4, R8, R9, R1, R16 with 'limits reset; container jobs may have died; re-run
+  interrupted computations and finish deliverables'. Agent ids are pinned in this
+  session's context; if lost, their work dirs identify them (attempts/route-R*/).
+- Everything proved/verified so far is committed and pushed. CORE.md: 15 audited items
+  (2 repaired). Live candidate regions: ratio-5 island (R1), tau-repair (R16),
+  asym multi-scale words (R11). YES-side: two-orientation LP frontier, FINlin
+  segments, record/grounded nets (Lemma 15).
+
 ## 2026-07-28 ~harvest wave-1 continued (R6, R3, R1-corridors in; corrections)
 - R6 COMPLETE: ceiling theorem (CORE Thm 14, independently re-proved): triadic
   reversed-block has pos<=3v-1, NO increasing 4-AP => increasing-only methods cap at

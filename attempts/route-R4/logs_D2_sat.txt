@@ -1,0 +1,2 @@
+[D C=2/1] N=50: SAT (1338s)
+[D C=2/1] N=53: SAT-timeout after 1800s (step 3)

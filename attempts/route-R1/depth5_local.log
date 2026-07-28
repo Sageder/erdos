@@ -1,0 +1,2 @@
+  [local [2, 8, 26, 140, 740]] round 20: 175814 cyclic pairs, +60000 clauses (924s)
+  [local [2, 8, 26, 140, 740]] round 40: 174784 cyclic pairs, +60000 clauses (2581s)

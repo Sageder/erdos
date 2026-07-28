@@ -3,3 +3,5 @@
 [A C=5/2c] N=55: SAT (109s)
 [A C=5/2c] N=60: SAT (212s)
 [A C=5/2c] N=65: SAT (966s)
+[A C=5/2] N=70: SAT-timeout after 1200s (step 5)
+[A C=5/2c] N=70: SAT (712s)
