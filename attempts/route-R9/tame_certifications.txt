@@ -1,0 +1,13 @@
+=== exact C=8/5 (1.6) ===
+18                 0            0        0
+EXTINCT at n=18 (no tame avoiders)
+total nodes visited: 2168
+=== exact C=7/4 (1.75) ===
+31                 0            0        0
+EXTINCT at n=31 (no tame avoiders)
+total nodes visited: 1036992
+=== exact additive K=+3 ===
+19                 0            0        0
+EXTINCT at n=19 (no tame avoiders)
+total nodes visited: 168686
+=== exact additive K=+5 ===

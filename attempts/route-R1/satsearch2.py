@@ -63,7 +63,8 @@ class StagedLayoutSAT:
             lits.append(-t)
         return lits
 
-    def clauses(self):
+    def clauses(self, eager_max=10**9):
+        self._eager_max = eager_max
         cov = self.covered
         Vmax = max(cov)
         cls, dead = [], []
@@ -197,7 +198,7 @@ class StagedLayoutSAT:
                     raise AssertionError(("C2- violated (decr 3-AP, uncovered lower ext)", x, d))
 
 
-def stage(blocks_list, pattern, T, name=""):
+def stage(blocks_list, pattern, T, name="", **kw):
     """blocks_list: global list [(lo,hi)] indexed by block id 1..n (1-based).
     pattern: list of block ids in slot order (covering prefix of slots).
     T: number of slots covered."""
@@ -208,7 +209,7 @@ def stage(blocks_list, pattern, T, name=""):
     import time
     t0 = time.time()
     s = StagedLayoutSAT(blocks, ids)
-    res, wit = s.solve()
+    res, wit = s.solve(**kw)
     dt = time.time() - t0
     print(f"[{name} T={T}] covered={ids} nvals={nvals} maxblock={maxb}: {res} ({dt:.1f}s)",
           flush=True)

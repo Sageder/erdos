@@ -1,0 +1,2 @@
+N=4 how=heur-ord1-seed1 perm=1,2,3,5
+N=5 how=heur-ord1-seed1 perm=1,2,3,5,6

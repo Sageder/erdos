@@ -1,0 +1,21 @@
+=== k=5 C=5/2 ===
+level 99 -> 100 : children generated 0 (from subsampled beam: lower-bound evidence)
+beam EXTINCT after level 99
+=== k=5 C=3/1 ===
+level 113 -> 114 : children generated 0 (from subsampled beam: lower-bound evidence)
+beam EXTINCT after level 113
+=== k=4 C=6/1 ===
+level 79 -> 80 : children generated 0 (from subsampled beam: lower-bound evidence)
+beam EXTINCT after level 79
+=== k=4 C=8/1 ===
+level 92 -> 93 : children generated 0 (from subsampled beam: lower-bound evidence)
+beam EXTINCT after level 92
+=== k=3 C=8/1 ===
+level 36 -> 37 : children generated 0 (from subsampled beam: lower-bound evidence)
+beam EXTINCT after level 36
+=== k=3 C=10/1 ===
+level 48 -> 49 : children generated 0 (from subsampled beam: lower-bound evidence)
+beam EXTINCT after level 48
+=== k=3 C=16/1 ===
+level 68 -> 69 : children generated 0 (from subsampled beam: lower-bound evidence)
+beam EXTINCT after level 68

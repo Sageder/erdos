@@ -50,9 +50,16 @@ def load_done():
     return done
 
 
+FASTSEQ = os.path.join(HERE, "fastseq")
+
+
 def run_fast2(N, cls, C, mode, cap, maxprint, order, seed, timeout):
-    cmd = [FAST2, str(N), cls, str(C.numerator), str(C.denominator), mode,
-           str(cap), str(maxprint), str(order), str(seed)]
+    if cls == "S":       # class Bp: injective sequences, engine fastseq
+        cmd = [FASTSEQ, str(N), str(C.numerator), str(C.denominator), mode,
+               str(cap), str(maxprint), str(order), str(seed)]
+    else:
+        cmd = [FAST2, str(N), cls, str(C.numerator), str(C.denominator), mode,
+               str(cap), str(maxprint), str(order), str(seed)]
     t0 = time.time()
     try:
         out = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout).stdout
@@ -69,7 +76,9 @@ def run_fast2(N, cls, C, mode, cap, maxprint, order, seed, timeout):
 
 
 def save_avoider(cls, C, N, perm, how):
-    fn = os.path.join(AVD, f"{cls}_{C.numerator}_{C.denominator}.txt")
+    name = f"seq_B_{C.numerator}_{C.denominator}.txt" if cls == "S" else \
+        f"{cls}_{C.numerator}_{C.denominator}.txt"
+    fn = os.path.join(AVD, name)
     with open(fn, "a") as f:
         f.write(f"N={N} how={how} perm=" + ",".join(map(str, perm)) + "\n")
 

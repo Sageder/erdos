@@ -298,3 +298,47 @@ shows the two-spine structure is universal, not special to the asymmetric strate
 sets are 4-AP-free density-0 sets with pos ≤ v (resp. pos ≥ v) — quantitative handles
 for YES-side counting arguments: e.g. with r₄(M) := max size of a 4-AP-free subset of
 [1..M], |Λ ∩ [1..M]| ≤ r₄(M) and |Γ ∩ [1..M]| ≤ r₄(M) for every M.
+
+## Theorem 12 (LP(9/8) — first quantitative displacement bound)
+
+Let C < 9/8. Then every permutation of ℕ with pos(v) ≤ C·v for all v contains an
+increasing monotone 4-AP. Consequently every permutation of ℕ with no increasing
+monotone 4-AP (in particular every monotone-4-AP-free permutation) satisfies
+limsup_{v→∞} pos(v)/v ≥ 9/8.
+
+Finite form: if σ is a permutation of [1..N] with pos(v) ≤ C·v for all v ≤ N and σ has
+no increasing monotone 4-AP, then
+  N(N+1)/2 · (1 − 1/C)  ≥  Σ_{e=1}^{⌊(N-1)/3⌋} (N − 3e)/3   [≈ N²/18],
+which fails for C < 9/8 once N ≥ N₀(C) (explicitly computable).
+
+Proof. Work with the finite form; the infinite statement follows by restriction
+(pos_{σ_N}(v) ≤ pos_a(v) ≤ Cv, and an increasing 4-AP of σ_N is one of a).
+
+Say "w has an e-drop" (e ≥ 1, w − e ≥ 1) if pos(w) < pos(w − e). Let
+e*(w) := max{e : w has an e-drop} (0 if none).
+
+(Supply / ledger.) If w has an e-drop then pos(w) < pos(w−e) ≤ C(w−e); applying this
+with e = e*(w) (and pos(w) ≤ Cw when e*(w) = 0):
+  pos(w) ≤ C·(w − e*(w))    for every w ≤ N.
+Summing over w ≤ N and using Σ pos(w) = N(N+1)/2 (σ is a bijection onto [1..N]):
+  N(N+1)/2 ≤ C·[N(N+1)/2 − Σ_w e*(w)],  i.e.  Σ_w e*(w) ≤ (1 − 1/C)·N(N+1)/2.
+
+(Demand.) No increasing 4-AP means: for every u ≥ 1, e ≥ 1 with u + 3e ≤ N,
+NOT(pos(u) < pos(u+e) < pos(u+2e) < pos(u+3e)); hence some i ∈ {0,1,2} has
+pos(u+(i+1)e) < pos(u+ie): the value w = u+(i+1)e ∈ {u+e, u+2e, u+3e} has an e-drop.
+For fixed e, each w is of the form u+e, u+2e or u+3e for at most 3 values of u, so
+  #{w ≤ N : w has an e-drop} ≥ (N − 3e)/3   for each e ≤ (N−1)/3.
+Since e*(w) ≥ e whenever w has an e-drop,
+  Σ_w e*(w) = Σ_{e≥1} #{w : e*(w) ≥ e} ≥ Σ_{e=1}^{⌊(N-1)/3⌋} (N − 3e)/3
+            = N²/18 − O(N).
+
+(Conclusion.) Combining: N²/18 − O(N) ≤ (1 − 1/C)·N(N+1)/2. As N → ∞ this forces
+1/18 ≤ (1 − 1/C)/2, i.e. C ≥ 9/8. So for C < 9/8 the finite form fails at large N. ∎
+
+Remarks. (i) Only the INCREASING orientation is used; the theorem covers the
+asymmetric family as well. (ii) The empirical extinction thresholds (NOTES 00:20)
+persist to C = 3 at least, so LP(9/8) is far from the truth; sharpening candidates:
+drop-chains (mind the Γ-escape: the grounded set can be Behrend-dense, so pure
+chain-to-Γ accounting does NOT extend the range — verified failed attempt), and
+multi-scale ledgers where each scale pays separately. (iii) At C = 1 the inequality
+degenerates to "some drop exists", matching the exact threshold N(1) = 4.

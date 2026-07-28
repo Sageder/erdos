@@ -1,0 +1,8 @@
+[A C=7/4] N=31: EXTINCT (21353656 nodes, 4.2s)
+[A C=7/4] N=32: EXTINCT (19673767 nodes, 3.9s)
+[A C=7/4] N=33: EXTINCT (20495707 nodes, 4.0s)
+[A C=7/4] N=34: EXTINCT (21247451 nodes, 4.3s)
+[A C=7/4] N=35: EXTINCT (22046935 nodes, 4.5s)
+[A C=7/4] N=36: EXTINCT (22892329 nodes, 4.4s)
+[A C=7/4] N=37: EXTINCT (23785463 nodes, 4.6s)
+[A C=7/4] extinction confirmed through N=37; stream done
