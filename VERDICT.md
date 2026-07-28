@@ -61,13 +61,18 @@ the target document, each of which wrote its own independent verification script
    `F = {pq−1 : p, q prime, (3q+1)/2 ≤ p ≤ 2q−1}` lies in `S₁`, with an elementary two-carry
    proof and infinitude by Nagura. Independently reproduced by a second agent.
 
-6. **The first-moment obstruction** (`MIRROR.md` §6,
-   `experiments/first_moment_obstruction.py`). Failure density `F(u) ≍ 2^{−u}` versus
-   smooth-pair density `S(u) ∼ ρ(u)² ≈ u^{−2u}`, so `S(u)/F(u) → 0` monotonically
-   (measured: 0.145, 0.035, 0.006, 0.0003, ≈0 at u = 2, 2.5, 3, 4, 5). **No unconditional
+6. **The first-moment obstruction** — PROVED (`DRAFT.tex` Prop. 5.1; `MIRROR.md` §6;
+   `experiments/first_moment_obstruction.py`). Failure density `F(u) ≥ c·2^{−u}/u`
+   (digit-poor-cofactor counting + Mertens + Bonferroni) against smooth density
+   `S(u) ≤ ρ(u) = u^{−u(1+o(1))}` (Dickman–de Bruijn), so `S(u)/F(u) → 0`. **No unconditional
    first-moment or union-bound argument over all `n` can produce a member of `S₂`, at any
-   smoothness threshold.** This is the rigorous form of the wall that killed every
-   construction attempted here, and it explains those deaths structurally rather than as slack.
+   smoothness threshold.** Measured with the *exact* failure condition
+   `κ_p(n) < 2ν_p(n+j)`: `S/F` = 0.128, 0.028, 0.004, 0.0001, ≈0 at u = 2, 2.5, 3, 4, 5;
+   already at u = 2 one has `F(u) = 0.464 > ρ(u) = 0.307 ≥ S(u)`, so the obstruction is
+   decisive at every measured threshold and not merely asymptotically. (An earlier version of
+   this experiment used the proxy `κ_p(W) = 0`; the exact condition makes the obstruction
+   strictly stronger.) This is the rigorous form of the wall that killed every construction
+   attempted here, and it explains those deaths structurally rather than as slack.
 
 7. **Computational corpus** (`attempts/route-R5/`): exact `S_k` on `[1,10⁸)` for `k = 2..6`
    (|S₂| = 1,364,676; |S₃| = 139,975; |S₄| = 13,188; |S₅| = 1,012; |S₆| = 63; min S₆ = 3,648,835),
