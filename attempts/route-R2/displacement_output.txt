@@ -1,0 +1,18 @@
+prefix N = 65535
+max pos(v)/v = 32767/8192 = 3.999878 at v = 16384 (pos 65534)
+min pos(v)/v = 16384/65535 = 0.250004 at v = 65535 (pos 16384)
+density of v with pos(v) <= (9/8) v : 38823 / 65535 = 0.5924
+
+per-block extremes of pos(v)/v (blocks m = 0..7):
+  m=0: max 2.00000 (v=1), min 0.50000 (v=2)
+  m=1: max 3.50000 (v=4), min 0.26667 (v=15)
+  m=2: max 2.78947 (v=19), min 0.37500 (v=48)
+  m=3: max 3.96875 (v=64), min 0.25098 (v=255)
+  m=4: max 3.60517 (v=271), min 0.27813 (v=960)
+  m=5: max 3.99805 (v=1024), min 0.25006 (v=4095)
+  m=6: max 3.89348 (v=4159), min 0.25688 (v=16128)
+  m=7: max 3.99988 (v=16384), min 0.25000 (v=65535)
+
+hard bounds from the block structure: v/4 < pos(v) < 4v for every v
+(pos(v) and v lie in the same dyadic-4 window [4^m, 4^{m+1}));
+so limsup pos(v)/v <= 4 and liminf >= 1/4; the per-block maxima above show the limsup is close to 4 (approached by small-v-late-in-block placements) and liminf close to 1/4.

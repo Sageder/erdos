@@ -1,10 +1,10 @@
 
-=== C_2_1_N49_sat40.txt: 40 survivors, N=49
-forced positions (37/49 values rigid): pi(1)=1 pi(2)=4 pi(3)=2 pi(6)=3 pi(7)=6 pi(8)=5 pi(9)=18 pi(10)=20 pi(11)=19 pi(12)=15 pi(13)=16 pi(14)=21 pi(15)=17 pi(17)=13 pi(19)=14 pi(20)=12 pi(21)=42 pi(22)=11 pi(23)=41 pi(24)=48 pi(25)=47 pi(26)=49 pi(27)=46 pi(30)=30 pi(34)=31 pi(35)=43 pi(36)=45 pi(37)=44 pi(38)=26 pi(39)=32 pi(40)=23 pi(41)=22 pi(42)=29 pi(43)=27 pi(44)=28 pi(48)=24 pi(49)=25
-skeleton (position order, . = free):    1   3   6   2   8   7   .   .   .   .  22  20  17  19  12  13  15   9  11  10  14  41  40  48  49  38  43  44  42  30  34  39   .   .   .   .   .   .   .   .  23  21  35  37  36  27  25  24  26
-LIS range 13..13, LDS range 9..9, sqrt(N)=7.0
-canonical survivor: 1,3,6,2,8,7,4,5,16,18,22,20,17,19,12,13,15,9,11,10,14,41,40,48,49,38,43,44,42,30,34,39,28,29,46,47,45,32,33,31,23,21,35,37,36,27,25,24,26
-cut-block sizes of canonical: [1, 7, 41]
-canonical: values with pi(v)>=2v-1 (late wall): [1, 2, 4, 9, 10, 21, 24]
-canonical: values with pi(v)<=(v+1)/2 (early wall): [1, 3, 6, 22, 48, 49]
-canonical: min pi/v = 0.500 at v=6, max pi/v = 2.000 at v=24
+=== A_15_8_N36_sat40.txt: 40 survivors, N=36
+forced positions (13/36 values rigid): pi(1)=1 pi(2)=3 pi(3)=5 pi(4)=4 pi(5)=9 pi(7)=2 pi(8)=8 pi(9)=7 pi(11)=20 pi(15)=28 pi(16)=6 pi(17)=31 pi(26)=36
+skeleton (position order, . = free):    1   7   2   4   3  16   9   8   5   .   .   .   .   .   .   .   .   .   .  11   .   .   .   .   .   .   .  15   .   .  17   .   .   .   .  26
+LIS range 11..13, LDS range 6..7, sqrt(N)=6.0
+canonical survivor: 1,7,2,4,3,16,9,8,5,6,21,24,20,18,19,13,14,10,12,11,31,30,36,34,25,32,22,15,33,23,17,28,27,29,35,26
+cut-block sizes of canonical: [1, 35]
+canonical: values with pi(v)>=2v-1 (late wall): [1, 2, 3, 5]
+canonical: values with pi(v)<=(v+1)/2 (early wall): [1, 7, 16, 21, 24]
+canonical: min pi/v = 0.286 at v=7, max pi/v = 1.867 at v=15

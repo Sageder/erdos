@@ -311,11 +311,15 @@ N*(2) ≥ 51. Successive slopes Δln N*/ΔC ≈ 2.7, 2.5, 1.8, 3.6, ≥ 2.0: con
 **N*(C) ≈ a·e^{bC}, b ≈ 2.2–2.8**; a quadratic law ~8C² (also floated by the SAT
 route) underestimates N*(7/4) = 31 and is disfavored by N*(2) ≥ 51 but not yet dead —
 certifying C = 1.8–1.875 exactly and a plain-SAT C=2 kill would discriminate.
-Inverting the exponential: **avoiders of [1..N] exist with max pos(v)/v ≈ (1/b)·ln N ≈
-0.36–0.45·ln N** — the minimum displacement of surviving branches grows only
-LOGARITHMICALLY in N. Meanwhile the TYPICAL avoider has max pos(v)/v ≈ 0.55·N (SIS):
-survival at small displacement happens in exponentially thin corridors whose floor
-rises like log N.
+Least-squares over the five certified points: **N*(C) ≈ 0.281·e^{2.654·C}**. This one
+law reconciles every observation: it predicts N*(2) ≈ 57 (beams die at 50–55, witness
+exists at 50 — near truth there), N*(2.5) ≈ 214 and N*(3) ≈ 807 (so the C=3 beams
+dying at 59–63 are hopelessly short of the wall, exactly as the SAT witness at 74
+proves; corridors should continue for hundreds of levels). Inverting: **avoiders of
+[1..N] exist with max pos(v)/v ≈ 0.38·ln N + 0.5** — the minimum displacement of
+surviving branches grows only LOGARITHMICALLY in N. Meanwhile the TYPICAL avoider has
+max pos(v)/v ≈ 0.55·N (SIS): survival at small displacement happens in exponentially
+thin corridors whose floor rises like log N.
 
 Consequence for NO-witness design (the "where must a witness live" parametrization):
 conditional on extinction at every fixed C — certified ≤ 1.75 for plain avoiders

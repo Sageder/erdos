@@ -475,9 +475,9 @@ independent checker):
 
 By Prop 7.2: **LP-inc(C) holds for all C ≤ 43/24 ≈ 1.792** — machine-assisted
 (CP-SAT INFEASIBLE at `(43/24, N)` for `N = 32, 40, 48`, three independent runs),
-versus the human-proved 9/8 = 1.125. The finite thresholds `min_C(N)` are strictly
-increasing in `N` (they must be: restriction is monotone) and have passed 11/6;
-by Theorem 7.3 they converge to `C*_inc ≤ 3`.
+versus the human-proved 9/8 = 1.125. The finite thresholds `min_C(N)` are
+non-decreasing in `N` (restriction is monotone) and have passed 11/6;
+by Theorem 7.3 they converge to a limit `≤ 3`, and by Prop 7.2 that limit is `C*_inc`.
 **Conjecture 7.7** *(heuristic, supported by 7.5 + the trend above)*:
 `C*_inc = 3`, i.e. LP-inc(C) holds for every `C < 3`, sharply witnessed at 3 by
 the triadic family. What is rigorous today: `43/24 ≤ C*_inc ≤ 3` (machine-assisted

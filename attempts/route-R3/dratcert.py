@@ -81,8 +81,10 @@ class RupChecker:
         self.active.append(True)
         if len(c) == 0:
             self.units.append(None)  # empty clause: formula already UNSAT
+            self.unit_cis.append(ci)
         elif len(c) == 1:
             self.units.append(c[0])
+            self.unit_cis.append(ci)
         else:
             self._watch(c[0], ci)
             self._watch(c[1], ci)
@@ -131,7 +133,7 @@ class RupChecker:
             r = set_lit(l)
             if r == "conflict":
                 return True
-        for ci, u in enumerate(self.units):
+        for ci in self.unit_cis:
             if not self.active[ci]:
                 continue
             c = self.clauses[ci]

@@ -287,10 +287,11 @@ UNSAT**, with an irreducible core of 140 constraints (65 4AP + 28 F1 + 34 F2 +
 proof exists at the family level; any human proof must couple internal 4-AP-freeness
 with both edge disciplines and both forced-pair families.
 
-Bases 5, 6, 8 decoupled probes: D_1 SAT for b = 5, 8; the larger blocks were
-re-launched after a container restart (see `restprobes.py`; results to NOTES.md).
-The b = 3, 4 results already establish the qualitative point; extending to all b (or
-finding a base where Sigma_j stays SAT) is an explicit next step (Sec. 7).
+Bases 5, 6, 8 decoupled probes: D_1 SAT for b = 5, 8 (pre-restart run); the D_2+
+solves were deferred at cutoff (heavy machine contention from parallel routes; script:
+`restprobes.py`). The b = 3, 4 results already establish the qualitative point;
+extending to all b (or finding a base where Sigma_j stays SAT forever) is an explicit
+next step (Sec. 7).
 
 ### 4.4 Near-contiguity: 2-separated dyadic blocks
 

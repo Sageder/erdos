@@ -1,0 +1,11 @@
+positions   0-  9: values min= 86 max=100 mean=  91.5
+positions  10- 19: values min= 93 max=122 mean= 104.8
+positions  20- 29: values min=107 max=125 mean= 118.2
+positions  30- 39: values min=102 max=113 mean= 107.5
+positions  40- 49: values min= 50 max= 65 mean=  55.9
+positions  50- 59: values min= 35 max= 67 mean=  56.8
+positions  60- 69: values min= 36 max= 84 mean=  74.7
+positions  70- 79: values min= 37 max= 85 mean=  58.3
+positions  80- 89: values min= 26 max= 74 mean=  47.0
+positions  90- 99: values min= 28 max= 75 mean=  40.3
+K-family pairs (2b-a>=126): 2500, inverted (b first): 2214 (88.6%)

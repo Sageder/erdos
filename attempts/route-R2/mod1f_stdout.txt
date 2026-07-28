@@ -6,3 +6,5 @@
   c'=  8 c= 32 C= 128 size  96 A2H= 96 : UNSAT (0.3s)
   c'=  9 c= 36 C= 144 size 108 A2H=124 : UNSAT (0.6s)
   c'= 10 c= 40 C= 160 size 120 A2H=155 : UNSAT (0.6s)
+  c'= 11 c= 44 C= 176 size 132 A2H=190 : UNSAT (0.9s)
+  c'= 12 c= 48 C= 192 size 144 A2H=228 : UNSAT (1.3s)

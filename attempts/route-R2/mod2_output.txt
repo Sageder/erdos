@@ -1,0 +1,8 @@
+sanity OK: sigma=m mod 2 reproduces Construction A
+sigma[1][0]=0: predicted 4-AP (1, 5, 'inc') present: True (certificate pair realized)
+   (5-AP status of this variant on N=4095: (1, 5, 'inc'))
+sigma[1][0]=1: predicted 4-AP (2, 5, 'inc') present: True (certificate pair realized)
+   (5-AP status of this variant on N=4095: none)
+
+CONCLUSION: every sign table sigma realizes 1,6,11,16 or 2,7,12,17;
+the entire LSB-lex-with-signs family fails at length 4. REFUTED.

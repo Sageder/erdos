@@ -1,5 +1,23 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 ~audit+scan update
+- AUDIT COMPLETE (fresh-context agent, appended to AUDITS.md): 13/15 items SOUND, no
+  circularity, compactness step genuinely preserves order type ω. Two REPAIRABLE gaps,
+  both repaired in CORE.md and re-pushed: (1) Thm 12's limsup clause was a sup/limsup
+  slip — fixed via additive-slack ledger (auditor machine-verified: C=11/10 with slack
+  Q=50 still fails at N=4522); (2) Lemma 13(b) strict g2>2g1 overclaimed the e=g1
+  boundary (counterexample: (1,2,4,3), Γ={1,2,3}) — weakened to e≥g1; dyadic-window
+  consequence survives. Auditor also independently recounted asym witness counts (match)
+  and verified the finite form of Thm 12 NEVER fails at C=9/8 (N<3000) while failing at
+  N=22/40/43 for C=1.1/1.111/1.1125 — the 9/8 constant is exactly where the ledger dies.
+- CORRECTION (asym_pos2.py): pinning ONLY pos(2)<=5 in the asym target is still SAT at
+  N=305 — the huge pos(2) delays seen in solver witnesses were NOT forced. Single-value
+  pinning does not kill asym; extinction needs JOINT initial-segment constraints
+  ([1..15]@2v at C=2). R11 stays alive. FIN-type criteria must quantify over segments.
+- R9 partially returned (numbers audited, certification batch still computing; will
+  finalize itself). Remaining: R2, R3, R4, R6, R8, R1-corridors + shallow_scan +
+  plain C>=2 thresholds.
+
 ## 2026-07-28 — route R6 FILED (attempts/route-R6/REPORT.md): density route + LP merge
 - Deliverables complete: L0-L3 + infinite Dilworth (constructive patience version;
   false variants refuted), T1-T6 necessary conditions, ALL machine-verified

@@ -2,3 +2,12 @@
 cuts [2, 8, 26, 100] UNSAT (6s)
 cuts [2, 8, 26, 120] UNSAT (24s)
 cuts [2, 8, 26, 140] SAT (83s)
+cuts [2, 8, 26, 160] UNSAT (339s)
+--- V1-memory: {V1,20,100}
+cuts [2, 20, 100] SAT (9s)
+cuts [4, 20, 100] SAT (9s)
+cuts [6, 20, 100] SAT (9s)
+cuts [7, 20, 100] SAT (8s)
+cuts [8, 20, 100] UNSAT (8s)
+cuts [10, 20, 100] UNSAT (8s)
+cuts [12, 20, 100] UNSAT (8s)
