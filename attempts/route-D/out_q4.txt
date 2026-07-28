@@ -1,1 +1,30 @@
-== (1) naive greedy: numerators along the run ==
+== (0) THEOREM Q4.1: greedy on a unit fraction is a fixed point ==
+   for 1<=N<=3000: greedy block = [2N,2N+1] and remainder = 1/(2N(2N+1)) : OK
+   1/6 greedy chain of blocks: [(12, 13), (312, 313), (195312, 195313), (76293945312, 76293945313)]  remainder 1/5820766091346740722656
+== (0b) the 'largest block sum <= rho' does NOT exist (sup not attained) ==
+   start 12       block [12,13]  rho-H = 1/156
+   start 25       block [25,28]  rho-H = 3797/245700
+   start 51       block [51,59]  rho-H = 84491723741/31665491577720
+   start 103      block [103,120]  rho-H = 7141566897038978159225/1463193387054871334278416
+   start 207      block [207,243]  rho-H = 109570519087491000801828966698213069823369838955371/59214154676451068260045095746251783820326448739458400
+   start 415      block [415,489]  rho-H = 4549675526546793644652806684969420453156775120875216483425817538953922945485442083135266404696618777845993/12807044350443735375849063080564445077177125777483806388640249625050626305196329363430927162214764030928347200
+== (1) naive length-2 greedy: numerators along the run ==
+   rho=1/2        numerators: [1, 1, 1, 1]
+   rho=1/20       numerators: [1, 1, 1, 1]
+   rho=5/12       numerators: [5, 1, 1, 1]
+   rho=3/7        numerators: [3, 13, 13, 1163]
+   rho=1          numerators: [1, 1, 1, 1]
+   rho=6/5        numerators: [6, 11, 0]
+== (2) is there ANY block that lowers the numerator? ==
+   rho=1/2         #blocks lowering num: 0   e.g. []
+   rho=1/6         #blocks lowering num: 0   e.g. []
+   rho=1/20        #blocks lowering num: 0   e.g. []
+   rho=5/12        #blocks lowering num: 2   e.g. [(5, 6, 1), (6, 7, 3)]
+   rho=3/7         #blocks lowering num: 0   e.g. []
+   rho=7/30        #blocks lowering num: 5   e.g. [(9, 10, 1), (14, 15, 2), (15, 16, 5)]
+   rho=11/2520     #blocks lowering num: 0   e.g. []
+== (3) endgame: rho is a length-2 block sum iff u^2+4v^2 is a square ==
+   among 12151 reduced u/v in (0,1) with v<200: 12 are 2-block sums
+   they are exactly (2a+1)/(a(a+1)): [(5, 6, 2), (7, 12, 3), (9, 20, 4), (11, 30, 5), (13, 42, 6), (15, 56, 7), (17, 72, 8), (19, 90, 9)]
+== (4) length-bound theorem check ==
+   2^t C(d,k) <= v d^pi(k)  and  kv/u <= d <= k(v+u)/u for all blocks a<=300,k<=14 : OK

@@ -46,11 +46,17 @@ def f1(NMAX=400):
                 bad.append((a, b, s))
     print("   integer block sums found:", bad if bad else "NONE")
     # structural reason: unique element of maximal 2-adic valuation
+    v2 = [0] * (NMAX + 2)
+    for n in range(1, NMAX + 1):
+        v2[n] = nu(n, 2)
     viol = []
     for a in range(1, NMAX + 1):
+        e, cnt = v2[a], 1
         for b in range(a + 1, NMAX + 1):
-            e = max(nu(n, 2) for n in range(a, b + 1))
-            cnt = sum(1 for n in range(a, b + 1) if nu(n, 2) == e)
+            if v2[b] > e:
+                e, cnt = v2[b], 1
+            elif v2[b] == e:
+                cnt += 1
             if cnt != 1 or e < 1:
                 viol.append((a, b, e, cnt))
     print("   blocks with non-unique / zero maximal 2-power:",

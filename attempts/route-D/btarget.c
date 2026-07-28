@@ -91,9 +91,6 @@ int main(int argc, char **argv) {
         if (pos > X - 1) return;
         if (R > tail[pos]) return;
         if (Q[pos] && (R % Q[pos])) return;
-        /* skip pos */
-        dfs(pos + 1, R);
-        if (nsol >= MAXSOL) return;
         u128 acc = w[pos];
         for (int j = pos + 1; j <= X; j++) {
             acc += w[j];
@@ -103,6 +100,8 @@ int main(int argc, char **argv) {
             nruns--;
             if (nsol >= MAXSOL) return;
         }
+        /* skip pos */
+        dfs(pos + 1, R);
     }
     dfs(T, TGT);
     printf("done nodes=%lld solutions=%lld\n", nodes, nsol);

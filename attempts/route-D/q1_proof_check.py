@@ -182,7 +182,18 @@ if __name__ == "__main__":
     if exc:
         print("      sample:", [(b - k + 1, b, str(H(b - k + 1, b))) for k, b in exc[:12]])
 
-    print("== (C) sanity: (STAR) at b=bmin(k) for 40<=k<=%d ==" % KMAX_SANITY)
+    print("== (C) analytic tail k>=40: the sufficient condition pi(k) <= (k-1)/3 ==")
+    PI2 = pi_table(10 ** 6)
+    bad3 = [k for k in range(40, 10 ** 6 + 1) if 3 * PI2[k] > k - 1]
+    print("   pi(k) <= (k-1)/3 for all 40 <= k <= 10^6 :",
+          "OK" if not bad3 else bad3[:10])
+    print("   (for k >= 60 this also follows from Rosser-Schoenfeld "
+          "pi(x) < 1.25506 x/log x)")
+    print("   smallest k>=2 from which it holds without exception:",
+          min(k0 for k0 in range(2, 200)
+              if all(3 * PI2[k] <= k - 1 for k in range(k0, 10 ** 6 + 1))))
+
+    print("== (C2) sanity: (STAR) at b=bmin(k) for 40<=k<=%d ==" % KMAX_SANITY)
     fails = []
     for k in range(40, KMAX_SANITY + 1):
         if not star(k, bmin(k), PI[k]):

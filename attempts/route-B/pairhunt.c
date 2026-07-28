@@ -148,6 +148,9 @@ int main(int argc, char **argv) {
         isPairStart[a] = allowed[a] && allowed[a + 1];
         if (isPairStart[a]) wp[a] = L / (u128)a + L / (u128)(a + 1);
     }
+    { u128 tot = 0; for (int a = 2; a + 1 <= N; a++) if (isPairStart[a]) tot += wp[a];
+      int tb = 0; { u128 t = tot; while (t) { t >>= 1; tb++; } }
+      if (tb >= 128) { fprintf(stderr, "ABORT: total weight needs %d bits\n", tb); return 1; } }
     MAXJ = N / 3 + 2;
     mxs = malloc(sizeof(u128) * (size_t)(N + 12) * (MAXJ + 1));
     mns = malloc(sizeof(u128) * (size_t)(N + 12) * (MAXJ + 1));

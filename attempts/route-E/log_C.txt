@@ -1,0 +1,4 @@
+wrote /home/user/erdos/attempts/route-E/prob_C_401_900.txt |univ|=134 maxsum=0.22393 Lbits=86 Deff=3628800(22b) Mbits=64
+  seed 1 -> pool 8 (100s)
+  seed 2 -> pool 0 (461s)
+

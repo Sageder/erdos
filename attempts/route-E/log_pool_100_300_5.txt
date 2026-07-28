@@ -1,0 +1,1 @@
+wrote /home/user/erdos/attempts/route-E/prob_a_100_300_5.txt |univ|=86 maxsum=0.48747 Lbits=68 Dbits=22 Mbits=47 target=1 reachable=False

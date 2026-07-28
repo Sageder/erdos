@@ -1,0 +1,3 @@
+blocks stored: 440997 (max element 1500)
+candidate (block,N) pairs tried: 4742199
+exact solutions: NONE

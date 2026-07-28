@@ -1,0 +1,6 @@
+wrote /home/user/erdos/attempts/route-E/prob_A_100_400.txt |univ|=137 maxsum=0.67316 Lbits=82 Deff=3628800(22b) Mbits=60
+  seed 1 -> pool 4544 (104s)
+  seed 2 -> pool 12217 (100s)
+  seed 3 -> pool 17358 (102s)
+wrote pool_A.txt : 17358 distinct gadget values in [100,400], D=3628800
+   value range 0.178811 .. 0.419715

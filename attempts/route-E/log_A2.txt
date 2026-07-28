@@ -1,0 +1,3 @@
+wrote /home/user/erdos/attempts/route-E/prob_A_100_400.txt |univ|=137 maxsum=0.67316 Lbits=82 Deff=3628800(22b) Mbits=60
+  seed 1 -> pool 3655 (104s)
+  seed 2 -> pool 9531 (107s)

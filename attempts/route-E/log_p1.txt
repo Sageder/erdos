@@ -1,0 +1,2 @@
+wrote /home/user/erdos/attempts/route-E/prob_a_100_400_2.txt |univ|=137 maxsum=0.67316 Lbits=82 Dbits=9 Mbits=74 target=1 reachable=False
+  seed 1 -> pool 0 (102s)

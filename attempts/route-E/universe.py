@@ -125,6 +125,59 @@ def build(T, N, rho, verbose=False, smoothB=0):
     return [n for n in range(T, N + 1) if allowed[n]]
 
 
+
+def build_with_banned(T, N, rho, banned, smoothB=0):
+    """Same fixpoint as build(), but with a set of integers deleted a priori.
+    Deleting elements is always sound (it only shrinks the search space), so any
+    system found inside the result is still a genuine legal system."""
+    P = primes_upto(N)
+    allowed = bytearray(N + 2)
+    for n in range(T, N + 1):
+        if n not in banned:
+            allowed[n] = 1
+    vp = {}
+    for p in P:
+        if p <= smoothB:
+            vp[p] = None
+        else:
+            vp[p] = nu(rho.numerator, p) - nu(rho.denominator, p)
+    changed = True
+    while changed:
+        changed = False
+        for p in P:
+            if vp[p] is None:
+                continue
+            while True:
+                e = -1
+                for n in range(T, N + 1):
+                    if allowed[n]:
+                        x = nu(n, p)
+                        if x > e:
+                            e = x
+                if e < 0:
+                    return None
+                if e <= -vp[p]:
+                    break
+                pe = p ** e
+                C = [n for n in range(T, N + 1) if allowed[n] and nu(n, p) == e]
+                res = [pow((n // pe) % p, -1, p) for n in C]
+                if exists_zero_subset(res, p):
+                    break
+                for n in C:
+                    allowed[n] = 0
+                changed = True
+        while True:
+            hit = [n for n in range(T, N + 1) if allowed[n]
+                   and not (n - 1 >= T and allowed[n - 1])
+                   and not (n + 1 <= N and allowed[n + 1])]
+            if not hit:
+                break
+            for n in hit:
+                allowed[n] = 0
+            changed = True
+    return [n for n in range(T, N + 1) if allowed[n]]
+
+
 def lcm_of(univ, rho):
     from math import gcd
     L = 1

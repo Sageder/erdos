@@ -128,6 +128,11 @@ int main(int argc, char **argv) {
     for (int n = 2; n <= N; n++) w[n] = allowed[n] ? L / (u128)n : 0;
     tail[N + 1] = 0;
     for (int n = N; n >= 2; n--) tail[n] = tail[n + 1] + w[n];
+    { u128 tot = tail[2];
+      /* hard safety guard: every partial sum must fit in unsigned __int128 */
+      int tb = 0; { u128 t = tot; while (t) { t >>= 1; tb++; } }
+      if (tb >= 128) { fprintf(stderr, "ABORT: total weight needs %d bits, >= 128\n", tb); return 1; }
+      fprintf(stderr, "total-weight bits = %d (safe)\n", tb); }
 
     for (int pos = 2; pos <= N + 1; pos++) {
         u128 q = 1;
