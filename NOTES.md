@@ -1,5 +1,53 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 (post-restart) — session 1 continued: LP verified, MUS mechanism, FINlin program
+- Container restart killed all background jobs; 6 wave-1 agents resumed via SendMessage
+  (R2,R3,R4,R6,R8,R9) + R1 resumed on corridor closure + fresh-context AUDITOR launched
+  on CORE.md/ASYM.md.
+- Theorem 12 LP(9/8) fully machine-verified (lp_check.py): V1/V2 exhaustive on all
+  168864 avoiders of [1..9]; ceiling-corrected prediction N0=91 at C=1.1 confirmed
+  UNSAT by SAT; actual frontier ~12 => theorem has ~7.6x slack. Committed.
+- Lemma 13 NEW: in any 4-AP-free permutation, record set Λ is FULLY 3-AP-free
+  (upward extension forced by recordness); grounded set Γ is 3-AP-free per dyadic
+  window (downward extension forced). Verified on 168864 avoiders + SAT witnesses.
+- Lemma 7b (FINlin): if for some fixed K, for every c, boards eventually kill
+  'pos(v)<=cv for all v<=K', then 196-YES. Motivated by MUS finding:
+  asym C=2 N=34 extinction is driven EXACTLY by initial segment [1..15]@2v
+  (mus_profile.py — minimal sufficient profile-constraint set = [1..15]).
+- Asym witness mining: SAT witnesses delay SMALL values enormously (pos(2)=111 at
+  N=140, pos/v up to 55x at v=2; leaders 3-AP-free confirming Lemma 13). If minimal
+  pos(2) over asym witnesses is unbounded in N, the ENTIRE asym route R11 dies
+  (single-value restriction argument, no pigeonhole needed). asym_pos2.py scanning
+  (asym + plain analogues, B=5..40).
+- RUNNING: shallow_scan.py (plain FINlin(8/15) probe), plain_thresholds2 (plain C>=2),
+  asym_pos2.py, auditor agent, 7 route agents. Monitor armed on scan outputs.
+- Wave-2 routes registered: R12 blocked (R1's theorems), R13 two-point supply
+  (pending), R14 FINlin/SHALLOW program (active inline), R15 LP sharpening (active).
+
+## 2026-07-28 ~01:25 UTC — route R3 (digit orderings -> omega) report filed
+- Full report: attempts/route-R3/REPORT.md (verdict-first). Highlights:
+  - THEOREM A (human proof): 2^M*(1,6,11,16) meets 4 pairwise-distinct dyadic blocks
+    (M, M+2, M+3, M+4); any ordering with eventually contiguous dyadic blocks has a
+    monotone increasing 4-AP regardless of internal block orders. Sharp at
+    separation 2: adjacent-block interleaving kills all single-AP forcing (Lemma L2).
+  - THEOREM B (machine-exact, CP-SAT + Glucose independent cross-check): the
+    decoupled single-block system Sigma_3 (internal 4-AP-freeness + edge-3-AP bans +
+    forced pair inversions; purely arithmetic, neighbor-free) is UNSAT for
+    D_3=[27,81) base 3 and D_3=[64,256) base 4; a scaling lemma propagates UNSAT to
+    all higher blocks => contiguous base-3/base-4 block orderings of N are dead with
+    ANY internals. Coupled base-3 death at exactly N=87 (SAT at 86); 245-AP
+    irreducible core saved + third-checked. Dissection: every proper sub-family
+    conjunction SAT; 140-constraint irreducible core — death is 5-family-global.
+  - Lemma T: base-3 priority comparator tau kills ALL monotone 4-APs on EVERY subset
+    of N (any per-level priorities) — exact 4-AP analog of the parity recursion;
+    order type >> omega. Prop B: breaking all L1-case-(ii)/(iii) APs by the sigma
+    valuation mechanism forces 2^t to have infinitely many predecessors (non-omega).
+  - 26 digit-defined omega-orderings ALL FAIL by value <= 24; failure taxonomy in
+    report Sec. 5. Cross-route: R1 cut-set {8,26,80} = {3^j-1} = base-3 block tops.
+  - Pending at cutoff (running): decoupled Sigma_2 for b=5,6,8; 2-separated dyadic
+    N=127/255 (probe encoding bug found+fixed mid-session: separation chain covered
+    even offsets only; fixed version re-verifies separation on returned models).
+
 ## 2026-07-28 ~00:20 UTC — session 1, SAT probe campaign: displacement laws
 - ORDER-ENCODED SAT (experiments/sat_order.py: order vars + transitivity + one 3-clause
   per AP) massively outperforms search: plain avoiders found at N=120 in 2s; asym

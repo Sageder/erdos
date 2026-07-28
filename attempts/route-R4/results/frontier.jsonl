@@ -421,3 +421,8 @@
 {"cls": "A", "C": "5/2", "N": 42, "phase": "heur", "order": 1, "seed": 1, "status": "done", "count": 1, "nodes": 1021, "exhaustive": 1, "secs": 0.0030248165130615234, "cmd": "/home/user/erdos/attempts/route-R4/fast2 42 A 5 2 e 200000000 0 1 1 c", "verdict": "EXISTS", "round": "c"}
 {"cls": "A", "C": "5/2", "N": 43, "phase": "heur", "order": 1, "seed": 1, "status": "done", "count": 1, "nodes": 119080, "exhaustive": 1, "secs": 0.00952005386352539, "cmd": "/home/user/erdos/attempts/route-R4/fast2 43 A 5 2 e 200000000 0 1 1 c", "verdict": "EXISTS", "round": "c"}
 {"cls": "A", "C": "5/2", "N": 44, "phase": "heur", "order": 1, "seed": 1, "status": "done", "count": 1, "nodes": 1645286, "exhaustive": 1, "secs": 0.27055907249450684, "cmd": "/home/user/erdos/attempts/route-R4/fast2 44 A 5 2 e 200000000 0 1 1 c", "verdict": "EXISTS", "round": "c"}
+{"cls": "C", "C": "2/1", "N": 43, "phase": "sat", "secs": 5.6, "verdict": "EXISTS"}
+{"cls": "A", "C": "15/8", "N": 32, "phase": "sat", "secs": 4.6, "verdict": "EXISTS"}
+{"cls": "C", "C": "2/1", "N": 46, "phase": "sat", "secs": 17.3, "verdict": "EXISTS"}
+{"cls": "A", "C": "15/8", "N": 35, "phase": "sat", "secs": 23.6, "verdict": "EXISTS"}
+{"cls": "C", "C": "2/1", "N": 49, "phase": "sat", "secs": 19.0, "verdict": "EXISTS"}

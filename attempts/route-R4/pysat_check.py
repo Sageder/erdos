@@ -22,15 +22,16 @@ sys.path.insert(0, "/home/user/erdos/experiments")
 from apcheck import has_monotone_kap_pos
 
 
-def solve(N, cls, C):
+def solve(N, cls, C, rnd="f"):
     num, den = C.numerator, C.denominator
     lo = [1] * (N + 1)
     hi = [N] * (N + 1)
     for v in range(1, N + 1):
         if cls in ("A", "C"):
-            hi[v] = min(N, (num * v) // den)
+            h = -((-num * v) // den) if rnd == "c" else (num * v) // den
+            hi[v] = min(N, h)
         if cls in ("B", "C"):
-            lo[v] = -((-v * den) // num)
+            lo[v] = den * (v - 1) // num + 1 if rnd == "c" else -((-v * den) // num)
         if cls == "D" and v <= N // 2:
             hi[v] = min(N, 2 * v)
 
@@ -131,7 +132,8 @@ def solve(N, cls, C):
 if __name__ == "__main__":
     N = int(sys.argv[1]); cls = sys.argv[2]
     C = Fraction(int(sys.argv[3]), int(sys.argv[4]))
-    status, perm = solve(N, cls, C)
+    rnd = sys.argv[5] if len(sys.argv) > 5 else "f"
+    status, perm = solve(N, cls, C, rnd)
     line = f"PYSAT N={N} cls={cls} C={C.numerator}/{C.denominator} status={status}"
     if perm:
         line += " example=" + ",".join(map(str, perm))
