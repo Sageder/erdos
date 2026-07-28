@@ -1,5 +1,28 @@
 # NOTES.md — lab notebook, Erdős 273 (newest entries at top)
 
+## 2026-07-28 — CORRECTION: my independent check of the L_H = 27720 pivot verdict was INCONCLUSIVE
+
+I ran my own C solver (`experiments/cover_dfs`, H-world, modulus 2 forbidden) on L_H = 27720 with a
+4·10⁹-node budget. It returned **UNKNOWN (node limit reached)** — it did NOT confirm infeasibility.
+My solver lacks the translation-orbit normalisation that makes route P2's `P2_mdfs.c` roughly four
+orders of magnitude faster (P2 decides 27720 in 116 692 nodes). Route H's Lemma L5 reduction gives
+no help there either: every prime dividing a modulus of that pool already has ≥ q multiples, so the
+reduced pool equals the original (42 moduli, budget 4889/3080).
+
+So the audit status of the pivot verdicts is:
+* **1080, 1680, 2160 — INDEPENDENTLY CONFIRMED by me.** I re-read `P2_naive.py` (a complete
+  enumeration over all subsets and all residues, with a single obviously-valid density prune, no
+  symmetry and no dominance), confirmed its logic, and reran it, obtaining exactly the reported node
+  counts 71 837 / 7 997 / 629 162. Positive control passes (modulus 2 permitted at L = 288 →
+  FEASIBLE with a certificate re-verified from scratch), so the solver is not vacuously answering
+  INFEASIBLE.
+* **1260 — reported by three of route P2's implementations with identical node counts
+  (13 469 771); I did not rerun it** (Python cost).
+* **2520, 27720, and the bulk ranges L ≤ 14490 and up to 51240 — route P2's results, cross-checked
+  only by its own three implementations.** My independent attempt at 27720 was inconclusive.
+This distinction is now reflected in VERDICT.md. The 55440 pivot run was still in progress at
+write-up time; `exact2_c.log` had reached L = 55080 with no SAT.
+
 ## 2026-07-28 — WAVE 2 route P2 in: the pivot is infeasible on every lattice L ≤ 14490 (and 27720)
 
 Full report `attempts/route-P2-pivot/FINDINGS.md`. The five lattices my fiber scan left undecided

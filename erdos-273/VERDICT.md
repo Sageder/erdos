@@ -152,8 +152,15 @@ $L_H = 27720$ — the first lattice where it could hold on budget grounds, and t
 separate routes failed to decide. The five lattices left open by the fiber scan
 ($1080, 1260, 1680, 2160, 2520$) are all infeasible, decided by **three independent
 implementations with identical node counts**, including a deliberately reduction-free exhaustive
-enumerator that I re-read and reran myself (1080: 71 837 nodes; 1680: 7 997; 2160: 629 162), with a
-positive control (modulus 2 permitted at $L=288$) correctly returning a re-verified certificate.
+enumerator that I re-read and reran myself for **1080 (71 837 nodes), 1680 (7 997) and 2160
+(629 162)**, with a positive control (modulus 2 permitted at $L=288$) correctly returning a
+re-verified certificate, so the solver is not vacuously answering INFEASIBLE.
+**Audit status, stated precisely.** Those three lattices are independently confirmed by me. $1260$
+rests on route P2's three implementations (identical node counts) but I did not rerun it. $2520$,
+$L_H=27720$ and the bulk ranges rest on route P2's implementations only: **my own independent
+solver on $27720$ returned UNKNOWN after $4\cdot10^9$ nodes**, because it lacks the
+translation-orbit normalisation that makes P2's searcher some four orders of magnitude faster.
+I therefore do not claim independent verification of the $27720$ verdict.
 
 These are **not near misses**: the exact minimum number of uncovered residues, over *all* choices
 of classes, is $76/1080$ (7.04\%), $94/1260$ (7.46\%), $180/1680$ (10.71\%), $129/2160$ (5.97\%).
