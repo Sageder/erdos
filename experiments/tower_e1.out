@@ -1,0 +1,5 @@
+E1 M=20 -> N=30: EXTENDS (0s)
+E1 M=30 -> N=45: EXTENDS (0s)
+E1 M=40 -> N=60: EXTENDS (0s)
+E1 M=60 -> N=90: DEAD END (1s)
+E1 M=80 -> N=120: DEAD END (1s)

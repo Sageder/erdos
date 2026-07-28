@@ -1,5 +1,21 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 (Opus-5) — extension-tree thinness measured
+- tower_extend.py (E1): SAT-found plain avoiders EXTEND for M=20->30, 30->45, 40->60 but
+  are DEAD ENDS at M=60->90 and 80->120 (no extension exists at all, with the prefix's
+  relative order held fixed). So typical solver-found avoiders die; the extension tree is
+  thin at scale. NOTE the sigma tower is a genuine INFINITE branch (verified early on:
+  sigma_8 restricts to sigma_4, and the parity recursion is restriction-compatible for
+  all N) whose limit fails order type omega — so infinite branches exist and the whole
+  question is whether one has bounded displacement (Lemma 6). Greedy tower-building is
+  therefore NOT decisive (Koenig builds the tower from level-wise existence); the
+  decisive computation is the profile-bounded existence question.
+- Running: plain_profile_cpsat.py (transitivity-free CP-SAT, plain both-orientation
+  target, C = 2, 3, 5 up to N = 500). C=2 N=40 SAT so far.
+- FINlin: plain SHALLOW K=8 dies neither at c=2 (SAT to N=355) nor c=3 (SAT to N=305).
+  Lemma 7b's FIN-type extinction is not happening at accessible parameters — the YES
+  side should not lean on it.
+
 ## 2026-07-28 (Opus-5 session) — THEOREM 16 (forcing closure) + wave-2 workflow
 - MODEL SWITCH: Fable-5 credits exhausted; session moved to claude-opus-5. All six
   Fable-pinned agents die on resume (credit error) — they are DEAD; new work must be

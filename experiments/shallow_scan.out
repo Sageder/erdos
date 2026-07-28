@@ -1,1 +1,2 @@
 plain SHALLOW K=8 c=2: still SAT at N=355 (stopped: cap)
+plain SHALLOW K=8 c=3: still SAT at N=305 (stopped: slow)
