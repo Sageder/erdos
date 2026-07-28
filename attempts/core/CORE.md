@@ -462,3 +462,58 @@ big-jump structures (a huge early record W has e*(W) ≈ W − w and pos(W) ≈ 
 improvement past C*_inc-style ceilings must couple the two orientations (Theorem 14).
 (iii) These nets are the natural constraint set for the two-point supply hunt (R13):
 record–record and record–grounded pairs carry overlapping unconditional nets.
+
+## Theorem 16 (forcing closure — an exact ω-reformulation of 196)
+
+Let a be a monotone-4-AP-free permutation of ℕ. Call a value u **open at scale d**
+(d ≥ 1, u − 2d ≥ 1) if pos(u−2d) < pos(u−d) < pos(u), i.e. (u−2d, u−d, u) is an
+increasing monotone 3-AP. Define the **forcing relation** u ⟶ u+d for each scale d at
+which u is open, and let Cl(u) be the forward closure of {u}.
+
+(a) [forcing step] If u is open at d then pos(u+d) < pos(u), i.e. u+d ≺ u.
+(b) [closure bound] Cl(u) ∖ {u} ⊆ pred(u); hence |Cl(u)| ≤ pos(u) < ∞ for every u.
+(c) [equivalence] Since the forcing digraph is finitely branching at each node
+    (scales d satisfy d ≤ (u−1)/2), Cl(u) is infinite iff there is an infinite forcing
+    chain u = u_0 ⟶ u_1 ⟶ u_2 ⟶ ⋯ (König). Therefore:
+
+    **196-YES ⟺ every monotone-4-AP-free permutation of ℕ admits an infinite
+    forcing chain** (equivalently, an infinite ≺-descending chain, which order type ω
+    forbids).
+
+Proof. (a) (u−2d, u−d, u, u+d) is a 4-AP with difference d; its first three terms are
+positionally increasing by openness, so pos(u+d) > pos(u) would make it an increasing
+monotone 4-AP. Hence pos(u+d) < pos(u) (positions are distinct). (b) Induction along
+chains using (a) and transitivity of ≺: every element of Cl(u) other than u is ≺ u, and
+pred(u) has exactly pos(u) − 1 elements. (c) König's lemma on the finitely-branching
+closure tree; an infinite chain is an infinite ≺-descending sequence, impossible in a
+type-ω order (Lemma 1), so no 4-AP-free permutation could exist. ∎
+
+Companion (supply, re-derived here in the form the chain needs):
+
+**Lemma 16.1 (supply).** In ANY permutation a of ℕ, for every value w and every modulus
+m ≥ 1 there is a step e ∈ mℕ with (w, w+e, w+2e) positionally increasing.
+
+Proof. The set S = {v > w : v ≺ w} is finite (S ⊆ pred(w)), so with
+E := max(S ∪ {w}) − w we have w ≺ w+e for all e > E. Suppose no e ∈ mℕ with e > E makes
+(w, w+e, w+2e) increasing. For such e, since w ≺ w+e and w ≺ w+2e, failure forces
+pos(w+2e) < pos(w+e), i.e. w+2e ≺ w+e. Apply this along e, 2e, 4e, …(all in mℕ, all
+> E): w+e ≻ w+2e ≻ w+4e ≻ ⋯, an infinite ≺-descending chain, contradicting order type ω
+(Lemma 1). ∎
+
+Consequences and status.
+- Supply makes u := w+2e open at scale e for every value w; so open values are dense in
+  the weak sense that every w has an open value in (w, 1.5w]·(scale-free version).
+  Each such u forces w+3e ≺ w+2e.
+- The remaining gap (identical in shape to route R5's Generic Escape barrier, but now
+  phrased on the ω side): supply produces increasing 3-APs *starting* at a prescribed
+  value; a chain needs one *ending* at a prescribed value ("co-supply"). Co-supply is
+  FALSE for finite boards (the parity permutation σ_N has no monotone 3-AP at all), so
+  any proof of it must use order type ω essentially.
+- Machine verification (experiments/forcing_closure.py): (a) and (b) hold on ALL
+  monotone-4-AP-free permutations of [1..N] for N ≤ 9 (195 154 boards, 0 violations).
+  Measurement on SAT-found avoiders: the fraction of open values rises with N
+  (35% at N=40 → 64% at N=160) and max closure size grows roughly like N/2
+  (9, 19, 20, 32, 65, 78 at N = 40, 60, 80, 100, 130, 160).
+- Finite criterion (with Lemma 6): 196-NO requires a compatible tower of finite avoiders
+  in which, for each fixed u, the closure size computed inside σ_N stays BOUNDED as
+  N → ∞. Closure growth is therefore a direct obstruction measure for the NO side.
