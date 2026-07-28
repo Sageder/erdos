@@ -530,13 +530,23 @@ Certified extinction data for the plain target (no monotone 4-AP, both orientati
 under pos(v) ≤ ⌊C·v⌋ — the minimal N with no such permutation of [1..N]:
 
     C     = 1.25   1.5    1.75   2.0
-    N*(C) =    4     15      31    90
+    N*(C) =    4     15      31    74      <-- 2.0 CORRECTED from 90 (see below)
 
 The C = 1.5 and C = 1.75 entries were obtained twice by unrelated methods (route R9's
-exhaustive enumeration of the extension tree and this session's SAT), and C = 2.0 by
-lazy-transitivity CEGAR (experiments/profile_cegar.py) with an independent eager
-two-solver re-verification (experiments/verify_c2_n90.out). Growth is roughly
-N*(C) ≈ 4·exp(4.15 (C − 1.25)), so C = 3 would first die near N ≈ 6·10³ and C = 5 far
+exhaustive enumeration of the extension tree and this session's SAT), and C = 2.0 by an eager
+two-solver check.
+
+**CORRECTION (found by route R18's auditor, verified by me).** I originally listed
+N*(2.0) = 90. That was the first size I happened to test that returned UNSAT — NOT the
+minimal one, although the column is headed "minimal N". The true value is 74: the eager
+encoding with cadical and glucose agreeing gives SAT at N = 70 and N = 72 and UNSAT at
+N = 74. Satisfiability is inherited downward (delete the largest value; no position
+increases), so 90 was merely a non-minimal UNSAT point. The fitted law and every number
+derived from it are corrected accordingly; Remark 27's conclusion is unaffected in
+substance (the revised blind-spot sizes are ≈3.6·10³ at C = 3, ≈9·10⁶ at C = 5,
+≈4·10⁸ at C = 6). Lesson, consistent with the rest of this run: a single UNSAT witnesses
+extinction AT that size, never minimality — minimality needs the SAT point just below it. Growth is roughly
+N*(C) ≈ 4·exp(3.89 (C − 1.25)), so C = 3 would first die near N ≈ 3.6·10³ and C = 5 far
 beyond any feasible search — consistent with route R9's independent fit N*(C) ≈ a e^{bC},
 b ≈ 2.2–2.8.
 
@@ -889,10 +899,10 @@ displacement.
 
 ## Remark 27 (SEARCH BLIND SPOT — a methodological warning that qualifies several results)
 
-From the certified extinction law N*(C) ≈ 4·exp(4.15(C − 1.25)) (Remark 17), a design
+From the certified extinction law N*(C) ≈ 4·exp(3.89(C − 1.25)) (Remark 17, as corrected), a design
 whose AP-restriction has linear displacement with constant C cannot die before roughly
 
-    C = 3 : N ≈ 6·10³      C = 5 : N ≈ 10⁷      C = 6 : N ≈ 10⁹
+    C = 3 : N ≈ 3.6·10³    C = 5 : N ≈ 9·10⁶    C = 6 : N ≈ 4·10⁸
 
 So verifying a candidate construction to M = 10⁴–10⁵ — the standard bar used throughout
 this project — CANNOT certify or refute any design with displacement constant ≳ 3.
@@ -1565,8 +1575,8 @@ adversary holds it to 2–3 steps regardless of N.
 
 ## Theorem 45 (Theorem 16 says NOTHING about block architectures — route R18)
 
-In any LAYERED permutation (value-intervals listed in increasing order, arbitrary order
-inside each), every forcing edge stays inside a single block: u ⟶ u+d has u+d > u, and
+In any MONOTONE-4-AP-FREE layered permutation (value-intervals listed in increasing order,
+arbitrary order inside each), every forcing edge stays inside a single block: u ⟶ u+d has u+d > u, and
 Theorem 16(a) forces pos(u+d) < pos(u), so u+d cannot be in a later block. Hence
 Cl(u) ⊆ B(u) automatically and |Cl(u)| ≤ |B(u)| for free.
 
@@ -1577,6 +1587,13 @@ R18 proved it (its Prop R18.1: the parity permutation σ_N has no monotone 3-AP 
 hence no open value, hence trivial closures at every N — so "all closures ≤ B" is SAT at
 every N for every B ≥ 1). Its UNSAT direction would not have been a YES theorem either
 (Prop R18.3).
+
+**Hypothesis correction (route R18's auditor, accepted).** The statement needs
+4-AP-freeness: the proof invokes Theorem 16(a), which is available only for 4-AP-free
+permutations. Without it the claim is false — the identity permutation of [1..9], layered
+for cuts (1,4,10), has value 3 open at scale 1 and hence a forcing edge 3 → 4 crossing a
+block boundary. The conclusion is unaffected for our purposes, since every candidate
+counterexample is 4-AP-free by definition.
 
 Net positive from R18: an exact block decomposition of 4-AP-freeness read off the forcing
 relation, deciding layered architectures 2–3 orders of magnitude faster than global SAT and
@@ -1591,10 +1608,18 @@ K = 2…9), giving C_ledger(N) ≤ 2(N+1)/(N+2) < 2 for every N. Therefore:
 
 **No unweighted-ledger argument can prove LP-inc(C) for any C ≥ 2.**
 
-Moreover Theorem 16's forcing step IS Theorem 12's demand mechanism (the i = 2 case of its
-disjunction), and closure bounds give LOWER bounds on positions, which cannot enter a ledger
-whose content is an upper bound. So closures do not help the ledger, and the two tools I had
-been treating as independent are the same tool.
+Moreover Theorem 16's forcing step coincides with the i = 2 case of Theorem 12's demand
+disjunction, and closure bounds give LOWER bounds on positions whereas the ledger's content
+is an upper bound.
+
+**Scope correction (route R19's auditor, accepted).** R19 stated "closures do not help the
+ledger" as a theorem; the auditor downgraded it to a remark, and I follow that here — it is
+a well-supported observation about the two mechanisms, not a proved impossibility. The
+auditor also found two gaps in the "exact ceiling" computation (floor/ceiling handling, and
+that the quantity computed is not the ceiling of profile-only reasoning — a strictly better
+constant follows from R19's own data). The headline that no UNWEIGHTED-ledger argument
+reaches C ≥ 2 rests on the exact triadic evaluation and survives; the word "exact" should
+not be attached to the general-N ceiling formula.
 
 ## Theorem 47 (the forced-descent method cannot work — a one-line barrier for the whole family)
 

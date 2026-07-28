@@ -90,9 +90,9 @@ their verification standard. The lab notebook `NOTES.md` allows a cold resume.
   reasons: Lemma 6 quantifies over ALL profiles, and the *known-negative* case at length 5
   exhibits the same extinction signature (5-AP-free permutations under pos(v) ≤ 1.25v die
   at N = 13, verified by two solvers).
-- **Remark 27 (search blind spot).** From the certified law N*(C) ≈ 4·exp(4.15(C−1.25)), a
-  design with AP-restriction displacement constant C cannot die before N ≈ 6·10³ (C=3),
-  10⁷ (C=5), 10⁹ (C=6). Verification to 10⁴–10⁵ is therefore structurally incapable of
+- **Remark 27 (search blind spot).** From the certified law N*(C) ≈ 4·exp(3.89(C−1.25)), a
+  design with AP-restriction displacement constant C cannot die before N ≈ 3.6·10³ (C=3),
+  9·10⁶ (C=5), 4·10⁸ (C=6). Verification to 10⁴–10⁵ is therefore structurally incapable of
   settling anything in that regime.
 - **Remark 31.** The AP-uniformity search is provably vacuous: its objective is degenerate,
   and the geometric coarsening of any finite avoider already satisfies the constraints, so
@@ -105,7 +105,7 @@ their verification standard. The lab notebook `NOTES.md` allows a cold resume.
 - Calibration reproduced exactly: monotone-4-AP-free permutation counts for N = 3..9 are
   6, 22, 102, 564, 3336, 22266, 168864; 3-AP-free counts 4, 10, 20, 48, 104, 282, 496.
 - Extinction thresholds for pos(v) ≤ ⌊Cv⌋ (plain, both orientations):
-  N*(C) = 4, 15, 31, 90 at C = 1.25, 1.5, 1.75, 2. The C = 1.5 and 1.75 entries agree
+  N*(C) = 4, 15, 31, 74 at C = 1.25, 1.5, 1.75, 2 (the C=2 entry corrected from 90 after audit). The C = 1.5 and 1.75 entries agree
   between exhaustive extension-tree enumeration and SAT; C = 2 is confirmed by CEGAR
   (N = 90) and independently by the eager O(N³) encoding at N = 85 and N = 90 with cadical
   and glucose both UNSAT.

@@ -97,13 +97,13 @@ by an arithmetic sign: such rules are not transitive (exhaustive classification 
 a convex partition, i.e. carried by blocks. (Remarks 23, 25; Theorem 21.)
 
 **B6. It must have superlinear displacement.** Certified extinction of pos(v) ≤ Cv at
-C = 1.25, 1.5, 1.75, 2 (thresholds N* = 4, 15, 31, 90; three independent methods, two
+C = 1.25, 1.5, 1.75, 2 (thresholds N* = 4, 15, 31, 74; three independent methods, two
 solvers). Also the profile ⌈0.5·v·log₂ 2v⌉ dies at N = 130, so "Θ(v log v)" is not a
 target either. (Theorem 12; Remarks 17, 28.)
 
 **B7. It must come with a PROOF, not a verification.** From the certified extinction law
-N*(C) ≈ 4·exp(4.15(C−1.25)), a design whose progression-restriction has displacement
-constant C cannot die before N ≈ 6·10³ at C = 3, 10⁷ at C = 5, 10⁹ at C = 6. Checking a
+N*(C) ≈ 4·exp(3.89(C−1.25)), a design whose progression-restriction has displacement
+constant C cannot die before N ≈ 3.6·10³ at C = 3, 9·10⁶ at C = 5, 4·10⁸ at C = 6. Checking a
 candidate to 10⁴–10⁵ therefore certifies NOTHING in the regime where the surviving
 candidates live. (Remark 27.)
 
