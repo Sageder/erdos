@@ -92,6 +92,13 @@ run* (runs of `A(N)` never interact, since the neighbours of the run endpoints a
 banned). The search space is therefore `prod_i f(L_i)` where `f` counts binary
 strings of length `L` with no isolated 1 (`f = 1,2,4,7,12,21,37,65,...`).
 
+**Strongest validation of the reduction** (possible only once genuine certificates
+exist): every one of the 27,590 certificates found must survive the reduction for
+every `N >= max(U)`. Tested for `N` in
+`{85,90,100,120,140,160,170,180,200,210,220,250,300,345,400}`:
+**264,887 (certificate, N) pairs, 0 violations.** The windowed reduction
+(`lo > 2`) was checked the same way on 8 windows: 317 pairs, 0 violations.
+
 **Validation of rule (P)** (`validate_reduce.py`):
 * on the relaxed problem (no isolated-point condition) all `2/5/10/21/40/199` exact
   reciprocal-sum-1 subsets of `[2,N]` for `N = 12,15,18,20,24,30` survive rule (P);
