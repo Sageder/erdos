@@ -1,0 +1,228 @@
+
+== k=2: 1364673 members (n>1000) ==
+ [G1] n mod small prime powers:
+  n mod 2: chi2=26.4 (dof=1, sqrt(2dof)=1) exp/class=682336.5
+    most depleted: [(0, 679335, np.float64(0.996)), (1, 685338, np.float64(1.004))]
+    most enriched: [(1, 685338, np.float64(1.004)), (0, 679335, np.float64(0.996))]
+  n mod 4: chi2=33607.0 (dof=3, sqrt(2dof)=2) exp/class=341168.2
+    most depleted: [(0, 287393, np.float64(0.842)), (1, 287936, np.float64(0.844)), (2, 391942, np.float64(1.149)), (3, 397402, np.float64(1.165))]
+    most enriched: [(3, 397402, np.float64(1.165)), (2, 391942, np.float64(1.149)), (1, 287936, np.float64(0.844)), (0, 287393, np.float64(0.842))]
+  n mod 8: chi2=51957.5 (dof=7, sqrt(2dof)=4) exp/class=170584.1
+    most depleted: [(4, 143475, np.float64(0.841)), (5, 143773, np.float64(0.843)), (0, 143918, np.float64(0.844)), (1, 144163, np.float64(0.845)), (3, 169294, np.float64(0.992)), (2, 169508, np.float64(0.994))]
+    most enriched: [(7, 228108, np.float64(1.337)), (6, 222434, np.float64(1.304)), (2, 169508, np.float64(0.994)), (3, 169294, np.float64(0.992)), (1, 144163, np.float64(0.845)), (0, 143918, np.float64(0.844))]
+  n mod 16: chi2=60313.8 (dof=15, sqrt(2dof)=5) exp/class=85292.1
+    most depleted: [(12, 71720, np.float64(0.841)), (4, 71755, np.float64(0.841)), (5, 71801, np.float64(0.842)), (8, 71825, np.float64(0.842)), (9, 71963, np.float64(0.844)), (13, 71972, np.float64(0.844))]
+    most enriched: [(15, 128297, np.float64(1.504)), (14, 123604, np.float64(1.449)), (7, 99811, np.float64(1.17)), (6, 98830, np.float64(1.159)), (10, 84872, np.float64(0.995)), (3, 84730, np.float64(0.993))]
+  n mod 3: chi2=36508.9 (dof=2, sqrt(2dof)=2) exp/class=454891.0
+    most depleted: [(0, 350035, np.float64(0.769)), (1, 499723, np.float64(1.099)), (2, 514915, np.float64(1.132))]
+    most enriched: [(2, 514915, np.float64(1.132)), (1, 499723, np.float64(1.099)), (0, 350035, np.float64(0.769))]
+  n mod 9: chi2=62271.6 (dof=8, sqrt(2dof)=4) exp/class=151630.3
+    most depleted: [(0, 116556, np.float64(0.769)), (6, 116564, np.float64(0.769)), (3, 116915, np.float64(0.771)), (1, 149803, np.float64(0.988)), (4, 150608, np.float64(0.993)), (5, 151937, np.float64(1.002))]
+    most enriched: [(8, 210782, np.float64(1.39)), (7, 199312, np.float64(1.314)), (2, 152196, np.float64(1.004)), (5, 151937, np.float64(1.002)), (4, 150608, np.float64(0.993)), (1, 149803, np.float64(0.988))]
+  n mod 27: chi2=68007.4 (dof=26, sqrt(2dof)=7) exp/class=50543.4
+    most depleted: [(18, 38740, np.float64(0.766)), (24, 38763, np.float64(0.767)), (3, 38860, np.float64(0.769)), (9, 38866, np.float64(0.769)), (6, 38882, np.float64(0.769)), (15, 38919, np.float64(0.77))]
+    most enriched: [(26, 81774, np.float64(1.618)), (25, 73991, np.float64(1.464)), (17, 64833, np.float64(1.283)), (8, 64175, np.float64(1.27)), (16, 63987, np.float64(1.266)), (7, 61334, np.float64(1.213))]
+  n mod 5: chi2=70864.5 (dof=4, sqrt(2dof)=3) exp/class=272934.6
+    most depleted: [(0, 221992, np.float64(0.813)), (2, 222162, np.float64(0.814)), (1, 222303, np.float64(0.814)), (3, 348962, np.float64(1.279)), (4, 349254, np.float64(1.28))]
+    most enriched: [(4, 349254, np.float64(1.28)), (3, 348962, np.float64(1.279)), (1, 222303, np.float64(0.814)), (2, 222162, np.float64(0.814)), (0, 221992, np.float64(0.813))]
+  n mod 25: chi2=90761.4 (dof=24, sqrt(2dof)=7) exp/class=54586.9
+    most depleted: [(0, 44225, np.float64(0.81)), (1, 44311, np.float64(0.812)), (20, 44323, np.float64(0.812)), (17, 44333, np.float64(0.812)), (12, 44356, np.float64(0.813)), (10, 44365, np.float64(0.813))]
+    most enriched: [(23, 90889, np.float64(1.665)), (24, 90396, np.float64(1.656)), (14, 65533, np.float64(1.201)), (18, 64977, np.float64(1.19)), (19, 64935, np.float64(1.19)), (13, 64858, np.float64(1.188))]
+  n mod 7: chi2=82130.8 (dof=6, sqrt(2dof)=3) exp/class=194953.3
+    most depleted: [(4, 164233, np.float64(0.842)), (1, 164540, np.float64(0.844)), (0, 164640, np.float64(0.845)), (3, 164723, np.float64(0.845)), (2, 165393, np.float64(0.848)), (6, 270551, np.float64(1.388))]
+    most enriched: [(5, 270593, np.float64(1.388)), (6, 270551, np.float64(1.388)), (2, 165393, np.float64(0.848)), (3, 164723, np.float64(0.845)), (0, 164640, np.float64(0.845)), (1, 164540, np.float64(0.844))]
+  n mod 49: chi2=93076.3 (dof=48, sqrt(2dof)=10) exp/class=27850.5
+    most depleted: [(14, 23295, np.float64(0.836)), (17, 23295, np.float64(0.836)), (35, 23341, np.float64(0.838)), (32, 23355, np.float64(0.839)), (23, 23374, np.float64(0.839)), (7, 23389, np.float64(0.84))]
+    most enriched: [(47, 50185, np.float64(1.802)), (48, 49877, np.float64(1.791)), (41, 37382, np.float64(1.342)), (26, 37263, np.float64(1.338)), (27, 37204, np.float64(1.336)), (40, 37147, np.float64(1.334))]
+  n mod 11: chi2=87045.0 (dof=10, sqrt(2dof)=4) exp/class=124061.2
+    most depleted: [(1, 108465, np.float64(0.874)), (8, 108698, np.float64(0.876)), (2, 109183, np.float64(0.88)), (6, 109222, np.float64(0.88)), (7, 109349, np.float64(0.881)), (4, 109414, np.float64(0.882))]
+    most enriched: [(9, 190970, np.float64(1.539)), (10, 190071, np.float64(1.532)), (5, 109839, np.float64(0.885)), (0, 109825, np.float64(0.885)), (3, 109637, np.float64(0.884)), (4, 109414, np.float64(0.882))]
+  n mod 13: chi2=89263.4 (dof=12, sqrt(2dof)=5) exp/class=104974.8
+    most depleted: [(2, 93165, np.float64(0.887)), (6, 93232, np.float64(0.888)), (10, 93339, np.float64(0.889)), (4, 93371, np.float64(0.889)), (0, 93566, np.float64(0.891)), (1, 93581, np.float64(0.891))]
+    most enriched: [(11, 168248, np.float64(1.603)), (12, 167624, np.float64(1.597)), (9, 93859, np.float64(0.894)), (5, 93840, np.float64(0.894)), (7, 93636, np.float64(0.892)), (3, 93614, np.float64(0.892))]
+ [G2] (n+k) mod p^2:
+  n+2 mod 4: chi2=33607.0 (dof=3, sqrt(2dof)=2) exp/class=341168.2
+    most depleted: [(2, 287393, np.float64(0.842)), (3, 287936, np.float64(0.844)), (0, 391942, np.float64(1.149)), (1, 397402, np.float64(1.165))]
+    most enriched: [(1, 397402, np.float64(1.165)), (0, 391942, np.float64(1.149)), (3, 287936, np.float64(0.844)), (2, 287393, np.float64(0.842))]
+  n+2 mod 9: chi2=62271.6 (dof=8, sqrt(2dof)=4) exp/class=151630.3
+    most depleted: [(2, 116556, np.float64(0.769)), (8, 116564, np.float64(0.769)), (5, 116915, np.float64(0.771)), (3, 149803, np.float64(0.988)), (6, 150608, np.float64(0.993)), (7, 151937, np.float64(1.002))]
+    most enriched: [(1, 210782, np.float64(1.39)), (0, 199312, np.float64(1.314)), (4, 152196, np.float64(1.004)), (7, 151937, np.float64(1.002)), (6, 150608, np.float64(0.993)), (3, 149803, np.float64(0.988))]
+  n+2 mod 25: chi2=90761.4 (dof=24, sqrt(2dof)=7) exp/class=54586.9
+    most depleted: [(2, 44225, np.float64(0.81)), (3, 44311, np.float64(0.812)), (22, 44323, np.float64(0.812)), (19, 44333, np.float64(0.812)), (14, 44356, np.float64(0.813)), (12, 44365, np.float64(0.813))]
+    most enriched: [(0, 90889, np.float64(1.665)), (1, 90396, np.float64(1.656)), (16, 65533, np.float64(1.201)), (20, 64977, np.float64(1.19)), (21, 64935, np.float64(1.19)), (15, 64858, np.float64(1.188))]
+  n+2 mod 49: chi2=93076.3 (dof=48, sqrt(2dof)=10) exp/class=27850.5
+    most depleted: [(19, 23295, np.float64(0.836)), (16, 23295, np.float64(0.836)), (37, 23341, np.float64(0.838)), (34, 23355, np.float64(0.839)), (25, 23374, np.float64(0.839)), (9, 23389, np.float64(0.84))]
+    most enriched: [(0, 50185, np.float64(1.802)), (1, 49877, np.float64(1.791)), (43, 37382, np.float64(1.342)), (28, 37263, np.float64(1.338)), (29, 37204, np.float64(1.336)), (42, 37147, np.float64(1.334))]
+ [G2b] (n+j) mod p for window slots j=1..k, p<=13:
+    p=2 slot j=1: ratios [1.004, 0.996]
+    p=2 slot j=2: ratios [0.996, 1.004]
+    p=3 slot j=1: ratios [1.132, 0.769, 1.099]
+    p=3 slot j=2: ratios [1.099, 1.132, 0.769]
+    p=5 slot j=1: ratios [1.28, 0.813, 0.814, 0.814, 1.279]
+    p=5 slot j=2: ratios [1.279, 1.28, 0.813, 0.814, 0.814]
+    p=7 slot j=1: ratios [1.388, 0.845, 0.844, 0.848, 0.845, 0.842, 1.388]
+    p=7 slot j=2: ratios [1.388, 1.388, 0.845, 0.844, 0.848, 0.845, 0.842]
+    p=11 slot j=1: ratios [1.532, 0.885, 0.874, 0.88, 0.884, 0.882, 0.885, 0.88, 0.881, 0.876, 1.539]
+    p=11 slot j=2: ratios [1.539, 1.532, 0.885, 0.874, 0.88, 0.884, 0.882, 0.885, 0.88, 0.881, 0.876]
+    p=13 slot j=1: ratios [1.597, 0.891, 0.891, 0.887, 0.892, 0.889, 0.894, 0.888, 0.892, 0.892, 0.894, 0.889, 1.603]
+    p=13 slot j=2: ratios [1.603, 1.597, 0.891, 0.891, 0.887, 0.892, 0.889, 0.894, 0.888, 0.892, 0.892, 0.894, 0.889]
+ [G3] chi2/dof for n mod p, medium primes:
+    [(17, 5332.04), (19, 4767.45), (23, 3711.33), (29, 2648.75), (31, 2421.74), (37, 1905.05), (41, 1789.12), (43, 1521.63), (47, 1170.5), (53, 1039.58), (59, 913.58), (61, 870.88), (67, 817.55), (71, 724.93)]  (1.0 = uniform expectation)
+
+== k=3: 139975 members (n>1000) ==
+ [G1] n mod small prime powers:
+  n mod 2: chi2=2644.3 (dof=1, sqrt(2dof)=1) exp/class=69987.5
+    most depleted: [(0, 60368, np.float64(0.863)), (1, 79607, np.float64(1.137))]
+    most enriched: [(1, 79607, np.float64(1.137)), (0, 60368, np.float64(0.863))]
+  n mod 4: chi2=3897.8 (dof=3, sqrt(2dof)=2) exp/class=34993.8
+    most depleted: [(0, 25533, np.float64(0.73)), (2, 34835, np.float64(0.995)), (1, 39255, np.float64(1.122)), (3, 40352, np.float64(1.153))]
+    most enriched: [(3, 40352, np.float64(1.153)), (1, 39255, np.float64(1.122)), (2, 34835, np.float64(0.995)), (0, 25533, np.float64(0.73))]
+  n mod 8: chi2=5738.6 (dof=7, sqrt(2dof)=4) exp/class=17496.9
+    most depleted: [(4, 12731, np.float64(0.728)), (0, 12802, np.float64(0.732)), (2, 15000, np.float64(0.857)), (3, 17587, np.float64(1.005)), (1, 17742, np.float64(1.014)), (6, 19835, np.float64(1.134))]
+    most enriched: [(7, 22765, np.float64(1.301)), (5, 21513, np.float64(1.23)), (6, 19835, np.float64(1.134)), (1, 17742, np.float64(1.014)), (3, 17587, np.float64(1.005)), (2, 15000, np.float64(0.857))]
+  n mod 16: chi2=6432.1 (dof=15, sqrt(2dof)=5) exp/class=8748.4
+    most depleted: [(4, 6321, np.float64(0.723)), (8, 6383, np.float64(0.73)), (12, 6410, np.float64(0.733)), (0, 6419, np.float64(0.734)), (10, 7393, np.float64(0.845)), (2, 7607, np.float64(0.87))]
+    most enriched: [(15, 12461, np.float64(1.424)), (14, 11201, np.float64(1.28)), (13, 11197, np.float64(1.28)), (5, 10316, np.float64(1.179)), (7, 10304, np.float64(1.178)), (9, 8978, np.float64(1.026))]
+  n mod 3: chi2=38.2 (dof=2, sqrt(2dof)=2) exp/class=46658.3
+    most depleted: [(0, 46109, np.float64(0.988)), (1, 46117, np.float64(0.988)), (2, 47749, np.float64(1.023))]
+    most enriched: [(2, 47749, np.float64(1.023)), (1, 46117, np.float64(0.988)), (0, 46109, np.float64(0.988))]
+  n mod 9: chi2=3365.0 (dof=8, sqrt(2dof)=4) exp/class=15552.8
+    most depleted: [(4, 13595, np.float64(0.874)), (0, 13734, np.float64(0.883)), (3, 13821, np.float64(0.889)), (5, 13912, np.float64(0.895)), (1, 13920, np.float64(0.895)), (2, 14198, np.float64(0.913))]
+    most enriched: [(8, 19639, np.float64(1.263)), (7, 18602, np.float64(1.196)), (6, 18554, np.float64(1.193)), (2, 14198, np.float64(0.913)), (1, 13920, np.float64(0.895)), (5, 13912, np.float64(0.895))]
+  n mod 27: chi2=4039.4 (dof=26, sqrt(2dof)=7) exp/class=5184.3
+    most depleted: [(13, 4477, np.float64(0.864)), (9, 4493, np.float64(0.867)), (4, 4508, np.float64(0.87)), (3, 4532, np.float64(0.874)), (23, 4559, np.float64(0.879)), (0, 4600, np.float64(0.887))]
+    most enriched: [(26, 7630, np.float64(1.472)), (25, 6932, np.float64(1.337)), (24, 6916, np.float64(1.334)), (17, 6073, np.float64(1.171)), (15, 5974, np.float64(1.152)), (8, 5936, np.float64(1.145))]
+  n mod 5: chi2=5771.1 (dof=4, sqrt(2dof)=3) exp/class=27995.0
+    most depleted: [(1, 21056, np.float64(0.752)), (0, 21169, np.float64(0.756)), (2, 31043, np.float64(1.109)), (4, 33128, np.float64(1.183)), (3, 33579, np.float64(1.199))]
+    most enriched: [(3, 33579, np.float64(1.199)), (4, 33128, np.float64(1.183)), (2, 31043, np.float64(1.109)), (0, 21169, np.float64(0.756)), (1, 21056, np.float64(0.752))]
+  n mod 25: chi2=7971.4 (dof=24, sqrt(2dof)=7) exp/class=5599.0
+    most depleted: [(21, 4131, np.float64(0.738)), (16, 4184, np.float64(0.747)), (0, 4201, np.float64(0.75)), (15, 4215, np.float64(0.753)), (11, 4229, np.float64(0.755)), (20, 4248, np.float64(0.759))]
+    most enriched: [(23, 8736, np.float64(1.56)), (24, 8650, np.float64(1.545)), (22, 7460, np.float64(1.332)), (13, 6360, np.float64(1.136)), (14, 6259, np.float64(1.118)), (18, 6222, np.float64(1.111))]
+  n mod 7: chi2=8896.5 (dof=6, sqrt(2dof)=3) exp/class=19996.4
+    most depleted: [(2, 15460, np.float64(0.773)), (3, 15660, np.float64(0.783)), (0, 15671, np.float64(0.784)), (1, 15744, np.float64(0.787)), (4, 25450, np.float64(1.273)), (6, 25911, np.float64(1.296))]
+    most enriched: [(5, 26079, np.float64(1.304)), (6, 25911, np.float64(1.296)), (4, 25450, np.float64(1.273)), (1, 15744, np.float64(0.787)), (0, 15671, np.float64(0.784)), (3, 15660, np.float64(0.783))]
+  n mod 49: chi2=10454.6 (dof=48, sqrt(2dof)=10) exp/class=2856.6
+    most depleted: [(2, 2153, np.float64(0.754)), (28, 2166, np.float64(0.758)), (31, 2167, np.float64(0.759)), (17, 2168, np.float64(0.759)), (30, 2171, np.float64(0.76)), (16, 2172, np.float64(0.76))]
+    most enriched: [(47, 4881, np.float64(1.709)), (48, 4850, np.float64(1.698)), (46, 4657, np.float64(1.63)), (33, 3616, np.float64(1.266)), (27, 3595, np.float64(1.258)), (39, 3590, np.float64(1.257))]
+  n mod 11: chi2=10869.3 (dof=10, sqrt(2dof)=4) exp/class=12725.0
+    most depleted: [(7, 10370, np.float64(0.815)), (1, 10436, np.float64(0.82)), (2, 10498, np.float64(0.825)), (5, 10516, np.float64(0.826)), (4, 10624, np.float64(0.835)), (3, 10641, np.float64(0.836))]
+    most enriched: [(8, 18585, np.float64(1.461)), (9, 18512, np.float64(1.455)), (10, 18443, np.float64(1.449)), (6, 10679, np.float64(0.839)), (0, 10671, np.float64(0.839)), (3, 10641, np.float64(0.836))]
+  n mod 13: chi2=11631.6 (dof=12, sqrt(2dof)=5) exp/class=10767.3
+    most depleted: [(7, 8938, np.float64(0.83)), (0, 8942, np.float64(0.83)), (9, 8969, np.float64(0.833)), (1, 9014, np.float64(0.837)), (2, 9064, np.float64(0.842)), (6, 9102, np.float64(0.845))]
+    most enriched: [(10, 16596, np.float64(1.541)), (12, 16419, np.float64(1.525)), (11, 16278, np.float64(1.512)), (5, 9211, np.float64(0.855)), (4, 9185, np.float64(0.853)), (8, 9140, np.float64(0.849))]
+ [G2] (n+k) mod p^2:
+  n+3 mod 4: chi2=3897.8 (dof=3, sqrt(2dof)=2) exp/class=34993.8
+    most depleted: [(3, 25533, np.float64(0.73)), (1, 34835, np.float64(0.995)), (0, 39255, np.float64(1.122)), (2, 40352, np.float64(1.153))]
+    most enriched: [(2, 40352, np.float64(1.153)), (0, 39255, np.float64(1.122)), (1, 34835, np.float64(0.995)), (3, 25533, np.float64(0.73))]
+  n+3 mod 9: chi2=3365.0 (dof=8, sqrt(2dof)=4) exp/class=15552.8
+    most depleted: [(7, 13595, np.float64(0.874)), (3, 13734, np.float64(0.883)), (6, 13821, np.float64(0.889)), (8, 13912, np.float64(0.895)), (4, 13920, np.float64(0.895)), (5, 14198, np.float64(0.913))]
+    most enriched: [(2, 19639, np.float64(1.263)), (1, 18602, np.float64(1.196)), (0, 18554, np.float64(1.193)), (5, 14198, np.float64(0.913)), (4, 13920, np.float64(0.895)), (8, 13912, np.float64(0.895))]
+  n+3 mod 25: chi2=7971.4 (dof=24, sqrt(2dof)=7) exp/class=5599.0
+    most depleted: [(24, 4131, np.float64(0.738)), (19, 4184, np.float64(0.747)), (3, 4201, np.float64(0.75)), (18, 4215, np.float64(0.753)), (14, 4229, np.float64(0.755)), (23, 4248, np.float64(0.759))]
+    most enriched: [(1, 8736, np.float64(1.56)), (2, 8650, np.float64(1.545)), (0, 7460, np.float64(1.332)), (16, 6360, np.float64(1.136)), (17, 6259, np.float64(1.118)), (21, 6222, np.float64(1.111))]
+  n+3 mod 49: chi2=10454.6 (dof=48, sqrt(2dof)=10) exp/class=2856.6
+    most depleted: [(5, 2153, np.float64(0.754)), (31, 2166, np.float64(0.758)), (34, 2167, np.float64(0.759)), (20, 2168, np.float64(0.759)), (33, 2171, np.float64(0.76)), (19, 2172, np.float64(0.76))]
+    most enriched: [(1, 4881, np.float64(1.709)), (2, 4850, np.float64(1.698)), (0, 4657, np.float64(1.63)), (36, 3616, np.float64(1.266)), (30, 3595, np.float64(1.258)), (42, 3590, np.float64(1.257))]
+ [G2b] (n+j) mod p for window slots j=1..k, p<=13:
+    p=2 slot j=1: ratios [1.137, 0.863]
+    p=2 slot j=2: ratios [0.863, 1.137]
+    p=2 slot j=3: ratios [1.137, 0.863]
+    p=3 slot j=1: ratios [1.023, 0.988, 0.988]
+    p=3 slot j=2: ratios [0.988, 1.023, 0.988]
+    p=3 slot j=3: ratios [0.988, 0.988, 1.023]
+    p=5 slot j=1: ratios [1.183, 0.756, 0.752, 1.109, 1.199]
+    p=5 slot j=2: ratios [1.199, 1.183, 0.756, 0.752, 1.109]
+    p=5 slot j=3: ratios [1.109, 1.199, 1.183, 0.756, 0.752]
+    p=7 slot j=1: ratios [1.296, 0.784, 0.787, 0.773, 0.783, 1.273, 1.304]
+    p=7 slot j=2: ratios [1.304, 1.296, 0.784, 0.787, 0.773, 0.783, 1.273]
+    p=7 slot j=3: ratios [1.273, 1.304, 1.296, 0.784, 0.787, 0.773, 0.783]
+    p=11 slot j=1: ratios [1.449, 0.839, 0.82, 0.825, 0.836, 0.835, 0.826, 0.839, 0.815, 1.461, 1.455]
+    p=11 slot j=2: ratios [1.455, 1.449, 0.839, 0.82, 0.825, 0.836, 0.835, 0.826, 0.839, 0.815, 1.461]
+    p=11 slot j=3: ratios [1.461, 1.455, 1.449, 0.839, 0.82, 0.825, 0.836, 0.835, 0.826, 0.839, 0.815]
+    p=13 slot j=1: ratios [1.525, 0.83, 0.837, 0.842, 0.847, 0.853, 0.855, 0.845, 0.83, 0.849, 0.833, 1.541, 1.512]
+    p=13 slot j=2: ratios [1.512, 1.525, 0.83, 0.837, 0.842, 0.847, 0.853, 0.855, 0.845, 0.83, 0.849, 0.833, 1.541]
+    p=13 slot j=3: ratios [1.541, 1.512, 1.525, 0.83, 0.837, 0.842, 0.847, 0.853, 0.855, 0.845, 0.83, 0.849, 0.833]
+ [G3] chi2/dof for n mod p, medium primes:
+    [(17, 738.29), (19, 641.27), (23, 517.16), (29, 383.97), (31, 349.51), (37, 285.57), (41, 277.53), (43, 225.17), (47, 178.54), (53, 157.76), (59, 136.23), (61, 136.51), (67, 130.0), (71, 110.64)]  (1.0 = uniform expectation)
+
+== k=4: 13188 members (n>1000) ==
+ [G1] n mod small prime powers:
+  n mod 2: chi2=4.1 (dof=1, sqrt(2dof)=1) exp/class=6594.0
+    most depleted: [(0, 6478, np.float64(0.982)), (1, 6710, np.float64(1.018))]
+    most enriched: [(1, 6710, np.float64(1.018)), (0, 6478, np.float64(0.982))]
+  n mod 4: chi2=7.6 (dof=3, sqrt(2dof)=2) exp/class=3297.0
+    most depleted: [(0, 3188, np.float64(0.967)), (2, 3290, np.float64(0.998)), (1, 3299, np.float64(1.001)), (3, 3411, np.float64(1.035))]
+    most enriched: [(3, 3411, np.float64(1.035)), (1, 3299, np.float64(1.001)), (2, 3290, np.float64(0.998)), (0, 3188, np.float64(0.967))]
+  n mod 8: chi2=164.5 (dof=7, sqrt(2dof)=4) exp/class=1648.5
+    most depleted: [(1, 1462, np.float64(0.887)), (2, 1464, np.float64(0.888)), (0, 1479, np.float64(0.897)), (3, 1486, np.float64(0.901)), (4, 1709, np.float64(1.037)), (6, 1826, np.float64(1.108))]
+    most enriched: [(7, 1925, np.float64(1.168)), (5, 1837, np.float64(1.114)), (6, 1826, np.float64(1.108)), (4, 1709, np.float64(1.037)), (3, 1486, np.float64(0.901)), (0, 1479, np.float64(0.897))]
+  n mod 16: chi2=226.1 (dof=15, sqrt(2dof)=5) exp/class=824.2
+    most depleted: [(0, 688, np.float64(0.835)), (9, 697, np.float64(0.846)), (2, 723, np.float64(0.877)), (11, 734, np.float64(0.891)), (10, 741, np.float64(0.899)), (3, 752, np.float64(0.912))]
+    most enriched: [(15, 1070, np.float64(1.298)), (14, 994, np.float64(1.206)), (13, 976, np.float64(1.184)), (5, 861, np.float64(1.045)), (12, 859, np.float64(1.042)), (7, 855, np.float64(1.037))]
+  n mod 3: chi2=320.5 (dof=2, sqrt(2dof)=2) exp/class=4396.0
+    most depleted: [(0, 3893, np.float64(0.886)), (1, 3930, np.float64(0.894)), (2, 5365, np.float64(1.22))]
+    most enriched: [(2, 5365, np.float64(1.22)), (1, 3930, np.float64(0.894)), (0, 3893, np.float64(0.886))]
+  n mod 9: chi2=557.8 (dof=8, sqrt(2dof)=4) exp/class=1465.3
+    most depleted: [(4, 1155, np.float64(0.788)), (3, 1172, np.float64(0.8)), (1, 1174, np.float64(0.801)), (0, 1180, np.float64(0.805)), (2, 1494, np.float64(1.02)), (6, 1541, np.float64(1.052))]
+    most enriched: [(5, 1964, np.float64(1.34)), (8, 1907, np.float64(1.301)), (7, 1601, np.float64(1.093)), (6, 1541, np.float64(1.052)), (2, 1494, np.float64(1.02)), (0, 1180, np.float64(0.805))]
+  n mod 27: chi2=592.6 (dof=26, sqrt(2dof)=7) exp/class=488.4
+    most depleted: [(19, 378, np.float64(0.774)), (18, 381, np.float64(0.78)), (22, 382, np.float64(0.782)), (4, 383, np.float64(0.784)), (3, 386, np.float64(0.79)), (1, 388, np.float64(0.794))]
+    most enriched: [(14, 687, np.float64(1.407)), (26, 677, np.float64(1.386)), (23, 653, np.float64(1.337)), (17, 647, np.float64(1.325)), (5, 624, np.float64(1.278)), (25, 585, np.float64(1.198))]
+  n mod 5: chi2=291.6 (dof=4, sqrt(2dof)=3) exp/class=2637.6
+    most depleted: [(0, 1865, np.float64(0.707)), (1, 2740, np.float64(1.039)), (2, 2772, np.float64(1.051)), (3, 2903, np.float64(1.101)), (4, 2908, np.float64(1.103))]
+    most enriched: [(4, 2908, np.float64(1.103)), (3, 2903, np.float64(1.101)), (2, 2772, np.float64(1.051)), (1, 2740, np.float64(1.039)), (0, 1865, np.float64(0.707))]
+  n mod 25: chi2=505.0 (dof=24, sqrt(2dof)=7) exp/class=527.5
+    most depleted: [(20, 358, np.float64(0.679)), (0, 372, np.float64(0.705)), (15, 372, np.float64(0.705)), (5, 374, np.float64(0.709)), (10, 389, np.float64(0.737)), (9, 484, np.float64(0.918))]
+    most enriched: [(24, 751, np.float64(1.424)), (23, 745, np.float64(1.412)), (22, 667, np.float64(1.264)), (21, 656, np.float64(1.244)), (19, 585, np.float64(1.109)), (13, 583, np.float64(1.105))]
+  n mod 7: chi2=614.0 (dof=6, sqrt(2dof)=3) exp/class=1884.0
+    most depleted: [(1, 1390, np.float64(0.738)), (2, 1396, np.float64(0.741)), (0, 1483, np.float64(0.787)), (3, 2072, np.float64(1.1)), (4, 2246, np.float64(1.192)), (6, 2285, np.float64(1.213))]
+    most enriched: [(5, 2316, np.float64(1.229)), (6, 2285, np.float64(1.213)), (4, 2246, np.float64(1.192)), (3, 2072, np.float64(1.1)), (0, 1483, np.float64(0.787)), (2, 1396, np.float64(0.741))]
+  n mod 49: chi2=795.4 (dof=48, sqrt(2dof)=10) exp/class=269.1
+    most depleted: [(29, 172, np.float64(0.639)), (37, 179, np.float64(0.665)), (30, 183, np.float64(0.68)), (16, 184, np.float64(0.684)), (28, 188, np.float64(0.699)), (15, 191, np.float64(0.71))]
+    most enriched: [(47, 452, np.float64(1.679)), (46, 421, np.float64(1.564)), (48, 412, np.float64(1.531)), (34, 337, np.float64(1.252)), (25, 335, np.float64(1.245)), (13, 322, np.float64(1.196))]
+  n mod 11: chi2=1021.4 (dof=10, sqrt(2dof)=4) exp/class=1198.9
+    most depleted: [(5, 920, np.float64(0.767)), (3, 931, np.float64(0.777)), (4, 943, np.float64(0.787)), (6, 948, np.float64(0.791)), (0, 957, np.float64(0.798)), (1, 957, np.float64(0.798))]
+    most enriched: [(7, 1672, np.float64(1.395)), (9, 1666, np.float64(1.39)), (8, 1621, np.float64(1.352)), (10, 1598, np.float64(1.333)), (2, 975, np.float64(0.813)), (1, 957, np.float64(0.798))]
+  n mod 13: chi2=1129.1 (dof=12, sqrt(2dof)=5) exp/class=1014.5
+    most depleted: [(6, 786, np.float64(0.775)), (0, 796, np.float64(0.785)), (8, 796, np.float64(0.785)), (5, 804, np.float64(0.793)), (2, 818, np.float64(0.806)), (1, 827, np.float64(0.815))]
+    most enriched: [(12, 1484, np.float64(1.463)), (11, 1466, np.float64(1.445)), (9, 1451, np.float64(1.43)), (10, 1433, np.float64(1.413)), (3, 864, np.float64(0.852)), (4, 835, np.float64(0.823))]
+ [G2] (n+k) mod p^2:
+  n+4 mod 4: chi2=7.6 (dof=3, sqrt(2dof)=2) exp/class=3297.0
+    most depleted: [(0, 3188, np.float64(0.967)), (2, 3290, np.float64(0.998)), (1, 3299, np.float64(1.001)), (3, 3411, np.float64(1.035))]
+    most enriched: [(3, 3411, np.float64(1.035)), (1, 3299, np.float64(1.001)), (2, 3290, np.float64(0.998)), (0, 3188, np.float64(0.967))]
+  n+4 mod 9: chi2=557.8 (dof=8, sqrt(2dof)=4) exp/class=1465.3
+    most depleted: [(8, 1155, np.float64(0.788)), (7, 1172, np.float64(0.8)), (5, 1174, np.float64(0.801)), (4, 1180, np.float64(0.805)), (6, 1494, np.float64(1.02)), (1, 1541, np.float64(1.052))]
+    most enriched: [(0, 1964, np.float64(1.34)), (3, 1907, np.float64(1.301)), (2, 1601, np.float64(1.093)), (1, 1541, np.float64(1.052)), (6, 1494, np.float64(1.02)), (4, 1180, np.float64(0.805))]
+  n+4 mod 25: chi2=505.0 (dof=24, sqrt(2dof)=7) exp/class=527.5
+    most depleted: [(24, 358, np.float64(0.679)), (4, 372, np.float64(0.705)), (19, 372, np.float64(0.705)), (9, 374, np.float64(0.709)), (14, 389, np.float64(0.737)), (13, 484, np.float64(0.918))]
+    most enriched: [(3, 751, np.float64(1.424)), (2, 745, np.float64(1.412)), (1, 667, np.float64(1.264)), (0, 656, np.float64(1.244)), (23, 585, np.float64(1.109)), (17, 583, np.float64(1.105))]
+  n+4 mod 49: chi2=795.4 (dof=48, sqrt(2dof)=10) exp/class=269.1
+    most depleted: [(33, 172, np.float64(0.639)), (41, 179, np.float64(0.665)), (34, 183, np.float64(0.68)), (20, 184, np.float64(0.684)), (32, 188, np.float64(0.699)), (19, 191, np.float64(0.71))]
+    most enriched: [(2, 452, np.float64(1.679)), (1, 421, np.float64(1.564)), (3, 412, np.float64(1.531)), (38, 337, np.float64(1.252)), (29, 335, np.float64(1.245)), (30, 322, np.float64(1.196))]
+ [G2b] (n+j) mod p for window slots j=1..k, p<=13:
+    p=2 slot j=1: ratios [1.018, 0.982]
+    p=2 slot j=2: ratios [0.982, 1.018]
+    p=2 slot j=3: ratios [1.018, 0.982]
+    p=2 slot j=4: ratios [0.982, 1.018]
+    p=3 slot j=1: ratios [1.22, 0.886, 0.894]
+    p=3 slot j=2: ratios [0.894, 1.22, 0.886]
+    p=3 slot j=3: ratios [0.886, 0.894, 1.22]
+    p=3 slot j=4: ratios [1.22, 0.886, 0.894]
+    p=5 slot j=1: ratios [1.103, 0.707, 1.039, 1.051, 1.101]
+    p=5 slot j=2: ratios [1.101, 1.103, 0.707, 1.039, 1.051]
+    p=5 slot j=3: ratios [1.051, 1.101, 1.103, 0.707, 1.039]
+    p=5 slot j=4: ratios [1.039, 1.051, 1.101, 1.103, 0.707]
+    p=7 slot j=1: ratios [1.213, 0.787, 0.738, 0.741, 1.1, 1.192, 1.229]
+    p=7 slot j=2: ratios [1.229, 1.213, 0.787, 0.738, 0.741, 1.1, 1.192]
+    p=7 slot j=3: ratios [1.192, 1.229, 1.213, 0.787, 0.738, 0.741, 1.1]
+    p=7 slot j=4: ratios [1.1, 1.192, 1.229, 1.213, 0.787, 0.738, 0.741]
+    p=11 slot j=1: ratios [1.333, 0.798, 0.798, 0.813, 0.777, 0.787, 0.767, 0.791, 1.395, 1.352, 1.39]
+    p=11 slot j=2: ratios [1.39, 1.333, 0.798, 0.798, 0.813, 0.777, 0.787, 0.767, 0.791, 1.395, 1.352]
+    p=11 slot j=3: ratios [1.352, 1.39, 1.333, 0.798, 0.798, 0.813, 0.777, 0.787, 0.767, 0.791, 1.395]
+    p=11 slot j=4: ratios [1.395, 1.352, 1.39, 1.333, 0.798, 0.798, 0.813, 0.777, 0.787, 0.767, 0.791]
+    p=13 slot j=1: ratios [1.463, 0.785, 0.815, 0.806, 0.852, 0.823, 0.793, 0.775, 0.816, 0.785, 1.43, 1.413, 1.445]
+    p=13 slot j=2: ratios [1.445, 1.463, 0.785, 0.815, 0.806, 0.852, 0.823, 0.793, 0.775, 0.816, 0.785, 1.43, 1.413]
+    p=13 slot j=3: ratios [1.413, 1.445, 1.463, 0.785, 0.815, 0.806, 0.852, 0.823, 0.793, 0.775, 0.816, 0.785, 1.43]
+    p=13 slot j=4: ratios [1.43, 1.413, 1.445, 1.463, 0.785, 0.815, 0.806, 0.852, 0.823, 0.793, 0.775, 0.816, 0.785]
+ [G3] chi2/dof for n mod p, medium primes:
+    [(17, 88.18), (19, 77.01), (23, 62.13), (29, 45.77), (31, 39.94), (37, 35.29), (41, 34.4), (43, 28.89), (47, 22.3), (53, 18.0), (59, 15.97), (61, 17.69), (67, 17.09), (71, 13.66)]  (1.0 = uniform expectation)

@@ -1,0 +1,61 @@
+tags: ['run1']
+
+== k=2: 1364676 members, min=208, max=99999871 ==
+           X     count  dens/decade   maxgap    meangap
+         100         0     0.000000        -          -
+        1000         3     0.003333      529      389.5
+       10000        55     0.005778     1184      160.2
+      100000       913     0.009533     1068      105.0
+     1000000     11205     0.011436     1177       87.4
+    10000000    126468     0.012807     1030       78.1
+log-log slope of count function over [999999,99999871]: 1.0402 (1.0 = linear growth), c_k est = count/X = 0.013647
+adjacent pairs (n,n+1): 145274; maximal-run length: 6; runs of len>=3: [(8174, 3), (45998, 3), (51984, 3), (58643, 3), (93293, 3), (93435, 3), (110615, 3), (130461, 3), (149874, 3), (164826, 3), (185884, 4), (191678, 3), (214796, 3), (216028, 3), (217774, 3), (228548, 3), (231811, 3), (241772, 3), (252965, 4), (254474, 3)]
+  naive independent-density expectation of pairs ~ count^2/X = 18623.4 -> enrichment factor 7.80
+
+== k=3: 139975 members, min=3475, max=99999870 ==
+           X     count  dens/decade   maxgap    meangap
+         100         0     0.000000        -          -
+        1000         0     0.000000        -          -
+       10000         3     0.000333     4699     2350.0
+      100000        67     0.000711     9579     1288.4
+     1000000       907     0.000933     9871     1070.2
+    10000000     11902     0.001222    10057      818.6
+log-log slope of count function over [999999,99999870]: 1.0917 (1.0 = linear growth), c_k est = count/X = 0.001400
+adjacent pairs (n,n+1): 14124; maximal-run length: 5; runs of len>=3: [(252965, 3), (347849, 3), (471821, 3), (615900, 3), (666329, 3), (681546, 3), (844964, 3), (1371365, 3), (1453097, 3), (1532387, 3), (1576680, 3), (1698671, 3), (1742144, 3), (1833479, 3), (1987487, 3), (2029036, 3), (2144465, 3), (2587199, 3), (2615493, 3), (2630048, 3)]
+  naive independent-density expectation of pairs ~ count^2/X = 195.9 -> enrichment factor 72.09
+
+== k=4: 13188 members, min=8174, max=99999869 ==
+           X     count  dens/decade   maxgap    meangap
+         100         0     0.000000        -          -
+        1000         0     0.000000        -          -
+       10000         1     0.000111        -          -
+      100000         4     0.000033    41309    20725.5
+     1000000        77     0.000081    84660    12290.8
+    10000000       998     0.000102    66810     9747.8
+log-log slope of count function over [999999,99999869]: 1.1244 (1.0 = linear growth), c_k est = count/X = 0.000132
+adjacent pairs (n,n+1): 1234; maximal-run length: 4; runs of len>=3: [(3648835, 3), (3953074, 3), (6188699, 3), (7141713, 3), (7791038, 3), (7979083, 4), (9154564, 3), (9557962, 3), (12688568, 3), (12722146, 3), (12907231, 3), (15604186, 4), (16426867, 3), (17036481, 3), (17139249, 3), (17199662, 3), (18657773, 3), (19022031, 3), (19530769, 3), (19595529, 3)]
+  naive independent-density expectation of pairs ~ count^2/X = 1.7 -> enrichment factor 709.51
+
+== k=5: 1012 members, min=252965, max=99920135 ==
+           X     count  dens/decade   maxgap    meangap
+         100         0     0.000000        -          -
+        1000         0     0.000000        -          -
+       10000         0     0.000000        -          -
+      100000         0     0.000000        -          -
+     1000000         4     0.000004   333697   197333.0
+    10000000        60     0.000006   804494   152992.7
+log-log slope of count function over [999201,99920135]: 1.2357 (1.0 = linear growth), c_k est = count/X = 0.000010
+adjacent pairs (n,n+1): 72; maximal-run length: 3; runs of len>=3: [(30978449, 3), (72286092, 3), (80405697, 3), (96631715, 3)]
+  naive independent-density expectation of pairs ~ count^2/X = 0.0 -> enrichment factor 7024.65
+
+== k=6: 63 members, min=3648835, max=98426731 ==
+           X     count  dens/decade   maxgap    meangap
+         100         0     0.000000        -          -
+        1000         0     0.000000        -          -
+       10000         0     0.000000        -          -
+      100000         0     0.000000        -          -
+     1000000         0     0.000000        -          -
+    10000000         2     0.000000  3492878  3492878.0
+log-log slope of count function over [984267,98426731]: 1.4470 (1.0 = linear growth), c_k est = count/X = 0.000001
+adjacent pairs (n,n+1): 4; maximal-run length: 2; runs of len>=3: []
+  naive independent-density expectation of pairs ~ count^2/X = 0.0 -> enrichment factor 99195.50
