@@ -1,0 +1,23 @@
+=== C. automatic lower bound from certified extinctions ===
+  every monotone-4-AP-free permutation of [1..4] has max_n pos(n)/n > 5/4
+  every monotone-4-AP-free permutation of [1..15] has max_n pos(n)/n > 3/2
+  every monotone-4-AP-free permutation of [1..31] has max_n pos(n)/n > 7/4
+  every monotone-4-AP-free permutation of [1..90] has max_n pos(n)/n > 2
+  every monotone-4-AP-free permutation of [1..200] has max_n pos(n)/n > 2
+  every monotone-4-AP-free permutation of [1..1000] has max_n pos(n)/n > 2
+  => by the restriction principle the same bound holds for EVERY AP
+     restriction of length >= M, for every finite avoider.
+
+=== A. AP-uniformity of avoiders built for other purposes ===
+R20 wit_N90_a0.5.txt               N=  90  minAPdisp=  2.200 (AP q=7,r=0, n=5)  tail(min,n>=L/2)=  1.333  global max pos/v= 2.727
+R20 cw_CLS(5,a)_250.txt            N= 250  minAPdisp=  3.667 (AP q=8,r=3, n=3)  tail(min,n>=L/2)=  1.500  global max pos/v=23.500
+R20 cw_CLS(3,a)_160.txt            N= 160  minAPdisp=  2.250 (AP q=8,r=1, n=4)  tail(min,n>=L/2)=  1.357  global max pos/v=13.000
+
+  fresh unconstrained CEGAR avoiders:
+unconstrained CEGAR (3s)           N=  60  minAPdisp=  2.000 (AP q=8,r=5, n=1)  tail(min,n>=L/2)=  1.167  global max pos/v=14.000
+unconstrained CEGAR (70s)          N= 120  minAPdisp=  5.333 (AP q=6,r=4, n=3)  tail(min,n>=L/2)=  1.100  global max pos/v=45.000
+Traceback (most recent call last):
+  File "/home/user/erdos/attempts/route-R21-apuniform/vacuity.py", line 81, in <module>
+    assert res == "SAT", (N, res)
+           ^^^^^^^^^^^^
+AssertionError: (200, 'UNKNOWN')

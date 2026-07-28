@@ -919,3 +919,75 @@ By Lemma 6 that profile is dead as a candidate for the negative branch, and the
 "displacement Θ(v log v)" target proposed earlier in this run is falsified for the natural
 one-parameter family. The surviving negative-branch question is not the SHAPE of the
 profile but AP-uniformity (Corollary 26, design principle D1).
+
+## Proposition 29 (class-architecture tameness bound — route R21, verified)
+
+Let c : ℕ → ℤ≥0 have finite fibres F_j, with classes emitted in increasing index order and
+ARBITRARY orders within each class. Call an infinite AP P *tame* if c|_P is weakly
+increasing from some index n₀ on. For tame P and n > n₀,
+
+    pos_P(n) ≤ (n − 1) + |F_{c(p_n)} ∩ P|,   hence
+    sup_{n>n₀} pos_P(n)/n ≤ 1 + R_P,   R_P := sup_j |F_j ∩ P| / (1 + |P ∩ (F_0∪…∪F_{j−1})|).
+
+Proof. Weak monotonicity beyond n₀ means every P-element in a strictly lower class has
+index < n and is emitted earlier; inside p_n's own class at most |F_{c(p_n)} ∩ P| − 1
+further P-elements can precede it. Divide by n at the first index of the class. ∎
+
+Consequence: a geometric fibre design (|F_j| ≍ b^j, so R_P = O(b)) forces LINEAR
+displacement along every tame P — so P violates design principle D1 (Corollary 26).
+This holds uniformly over all within-class orders, so it is an impossibility statement
+about the architecture, not about a particular gadget.
+
+## Corollary 30 (every congruence-determined delay fails D1 — the arithmetic world closed)
+
+Let c = j + t where j is a non-decreasing geometric block index and t : ℕ → ℤ≥0 is
+finite-valued. Put U_k := {v : t(v) ≥ k} and let k* be least with U_{k*} ≠ ℕ (it exists as
+t is finite-valued; note U_0 = ℕ, so k* ≥ 1). If U_{k*} is a union of residue classes
+modulo some m, then t is CONSTANT on an infinite AP, that AP is tame, and by
+Proposition 29 the architecture has linear displacement there — D1 fails.
+
+Proof. By minimality U_{k*−1} = ℕ, so t ≥ k*−1 everywhere. The complement of U_{k*} is a
+nonempty union of residue classes mod m, hence contains a full class P = r + mℕ. On P we
+have k*−1 ≤ t < k*, so t ≡ k*−1 there, and c|_P = j|_P + const is non-decreasing: P is
+tame. ∎
+
+This retires, in one line and for ALL geometric-fibre class architectures at once:
+ρ(v_p(v)) for every prime p, the shifted family ρ(v_p(v+s)), every function of v mod m,
+and every finite Boolean combination of congruence conditions — i.e. the entire arithmetic
+delay world. In particular route R20's surviving candidate CLS(5,a) (t = v₂) is now
+D1-dead BY PROOF rather than by a search sitting in the blind spot of Remark 27: there
+{v₂ ≥ 1} is the even numbers, so the odd numbers form a tame AP on which the delay is
+constant. (Verified: exactly the tame-AP families route R21 measured, 14 of the 36 APs
+with q ≤ 8 for both CLS(3,a) and CLS(5,a), with the bound 1+R_P nearly tight against the
+measured maxima.)
+
+## Remark 31 (the AP-uniformity experiment was VACUOUS — a mis-specification, recorded)
+
+The coordinator endorsed route R20's closing recommendation and commissioned a direct
+search for a class function with finite fibres, no strictly monotone 4-AP class sequence
+(condition (ii)), and maximal displacement along every AP of step ≤ 8. Route R21 showed
+the experiment as specified cannot decide anything, for two proved reasons:
+
+(a) **The objective is degenerate.** max_σ min_{q≤8,r} max_n pos_P(n)/n equals the trivial
+    bound min_{q,r} |P_{q,r} ∩ [1..N]| ≈ N/8, attained by any avoider that places the
+    values 1…15 after all larger ones (certified: N=60 → 6, N=100 → 11). The optimum is
+    realised at index n = 1 and says nothing about D1.
+(b) **Feasibility is automatic and infeasibility is impossible.** For ANY finite avoider
+    and any b > 1, the geometric coarsening c(v) := j where pos(v) ∈ [b^j, b^{j+1})
+    has exactly the geometric fibre design and satisfies (ii) (a strictly monotone class
+    sequence along a 4-AP would make pos monotone along it). Since avoiders exist at every
+    N, the system (i)+(ii) can never go extinct. And every finite avoider already meets the
+    γ-floor of Remark 17 along every AP, so infeasibility of D1 cannot be certified at any
+    level ≤ γ.
+
+So D1 has no independent finite content: it is exactly Corollary 26 plus universal linear
+extinction, and neither branch can be advanced by searching for it. What survived the
+exercise is Proposition 29 and Corollary 30 — obtained by proof, not by search — and the
+open Conjecture R21-C below.
+
+**Conjecture R21-C (open).** For c = ⌊log_b v⌋ + t with a geometric fibre design,
+condition (ii) forces t to be constant on some infinite AP. If true, no block-index-plus-
+delay architecture is D1-compatible. It is NOT implied by Corollary 30 (which assumes
+congruence-determinacy), and by (b) above it cannot be settled by finite search — any
+argument that would also apply to the geometric coarsening of a finite avoider is wrong.
+That last sentence is the sanity check every candidate proof must pass.

@@ -1,1 +1,3 @@
 CLS(3,a) N=250: UNSAT (526s, 1281 rounds)
+CLS(4,a) N=250: SAT (1111s, 8249 rounds) maxpos/v=35.50
+CLS(4,a) N=400: UNSAT (804s, 1112 rounds)

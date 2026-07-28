@@ -1,4 +1,4 @@
-# exhaustive 5-cut search, max cut <= 200
+# exhaustive 5-cut search, max cut <= 110
 *** DEPTH-5 FEASIBLE: [1, 2, 4, 10, 28]
 *** DEPTH-5 FEASIBLE: [1, 2, 4, 10, 29]
 *** DEPTH-5 FEASIBLE: [1, 2, 4, 10, 30]
@@ -76,3 +76,5 @@
 *** DEPTH-5 FEASIBLE: [1, 2, 4, 10, 102]
 *** DEPTH-5 FEASIBLE: [1, 2, 4, 10, 103]
 *** DEPTH-5 FEASIBLE: [1, 2, 4, 10, 104]
+!! TIME_CAP at [1, 2, 4, 10, 105] (303s) -- treated as INCONCLUSIVE, branch kept alive
+*** DEPTH-5 FEASIBLE: [1, 2, 4, 10, 105]

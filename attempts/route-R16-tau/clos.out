@@ -1,0 +1,3 @@
+M=   1000 max|Cl|=   390 at u=161; best start<=M/10: 376 at u=80 [0.0s]
+M=  10000 max|Cl|=  4539 at u=728; best start<=M/10: 4539 at u=728 [4.8s]
+M=  30000 max|Cl|= 14203 at u=728; best start<=M/10: 14203 at u=728 [117.3s]

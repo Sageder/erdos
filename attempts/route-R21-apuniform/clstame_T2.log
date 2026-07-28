@@ -1,0 +1,8 @@
+   [N=100 sizes=[2, 6, 18, 54, 20] qmax=8 T=2: 4902 lt-bools, 36 no-tame clauses, 86 window clauses]
+N=100 b=3.0 qmax=8 T=2 sizes=[2, 6, 18, 54, 20]: SAT (11.8s)
+   [N=160 sizes=[2, 6, 18, 54, 80] qmax=8 T=2: 12642 lt-bools, 36 no-tame clauses, 107 window clauses]
+N=160 b=3.0 qmax=8 T=2 sizes=[2, 6, 18, 54, 80]: SAT (304.5s)
+   [N=250 sizes=[2, 6, 18, 54, 162, 8] qmax=8 T=2: 31000 lt-bools, 36 no-tame clauses, 127 window clauses]
+N=250 b=3.0 qmax=8 T=2 sizes=[2, 6, 18, 54, 162, 8]: UNKNOWN (400.7s)
+   [N=400 sizes=[2, 6, 18, 54, 162, 158] qmax=8 T=2: 79602 lt-bools, 36 no-tame clauses, 158 window clauses]
+N=400 b=3.0 qmax=8 T=2 sizes=[2, 6, 18, 54, 162, 158]: UNKNOWN (402.9s)
