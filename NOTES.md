@@ -1,5 +1,43 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 (Opus-5) — R21: the experiment I commissioned was VACUOUS (proved), but it
+## closed the entire arithmetic delay world by proof
+- MY MIS-SPECIFICATION, recorded (CORE Remark 31): I endorsed R20's recommendation and
+  commissioned a direct AP-uniformity search. R21 proved it cannot decide anything:
+  (a) the objective is DEGENERATE — max_sigma min_AP max_n pos_P(n)/n equals the trivial
+      bound min|P cap [1..N]| ~ N/8, attained by dumping values 1..15 at the end
+      (certified N=60 -> 6, N=100 -> 11); the optimum is realized at index n=1.
+  (b) feasibility is AUTOMATIC and infeasibility IMPOSSIBLE — the geometric coarsening
+      c(v) := j where pos(v) in [b^j, b^{j+1}) of ANY finite avoider has geometric fibres
+      and satisfies condition (ii); avoiders exist at every N, so (i)+(ii) never goes
+      extinct. And every avoider already meets Remark 17's gamma-floor on every AP, so
+      D1-infeasibility cannot be certified at any level <= gamma.
+  => D1 has NO independent finite content; it is exactly Corollary 26 + universal linear
+  extinction. Lesson for the portfolio: before commissioning a search, check whether a
+  trivial construction already satisfies the constraint system.
+- WHAT SURVIVED, and it is the strongest NO-side theorem of the run (CORE Props 29-30,
+  both re-derived and checked by me):
+  * Prop 29 (tameness bound): for ANY class function with finite fibres emitted in
+    increasing index order, and ARBITRARY within-class orders, a tame AP P (class weakly
+    increasing on a tail) has sup pos_P(n)/n <= 1 + R_P. Geometric fibres => R_P = O(b)
+    => LINEAR displacement on P => D1 fails there. Uniform over all gadgets.
+  * Cor 30 (arithmetic world closed): if the delay's level set U_{k*} is a union of
+    residue classes mod m, then t is constant on a full class P, P is tame, D1 fails.
+    This retires rho(v_p(v)) for EVERY prime p, rho(v_p(v+s)), every function of v mod m,
+    and every Boolean combination of congruences — for ALL geometric-fibre architectures.
+    In particular R20's surviving CLS(5,a) is now dead BY PROOF (its odds are tame),
+    not by a search inside Remark 27's blind spot.
+- ALSO MEASURED by R21: AP-alternation is NOT 2-adically rigid — explicit mod-4 rule
+  t(v)=0 (even), 2 (v=1 mod 4), 1 (v=3 mod 4) is AP-alternating, verified to M=3000; but
+  it is congruence-determined so Cor 30 kills it. All period-m AP-alternating functions
+  classified for m=2,3,4,6,8: only constants (m=3) or parity-alternating (2-adic-shaped).
+  The MID family (level sets meeting every AP) has 0 tame APs and growing displacement
+  but FAILS condition (ii).
+- OPEN successor: Conjecture R21-C — (ii) + geometric fibres => t constant on some
+  infinite AP. Would close block-index-plus-delay architectures entirely. NOT implied by
+  Cor 30, and NOT finitely decidable (any proof that would also apply to the geometric
+  coarsening of a finite avoider is wrong — the standing sanity check).
+
 ## 2026-07-28 (Opus-5) — R20 RETURNS: v log v FALSIFIED; AP-uniformity is the real filter
 - MY v log v HYPOTHESIS IS FALSIFIED for the natural family. R20's alpha-wall: with
   phi_alpha(v)=ceil(alpha*v*log2(2v)), the minimal admissible alpha*(N) = 0.45, 0.50,

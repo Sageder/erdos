@@ -78,3 +78,4 @@
 *** DEPTH-5 FEASIBLE: [1, 2, 4, 10, 104]
 !! TIME_CAP at [1, 2, 4, 10, 105] (303s) -- treated as INCONCLUSIVE, branch kept alive
 *** DEPTH-5 FEASIBLE: [1, 2, 4, 10, 105]
+*** DEPTH-5 FEASIBLE: [1, 2, 4, 10, 106]
