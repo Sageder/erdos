@@ -1,5 +1,39 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 — route R6 FILED (attempts/route-R6/REPORT.md): density route + LP merge
+- Deliverables complete: L0-L3 + infinite Dilworth (constructive patience version;
+  false variants refuted), T1-T6 necessary conditions, ALL machine-verified
+  exhaustively on avoiders N<=9 (N=10 pass still running post-restart).
+- CORRECTION: brief's calibration example (reversed DYADIC blocks) is WRONG — it has
+  increasing 4-APs ((1,6,11,16) at pos (1,5,12,31)). Ratio-3 blocks (triadic) are the
+  right object; ratio->3 is FORCED in the reversed-block family (Prop 7.5: any pair of
+  block starts beta<gamma in a bad window obeys gamma<=3beta-5).
+- LP MERGE HEADLINES: (i) CEILING (human-proved): triadic has pos(v)<=3v-1 and NO
+  increasing 4-AP => LP-inc(C) FALSE for all C>=3; no (H-up)-only argument (Thm-12
+  ledger, R5 staircases, records/piles) can reach C>=3; observed full extinction at
+  C<=3 is a genuinely two-orientation phenomenon. (ii) R5 hand-off ANSWERED (negative
+  for C>=3): explicit L10 staircases live inside triadic (staircase_demo.py).
+  (iii) SHARPENING (machine-assisted): CP-SAT UNSAT certificates => LP-inc(C) for all
+  C <= 43/24 ~ 1.792 (N=32,40,48 independent), vs 9/8 human. min-SAT C climbing:
+  3/2@12, 13/8@16, 5/3@24, 7/4@28, 11/6@32. CONJECTURE C*_inc = 3 exactly.
+- Honest gap (deliverable 3): cardinality coupling x <= LIS*LDS with both <= r4(x)
+  has Behrend slack r4(x)^2/x -> infinity; triadic realizes ALL increasing-side
+  lemmas, identity realizes all decreasing-side ones => YES needs a two-orientation,
+  non-cardinality invariant. Open LP window: C in (43/24, 3) inc-side, then couple (H-down).
+
+## 2026-07-28 — session (route R1 agent): corridor closure
+- E(V) settled for ALL V: sigma_V witnesses it (3-AP-free => no incr 3-AP w/ extension).
+  Single cuts NEVER obstruct; in-order obstruction is irreducibly multi-cut (>=3 scales).
+  See attempts/route-R1/e_of_v_sigma.log.
+- Window law W(V1,V2) (feasible 3rd cuts): wide open at tiny scale ((2,8),(4,12) all SAT);
+  UNSAT notches appear from V2=16 on ((4,16): notch at ~60; (6,20): ~66-86; (8,26): 90-110
+  and 180 dead, 140 alive island). Notches widen/multiply with scale. windows.log.
+- Interleaved (non-decomposing) layouts: lag-2 ratio-2 pattern died at stage 7 (UNSAT,
+  any gadgets); debt propagates backwards as decreasing-AP pressure (core_T7.log).
+  Other patterns (geom3-lag2, lead-4, odd-leading, factorial-lag2) being verdicts-run.
+- REPORT.md at attempts/route-R1/ carries the full taxonomy + impossibility statements.
+
+
 ## 2026-07-28 (post-restart) — session 1 continued: LP verified, MUS mechanism, FINlin program
 - Container restart killed all background jobs; 6 wave-1 agents resumed via SendMessage
   (R2,R3,R4,R6,R8,R9) + R1 resumed on corridor closure + fresh-context AUDITOR launched

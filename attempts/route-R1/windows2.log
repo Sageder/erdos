@@ -1,0 +1,4 @@
+--- 4-cut probes {2,8,26,V4} (PRIORITY):
+cuts [2, 8, 26, 100] UNSAT (6s)
+cuts [2, 8, 26, 120] UNSAT (24s)
+cuts [2, 8, 26, 140] SAT (83s)

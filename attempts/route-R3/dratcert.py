@@ -68,6 +68,7 @@ class RupChecker:
         self.watches = {}      # literal -> set of clause indices watching it
         self.active = []
         self.units = []
+        self.unit_cis = []     # indices of clauses of length <= 1 (incl. inactive)
         for c in clauses:
             self.add_clause(list(c))
 
@@ -117,10 +118,10 @@ class RupChecker:
         trail = []
 
         def set_lit(l):
-            if l in val:
-                return val[l] is True and False
-            if -l in val and val[-l] is True:
-                return "conflict"
+            if val.get(l) is True:
+                return None          # already true: nothing to do
+            if val.get(l) is False:
+                return "conflict"    # already false: conflict
             val[l] = True
             val[-l] = False
             trail.append(l)
@@ -154,9 +155,6 @@ class RupChecker:
                 other = w2 if w1 == falsified else w1
                 repl = None
                 for lit in c:
-                    if lit != falsified and lit != other and val.get(-lit) is not True:
-                        if val.get(lit) is True or -lit not in val or val.get(lit) is not False:
-                            pass
                     if lit != falsified and lit != other and val.get(lit) is not False:
                         repl = lit
                         break

@@ -16,8 +16,10 @@ pi(v), records, piles, LDS=2*3^(K-1)=4374, LIS=K=8: all verified for K=8
 r4(26) = 15 (exact);  r4(80) in [36, 80] (CP-SAT bounds)
 x=26: LDS=18, LIS=3: LDS*r4_lb=270>=x OK; LIS<=r4 OK; LDS<=r4 VIOLATED (expected: not a counterexample)
 x=80: LDS=54, LIS=4: LDS*r4_lb=1944>=x OK; LIS<=r4 OK; LDS<=r4 HOLDS
-Traceback (most recent call last):
-  File "/home/user/erdos/attempts/route-R6/calibration_tests.py", line 160, in <module>
-    assert lds_length(reversed_blocks(3, 4)) > ub80       # 54 > ub >= r4(80): violated
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError
+T4 (window displacement) verified for all windows in [1..728]
+T5: records {3^(k+1)-1} are 3-AP-free (K=9 prefix)
+T2-inc: all dec-patience pile value sets 3-AP-free (K=7 prefix)
+T3-inc: induced class permutations have no increasing 4-AP (6 classes, K=8)
+increasing 3-APs (3^k, 7*3^k, 13*3^k) verified for k=0..6
+
+CALIBRATION TESTS COMPLETE.

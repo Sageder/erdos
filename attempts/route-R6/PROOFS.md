@@ -1,8 +1,9 @@
 # Route R6 — Density/Szemerédi structure of a hypothetical counterexample: PROOFS
 
-Status: all lemmas below are **proved in full** unless explicitly tagged *(remark, not used)*
-or *(heuristic)*. Machine tests: `finite_tests.py` (exhaustive over all monotone-4-AP-free
-permutations of `[1..N]`, `N ≤ 10`), `calibration_tests.py` (reversed-block examples).
+Status: all lemmas below are **proved in full** unless explicitly tagged *(remark, not used)*,
+*(heuristic)*, or *(machine-assisted)*. Machine tests: `finite_tests.py` (exhaustive over all
+monotone-4-AP-free permutations of `[1..N]`: `N ≤ 9` complete, `N = 10` in progress at
+filing), `calibration_tests.py` (reversed-block examples).
 Conventions are those of `/home/user/erdos/PROBLEM.md` (binding).
 
 ## 0. Setup, notation, cited theorems
@@ -48,7 +49,7 @@ calibration example satisfies (H↑) but not (H↓).
 - **[Beh] Behrend 1946** (*On sets of integers which contain no three terms in
   arithmetical progression*, PNAS 32 (1946) 331–332): there is an absolute `c > 0`
   with `r₃(N) ≥ N·exp(−c√(log N))` for all `N ≥ 2`. Hence also
-  `r₄(N) ≥ N·exp(−c√(log N))`. Used only in the assessment (§6), never in a proof
+  `r₄(N) ≥ N·exp(−c√(log N))`. Used only in the assessments (§8, REPORT.md), never in a proof
   of a necessary condition.
 - **[GT] Green–Tao 2017** (*New bounds for Szemerédi's theorem, III: a polylogarithmic
   bound for r₄(N)*, Mathematika 63): `r₄(N) ≪ N (log N)^{−c}` for some absolute
@@ -223,3 +224,274 @@ by position is a well-defined enumeration `b`; each `v ∈ S` occurs at the fini
 `|{w ∈ S : π(w) ≤ π(v)}|`. `a_S` is a bijection as a composition of the bijections
 `i ↦ b(i)` (ℕ→S) and `φ` (S→ℕ). Every value `φ(v)` sits at a finite index, and every
 index is filled — order type `ω` on both axes. ∎
+
+## 4. Necessary conditions on any counterexample (T1–T6), each machine-tested
+
+Standing hypothesis (H) (both orientations) unless a weaker one is flagged.
+Machine tests: `finite_tests.py` — **exhaustive** over all monotone-4-AP-free
+permutations of `[1..N]`, `N = 3..9` (194,160 avoiders; counts match the calibration
+sequence 6, 22, 102, 564, 3336, 22266, 168864), with exact `r₄(N)` from brute force
+(`r₄(1..10) = 1,2,3,3,4,5,5,6,7,8`); `N = 10` run separately (same code path).
+All tests **pass** on every avoider. Calibration on the triadic example: §5.
+
+**T1 (sandwich).** For every `x`: `x ≤ LIS(x)·LDS(x)`; `LIS(x) ≤ r₄(x)` and (H↓)
+`LDS(x) ≤ r₄(x)`; hence `x/r₄(x) ≤ LIS(x), LDS(x) ≤ r₄(x)`, both `o(x)`, both `→ ∞`.
+*Proof:* Lemma L2.5. *(Test: T1 block of `finite_tests.py`.)*
+
+**T2 (pile structure).** The dec-patience piles partition ℕ into infinitely many
+increasing subsequences (Theorem D.2 + L2), **every pile infinite** (L3), every pile
+value set 4-AP-free of upper density 0 (L1, L1.1), any finite union of pile value
+sets has upper density 0 (L2), interlock chains as in P(b): every `v` in pile `j`
+bottoms a decreasing chain of length `j` through piles `j, j−1, …, 1` whose value set
+is 4-AP-free (L1′, uses (H↓)), so `j ≤ r₄(max prefix value at time π(v))`.
+*(Test: T2 block — pile partition, count = LDS, monotone piles, 4-AP-free pile value
+sets, interlock witnesses; dual Mirsky piles likewise.)*
+
+**T3 (closure under affine sub-progressions).** For every infinite AP
+`P = {c + (t−1)m : t ≥ 1}` (`c ≥ 1, m ≥ 1`), the renormalized induced permutation
+`a_P` (Lemma L3.5 applied to `S = P`, composed with the affine order isomorphism
+`P → ℕ`) is again a permutation of ℕ with no monotone 4-AP.
+*Proof.* `a_P` is a legitimate permutation of ℕ by L3.5. A 4-term AP inside `P`
+has common difference divisible by `m`, and the affine map `c+(t−1)m ↦ t` is a
+bijection between 4-APs of ℕ contained in `P` and 4-APs of ℕ; positions are
+inherited, so a monotone 4-AP of `a_P` pulls back to one of `a`. ∎
+**Corollary T3.1** (with [DEGS77(a)] applied to `a_P`, and to its tails via
+`P' ⊆ P`): `a` contains monotone 3-APs with all terms `≡ c (mod m)` and min term
+`> M`, for every `c, m, M` — infinitely many monotone 3-APs at every scale in every
+residue class. (This is also R5's Corollary 2.1, proved there via anchored supply;
+the two proofs are independent.)
+*(Test: T3 block — every residue-class restriction of every finite avoider is a
+4-AP-free permutation after renormalization.)*
+
+**T4 (local displacement; uses (H↑) only).** For every interval
+`I = [u, u+L−1] ⊆ ℕ`: `max_{v∈I} |π(v) − v| > (L−4)/6`.
+*Proof.* Suppose `C := max_{v∈I}|π(v)−v|` satisfies `6C ≤ L−4`. Put `d = 2C+1`,
+`x = u`. All four terms `x, x+d, x+2d, x+3d` lie in `I` (`x+3d = u+6C+3 ≤ u+L−1`).
+For `t = 0,1,2`: `π(x+(t+1)d) ≥ x+(t+1)d − C = x+td + (C+1) > x+td + C ≥ π(x+td)`.
+So the four positions increase strictly: an increasing monotone 4-AP, contradicting
+(H↑). ∎
+**Corollary T4.1.** `limsup_{v→∞} |π(v)−v|/v ≥ 1/6`.
+*Proof.* Apply T4 to `I = [1..L]`: some `v_L ≤ L` has `|π(v_L)−v_L| > (L−4)/6`.
+For any `B`, `C_B := max_{v≤B}|π(v)−v|` is finite, so for `L > 6C_B+4` the witness
+has `v_L > B`; thus `v_L → ∞`, and `|π(v_L)−v_L|/v_L > (L−4)/(6L) → 1/6`. ∎
+(Comparison: CORE.md Theorem 12 gives `limsup π(v)/v ≥ 9/8`, i.e. signed excess
+`≥ 1/8` along a subsequence; T4.1 gives unsigned excess `≥ 1/6` — neither implies
+the other; T4 itself is a *local, every-window* statement with no analogue there.)
+*(Test: T4 block — all windows of all avoiders; tightness data: minimal window-max
+displacement over avoiders at `N=9` is `2` for `L=9`, vs bound `⌈(9−4)/6⌉ = 1`:
+the constant 1/6 is not optimized.)*
+
+**T5 (records; uses (H↑) only).** The record (left-to-right maxima) value set is
+infinite (L0(ii)), 4-AP-free, of upper density 0; the left-to-right minima value
+set is finite. (= CORE.md Lemma 11(b) spine `Λ`; independent proof here via L0+L1.
+LR minima form a decreasing subsequence, finite by L0(i).)
+*(Test: T5 block.)*
+
+**T6 (forced extension; interface to R5).** For every increasing 3-AP
+`(x, x+d, x+2d)` (positions increasing): `π(x+3d) < π(x+2d)`, and `π(x−d) > π(x)`
+if `x−d ≥ 1`; mirror statements for decreasing 3-APs. Combined with T3.1: these
+constraints fire at every scale and in every residue class.
+*Proof:* immediate from (H) (= R5 lemmas L1, L2, L3a, L3b, proved there; re-proved
+in one line each by reading off the excluded 4-AP).
+*(Test: T6 block, both orientations.)*
+
+## 5. Calibration: the reversed-block examples (and a correction to the brief)
+
+Let `2 ≤ b₁ < b₂ < ⋯` be "block starts", `b₀ := 1`, and let `RB(b)` be the
+permutation of ℕ listing the blocks `[b_k, b_{k+1})`, `k = 0, 1, …`, in order,
+each block in DECREASING value order. Then block `k` occupies positions
+`[b_k, b_{k+1})`, and `π(v) = b_k + b_{k+1} − 1 − v` for `v ∈ [b_k, b_{k+1})`.
+
+**Lemma C0 (pattern dichotomy).** In `RB(b)`: two values in the same block appear
+in inverted order (larger first); two values in different blocks appear in value
+order. Hence: an increasing monotone 4-AP of `RB(b)` is exactly a 4-term AP whose
+terms lie in four DISTINCT blocks; a decreasing monotone 4-AP is exactly a 4-term
+AP whose terms lie in ONE block. Decreasing 4-APs always exist (any block of length
+`≥ 4` contains 4 consecutive integers), so no `RB(b)` is a full counterexample —
+`RB(b)` calibrates the (H↑)-side lemmas only. This is stated explicitly per the
+route brief.
+
+**Lemma C1 (bad-window inequality).** If a 4-term AP `x, x+d, x+2d, x+3d` has its
+terms in four distinct blocks, and `β < γ` are block starts with
+`x+d < β ≤ x+2d < γ ≤ x+3d`, then `γ ≤ 3β − 5`.
+*Proof.* `d ≤ β−1−x` (from `x+d ≤ β−1`), so
+`γ ≤ x+3d = (x+d)+2d ≤ (β−1) + 2(β−1−x) = 3β − 3 − 2x ≤ 3β − 5` since `x ≥ 1`. ∎
+
+**Theorem C2 (ratio-3 calibration examples; fully proved).**
+If `b_{k+1} ≥ 3b_k − 4` for all `k ≥ 1`, then `RB(b)` has NO increasing monotone
+4-AP. In particular:
+- *(triadic)* `b_k = 3^k`: no increasing 4-AP, and `π(v) ≤ 3v − 1` with equality
+  exactly at `v = 3^k`;
+- *(chain)* `b₁ = 3`, `b_{k+1} = 3b_k − 4` (starts 3, 5, 11, 29, 83, …): no
+  increasing 4-AP, and `π(v) ≤ 3v − 5` for all `v ≥ 3` (head: `π(1)=2, π(2)=1`);
+  every ratio `π(v)/v < 3` strictly, `limsup_v π(v)/v = 3` unattained.
+*Proof.* If an increasing 4-AP existed, C0 puts its terms in 4 distinct blocks, so
+some starts `β < γ` sit as in C1, giving `γ ≤ 3β−5`. But all pairs of starts
+satisfy `γ ≥ b_{next}(β) ≥ 3β−4` (the map `β ↦ 3β−4` is increasing, so all later
+starts are `≥ 3β−4`). Contradiction. Profiles: `π(v) ≤ b_{k+1} − 1` on block `k`
+and `b_{k+1} − 1 ≤ 3b_k − 1 ≤ 3v − 1` (triadic), `= 3b_k − 5 ≤ 3v − 5` (chain). ∎
+
+**Correction C3 (the brief's dyadic example is WRONG).** The reversed-dyadic
+permutation (`b_k = 2^k`) HAS increasing monotone 4-APs: `(1, 6, 11, 16)` at
+positions `(1, 5, 12, 31)` and `(2, 7, 12, 17)` at positions `(3, 4, 11, 30)`
+(machine: the minimal failing prefix has 28 positions, where `(x,d) = (1,6)`,
+i.e. the AP `(1,7,13,19)` at positions `(1,4,10,28)`, completes; see
+`calibration_tests.py` (A)). The brief's claim "dyadic blocks reversed is 4-AP-free except for
+decreasing in-block APs" is false; ratio ≥ 3 restores it (Theorem C2), and §7.5
+shows ratio → 3 is *forced* in this family. All §4 calibrations therefore use the
+triadic example.
+
+**Machine verification** (`calibration_tests.py`, `family_opt_check.py`):
+triadic has no increasing 4-AP on prefixes up to `3⁹−1 = 19682` (and the chain up
+to 40000); all decreasing 4-APs lie inside single blocks (`K ≤ 7` exhaustive);
+`π`-formula, records `{3^{k+1}−1}` (3-AP-free), patience label `ℓ(v) = 3^{k+1}−v`,
+pile `j = {3^{m+1}−j : 3^{m+1}−j ≥ 3^m}` (infinite, 3-AP-free — matches T2),
+`LDS(3^K−1) = 2·3^{K−1}`, `LIS(3^K−1) = K` all verified exactly; T1's
+increasing-side half holds (`LDS(x)·r₄(x) ≥ x`, `LIS(x) ≤ r₄(x)`) while its
+decreasing-side half is VIOLATED at `x = 26` (`LDS(26) = 18 > 15 = r₄(26)`,
+exact) — as it must be, since triadic satisfies only (H↑); this shows the
+decreasing-side tests have teeth. T3 (residue restrictions, increasing side), T4
+(all windows in `[1..728]`), T5 (records) verified on triadic.
+
+## 6. What is forced about the profile π(v)/v and the prefix sets A_n
+
+Let `A_n = {a(1), …, a(n)}` (so `|A_n| = n`) and `F(n,x) = |A_n ∩ [1..x]|`.
+
+1. **Forced:** `limsup |π(v)−v|/v ≥ 1/6` (T4.1); `limsup π(v)/v ≥ 9/8`
+   (CORE Thm 12, (H↑) only); local displacement `> (L−4)/6` in every value window
+   of length `L` (T4); and — new, §7 — every improvement of the `9/8` toward `3`
+   is machine-certified at `43/24`, while `≥ 3` is impossible for (H↑)-only
+   methods (Theorem C2 gives an (H↑)-witness with `π(v) ≤ 3v−1`).
+2. **Not forced by the increasing side:** `A_n = [1..n]` for infinitely many `n`
+   ("complete prefixes") is CONSISTENT with all (H↑)-side constraints: triadic has
+   `A_n = [1..n]` exactly at `n = 3^K − 1`. So no lemma provable from (H↑) alone
+   can rule out block-structured profiles, bounded `π(v)/v`, or
+   `liminf F(n,n)/n = 1`.
+3. **Not forced by the decreasing side alone:** the identity permutation satisfies
+   every (H↓)-side constraint vacuously (no decreasing pair at all), with
+   `π(v) = v`. Hence ANY profile constraint beyond §6.1 must genuinely couple the
+   two orientations — no "one-orientation" argument can improve them.
+4. `sup_n (max A_n − n)` and `L(x)/x` (`L(x) = max_{v≤x} π(v)`): unconstrained by
+   everything proved here — triadic has `L(x) ≤ 3x` and complete prefixes; whether
+   a FULL counterexample can have `L(x) = O(x)` is exactly the LP question of §7
+   at full strength (LP-full for all C ⟺ no counterexample with `π(v) = O(v)`).
+
+## 7. The LP merge: displacement thresholds, staircases, and the ratio-3 ceiling
+
+Definitions. For `C ≥ 1`:
+**LP-inc(C)**: every permutation of ℕ with `π(v) ≤ Cv` for all `v` contains an
+*increasing* monotone 4-AP. **LP-full(C)**: same conclusion weakened to "contains
+a monotone 4-AP (either orientation)". Clearly LP-inc(C) ⇒ LP-full(C).
+CORE.md Theorem 12 (audited line-by-line here: the ledger `Σ_w e*(w)` supply/demand
+argument is correct): **LP-inc(C) holds for all C < 9/8.**
+
+**Proposition 7.2 (finite bridge; adapted from CORE Lemma 6).** LP-inc(C) is FALSE
+iff for every `N` there exists a permutation of `[1..N]` with `pos(v) ≤ ⌊Cv⌋` for
+all `v ≤ N` and no increasing monotone 4-AP.
+*Proof.* (⇒ direction of failure) An infinite witness restricts to `[1..N]`
+(restriction principle) with positions only shrinking, preserving `pos(v) ≤ ⌊Cv⌋`
+(positions are integers) and no-increasing-4-AP. (⇐) König: nodes at level `N` =
+increasing-4-AP-free `⌊Cv⌋`-bounded permutations of `[1..N]`, parent = restriction;
+levels finite and nonempty; an infinite branch defines a limit linear order on ℕ
+with predecessor sets of size `≤ ⌊Cv⌋ − 1`, hence (CORE Lemma 1) a permutation of
+ℕ; it is `Cv`-bounded and increasing-4-AP-free because every alleged violation
+lives in some finite restriction. (Identical to CORE Lemma 6's proof with
+`φ(v) = ⌊Cv⌋` and "4-AP-free" replaced by "increasing-4-AP-free" throughout —
+restriction preserves this weaker property equally.) ∎
+**Consequence.** A single UNSAT at `(C, N)` proves LP-inc(C′) for all `C′ ≤ C`.
+
+**Theorem 7.3 (ratio-3 ceiling; fully human-proved).** LP-inc(C) is FALSE for
+every `C ≥ 3`: the triadic permutation satisfies `π(v) ≤ 3v − 1` and has no
+increasing monotone 4-AP (Theorem C2); the chain variant even has `π(v) ≤ 3v − 5`
+for `v ≥ 3` with all ratios strictly below 3. Hence, writing
+`C*_inc := sup{C : LP-inc(C) holds}`:  `9/8 ≤ C*_inc ≤ 3`, and:
+**no argument that uses only the increasing orientation — in particular the
+Theorem-12 ledger, and any counting of R5-staircases, records, grounded values, or
+piles — can prove LP-full(C) for any C ≥ 3.** Whatever kills linear-profile
+candidates at `C ≥ 3` (as the R4/SAT extinction data suggests happens) must
+invoke decreasing-orientation constraints.
+
+**7.4 The R5 hand-off, answered.** R5's L10 (staircase theorem — verified here:
+its proof chain Thm 2 → L9 → L10 uses (H↑) only, never (H↓)) holds in the triadic
+permutation. `staircase_demo.py` exhibits explicit full staircases inside triadic
+(e.g. from `u=1`: steps `4, 36, 324, 2916, 26244`, tops `9, 81, 729, 6561, 59049`,
+top positions strictly increasing, every rung's planted inversion
+`π(T_i+f_i) < π(T_i)` verified), coexisting with `π(v) ≤ 3v−1`. **So "staircases
+from every value, counted globally, contradict linear displacement profiles" is
+false for profiles at `C ≥ 3`, and can only be true for `C < 3` if the counting
+somehow exploits `C < 3` sharply.** The reason staircases are cheap under a linear
+profile: each rung's inversion pair `(T_i, T_i+f_i)` may be co-blocked, costing
+`O(1)` displacement ratio; rung steps growing geometrically (factor ≥ 3) fit
+exactly inside ratio-3 blocks. The `g ≥ 3` of L9 and the ratio 3 of Theorem C2
+are the same 3: `(x+3d)/(x+d) < 3`. Staircase counting BELOW `C = 3` remains open
+and is the right target (see §8).
+
+**7.5 Block-family rigidity (why 3 is the family optimum).** In the family
+`RB(b)`: if `RB(b)` has no increasing 4-AP then, for every `k` with
+`b_k ≥ max(7, 2b₁+1)`, the interval `(b_k+1, 3b_k−5]` contains no block start,
+and `b_{k+1} ∈ {b_k+1} ∪ (3b_k−5, ∞)`; consequently `limsup_k b_{k+1}/b_k ≥ 3`
+and `limsup_v π(v)/v ≥ 3`. So triadic/chain are optimal in this family, and the
+family cannot approach any `C < 3`.
+*Proof.* Machine-exact feasibility (F1 of `family_opt_check.py`, exhaustive for
+`β ≤ 60`, plus the human proof): for starts `α < β < γ` with
+`2 ≤ α ≤ (β−1)/2`, a "bad window" `x < α ≤ x+d < β ≤ x+2d < γ ≤ x+3d` exists
+iff `γ ≤ 3β−5` and not (`α = 2`, `β` even, `γ = β+1`). [Human proof of both
+directions. Necessity is Lemma C1 (no side conditions needed). Sufficiency: with
+`x = 1` the constraints read `α−1 ≤ d`, `⌈(β−1)/2⌉ ≤ d`, `⌈(γ−1)/3⌉ ≤ d`,
+`d ≤ β−2`, `d ≤ ⌊(γ−2)/2⌋`; an integer `d` exists iff each lower bound is at
+most each upper bound: `α−1 < ⌈(β−1)/2⌉` (from `α ≤ (β−1)/2`);
+`⌈(β−1)/2⌉ ≤ β−2` (β ≥ 3); `⌈(β−1)/2⌉ ≤ ⌊(γ−2)/2⌋` holds for β odd (⟺ γ ≥ β+1)
+and for β even ⟺ γ ≥ β+2 — the parity obstruction; `⌈(γ−1)/3⌉ ≤ β−2 ⟺ γ ≤ 3β−5`;
+`⌈(γ−1)/3⌉ ≤ ⌊(γ−2)/2⌋` for all γ ≥ 6 (direct check for γ ≤ 10, algebra for
+γ ≥ 11). If `β` is even and `γ = β+1`: `x = 2` forces `d = (β−2)/2` and works
+whenever `α ≥ 3` (`α ≤ 2+d`, `2+3d ≥ β+1 ⟺ β ≥ 4`); only `α = 2` leaves
+`x = 1` as the sole choice, where `d = (β−1)/2 ∉ ℤ` — the exact exception.]
+Now take `k` with `β := b_k ≥ max(7, 2b₁+1)`, `α := b₁ ≤ (β−1)/2`. Any start
+`γ ∈ (b_k+1, 3b_k−5]` yields a bad window (the exception only exempts
+`γ = β+1`), i.e. an increasing 4-AP by C0 — contradiction. If `b_{k+1} = b_k+1`,
+apply the statement at `k` to exclude starts in `(b_k+1, 3b_k−5]`, so
+`b_{k+2} > 3b_k − 5 ≥ 3b_{k+1} − 8`; either way some ratio `b_{j+1}/b_j ≥ 3 − 8/b_j`
+occurs at `j ∈ {k, k+1}`. As `b_k → ∞`, `limsup b_{j+1}/b_j ≥ 3`, and
+`π(b_j)/b_j = (b_{j+1}−1)/b_j` realizes it. ∎
+*(Machine: F2 — dyadic bad with witness `(1,5)`; triadic good; triadic + one extra
+start at `2·3⁴` bad; chain `b→3b−5` bad; chain `b→3b−4` good to 40000. F3 — no
+three consecutive starts.)*
+
+**7.6 Machine-assisted sharpening of Theorem 12 (CP-SAT UNSAT certificates).**
+`lp_threshold.py` (encoding: `AllDifferent` positions, `pos(v) ≤ ⌊Cv⌋`, one
+reified drop-disjunction per window `(u,e)`; every SAT witness re-verified by an
+independent checker):
+
+| N  | largest grid C proved UNSAT | min grid C with verified SAT witness |
+|----|------------------------------|--------------------------------------|
+| 12 | 35/24 ≈ 1.458 | 3/2 |
+| 16 | 19/12 ≈ 1.583 | 13/8 |
+| 20 | 19/12 | 13/8 |
+| 24 | 13/8 ≈ 1.625 | 5/3 |
+| 28 | 41/24 ≈ 1.708 | 7/4 |
+| 32 | 43/24 ≈ 1.792 | 11/6 |
+| 40 | 43/24 | (budget-limited; none found below 2) |
+| 48 | 43/24 | (budget-limited; none found below 2) |
+
+By Prop 7.2: **LP-inc(C) holds for all C ≤ 43/24 ≈ 1.792** — machine-assisted
+(CP-SAT INFEASIBLE at `(43/24, N)` for `N = 32, 40, 48`, three independent runs),
+versus the human-proved 9/8 = 1.125. The finite thresholds `min_C(N)` are strictly
+increasing in `N` (they must be: restriction is monotone) and have passed 11/6;
+by Theorem 7.3 they converge to `C*_inc ≤ 3`.
+**Conjecture 7.7** *(heuristic, supported by 7.5 + the trend above)*:
+`C*_inc = 3`, i.e. LP-inc(C) holds for every `C < 3`, sharply witnessed at 3 by
+the triadic family. What is rigorous today: `43/24 ≤ C*_inc ≤ 3` (machine-assisted
+lower), `9/8 ≤ C*_inc` (human-only lower).
+
+## 8. Where this leaves the density route (summary; full assessment in REPORT.md)
+
+Proved tension: a counterexample must partition ℕ into infinitely many infinite,
+interlocked, 4-AP-free (density-0) increasing piles (T2), with
+`x/r₄(x) ≤ LIS(x), LDS(x) ≤ r₄(x)` (T1). Cardinality alone cannot close: the
+sandwich is consistent iff `r₄(x) ≥ √x`, and Behrend gives
+`r₄(x) ≥ x·e^{−c√(log x)} ≫ √x` — the slack factor `r₄(x)²/x` is
+`≥ x e^{−2c√(log x)} → ∞`. Both one-sided constraint systems are individually
+realizable (triadic for (H↑), identity for (H↓)), so ANY YES proof must couple
+orientations; the LP program of §7 is the sharpest currently available coupling
+frame, with the open window exactly `C ∈ (43/24, 3)` on the increasing side and
+"beyond 3 requires (H↓)" as a proved structural boundary.

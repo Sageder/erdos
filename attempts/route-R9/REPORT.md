@@ -188,7 +188,9 @@ confirmed in order of magnitude: 8.3e-4 ± 0.06%.)
   (22.8% at 13, 21.7% at 14). The extension tree is not merely supercritical, it has a
   persistent bulk of maximally-free nodes.
 - **Dead ends first exist at N = 12** (515,296 of 101,361,722 — every avoider of
-  [1..11] extends). Dead-end fraction (EXACT to 14, SIS beyond): 0.51%, 0.58%, 0.65%
+  [1..11] extends). Brute-force-verified example: (8 12 6 3 11 1 5 9 10 7 2 4) is
+  4-AP-free and each of the 13 insertions of value 13 creates a monotone 4-AP.
+  Dead-end fraction (EXACT to 14, SIS beyond): 0.51%, 0.58%, 0.65%
   at 12, 13, 14; then 1.4%, 1.4%, 1.5%, 1.9%, 2.0%, 2.0%, 2.8% ... 5.7% at N = 32.
   Slow, roughly linear-in-N creep; no cliff.
 - **Branching histograms** (exact_D14.txt): unimodal with a spike at b = n+1; minimum
@@ -224,7 +226,15 @@ pos(v) ≤ ⌊Cv⌋ (equivalently max_v pos(v)/v ≤ C):
 | C = 3/2 | **15** | 78 (at n=13) | 276 nodes | cert_C1.5.txt |
 | C = 8/5 | **18** | 670 (14) | 2,168 | cert_C1.6.txt |
 | C = 7/4 | **31** | 146,238 (29) | 1,036,992 | cert_C1.75.txt |
+| pos ≤ v+1 | **11** | — | 63 | (rerunnable in ms) |
+| pos ≤ v+2 | **14** | — | 2,764 | — |
 | pos ≤ v+3 | **19** | 43,373 (12) | 168,686 | cert_Kplus3.txt |
+| pos ≤ v+4 | **25** | — | 21,051,114 | — |
+
+Additive crossing points are LINEAR in the slack (N*(K) ≈ 4 + ~5.3K for K = 0..4),
+versus exponential in C for the multiplicative family (§6.2) — consistent with a
+displacement-ratio floor that decays toward 1 as ~O(K/N) additive slack is spread
+over [1..N], and further support for the log-growth picture of §6.2.
 
 All show the universal shape: exponential-ish growth → peak → cliff to 0 within 1–2
 levels (C=7/4: 146,238 → 6,472 → 0). These are unconditional, computer-verified
@@ -308,8 +318,10 @@ survival at small displacement happens in exponentially thin corridors whose flo
 rises like log N.
 
 Consequence for NO-witness design (the "where must a witness live" parametrization):
-conditional on extinction at every fixed C (certified ≤ 1.75, SAT-supported ≤ 3, open
-beyond), any counterexample has limsup pos(v)/v = ∞; but the log-growth of ρ means
+conditional on extinction at every fixed C — certified ≤ 1.75 for plain avoiders
+(this route, complete enumeration; plain-SAT independently ≤ 1.5), certified ≤ 3 for
+the asym subclass (SAT route), heuristically supported up to ~8 (beams), open beyond —
+any counterexample has limsup pos(v)/v = ∞; but the log-growth of ρ means
 profiles as small as pos(v) ≤ v·(log v)^{1+ε} — or even pos(v) ≤ v·max(1, c·log v) —
 are consistent with every certificate we have. (The SAT route's superlinear probe —
 pos ≤ 2v^{1.5} alive at N = 130+ — fits this picture with room to spare.)
@@ -324,6 +336,12 @@ read as "horizon of a 10^6-wide uniform search" — a search-difficulty measure,
 comparatively across k at fixed cap, never as extinction proof. (My EXACT extinctions
 in §5.1 are complete enumerations and unaffected.) By the same token the k=5 "walls"
 at 68/99/113 are horizons only.
+
+The probe ladder is strictly ordered everywhere it was measured (uniform dives <
+weighted samples < beams < truth): e.g. k=4 C=2: 38 / 42 / 50–55 / ≥ 51;
+k=4 C=2.5: 47 / — / 63 / ?; k=4 C=3: — / — / 59–63 / ≥ 74 (SAT); k=5 C=2: 89 / — /
+113 / ≥ 113. Each strengthening of the search pushes the apparent wall out; only
+complete enumeration (or DRAT-certified UNSAT) pins it.
 
 ---
 

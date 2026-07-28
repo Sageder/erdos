@@ -1,0 +1,5 @@
+PYSAT N=51 cls=C C=2/1 status=UNSAT
+PYSAT N=53 cls=C C=2/1 status=UNSAT
+PYSAT N=54 cls=C C=2/1 status=UNSAT
+PYSAT N=55 cls=C C=2/1 status=UNSAT
+PYSAT N=56 cls=C C=2/1 status=UNSAT

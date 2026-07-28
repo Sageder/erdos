@@ -1,0 +1,8 @@
+=== pure ratio-4 triples (cp, 4cp, 16cp) ===
+  c'=  4 c= 16 C=  64 size  48 A2H= 20 : SAT (0.1s)
+  c'=  5 c= 20 C=  80 size  60 A2H= 34 : UNSAT (0.2s)
+  c'=  6 c= 24 C=  96 size  72 A2H= 51 : UNSAT (0.2s)
+  c'=  7 c= 28 C= 112 size  84 A2H= 72 : UNSAT (0.3s)
+  c'=  8 c= 32 C= 128 size  96 A2H= 96 : UNSAT (0.3s)
+  c'=  9 c= 36 C= 144 size 108 A2H=124 : UNSAT (0.6s)
+  c'= 10 c= 40 C= 160 size 120 A2H=155 : UNSAT (0.6s)

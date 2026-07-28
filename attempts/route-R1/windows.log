@@ -33,3 +33,8 @@ cuts [6, 20, 76] UNSAT (1s)
 cuts [6, 20, 86] UNSAT (3s)
 cuts [6, 20, 100] SAT (5s)
 cuts [6, 20, 120] SAT (24s)
+cuts [6, 20, 140] SAT (376s)
+--- W(2,26):
+cuts [2, 26, 76] SAT (2s)
+cuts [2, 26, 90] SAT (4s)
+cuts [2, 26, 110] UNSAT (66s)

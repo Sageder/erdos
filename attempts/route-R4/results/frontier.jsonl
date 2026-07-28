@@ -429,3 +429,23 @@
 {"cls": "C", "C": "2/1", "N": 52, "phase": "sat", "secs": 36.8, "verdict": "EXTINCT"}
 {"cls": "A", "C": "15/8", "N": 38, "phase": "sat", "secs": 79.7, "verdict": "EXTINCT"}
 {"cls": "C", "C": "2/1", "N": 50, "phase": "sat", "secs": 35.9, "verdict": "EXTINCT"}
+{"cls": "A", "C": "15/8", "N": 36, "phase": "sat", "secs": 51.3, "verdict": "EXISTS"}
+{"cls": "A", "C": "15/8", "N": 37, "phase": "sat", "secs": 75.1, "verdict": "EXTINCT"}
+{"cls": "A", "C": "5/2", "N": 45, "phase": "sat", "secs": 36.4, "round": "c", "verdict": "EXISTS"}
+{"cls": "C", "C": "2/1", "N": 51, "phase": "sat", "verdict": "EXTINCT", "note": "persistence check, pysat_C2_persist.out"}
+{"cls": "C", "C": "2/1", "N": 53, "phase": "sat", "verdict": "EXTINCT", "note": "persistence check, pysat_C2_persist.out"}
+{"cls": "C", "C": "2/1", "N": 54, "phase": "sat", "verdict": "EXTINCT", "note": "persistence check, pysat_C2_persist.out"}
+{"cls": "C", "C": "2/1", "N": 55, "phase": "sat", "verdict": "EXTINCT", "note": "persistence check, pysat_C2_persist.out"}
+{"cls": "C", "C": "2/1", "N": 56, "phase": "sat", "verdict": "EXTINCT", "note": "persistence check, pysat_C2_persist.out"}
+{"cls": "A", "C": "3/1", "N": 55, "phase": "sat", "secs": 72.7, "verdict": "EXISTS"}
+{"cls": "A", "C": "5/2", "N": 50, "phase": "sat", "secs": 41.5, "round": "c", "verdict": "EXISTS"}
+{"cls": "A", "C": "2/1", "N": 43, "phase": "derived", "verdict": "EXISTS", "note": "class-C witness satisfies A,B,D (see avoiders/*_2_1.txt from-C-class)"}
+{"cls": "A", "C": "2/1", "N": 46, "phase": "derived", "verdict": "EXISTS", "note": "class-C witness satisfies A,B,D (see avoiders/*_2_1.txt from-C-class)"}
+{"cls": "A", "C": "2/1", "N": 49, "phase": "derived", "verdict": "EXISTS", "note": "class-C witness satisfies A,B,D (see avoiders/*_2_1.txt from-C-class)"}
+{"cls": "B", "C": "2/1", "N": 43, "phase": "derived", "verdict": "EXISTS", "note": "class-C witness satisfies A,B,D (see avoiders/*_2_1.txt from-C-class)"}
+{"cls": "B", "C": "2/1", "N": 46, "phase": "derived", "verdict": "EXISTS", "note": "class-C witness satisfies A,B,D (see avoiders/*_2_1.txt from-C-class)"}
+{"cls": "B", "C": "2/1", "N": 49, "phase": "derived", "verdict": "EXISTS", "note": "class-C witness satisfies A,B,D (see avoiders/*_2_1.txt from-C-class)"}
+{"cls": "D", "C": "2/1", "N": 43, "phase": "derived", "verdict": "EXISTS", "note": "class-C witness satisfies A,B,D (see avoiders/*_2_1.txt from-C-class)"}
+{"cls": "D", "C": "2/1", "N": 46, "phase": "derived", "verdict": "EXISTS", "note": "class-C witness satisfies A,B,D (see avoiders/*_2_1.txt from-C-class)"}
+{"cls": "D", "C": "2/1", "N": 49, "phase": "derived", "verdict": "EXISTS", "note": "class-C witness satisfies A,B,D (see avoiders/*_2_1.txt from-C-class)"}
+{"cls": "A", "C": "5/2", "N": 55, "phase": "sat", "secs": 108.7, "round": "c", "verdict": "EXISTS"}

@@ -1,3 +1,6 @@
 [A C=15/8] N=32: SAT (5s)
 [A C=15/8] N=35: SAT (24s)
 [A C=15/8] N=38: UNSAT (80s)
+[A C=15/8] refine: max SAT so far 36, min UNSAT 38
+[A C=15/8] refine: max SAT so far 36, min UNSAT 37
+[A C=15/8] THRESHOLD: max SAT N=36, min UNSAT N=37

@@ -5,7 +5,7 @@ increasing 4-AP. Any such permutation is a full NO-witness for 196 (a decreasing
 monotone 4-AP contains a decreasing monotone 3-AP). This is a STRICTLY stronger
 avoidance than 196 needs; it is studied because its combinatorics is cleaner.
 Status: OPEN whether such a permutation of ℕ exists. Finite boards: witnesses exist for
-all N ≤ 27 so far (experiments/asym_exhaust.py, exhaustive), with exploding search cost.
+all N ≤ 28 by exhaustive DFS and to N = 160+ by SAT (sat_order.py) (experiments/asym_exhaust.py, exhaustive), with exploding search cost.
 
 Fix such a hypothetical permutation, ≺ the induced order (type ω, Lemma 1 of CORE.md).
 Define the drop indicator D(u, e) := [ u + e ≺ u ] for u, e ≥ 1.
@@ -16,7 +16,7 @@ For every u, e ≥ 1:
   (no-11)   ¬( D(u, e) ∧ D(u+e, e) )                      [else dec-3AP (u, u+e, u+2e)]
   (no-000)  D(u, e) ∨ D(u+e, e) ∨ D(u+2e, e)              [else inc-4AP (u, …, u+3e)]
 Hence along EVERY arithmetic progression u, u+e, u+2e, … the binary word
-k ↦ D(u+ke, e) has no factor 11 and no factor 000; its 1-density lies in [1/3, 1/2].
+k ↦ D(u+ke, e) has no factor 11 and no factor 000; all its density limit points lie in [1/3, 1/2].
 Moreover D is order-coherent (transitivity): D(u,e₁) ∧ D(u+e₁,e₂) ⟹ D(u,e₁+e₂), and
 ¬D(u,e₁) ∧ ¬D(u+e₁,e₂) ⟹ ¬D(u,e₁+e₂).
 

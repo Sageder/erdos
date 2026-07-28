@@ -10,7 +10,7 @@ Checks here:
   (F1) Feasibility lemma, exhaustive: for 2 <= alpha <= (beta-1)/2, beta <= 60,
        beta < gamma <= 3*beta + 4:
        [ exists x,d with x < alpha <= x+d < beta <= x+2d < gamma <= x+3d ]
-       <=>  [ gamma <= 3*beta - 5  and not (beta even and gamma == beta + 1) ].
+       <=>  [ gamma <= 3*beta - 5  and not (alpha == 2, beta even, gamma == beta+1) ].
   (F2) End-to-end: dyadic starts {2^k} yield an increasing 4-AP (bad); triadic
        starts {3^k} do not (good); triadic with one extra start inserted at
        2*3^k becomes bad; the chain b_{k+1} = 3 b_k - 5 (just inside the
@@ -67,7 +67,9 @@ for beta in range(5, 61):
     for alpha in range(2, (beta - 1) // 2 + 1):
         for gamma in range(beta + 1, 3 * beta + 5):
             got = bad_window_triple(alpha, beta, gamma) is not None
-            pred = (gamma <= 3 * beta - 5) and not (beta % 2 == 0 and gamma == beta + 1)
+            pred = (gamma <= 3 * beta - 5) and not (
+                alpha == 2 and beta % 2 == 0 and gamma == beta + 1
+            )
             assert got == pred, (alpha, beta, gamma, got, pred)
             ok += 1
 print(f"F1 OK: feasibility predicate exact on {ok} triples (beta <= 60)")
@@ -112,7 +114,6 @@ w = first_inc_4ap(chain)
 print(f"F2 chain b->3b-4 from 7: first increasing 4-AP = {w}  [probe: Prop 7.5 allows either]")
 
 # ---- F3
-got = bad_window_triple(4, 9, 10) if False else None
 # three consecutive starts m, m+1, m+2 give bad window (x=m-1, d=1)
 for m in (5, 12, 33):
     assert bad_window_triple(m, m + 1, m + 2) is not None or m - 1 < 1

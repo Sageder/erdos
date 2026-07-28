@@ -1,60 +1,10 @@
 
-=== A_7_4_N30_all.txt: 6472 survivors, N=30
-forced positions (14/30 values rigid): pi(1)=1 pi(2)=3 pi(3)=5 pi(4)=4 pi(5)=8 pi(7)=2 pi(8)=7 pi(9)=6 pi(11)=19 pi(15)=26 pi(17)=29 pi(25)=28 pi(26)=27 pi(27)=30
-skeleton (position order, . = free):    1   7   2   4   3   9   8   5   .   .   .   .   .   .   .   .   .   .  11   .   .   .   .   .   .  15  26  25  17  27
-LIS range 10..12, LDS range 5..7, sqrt(N)=5.5
-canonical survivor: 1,7,2,4,3,9,8,5,6,18,20,19,13,14,23,16,10,12,11,24,28,29,30,21,22,15,26,25,17,27
-cut-block sizes of canonical: [1, 8, 21]
-canonical: values with pi(v)>=2v-1 (late wall): [1, 2, 3]
-canonical: values with pi(v)<=(v+1)/2 (early wall): [1, 7]
-canonical: min pi/v = 0.286 at v=7, max pi/v = 1.733 at v=15
-
-=== Aceil_3_2_N21_all.txt: 715 survivors, N=21
-forced positions (6/21 values rigid): pi(1)=2 pi(2)=3 pi(3)=5 pi(4)=4 pi(6)=9 pi(9)=14
-skeleton (position order, . = free):    .   1   2   4   3   .   .   .   6   .   .   .   .   9   .   .   .   .   .   .   .
-LIS range 8..10, LDS range 3..5, sqrt(N)=4.6
-canonical survivor: 5,1,2,4,3,11,10,8,6,7,16,17,12,9,19,18,20,14,13,21,15
-cut-block sizes of canonical: [5, 16]
-canonical: values with pi(v)>=2v-1 (late wall): [1, 2, 3]
-canonical: values with pi(v)<=(v+1)/2 (early wall): [5, 11]
-canonical: min pi/v = 0.200 at v=5, max pi/v = 2.000 at v=1
-
-=== B_3_2_N16_all.txt: 116 survivors, N=16
-forced positions (7/16 values rigid): pi(1)=1 pi(2)=3 pi(3)=2 pi(6)=4 pi(7)=5 pi(12)=8 pi(13)=9
-skeleton (position order, . = free):    1   3   2   6   7   .   .  12  13   .   .   .   .   .   .   .
-LIS range 7..8, LDS range 3..6, sqrt(N)=4.0
-canonical survivor: 1,3,2,6,7,4,5,12,13,9,15,14,10,16,11,8
-cut-block sizes of canonical: [1, 2, 4, 9]
-canonical: values with pi(v)>=2v-1 (late wall): [1, 2, 8]
-canonical: values with pi(v)<=(v+1)/2 (early wall): [1, 3]
-canonical: min pi/v = 0.667 at v=3, max pi/v = 2.000 at v=8
-
-=== A_3_2_N14_all.txt: 28 survivors, N=14
-forced positions (3/14 values rigid): pi(1)=1 pi(2)=3 pi(5)=7
-skeleton (position order, . = free):    1   .   2   .   .   .   5   .   .   .   .   .   .   .
-LIS range 7..8, LDS range 3..4, sqrt(N)=3.7
-canonical survivor: 1,3,2,6,7,4,5,11,13,12,9,8,14,10
-cut-block sizes of canonical: [1, 2, 4, 7]
-canonical: values with pi(v)>=2v-1 (late wall): [1, 2]
-canonical: values with pi(v)<=(v+1)/2 (early wall): [1, 3]
-canonical: min pi/v = 0.667 at v=3, max pi/v = 1.500 at v=8
-
-=== C_3_2_N14_all.txt: 4 survivors, N=14
-forced positions (10/14 values rigid): pi(1)=1 pi(2)=3 pi(3)=2 pi(4)=6 pi(5)=7 pi(6)=4 pi(7)=5 pi(8)=12 pi(10)=14 pi(14)=13
-skeleton (position order, . = free):    1   3   2   6   7   4   5   .   .   .   .   8  14  10
-LIS range 7..7, LDS range 3..4, sqrt(N)=3.7
-canonical survivor: 1,3,2,6,7,4,5,11,13,12,9,8,14,10
-cut-block sizes of canonical: [1, 2, 4, 7]
-canonical: values with pi(v)>=2v-1 (late wall): [1, 2]
-canonical: values with pi(v)<=(v+1)/2 (early wall): [1, 3]
-canonical: min pi/v = 0.667 at v=3, max pi/v = 1.500 at v=8
-
-=== S_4_3_N17_all.txt: 2 survivors, N=17
-forced positions (15/17 values rigid): pi(1)=1 pi(2)=2 pi(3)=5 pi(4)=3 pi(5)=4 pi(6)=10 pi(7)=9 pi(8)=6 pi(9)=7 pi(10)=8 pi(14)=11 pi(15)=17 pi(16)=12 pi(17)=13 pi(21)=16
-skeleton (position order, . = free):    1   2   4   5   3   8   9  10   7   6  14  16  17   .   .  21  15
-LIS range 12..12, LDS range 3..3, sqrt(N)=4.1
-canonical survivor: 1,2,4,5,3,8,9,10,7,6,14,16,17,12,18,21,15
-cut-block sizes of canonical: [1, 1, 3, 5]
-canonical: values with pi(v)>=2v-1 (late wall): [1, 3]
-canonical: values with pi(v)<=(v+1)/2 (early wall): [1]
-canonical: min pi/v = 0.750 at v=4, max pi/v = 1.667 at v=6
+=== C_2_1_N49_sat40.txt: 40 survivors, N=49
+forced positions (37/49 values rigid): pi(1)=1 pi(2)=4 pi(3)=2 pi(6)=3 pi(7)=6 pi(8)=5 pi(9)=18 pi(10)=20 pi(11)=19 pi(12)=15 pi(13)=16 pi(14)=21 pi(15)=17 pi(17)=13 pi(19)=14 pi(20)=12 pi(21)=42 pi(22)=11 pi(23)=41 pi(24)=48 pi(25)=47 pi(26)=49 pi(27)=46 pi(30)=30 pi(34)=31 pi(35)=43 pi(36)=45 pi(37)=44 pi(38)=26 pi(39)=32 pi(40)=23 pi(41)=22 pi(42)=29 pi(43)=27 pi(44)=28 pi(48)=24 pi(49)=25
+skeleton (position order, . = free):    1   3   6   2   8   7   .   .   .   .  22  20  17  19  12  13  15   9  11  10  14  41  40  48  49  38  43  44  42  30  34  39   .   .   .   .   .   .   .   .  23  21  35  37  36  27  25  24  26
+LIS range 13..13, LDS range 9..9, sqrt(N)=7.0
+canonical survivor: 1,3,6,2,8,7,4,5,16,18,22,20,17,19,12,13,15,9,11,10,14,41,40,48,49,38,43,44,42,30,34,39,28,29,46,47,45,32,33,31,23,21,35,37,36,27,25,24,26
+cut-block sizes of canonical: [1, 7, 41]
+canonical: values with pi(v)>=2v-1 (late wall): [1, 2, 4, 9, 10, 21, 24]
+canonical: values with pi(v)<=(v+1)/2 (early wall): [1, 3, 6, 22, 48, 49]
+canonical: min pi/v = 0.500 at v=6, max pi/v = 2.000 at v=24

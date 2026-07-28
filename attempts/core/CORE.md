@@ -260,8 +260,8 @@ indicator. Then:
 
 (a) [words] For every u, e ≥ 1: ¬(D(u,e) ∧ D(u+e,e) ∧ D(u+2e,e)) and
     ¬(¬D(u,e) ∧ ¬D(u+e,e) ∧ ¬D(u+2e,e)). Hence along every arithmetic progression, at
-    every step e, the descent word avoids the factors 000 and 111; its 1-density lies
-    in [1/3, 2/3].
+    every step e, the descent word avoids the factors 000 and 111; every window of 3 letters contains a 0 and a 1 (so all its density limit
+    points lie in [1/3, 2/3]).
 
 (b) [two spines] Call w a *value-record* (w ∈ Λ) if w is larger than every value placed
     before it — equivalently w ≺ w + e for all e ≥ 1. Call g *grounded* (g ∈ Γ) if
@@ -302,9 +302,14 @@ for YES-side counting arguments: e.g. with r₄(M) := max size of a 4-AP-free su
 ## Theorem 12 (LP(9/8) — first quantitative displacement bound)
 
 Let C < 9/8. Then every permutation of ℕ with pos(v) ≤ C·v for all v contains an
-increasing monotone 4-AP. Consequently every permutation of ℕ with no increasing
-monotone 4-AP (in particular every monotone-4-AP-free permutation) satisfies
-limsup_{v→∞} pos(v)/v ≥ 9/8.
+increasing monotone 4-AP. Moreover (additive-slack form, AUDITS.md 2026-07-28): if
+pos(v) ≤ C·v holds for all v ≥ V₀ (any V₀), the same conclusion follows — with
+Q := max_{v<V₀} pos(v) the ledger becomes pos(w) ≤ C(w − e*(w)) + Q, the supply bound
+Σe* ≤ (1−1/C)N(N+1)/2 + NQ/C, and the unchanged demand N²/18 − O(N) still forces
+C ≥ 9/8 in the limit. Consequently every permutation of ℕ with no increasing monotone
+4-AP (in particular every monotone-4-AP-free permutation) satisfies
+limsup_{v→∞} pos(v)/v ≥ 9/8 (genuinely limsup: for each C < 9/8 infinitely many v have
+pos(v) > Cv, since finitely many exceptions could be absorbed into V₀).
 
 Finite form: if σ is a permutation of [1..N] with pos(v) ≤ C·v for all v ≤ N and σ has
 no increasing monotone 4-AP, then
@@ -350,8 +355,11 @@ values (Lemma 11). Then:
 
 (a) Λ contains NO 3-term AP at all: |Λ ∩ [1..N]| ≤ r₃(N) for every N.
 
-(b) Every 3-term AP (g₁, g₂, g₃) ⊆ Γ has g₂ > 2g₁ (the step exceeds the first term).
-    In particular Γ ∩ [M, 2M] is 3-AP-free for every M, so |Γ ∩ [M, 2M]| ≤ r₃(2M).
+(b) Every 3-term AP (g₁, g₂, g₃) ⊆ Γ has g₂ ≥ 2g₁ (step e ≥ g₁; REPAIRED per
+    AUDITS.md 2026-07-28 — the boundary case e = g₁, i.e. grounded (g, 2g, 3g), is not
+    excluded by the argument and does occur, e.g. Γ = {1,2,3} for (1,2,4,3)).
+    In particular Γ ∩ [M, 2M] is 3-AP-free for every M (its steps satisfy
+    e ≤ M/2 < M ≤ g₁), so |Γ ∩ [M, 2M]| ≤ r₃(2M).
 
 (Here r₃(N) = max size of a 3-AP-free subset of [1..N].)
 
@@ -360,7 +368,8 @@ Proof. (a) Suppose w, w+e, w+2e ∈ Λ. Records appear in increasing position or
 a record — placed before every larger value — so pos(w+3e) > pos(w+2e). Then
 (w, w+e, w+2e, w+3e) is an increasing monotone 4-AP: contradiction.
 
-(b) Suppose g₁, g₂ = g₁+e, g₃ = g₁+2e ∈ Γ with e < g₁, so g₀ := g₁ − e ≥ 1 exists.
+(b) It suffices to exclude e < g₁. Suppose g₁, g₂ = g₁+e, g₃ = g₁+2e ∈ Γ with
+e < g₁, so g₀ := g₁ − e ≥ 1 exists.
 Grounded values appear in increasing position order, so pos(g₁) < pos(g₂) < pos(g₃);
 and g₁ is grounded — placed after every smaller value — so pos(g₀) < pos(g₁). Then
 (g₀, g₁, g₂, g₃) is an increasing monotone 4-AP: contradiction. A 3-AP inside [M, 2M]
@@ -368,7 +377,7 @@ has step e ≤ M/2 < M ≤ g₁, hence is excluded. ∎
 
 Remarks. (i) The one-sidedness of ℕ enters asymmetrically: Λ's forbidden extension is
 UPWARD (always exists), so Λ is unconditionally 3-AP-free; Γ's is DOWNWARD (needs
-g₁ − e ≥ 1), leaving only huge-relative-step 3-APs. (ii) With the Kelley–Meka bound
+g₁ − e ≥ 1), leaving only huge-relative-step 3-APs. (ii) With the Kelley–Meka bound (in Bloom–Sisask's refined form)
 r₃(N) ≤ N·exp(−c(log N)^{1/9}) this is quantitatively much sharper than Lemma 11's
 Szemerédi bound, but a ledger-vs-Γ-sparsity argument still cannot push Theorem 12 past
 constants — Behrend-type sets are too dense; the true C ≥ 2 extinction mechanism must

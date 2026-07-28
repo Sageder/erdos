@@ -255,9 +255,15 @@ gives the claim. QED
 ### Theorem B (contiguous base-3 and base-4 blocks are dead) — machine-exact, triple-checked
 
 * Base 3: Sigma_1 (D_1=[3,9)) SAT, Sigma_2 (D_2=[9,27)) SAT,
-  **Sigma_3 (D_3=[27,81)) UNSAT**. Verified by CP-SAT (`singleblock.py`, 11 s) and
+  **Sigma_3 (D_3=[27,81)) UNSAT**. Verified by CP-SAT (`singleblock.py`, 11 s),
   independently by Glucose 4.2 with a pure boolean transitivity encoding
-  (`singleblock_xcheck.py`, 0.2 s).
+  (`singleblock_xcheck.py`, 0.2 s), and at **protocol grade** by Cadical103 with DRUP
+  proof logging plus an independent hand-written RUP+deletion proof checker
+  (`dratcert.py`; checker passes positive AND negative control tests): the proof has
+  only **738 lines** (735 RUP additions), ending in the empty clause
+  (`sigma3_base3.cnf`, `sigma3_base3.drat`). A 735-step resolution proof over a
+  1431-variable encoding is short enough that a human-readable proof is plausibly
+  extractable — flagged as next step.
 * Base 4: Sigma_1, Sigma_2 SAT; **Sigma_3 (D_3=[64,256)) UNSAT** (CP-SAT 288 s;
   Glucose 14 s).
 * With Lemma Sc: every Sigma_j, j >= 3, is UNSAT in bases 3 and 4 => **no contiguous
@@ -297,7 +303,20 @@ CP-SAT feasibility of 2-separated dyadic orderings of [1..N]
 (`satprobe.probe_separated`; the separation discipline is re-verified on every
 returned model; an encoding gap found mid-session — chain constraints only covering
 even offsets — was fixed before any result was recorded): probe running at session
-cutoff for N = 127, 255; verdicts go to NOTES.md. Displacement caveat (cross-route):
+cutoff for N = 127, 255; verdicts go to NOTES.md.
+
+**Why no Theorem-B-style local kill exists for separation 2 (proved).** The analog of
+Sigma_j for 2-separation lives on the window U_m = B_m ∪ B_{m+1} = [2^m, 2^{m+2})
+(window order fully free; values < 2^{m-1} forced before, values >= 2^{m+3} forced
+after). But its forced-pair families are *empty*: F1 needs u+2d >= 2^{m+3} with
+u+d < 2^{m+2}, yet u+2d = (u+d) + d < 2^{m+2} + 2^{m+2} = 2^{m+3}; F2 needs
+u - d < 2^{m-1} with u >= 2^m, so d > 2^{m-1} and u-2d < 0. So the decoupled window
+system is only "internal 4-APs + grounded edge 3-APs", and it is SAT (machine: U_3,
+U_4 at least, `sep2window.py`). Consequence: any impossibility proof for 2-separated
+dyadic orderings must couple at least two overlapping windows (U_m ∩ U_{m+1} =
+B_{m+1} is shared) — the single-scale mechanism that killed contiguity (Theorem B)
+provably cannot kill separation 2. This sharpens deliverable 3: contiguity dies
+locally; 2-separation can only die globally, if at all. Displacement caveat (cross-route):
 2-separation caps pos(v) <= 8v, a linear profile with C = 8; CORE Thm 12 + R4
 empirics make even feasible finite stretches unlikely to extend to N. Growing
 separation g(m) -> infinity evades both this cap and Theorem A — that is where any
@@ -413,3 +432,7 @@ descent. The machine side is ready: Lemma R generalizes to any window discipline
 * `dissect_D3.py`, `dissect_D3.out` — family dissection of Sigma_3; 140-constraint core.
 * `lemmaR_check.py` — Lemma R case-rule validation (bases 3, 4, 5).
 * `restprobes.py` — restarted background probes (bases 5/6/8; 2-separated dyadic).
+* `dratcert.py`, `sigma3_base3.cnf`, `sigma3_base3.drat` (and base-4 analogues) —
+  DIMACS + DRUP proof + independent RUP verification for Theorem B.
+* `sep2window.py` — decoupled window systems for 2-separated dyadic orderings
+  (forced families provably empty; windows SAT).
