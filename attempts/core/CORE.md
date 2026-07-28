@@ -1589,3 +1589,46 @@ Moreover Theorem 16's forcing step IS Theorem 12's demand mechanism (the i = 2 c
 disjunction), and closure bounds give LOWER bounds on positions, which cannot enter a ledger
 whose content is an upper bound. So closures do not help the ledger, and the two tools I had
 been treating as independent are the same tool.
+
+## Theorem 47 (the forced-descent method cannot work — a one-line barrier for the whole family)
+
+Route R17's six rules are exactly the unit propagations of the two 3-literal clauses that a
+single 4-AP contributes. Writing s for the source and l_i = [x+(i−1)d ≺ x+id]:
+
+    (U1) s−2d ≺ s−d ≺ s              ⟹ s+d ≺ s
+    (U2) s+d ≺ s+2d ≺ s+3d           ⟹ s+d ≺ s
+    (U3) s−d ≺ s  and  s+d ≺ s+2d    ⟹ s+d ≺ s
+    (D1) s+2d ≺ s+d ≺ s              ⟹ s−d ≺ s
+    (D2) s−d ≺ s−2d ≺ s−3d           ⟹ s−d ≺ s
+    (D3) s−d ≺ s−2d  and  s+d ≺ s    ⟹ s−d ≺ s
+
+(U1 is Theorem 16(a).) Independently verified here: on all 168 864 monotone-4-AP-free
+permutations of [1..9], every edge produced by these rules descends in position — zero
+violations.
+
+**Barrier.** Every one of these rules, and indeed every rule of the shape "such-and-such
+positional facts force t ≺ s", produces an edge that DESCENDS in position. Consequently:
+
+1. Chains descend in position, so from any u a chain has length at most pos(u) — finite.
+2. The ≺-minimum z = a(1) has NO out-edge under ANY such rule, since every conclusion is of
+   the form "t ≺ s" and nothing precedes z. **z is always a sink.** (Verified: a(1) is a
+   sink on every one of the 168 864 boards; sink counts per board range over 2–7.)
+
+So no forced-descent digraph — G, G*, or any extension by further rules of this shape — can
+prove 196-YES via "some value has an infinite closure". Chains always terminate, and they
+terminate at sinks that provably exist. This subsumes Theorem 44 (which showed records are
+sinks for the U-rules) and route R17's Thm R17.2 (which showed propagation statements fail
+as a family): the obstruction is not about records or about which rules one adds, it is that
+descent in a well-founded order is finite and the minimum is always a sink.
+
+**What this closes.** The entire "local forcing ⟹ infinite chain ⟹ contradiction with order
+type ω" strategy, which this run pursued under Theorem 16 and which route R17 extended to
+G*. Its measured improvements are real but irrelevant to the goal: G* reduces sinks from
+40–65% to 1–3% and lengthens the longest chain from 14 to 132 at N = 320, yet 1–3% of sinks
+is as fatal as 65% — one sink per chain suffices, and z is always one.
+
+**What is still worth taking from it.** The six rules are a complete and correct local
+propagation system for 4-AP-freeness. They are the right engine for SEARCH (route R18 used
+the same locality to get a 2–3 order-of-magnitude speedup on layered architectures, and to
+localize each death to a single block), and they give sharp finite structure. They are
+simply not a route to the affirmative branch.
