@@ -66,3 +66,5 @@ plain C=3.0 N=90: SAT (352s, 8154 cegar rounds)
     [round 2400: 21 cycles]
     [round 2600: 1 cycles]
     [round 2800: 5 cycles]
+    [round 3000: 1 cycles]
+    [round 3200: 1 cycles]
