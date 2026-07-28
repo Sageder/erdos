@@ -1179,3 +1179,48 @@ STRICTLY WEAKER than full condition (ii) — a delay satisfying all far-left con
 N = 3000 was found that violates full (ii) at (x, d) = (7, 11). So Lemma 34 localises the
 condition usefully but cannot by itself settle Conjecture R21-C; the near-left APs carry
 essential content.
+
+## Proposition 37 (complete characterization of condition (ii) at T = 1) — proved
+
+Let c = j + t with j = ⌊log_b ·⌋ and t : ℕ → {0,1}. For a 4-AP (x, x+d, x+2d, x+3d) put
+D₁ = j(x+d) − j(x), D₂ = j(x+2d) − j(x+d), D₃ = j(x+3d) − j(x+2d) (all ≥ 0, and
+D₂ + D₃ ≤ 1 by the block-gap lemma). Then:
+
+**(a) The decreasing orientation is impossible outright.** A step can decrease the class
+only when its block jump is 0 and t falls 1 → 0; three consecutive such steps would need
+t = 1,0 then 1,0 then 1,0 on overlapping pairs, forcing t(x+d) = 0 and = 1. So at T = 1 the
+architecture never contains a decreasing class sequence, for ANY t. All of condition (ii)
+lives in the increasing orientation.
+
+**(b) The increasing orientation reduces to two forbidden patterns.** Since D₂ + D₃ ≤ 1:
+- (D₂,D₃) = (0,0): steps 2 and 3 would both need a rise, forcing t(x+2d) = 1 and = 0.
+  Impossible — no constraint.
+- (D₂,D₃) = (0,1): violation ⟺ (t(x+d), t(x+2d), t(x+3d)) = (0,1,1) and step 1 increases.
+- (D₂,D₃) = (1,0): violation ⟺ (t(x+d), t(x+2d), t(x+3d)) = (0,0,1) and step 1 increases,
+where "step 1 increases" means D₁ ≥ 2, or D₁ = 1 and t(x) = 0 (D₁ = 0 is impossible here
+since it would need t(x+d) = 1).
+
+**(c) The (1,0) case is a closure property of the zero set.** Writing Z := t^{-1}(0) and
+u := x+d, the (1,0) constraint says exactly
+
+    u ∈ Z  and  u+d ∈ Z   ⟹   u+2d ∈ Z,
+
+i.e. **Z is closed under completing an arithmetic progression by one more step**, for every
+(u,d) whose block geometry is (1,0) and whose step-1 condition holds. Working out the
+geometry for b = 3: this applies for u in the upper half of its block (u ≥ (3^{k+1}+1)/2)
+and 3^{k+1} − u ≤ d ≤ min(u−1, (3^{k+2}−u)/2); at d = u−1 the preceding term is x = 1 and
+the step-1 condition is automatic.
+
+**Consequence and proof route for T = 1 (not yet a proof).** Sets closed under
+(u, w) ↦ 2w−u are highly rigid — unrestricted closure in both directions forces a coset of
+a subgroup, i.e. an arithmetic progression. Our closure is one-directional and
+range-restricted, so rigidity is not immediate; but if it can be shown to force Z to be a
+union of residue classes (or to differ from one by a density-zero set), then Corollary 30
+applies and yields a tame progression, proving Conjecture R21-C at T = 1. The two
+degenerate possibilities are already handled: Z = ∅ makes t ≡ 1, constant, hence every
+progression tame; and Z a full residue class is congruence-determined, again Corollary 30.
+The open case is a Z that is neither.
+
+Status: (a), (b), (c) are proved. The rigidity step is CONJECTURED and is exactly what the
+running experiment (experiments/t01_full.py, full-(ii) encoding with a positive
+descent-rate proxy and a non-periodicity requirement) is testing.
