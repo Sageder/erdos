@@ -66,3 +66,8 @@
   L=31080    |S|= 29 bud 1.20801  INFEASIBLE by exhaustive search (8 nodes)
   L=31320    |S|= 28 bud 1.28110  INFEASIBLE by exhaustive search (31 nodes)
   L=31500    |S|= 36 bud 1.30095  INFEASIBLE by exhaustive search (72 nodes)
+  L=31680    |S|= 35 bud 1.41196  INFEASIBLE by exhaustive search (172 nodes)
+  L=31920    |S|= 30 bud 1.23462  INFEASIBLE by exhaustive search (17 nodes)
+  L=32130    |S|= 37 bud 1.24525  INFEASIBLE by exhaustive search (38 nodes)
+  L=32340    |S|= 30 bud 1.19923  INFEASIBLE by exhaustive search (8 nodes)
+  L=32400    |S|= 34 bud 1.30892  INFEASIBLE by exhaustive search (76 nodes)
