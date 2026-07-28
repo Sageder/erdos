@@ -67,7 +67,7 @@ def build_cnf(c, prev_asc=None):
             e += 1
         e = 1
         while w + e < C:
-            if 1 <= w - e < c and w + 3 * e >= C:                # A2T
+            if 1 <= w - e < c and w + 2 * e >= C:                # A2T
                 cnf.append([-X(w, w + e)])
                 stats["A2T"] += 1
             if cp <= w - e < c and 1 <= w - 2 * e < cp:          # A2H

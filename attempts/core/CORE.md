@@ -342,3 +342,36 @@ drop-chains (mind the Γ-escape: the grounded set can be Behrend-dense, so pure
 chain-to-Γ accounting does NOT extend the range — verified failed attempt), and
 multi-scale ledgers where each scale pays separately. (iii) At C = 1 the inequality
 degenerates to "some drop exists", matching the exact threshold N(1) = 4.
+
+## Lemma 13 (spines are 3-AP-free, not just 4-AP-free)
+
+Let a be any monotone-4-AP-free permutation of ℕ, Λ its value-records, Γ its grounded
+values (Lemma 11). Then:
+
+(a) Λ contains NO 3-term AP at all: |Λ ∩ [1..N]| ≤ r₃(N) for every N.
+
+(b) Every 3-term AP (g₁, g₂, g₃) ⊆ Γ has g₂ > 2g₁ (the step exceeds the first term).
+    In particular Γ ∩ [M, 2M] is 3-AP-free for every M, so |Γ ∩ [M, 2M]| ≤ r₃(2M).
+
+(Here r₃(N) = max size of a 3-AP-free subset of [1..N].)
+
+Proof. (a) Suppose w, w+e, w+2e ∈ Λ. Records appear in increasing position order
+(Lemma 11), so pos(w) < pos(w+e) < pos(w+2e). The value w+3e exists in ℕ, and w+2e is
+a record — placed before every larger value — so pos(w+3e) > pos(w+2e). Then
+(w, w+e, w+2e, w+3e) is an increasing monotone 4-AP: contradiction.
+
+(b) Suppose g₁, g₂ = g₁+e, g₃ = g₁+2e ∈ Γ with e < g₁, so g₀ := g₁ − e ≥ 1 exists.
+Grounded values appear in increasing position order, so pos(g₁) < pos(g₂) < pos(g₃);
+and g₁ is grounded — placed after every smaller value — so pos(g₀) < pos(g₁). Then
+(g₀, g₁, g₂, g₃) is an increasing monotone 4-AP: contradiction. A 3-AP inside [M, 2M]
+has step e ≤ M/2 < M ≤ g₁, hence is excluded. ∎
+
+Remarks. (i) The one-sidedness of ℕ enters asymmetrically: Λ's forbidden extension is
+UPWARD (always exists), so Λ is unconditionally 3-AP-free; Γ's is DOWNWARD (needs
+g₁ − e ≥ 1), leaving only huge-relative-step 3-APs. (ii) With the Kelley–Meka bound
+r₃(N) ≤ N·exp(−c(log N)^{1/9}) this is quantitatively much sharper than Lemma 11's
+Szemerédi bound, but a ledger-vs-Γ-sparsity argument still cannot push Theorem 12 past
+constants — Behrend-type sets are too dense; the true C ≥ 2 extinction mechanism must
+be something else (UNSAT-core distillation of the C=2, N=34 instance is the designated
+probe). (iii) Finite shadow for machine tests: records w, w+e, w+2e of σ_N with
+w + 3e ≤ N; grounded g₁, g₂, g₃ with g₁ − e ≥ 1.

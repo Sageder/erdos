@@ -69,7 +69,7 @@ def build(c, C, use_a2h_cp=None):
             e += 1
         e = 1
         while w + e < C:
-            if 1 <= w - e < c and w + 3 * e >= C:
+            if 1 <= w - e < c and w + 2 * e >= C:
                 pats.append(("A2T", (w, w + e), [-X(w, w + e)]))
             if use_a2h_cp is not None:
                 cp = use_a2h_cp

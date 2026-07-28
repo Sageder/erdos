@@ -37,6 +37,7 @@ static int have_example = 0;
 static int example[MAXN];
 static int K = 16;
 static int order_mode = 0;
+static char round_mode = 'f';   /* f: hi=floor(Cv) (R4 convention); c: hi=ceil(Cv) (sat_order.py "plain profile") */
 static unsigned long long rngstate = 88172645463325252ULL;
 
 /* trail for dyn bound changes: packed records (is_hi, w, old) */
@@ -112,7 +113,9 @@ static int rec(int v) {
         if (ok && (cls == 'B' || cls == 'C')) {      /* fillability lookahead */
             int q = nxt[0], k = 1;
             while (k <= K && q != N + 1) {
-                if ((long long)q * num / den - v < k) { ok = 0; break; }
+                long long hifill = (round_mode == 'c') ? ((long long)q * num + den - 1) / den
+                                                       : (long long)q * num / den;
+                if (hifill - v < k) { ok = 0; break; }
                 q = nxt[q]; k++;
             }
         }
@@ -133,11 +136,21 @@ int main(int argc, char **argv) {
     mode = argv[5][0]; cap = atoll(argv[6]); maxprint = atoll(argv[7]);
     if (argc >= 9) order_mode = atoi(argv[8]);
     if (argc >= 10) rngstate = strtoull(argv[9], NULL, 10) * 2654435761ULL + 1442695040888963407ULL;
+    if (argc >= 11) round_mode = argv[10][0];
     if (N + 2 >= MAXN) { fprintf(stderr, "N too large\n"); return 2; }
     for (int v = 1; v <= N; v++) {
         dynlo[v] = 1; dynhi[v] = N;
-        if (cls == 'A' || cls == 'C') { long long h = (long long)num * v / den; if (h < N) dynhi[v] = (int)h; }
-        if (cls == 'B' || cls == 'C') { dynlo[v] = (int)(((long long)v * den + num - 1) / num); }
+        if (cls == 'A' || cls == 'C') {
+            long long h = (round_mode == 'c') ? ((long long)num * v + den - 1) / den
+                                              : (long long)num * v / den;
+            if (h < N) dynhi[v] = (int)h;
+        }
+        if (cls == 'B' || cls == 'C') {
+            /* round f: a(i) <= floor(Ci)  => lo(v) = ceil(v*den/num)
+               round c: a(i) <= ceil(Ci)   => lo(v) = floor(den*(v-1)/num) + 1 */
+            dynlo[v] = (round_mode == 'c') ? (int)((long long)den * (v - 1) / num + 1)
+                                           : (int)(((long long)v * den + num - 1) / num);
+        }
         if (cls == 'D' && v <= N / 2 && 2 * v < N) dynhi[v] = 2 * v;
     }
     for (int p = 0; p <= N + 1; p++) { nxt[p] = p + 1; prv[p] = p - 1; }
