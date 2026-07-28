@@ -1,5 +1,34 @@
 # NOTES.md — lab notebook, Erdős 273 (newest entries at top)
 
+## 2026-07-28 — ROUTE C in: the parity split re-proved a sixth time, plus new structure of H
+
+Full report `attempts/route-C-parity-H/FINDINGS.md`. Two things matter.
+
+**NEW STRUCTURAL FACT (verified by me independently).** For every odd prime q,
+2m+1 ≡ 0 (mod q) ⟺ m ≡ (q−1)/2 (mod q); since 2m+1 must be prime, H meets that class only at the
+single point m = (q−1)/2. Hence **H contains no m ≡ 1 (mod 3)** — residues of H mod 3 are exactly
+{0, 2} — equivalently **E contains no n ≡ 2 (mod 6)**. Likewise H ∩ {m ≡ 2 mod 5} = {2}, etc.
+This is the exact reason the moduli every cheap least-modulus-3 covering wants are unavailable:
+4 ≡ 1 (mod 3), 10 ≡ 1 (mod 3), 12 ≡ 2 (mod 5).
+It does NOT yield an obstruction: it constrains the *residue* of a modulus, while covering
+feasibility depends only on the *divisibility lattice* of the chosen moduli (route D's point).
+
+**THE PIVOT FIBER TEST DIES EARLIER THAN I HOPED.** Route C computed that at L = 27720 the pool
+H-divisors ∖ {2} already satisfies Φ₂, Φ₃ ≥ 1 comfortably (q=2: odd part alone gives 0.9605 per
+leaf against a 0.0395 deficit with supply 2.81; q=3: base 0.6192, deficit 0.3808, supply 6.5).
+So the elimination that killed 91 of 107 lattices M ≤ 5580 does NOT extend to the first genuinely
+relevant lattice. My frontier analysis said the test *could* bite there (A₃ = 0.619 ≤ 1); route C
+shows it *does not*. Correction recorded: "can bite" ≠ "does bite", and I should not have implied
+the elimination would keep running.
+
+Route C also searched for an H-covering avoiding 2 at L = 360, 630, 660, 720, 810, 840, 900, 960,
+990, 1260, 2520, 5040, 27720, 151200, 360360, 720720, 2162160, 10810800 — **none found**, by three
+different methods. Search failure, not evidence. It added exhaustive UNSAT at L = 360, 660, 720,
+810, 960 (agreeing with my fiber kills), and re-derived lcm ≥ 55440 independently.
+
+Route C's cheapest H-covering was 1.4889 at L = 360; **route F's 65/48 ≈ 1.3542 at L = 288 is
+cheaper** and route C did not test 288. Recorded so the "cheapest known" figure stays consistent.
+
 ## 2026-07-28 — how far the pivot elimination can possibly reach (honest limit)
 
 Φ_q(S) ≥ A_q(S) := Σ_{m ∈ S, q ∤ m} 1/m, because moduli coprime to q contribute to EVERY q-adic

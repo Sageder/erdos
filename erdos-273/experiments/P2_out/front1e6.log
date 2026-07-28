@@ -1,0 +1,14 @@
+# P2_front  LMAX = 1000000  minm = 3
+# B_Q(L) = sum of 1/m over m in S(L) coprime to Q ;  Phi_Q >= B_Q, so B_Q >= 1 == test dead
+  L <=     1000 : candidates     17 ; single-prime test alive     17 (100.0%) ; pair alive     17 (100.0%) ; triple alive     17 (100.0%)
+  L <=     3000 : candidates     58 ; single-prime test alive     58 (100.0%) ; pair alive     58 (100.0%) ; triple alive     58 (100.0%)
+  L <=    10000 : candidates    181 ; single-prime test alive    181 (100.0%) ; pair alive    181 (100.0%) ; triple alive    181 (100.0%)
+  L <=    30000 : candidates    533 ; single-prime test alive    533 (100.0%) ; pair alive    533 (100.0%) ; triple alive    533 (100.0%)
+  L <=   100000 : candidates   1784 ; single-prime test alive   1784 (100.0%) ; pair alive   1784 (100.0%) ; triple alive   1784 (100.0%)
+  L <=   300000 : candidates   5491 ; single-prime test alive   5491 (100.0%) ; pair alive   5491 (100.0%) ; triple alive   5491 (100.0%)
+  L <=  1000000 : candidates  18424 ; single-prime test alive  18424 (100.0%) ; pair alive  18424 (100.0%) ; triple alive  18424 (100.0%)
+
+# TOTAL candidates (budget>1) up to 1000000 : 18424
+# single-prime local test non-vacuous for 18424 of them; first L where EVERY single-prime
+#   test is vacuous: 0
+# pair   test first vacuous at L = 0 ;  triple test first vacuous at L = 0
