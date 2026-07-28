@@ -1,0 +1,6 @@
+gamma=3/4 N=16: UNSAT  (3 solvers agree)
+gamma=3/4 N=20: UNSAT  (3 solvers agree)
+gamma=2/3 N=16: SAT  (3 solvers agree)
+gamma=2/3 N=20: UNSAT  (3 solvers agree)
+gamma=3/5 N=20: SAT  (3 solvers agree)
+gamma=3/5 N=30: SAT  (3 solvers agree)

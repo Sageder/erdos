@@ -120,7 +120,14 @@ def decide(tau, b, verbose=False):
     cnt = 0
     for (l1, h1, c1) in lvl0:
         for (l2, h2, c2) in lvl01:
+            if c2 == c1:
+                continue
             for (l3, h3, c3) in lvl01:
+                if not ((c1 < c2 < c3) or (c1 > c2 > c3)):
+                    continue
+                pre = list(base) + box(1, l1, h1) + box(2, l2, h2) + box(3, l3, h3)
+                if not feasible_2d(pre):
+                    continue
                 for pz in p0 + [CATCH]:
                     if pz[0] == 'catch':
                         l0, h0, c0 = pz[1], pz[2], None
@@ -132,9 +139,7 @@ def decide(tau, b, verbose=False):
                         okdec = (c0 > c1 > c2 > c3)
                     if not (okinc or okdec):
                         continue
-                    cons = list(base)
-                    cons += box(1, l1, h1) + box(2, l2, h2) + box(3, l3, h3)
-                    cons += box(0, l0, h0)
+                    cons = pre + box(0, l0, h0)
                     cnt += 1
                     if feasible_2d(cons):
                         return dict(kind='inc' if okinc else 'dec',

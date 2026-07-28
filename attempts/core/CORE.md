@@ -1322,3 +1322,32 @@ exactly, not by analogy — this project's audit checklist flags precisely this 
 and an earlier route in this run was caught claiming an infinite progression from a density
 hypothesis, which is false. Freiman-type conclusions give containment in a FINITE
 progression of controlled length, never an infinite one.
+
+## Correction and verification of Proposition 39's windows
+
+The windows quoted in Proposition 39 were stated loosely; the exact ones, derived and then
+machine-verified, are as follows. For the (1,0) rule applied to the 4-AP (x, u, w, 2w−u)
+with d = w−u and x = 2u−w, one needs simultaneously
+
+    x ≥ 1                      ⟺  w < 2u,
+    j(w) = j(u) + 1  and  j(2w−u) = j(w),
+    step 1 increasing          ⟸  j(u) − j(x) ≥ 1  ⟺  2u − w < 3^k    (i.e. w > 2u − 3^k)
+
+(the case j(u) = j(x) imposes no constraint at all, since with t(u) = 0 step 1 cannot
+increase). Writing P = 3^k, these give
+
+    u ∈ [2.25·P, 2.75·P)      and      w ∈ ( 2u − P,  4.5·P ),
+
+both inside blocks k and k+1 respectively, with 2w−u ∈ block k+1. Taking
+u ∈ [2.25·P, 2.5·P) yields the common window W = (4P, 4.5P) of size P/2, so with
+A' := Z ∩ [2.25P, 2.5P) and B_W := Z ∩ W the inclusion (★) 2·B_W − A' ⊆ Z ∩ block(k+1)
+holds as stated, and |2·B_W − A'| ≥ |B_W| + |A'| − 1.
+
+Machine verification (exact integer arithmetic, k = 4…8): the constraints above are met by
+a genuine two-dimensional family — 1 640, 14 883, 132 860, 1 196 835 and 10 761 680 valid
+(u,w) pairs at k = 4,…,8, roughly a third of the candidate rectangle, with the w-range
+scaling as predicted (at k = 8, w ranges over [22 964, 29 523] inside block 9 =
+[19 683, 59 049)). So the rule is not vacuous on the family Proposition 39 uses.
+
+This corrects the loose windows in Proposition 39; its dichotomy and its four stated
+obligations are unchanged.
