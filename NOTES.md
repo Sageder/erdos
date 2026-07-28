@@ -1,5 +1,43 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 (Opus-5 session) — THEOREM 16 (forcing closure) + wave-2 workflow
+- MODEL SWITCH: Fable-5 credits exhausted; session moved to claude-opus-5. All six
+  Fable-pinned agents die on resume (credit error) — they are DEAD; new work must be
+  spawned fresh. Their directories/logs survive and are being consolidated.
+- NEW THEOREM 16 (proved, exhaustively verified, in CORE.md): call u OPEN at scale d if
+  (u-2d, u-d, u) is positionally increasing. Then u+d must be positioned BEFORE u
+  (else increasing 4-AP). Hence the forward closure Cl(u) under u -> u+d lies inside
+  pred(u): |Cl(u)| <= pos(u), always finite. Since the closure tree is finitely
+  branching (d <= (u-1)/2), Koenig gives the EXACT REFORMULATION:
+     196-YES  <=>  every 4-AP-free permutation admits an infinite forcing chain
+                   (= an infinite pos-descending chain, impossible at order type omega).
+  Verified F1/F2 on ALL 195154 avoiders with N <= 9, zero violations.
+- LEMMA 16.1 (supply, re-derived cleanly): for every value w and every modulus m there
+  is e in mN with (w, w+e, w+2e) increasing. Proof: predecessors of w are finite so
+  w < w+e in position for large e; failure for all large e in mN forces the infinite
+  descending chain w+e > w+2e > w+4e > ... Contradiction with omega.
+- THE GAP, now sharply located: supply yields increasing 3-APs STARTING at a prescribed
+  value; chains need one ENDING at a prescribed value ("co-supply"). Co-supply is FALSE
+  on finite boards (sigma_N has no monotone 3-AP at all), so only an omega-essential
+  proof can work. ALSO: chains have strictly decreasing positions, and a value at
+  position p can be open only if it has 2 predecessors in AP with it — so low-position
+  values are automatically closed and chains die naturally. A YES proof must therefore
+  beat pos(u_0) with chain length from u_0.
+- MEASURED (forcing_closure.py) on SAT witnesses: open-value fraction rises 35% (N=40)
+  -> 64% (N=160); max closure size grows ~N/2 (9,19,20,32,65,78 at N=40..160).
+- GREEDY ONLINE (greedy_latest.py): the canonical insertion process (Lemma 8 intervals)
+  under memoryless strategies latest/earliest/mid gets STUCK at v=27/27/38 (X-config,
+  Lemma 10). Online greedy is not a route; backtracking/SAT is required.
+- FINlin probe: plain SHALLOW K=8, c=2 still SAT at N=355 -> FIN-type extinction at
+  those parameters looks unlikely; Lemma 7b remains unrealized.
+- WAVE-2 WORKFLOW launched (6 missions + 6 adversarial audits): R17 co-supply/infinite
+  chain (YES crux), R18 bounded-closure NO-design (new constructive angle from Thm 16),
+  R19 LP sharpening in the window (43/24, 3) plus two-orientation beyond 3, R1-final
+  (in-order block death: depth-5 island points 700/740/760/780/800 all UNSAT — verify
+  + decide), R16 tau-repair, and consolidation of R2/R4/R8/R9.
+- RUNNING inline: plain_profile_cpsat.py (transitivity-free CP-SAT; plain profile
+  C=2,3,5 to N=500) — the decisive gate for block architectures.
+
 ## 2026-07-28 ~limit-hit checkpoint (agents terminated by session limit, resets 05:40 UTC)
 - ALL five in-flight agents killed by usage limit mid-work: R2 (was: mod4 complete,
   checking 2 background computations), R4 (headline certification instances running,
