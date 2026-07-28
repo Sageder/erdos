@@ -1,0 +1,9 @@
+Thm W  prefix of   400 positions (max value 534): injective=True  monotone 4-AP with ODD d: None   with ANY d: (1, 2, 'inc')
+Thm W  prefix of  1300 positions (max value 1734): injective=True  monotone 4-AP with ODD d: None   with ANY d: (1, 2, 'inc')
+Thm W  prefix of  4000 positions (max value 5334): injective=True  monotone 4-AP with ODD d: None   with ANY d: (1, 2, 'inc')
+Thm W  position formulas pos(odd o)=(3o+1)/2 and (3e-2)/4 <= pos(even e) <= 3e/4: VERIFIED on all values of the 3000-position prefix
+Thm W  the 3000-position prefix covers 1..2000 contiguously
+ladder k=2 (rates 1,4,2,8 on residues 1,2,3,0 mod 4), 600 positions: injective=True  monotone 4-AP with d not= 0 mod 4: None
+ladder k=2 (rates 1,4,2,8 on residues 1,2,3,0 mod 4), 2000 positions: injective=True  monotone 4-AP with d not= 0 mod 4: None
+T1 (hand proof re-checked by inspection): c=a(1); if pi(2v-c)<pi(v) for all v>=2c+1 the orbit v_{k+1}=2v_k-c stays in [2c+1,inf) (2v-c>=3c+2>=2c+1 for c>=1) and gives an infinite strictly pi-decreasing sequence -- impossible in a type-omega order. VALID.
+T2 (hand proof re-checked): x:=c-d=2c-v <= -1 <= 0 for v>=2c+1, so x sits at a position < s, before all of the right part; (c-d,c,c+d,c+2d) is then an increasing monotone 4-AP. VALID (given T1's descent applied inside the right part, whose value set is N minus a finite set -- the orbit-avoidance count is correct: g^k(v)=f forces v=c+(f-c)/2^k).

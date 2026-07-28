@@ -1,0 +1,39 @@
+EXACT crossing points N*(C) (k=4, plain, pos(v) <= floor(C v)):
+   C = 1      = 1.0000   N*(C) =   4   => rho(N) <= 1.0000 for N <= 3, rho(4) > 1.0000
+   C = 5/4    = 1.2500   N*(C) =   4   => rho(N) <= 1.2500 for N <= 3, rho(4) > 1.2500
+   C = 4/3    = 1.3333   N*(C) =  10   => rho(N) <= 1.3333 for N <= 9, rho(10) > 1.3333
+   C = 11/8   = 1.3750   N*(C) =  10   => rho(N) <= 1.3750 for N <= 9, rho(10) > 1.3750
+   C = 3/2    = 1.5000   N*(C) =  15   => rho(N) <= 1.5000 for N <= 14, rho(15) > 1.5000
+   C = 8/5    = 1.6000   N*(C) =  18   => rho(N) <= 1.6000 for N <= 17, rho(18) > 1.6000
+   C = 13/8   = 1.6250   N*(C) =  21   => rho(N) <= 1.6250 for N <= 20, rho(21) > 1.6250
+   C = 5/3    = 1.6667   N*(C) =  26   => rho(N) <= 1.6667 for N <= 25, rho(26) > 1.6667
+   C = 7/4    = 1.7500   N*(C) =  31   => rho(N) <= 1.7500 for N <= 30, rho(31) > 1.7500
+   C = 9/5    = 1.8000   N*(C) =  34   => rho(N) <= 1.8000 for N <= 33, rho(34) > 1.8000
+   C = 15/8   = 1.8750   N*(C) =  37   => rho(N) <= 1.8750 for N <= 36, rho(37) > 1.8750
+   C = 2      = 2.0000   N*(2) in [57, 85]  (witness at N=56 verified here; eager SAT UNSAT at N=85, cadical+glucose)
+   C = 3      = 3.0000   N*(3) >= 76        (witness at N=75 verified here)
+
+least squares over the 11 exact points:  N*(C) ~ 0.1777 * exp(2.9121 C)   (R^2 = 0.9388)
+   predictions: N*(2) =   60.2   [truth in 57..85]
+                N*(3) = 1106.6   [truth >= 76]
+                N*(4) = 20357.4
+   inverse: rho(N) ~ 0.593 + 0.343 ln N
+
+fit restricted to C in [1.6, 1.875]:  N*(C) ~ 0.3452 * exp(2.5344 C);  predicts N*(2) = 54.9, N*(3) = 691.9, N*(4) = 8724.0
+   inverse: rho(N) ~ 0.420 + 0.395 ln N
+
+==============================================================================
+CALIBRATION AGAINST k = 5, WHERE THE INFINITE ANSWER IS KNOWN
+==============================================================================
+   k=5  C = 5/4    N*_5(C) = 13   (exact complete enumeration, this dir)
+   k=5  C = 4/3    N*_5(C) = 35   (exact complete enumeration, this dir)
+   k=5  C >= 4          N*_5(C) = +INFINITY  -- THEOREM: route R2 / CORE Thm 21
+        'Construction A' is a 5-AP-free permutation of N with sup_v pos(v)/v = 4
+        (verified here to N = 65535: max pos(v)/v = 3.999878, limsup = 4).
+
+   two-point exponential fit for k=5:  N*_5(C) ~ 4.593e-06 exp(11.885 C)
+      -> predicts a FINITE N*_5(4) = 2.03e+15, which is FALSE.
+      LESSON: an exponential fit to small-C extinction data cannot detect a
+      divergence at finite C*.  In the one case where C* is known (k=5, C* <= 4)
+      the fit gives no warning whatsoever.  Therefore the k=4 fit
+      N*(C) ~ a e^{bC} is NOT evidence that rho(N) -> infinity.

@@ -1,3 +1,8 @@
   [top[2, 8, 26, 140, 800]] round 25: +40002 lazy clauses (60s)
   [top[2, 8, 26, 140, 800]] round 50: +40002 lazy clauses (279s)
   [top[2, 8, 26, 140, 800]] round 75: +40002 lazy clauses (681s)
+  [top[2, 8, 26, 140, 800]] round 100: +40002 lazy clauses (1949s)
+TOPRELAX cuts=[2, 8, 26, 140, 800] window=(141, 800) -> TIME_CAP (3359s)   [inconclusive: relaxation is satisfiable]
+  [top[2, 8, 26, 140, 780]] round 25: +40002 lazy clauses (49s)
+  [top[2, 8, 26, 140, 780]] round 50: +40002 lazy clauses (165s)
+  [top[2, 8, 26, 140, 780]] round 75: +40002 lazy clauses (460s)

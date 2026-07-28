@@ -1,0 +1,5 @@
+Construction A, N = 16383
+  monotone 4-APs by POSITION census : increasing 1304268, decreasing 0
+  by ARITHMETIC predicate           : S1 979436, S2 324832, overlap 0, total 1304268
+  R2 REPORT claims                  : S1 979436, S2 324832, total 1304268, all ascending
+  predicate == census, AP by AP     : YES (0 mismatches)

@@ -1,0 +1,28 @@
+Bp brute-force (apcheck definition checker), a(i) <= 1*i: level counts [1, 1, 1, 0]  -> EXTINCT at i=4   (route R4 thresholds.tsv claims 4)
+Bp brute-force (apcheck definition checker), a(i) <= 5/4*i: level counts [1, 1, 1, 1, 1, 0]  -> EXTINCT at i=6   (route R4 thresholds.tsv claims 6)
+Bp brute-force (apcheck definition checker), a(i) <= 4/3*i: level counts [1, 1, 2, 3, 5, 9, 15, 23, 35, 28, 20, 24, 12, 14, 19, 13, 2, 0]  -> EXTINCT at i=18   (route R4 thresholds.tsv claims 18)
+R9 N=50 witness: permutation of [1..50]=True  monotone-4AP(apcheck brute-free fast)=False  max pos(v)/v=2.000000  (claimed: 4-AP-free, max ratio 2.0)
+R4 A_15_8.txt             largest N= 36  perm-of-[1..N]=True  monotone4AP=False  max pos(v)/v=1.8667  max a(i)/i=3.5000
+R4 A_2_1.txt              largest N= 56  perm-of-[1..N]=True  monotone4AP=False  max pos(v)/v=2.0000  max a(i)/i=13.0000
+R4 A_2_1_ceil.txt         largest N= 39  perm-of-[1..N]=True  monotone4AP=False  max pos(v)/v=2.0000  max a(i)/i=17.0000
+R4 A_3_1.txt              largest N= 75  perm-of-[1..N]=True  monotone4AP=False  max pos(v)/v=3.0000  max a(i)/i=27.0000
+R4 A_3_2.txt              largest N= 14  perm-of-[1..N]=True  monotone4AP=False  max pos(v)/v=1.5000  max a(i)/i=2.0000
+R4 A_5_2_ceil.txt         largest N= 70  perm-of-[1..N]=True  monotone4AP=False  max pos(v)/v=3.0000  max a(i)/i=10.0000
+R4 A_7_4.txt              largest N= 30  perm-of-[1..N]=True  monotone4AP=False  max pos(v)/v=1.7333  max a(i)/i=3.5000
+R4 B_2_1.txt              largest N= 95  perm-of-[1..N]=True  monotone4AP=False  max pos(v)/v=6.0000  max a(i)/i=2.0000
+R4 B_3_2.txt              largest N= 16  perm-of-[1..N]=True  monotone4AP=False  max pos(v)/v=2.0000  max a(i)/i=1.5000
+R4 C_2_1.txt              largest N= 49  perm-of-[1..N]=True  monotone4AP=False  max pos(v)/v=2.0000  max a(i)/i=2.0000
+R4 C_3_2.txt              largest N= 14  perm-of-[1..N]=True  monotone4AP=False  max pos(v)/v=1.5000  max a(i)/i=1.5000
+R4 D_2_1.txt              largest N= 50  perm-of-[1..N]=True  monotone4AP=False  max pos(v)/v=2.0000  max a(i)/i=9.0000
+R4 seq_B_3_2.txt          largest N= 34  perm-of-[1..N]=False  monotone4AP=False  max pos(v)/v=1.8000  max a(i)/i=1.5000
+R4 seq_B_4_3.txt          largest N= 17  perm-of-[1..N]=False  monotone4AP=False  max pos(v)/v=1.6667  max a(i)/i=1.3333
+R4 seq_B_5_4.txt          largest N=  5  perm-of-[1..N]=False  monotone4AP=False  max pos(v)/v=1.0000  max a(i)/i=1.2500
+R4 survivors/A_15_8_N36_sat40.txt         41 entries, 0 with a monotone 4-AP, max pos/v in [0.0250,1.8667]
+R4 survivors/A_3_2_N14_all.txt            28 entries, 0 with a monotone 4-AP, max pos/v in [1.5000,1.5000]
+R4 survivors/A_7_4_N30_all.txt          6472 entries, 0 with a monotone 4-AP, max pos/v in [1.7333,1.7333]
+R4 survivors/Aceil_3_2_N21_all.txt       715 entries, 0 with a monotone 4-AP, max pos/v in [2.0000,2.0000]
+R4 survivors/B_3_2_N16_all.txt           116 entries, 0 with a monotone 4-AP, max pos/v in [1.7500,2.0000]
+R4 survivors/C_2_1_N12_all.txt         13913 entries, 0 with a monotone 4-AP, max pos/v in [1.5000,2.0000]
+R4 survivors/C_2_1_N49_sat40.txt          41 entries, 0 with a monotone 4-AP, max pos/v in [0.0250,2.0000]
+R4 survivors/C_3_2_N14_all.txt             4 entries, 0 with a monotone 4-AP, max pos/v in [1.5000,1.5000]
+R4 survivors/S_4_3_N17_all.txt             2 entries, 0 with a monotone 4-AP, max pos/v in [1.6667,1.6667]

@@ -1,2 +1,5 @@
 C=2.0 K=12 N=90: SAT (94s, 3530 rounds)
 C=2.0 K=12 N=130: SAT (594s, 12022 rounds)
+C=2.0 K=12 N=180: SAT (5433s, 33150 rounds)
+C=2.0 K=20 N=90: SAT (173s, 3532 rounds)
+C=2.0 K=20 N=130: SAT (1474s, 9329 rounds)

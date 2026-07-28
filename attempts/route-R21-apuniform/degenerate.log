@@ -2,3 +2,5 @@ N=60: SAT (2s, 463 rounds).  min-AP displacement = 6 (=6.00) at AP (q=8,r=5), in
    => the literal optimum U(N,8) equals its trivial upper bound.
 N=100: SAT (67s, 5012 rounds).  min-AP displacement = 11 (=11.00) at AP (q=8,r=5), index n=1;   trivial upper bound L_min = 11
    => the literal optimum U(N,8) equals its trivial upper bound.
+N=140: SAT (896s, 22112 rounds).  min-AP displacement = 16 (=16.00) at AP (q=8,r=5), index n=1;   trivial upper bound L_min = 16
+   => the literal optimum U(N,8) equals its trivial upper bound.

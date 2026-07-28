@@ -1,0 +1,17 @@
+== independent tame DFS: k=4, pos(v) <= floor(1000000*v/1), maxdepth=13 ==
+n           count        dead
+1                  1           0
+2                  2           0
+3                  6           0
+4                 22           0
+5                102           0
+6                564           0
+7               3336           0
+8              22266           0
+9             168864           0
+10           1307470           0
+11          11066766           0
+12         101361722      515296
+13         949812334           0
+alive through n=13 (no extinction within maxdepth)
+total nodes visited: 1063743455
