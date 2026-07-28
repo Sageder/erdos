@@ -624,3 +624,42 @@ Status of the surrounding certificates (all cross-verified):
 - The CEGAR engine reproduces route R9's exhaustive extension-tree thresholds exactly
   (C = 1.5: SAT 14 / UNSAT 15; C = 1.75: SAT 30 / UNSAT 31) and is SAT on unconstrained
   controls at N = 50, 120.
+
+## Remark 20 (the digit-comparator dichotomy — why base-3 orders cannot be repaired)
+
+Define the comparator τ on ℕ: write u, w in base 3 and compare them at the SMALLEST
+level where their digits differ, using any fixed linear order on {0,1,2} at that level
+(the order may vary from level to level).
+
+(a) **τ kills every monotone 4-AP, on every subset of ℕ, in both orientations.**
+Proof. Let t_i = x + (i−1)d, i = 1..4, and let k = v₃(d), m = (d/3^k) mod 3 ≠ 0. All four
+terms agree in digits 0..k−1. At level k their digits are a, a+m, a+2m, a (mod 3), since
+3m ≡ 0. So the pairs (t₁,t₂), (t₂,t₃), (t₃,t₄) each differ first at level k, while
+(t₁,t₄) differs first at a level > k. Write ≺_k for the chosen order on digits at level
+k. A monotone increasing arrangement requires a ≺_k a+m (from t₁≺t₂), a+m ≺_k a+2m
+(from t₂≺t₃) and a+2m ≺_k a (from t₃≺t₄, whose digits are a+2m and a) — a 3-cycle in a
+linear order, impossible. The decreasing orientation reverses all three, equally
+impossible. ∎
+Machine-verified independently here: no monotone 4-AP on [1..N] for N = 40, 100, 243, 500,
+for the natural level orders and for a rotated family (brute-force cross-checked at
+N = 12). τ does contain monotone 3-APs, as it must.
+
+(b) **τ is not a permutation of ℕ:** its predecessor sets are infinite. Measured:
+pos(2) = 55, 163, 487 on [1..81], [1..243], [1..729] (≈ 2N/3, since 2 has last digit 2),
+so value 2 has infinitely many predecessors in the limit — order type ≫ ω.
+
+(c) **The dichotomy.** For the cyclic argument in (a) to run, every pair (u,w) whose
+first differing level is k must be decided at level k — that is exactly the
+least-significant-digit priority. Any order with that property makes each level-0 digit
+class an initial segment of an infinite set, so predecessor sets are infinite. Conversely
+a most-significant-digit priority (compare at the LARGEST differing level) has finite
+classes [3^k, 3^{k+1}) and order type ω, but is precisely a contiguous block layout,
+which routes R1 and R3 killed by exhaustive certificates. Truncating τ at level L(v) does
+not escape: an AP with terms ≤ v has critical level k ≤ log₃ v, so protecting all of them
+already requires every level up to the top, i.e. full τ.
+
+Consequence for the portfolio: the base-3 (and by the same argument base-b) digit family
+is closed — no member is simultaneously 4-AP-free and of order type ω. A NO-witness, if
+one exists, must break monotone 4-APs by a mechanism that is NOT "compare at the first
+differing digit", and route R16's repair programme must be judged against this
+dichotomy rather than against individual failed instances.
