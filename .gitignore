@@ -1,3 +1,8 @@
 references/
 __pycache__/
 *.pyc
+
+# scratch logs from long-running searches (regenerable)
+erdos-273/*.log
+erdos-273/experiments/C_out/bb_*.txt
+*.o

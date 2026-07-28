@@ -1,0 +1,10 @@
+lattices L <= 30000 with pivot budget > 1 : 533
+of those, still attackable by SOME single-prime fiber test (min_q B_q < 1): 533  (100.0%)
+  1-prime test: never vacuous up to 30000
+  2-prime test: never vacuous up to 30000
+  3-prime test: never vacuous up to 30000
+   L <=    1000:     17 candidates,    17 (100.0%) still have a non-vacuous single-prime test
+   L <=    3000:     58 candidates,    58 (100.0%) still have a non-vacuous single-prime test
+   L <=   10000:    181 candidates,   181 (100.0%) still have a non-vacuous single-prime test
+   L <=   30000:    533 candidates,   533 (100.0%) still have a non-vacuous single-prime test
+   L <=   30000:    533 candidates,   533 (100.0%) still have a non-vacuous single-prime test

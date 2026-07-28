@@ -1,0 +1,230 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Structural constraints on covering systems with all moduli of the form $p-1$,\\
+$p\ge5$ prime\\[2mm]
+\large (Erd\H{o}s Problem 273: partial results; the problem is \emph{not} resolved here)}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Erd\H{o}s and Graham asked whether there is a covering system of $\mathbb Z$ all of whose moduli
+are of the form $p-1$ for primes $p\ge5$. We do \emph{not} answer this. We record a set of
+rigorously proved structural constraints and reductions, each independently audited and
+machine-verified, together with an explicit determination of why several natural attacks cannot
+work. In particular we prove: an exact parity-split equivalence reducing the problem to the
+existence of two \emph{disjoint} covering systems inside the halved set $H=\{m:2m+1\text{ prime}\}$;
+that the reciprocal-sum (``budget'') obstruction is powerless in both directions, since the
+infimum of $\sum 1/n_i$ over distinct-moduli covering systems is exactly $1$; a rigidity theorem
+identifying the dyadic staircase as the unique exact cover of $\mathbb Z$ minus one class by
+distinct moduli, whence the only known cost-minimising mechanism is unavailable in this setting;
+and two effective elimination tests (a coprimality/pigeonhole test and an exact $q$-adic fiber
+test) which together rule out explicit ranges of possible least common multiples. All claims are
+accompanied by independent verification scripts.
+\end{abstract}
+
+\section{Setting}
+
+A \emph{covering system} is a finite list of residue classes $a_i \pmod{n_i}$, $1\le i\le k$, with
+$1<n_1<n_2<\cdots<n_k$ (so the moduli are pairwise distinct and exceed $1$) and
+$\bigcup_i (a_i+n_i\mathbb Z)=\mathbb Z$. Put
+\[
+E:=\{p-1:\ p\ \text{prime},\ p\ge5\}=\{n\ge4:\ n+1\ \text{prime}\},\qquad
+H:=\{m\ge2:\ 2m+1\ \text{prime}\}=\tfrac12E .
+\]
+Every $n\in E$ is even, and $n\mapsto n/2$ is a bijection $E\to H$. We write
+$B_E(X)=\sum_{n\in E,\ n\le X}1/n$ and, for $L\ge1$, $f(L)=\sum_{n\mid L,\ n\in E}1/n$.
+
+\smallskip
+\noindent\textbf{Question (Erd\H{o}s--Graham, 1980).} Is there a covering system with all moduli in
+$E$?
+
+\section{The parity split}
+
+\begin{lemma}[Parity split]\label{lem:parity}
+The following are equivalent.
+\begin{enumerate}
+\item[\rm(i)] There is a covering system with all moduli in $E$.
+\item[\rm(ii)] There are two \emph{disjoint} finite sets $M_0,M_1\subseteq H$ such that for each
+$j$ there is a covering system of $\mathbb Z$ whose set of moduli is exactly $M_j$.
+\end{enumerate}
+Moreover $\operatorname{lcm}(E\text{-moduli})=2\operatorname{lcm}(H\text{-moduli})$.
+\end{lemma}
+
+\begin{proof}
+(i)$\Rightarrow$(ii). Let $\{a_i\bmod n_i\}$ be such a system, $n_i=2m_i$ with $m_i\in H$ pairwise
+distinct. Since $n_i$ is even, $a_i+n_i\mathbb Z$ consists solely of integers of the parity of
+$a_i$; so $I_j=\{i:a_i\equiv j\ (2)\}$ partitions the index set, and $M_j=\{m_i:i\in I_j\}$ are
+disjoint. Fix $j$ and $y\in\mathbb Z$; put $x=2y+j$. Some $i$ has $x\equiv a_i\ (2m_i)$, forcing
+$a_i\equiv j\ (2)$, i.e. $i\in I_j$; writing $a_i=2b_i+j$,
+\[
+2y+j\equiv 2b_i+j \pmod{2m_i}\iff 2(y-b_i)\in 2m_i\mathbb Z\iff y\equiv b_i\pmod{m_i},
+\]
+so $\{b_i\bmod m_i\}_{i\in I_j}$ covers $\mathbb Z$. (The argument quantifies over all
+$y\in\mathbb Z$, negative ones included; classes are two-sided.)
+
+(ii)$\Rightarrow$(i). Given coverings $\{b^{(j)}_m\bmod m\}_{m\in M_j}$, take the classes
+$2b^{(j)}_m+j \pmod{2m}$ for all $m\in M_j$, $j=0,1$. The moduli $2m$ lie in $E$ and are pairwise
+distinct (within a block because the $m$ are, across blocks because $M_0\cap M_1=\varnothing$).
+If $x=2y+j$ then $y\equiv b^{(j)}_m\ (m)$ for some $m\in M_j$, whence
+$x\equiv 2b^{(j)}_m+j\ (2m)$.
+\end{proof}
+
+\begin{corollary}\label{cor:pivot}
+Since $2,3\in H$ each occur once, at most one of $M_0,M_1$ contains $2$ and at most one contains
+$3$. Hence an affirmative answer requires, in particular, a covering system of $\mathbb Z$ with
+distinct moduli all of the form $(p-1)/2$, $p\ge7$ prime, i.e.\ an $H$-covering avoiding the
+modulus $2$. Contrapositively: if no such system exists, the answer to the problem is negative.
+\end{corollary}
+
+\begin{remark}
+Any construction forcing one of $M_0,M_1$ to consist of odd moduli only is a dead end: that is the
+Erd\H{o}s--Selfridge odd covering problem, which is open.
+\end{remark}
+
+\section{The budget obstruction is powerless}
+
+\begin{lemma}[Doubling map]\label{lem:double}
+If $C=\{a_i\bmod n_i\}$ is a covering system with distinct moduli, so is
+$D(C)=\{0\bmod2\}\cup\{(2a_i+1)\bmod 2n_i\}$, and
+$\operatorname{cost}(D(C))=\tfrac12+\tfrac12\operatorname{cost}(C)$, where
+$\operatorname{cost}=\sum_i 1/n_i$.
+\end{lemma}
+
+\begin{proof}
+Even $x$ lie in $0\bmod 2$. If $x=2y+1$, pick $i$ with $y\equiv a_i\ (n_i)$; then
+$x\equiv 2a_i+1\ (2n_i)$. The moduli are $2$ and the pairwise distinct $2n_i\ge4$.
+\end{proof}
+
+\begin{theorem}\label{thm:inf}
+$\inf\sum_i 1/n_i=1$ over covering systems with distinct moduli, and the infimum is not attained.
+Explicitly, iterating Lemma~\ref{lem:double} from $C_0=\{0(2),0(3),1(4),5(6),7(12)\}$ gives systems
+$C_k$ with $\sum 1/n_i=1+\tfrac13 2^{-k}$.
+\end{theorem}
+
+\begin{proof}
+Subadditivity of density gives $\sum 1/n_i\ge1$; equality would make the system an exact cover
+with distinct moduli (two classes are disjoint or meet in a class of positive density), which is
+impossible by Davenport--Mirsky--Newman--Rado. The upper bound is Lemma~\ref{lem:double}.
+\end{proof}
+
+\begin{remark}
+Consequently no reciprocal-sum argument can decide the problem in either direction: costs may be
+arbitrarily close to $1$, and $\sum_{p\ge5}1/(p-1)$ diverges. (Filaseta and Kalogirou,
+arXiv:2407.15280, prove the sharper statement that a positive lower bound on the excess holds
+precisely when the least modulus exceeds $4$; since $4\in E$, our setting lies in the regime where
+no such bound is available.) Lemma~\ref{lem:double} does not act on $E$: admissibility of $n$ and
+of $2n$ are unrelated conditions.
+\end{remark}
+
+\section{Rigidity of the cheap mechanism}
+
+\begin{theorem}[Rigidity]\label{thm:rigid}
+If residue classes with pairwise distinct moduli $>1$ partition $\mathbb Z\setminus(c\bmod D)$
+exactly, then $D=2^m$ and the moduli are exactly $2,4,\dots,2^m$.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+From $\sum_i z^{a_i}/(1-z^{n_i})=\frac1{1-z}-\frac{z^{c}}{1-z^{D}}$, evaluate at a primitive
+$n_k$-th root of unity, $n_k$ the largest modulus: only $i=k$ contributes a pole, forcing $n_k=D$,
+$D$ even and $a_k\equiv c+D/2$. Deleting that class leaves an exact partition of
+$\mathbb Z\setminus(c\bmod D/2)$; induct.
+\end{proof}
+
+\begin{corollary}
+$E\cap\{2^k\}=\{4,16,256,65536\}$ and $H\cap\{2^k\}=\{2,8,128,32768\}$ (Fermat primes minus one,
+respectively halved). Neither contains two consecutive powers of $2$, and $2\notin E$. Hence there
+is no exact partition of $\mathbb Z$ minus one class by distinct $E$-moduli at all, and only the
+trivial one ($D=2$) by distinct $H$-moduli. The unique known mechanism driving the cost to $1$ is
+therefore unavailable here.
+\end{corollary}
+
+\section{Two effective elimination tests}
+
+\begin{lemma}[Forced overlap]\label{lem:A2}
+Let $M$ be the modulus set of a covering system with distinct moduli and let $T\subseteq M$ be
+pairwise coprime. Then
+\[
+\sum_{m\in M}\frac1m-1\ \ge\ f(T):=\sum_{m\in T}\frac1m-1+\prod_{m\in T}\Bigl(1-\frac1m\Bigr).
+\]
+\end{lemma}
+
+\begin{proof}
+For a family $S$ of chosen classes put $g(S)=\sum_{m\in S}1/m-\operatorname{dens}(\bigcup S)$.
+Adding a class of modulus $m'$ raises the first term by $1/m'$ and the density by at most $1/m'$,
+so $g$ is non-decreasing. $g(M)=\sum_M 1/m-1$ since the union is $\mathbb Z$. For pairwise coprime
+$T$ the classes are independent by the Chinese remainder theorem, \emph{whatever the residues},
+so $\operatorname{dens}(\bigcup T)=1-\prod_{m\in T}(1-1/m)$ exactly, i.e. $g(T)=f(T)$.
+\end{proof}
+
+\begin{theorem}\label{thm:A3}
+If $60\mid L$ and $1<f(L)\le\frac{31}{30}$, then no covering system with all moduli in $E$ has
+lcm dividing $L$.
+\end{theorem}
+
+\begin{proof}
+$60\mid L$ gives $4,6,10\mid L$, all in $E$. Since $f(L)-1\le\frac1{30}<\frac1{10}$, each of
+$4,6,10$ is forced: deleting it leaves reciprocal sum $<1$. Their halves $2,3,5$ are pairwise
+coprime, and with $X_j=\sum_{m\in M_j}1/m-1$ we have $X_0+X_1\le 2f(L)-2\le\frac1{15}$ while both
+$X_j>0$ strictly (Theorem~\ref{thm:inf}); so $X_j<\frac1{15}$ for each $j$. As
+$f(\{2,3\})=\frac16$, $f(\{2,5\})=\frac1{10}$, $f(\{3,5\})=\frac1{15}$, Lemma~\ref{lem:A2} forbids
+any two of $2,3,5$ from lying in the same $M_j$. Three objects cannot occupy two blocks.
+\end{proof}
+
+\begin{lemma}[$q$-adic fiber test]\label{lem:fiber}
+Let $q$ be a prime, $S$ a set of $H$-moduli, and for an assignment of residues $b_m$ and
+$r\in\mathbb Z_q$ put $F_q(r)=\sum_{m:\,b_m\equiv r\ (q^{\nu_q(m)})} q^{\nu_q(m)}/m$. If some
+covering system with all moduli in $E$ has $\operatorname{lcm}/2=L_H$ and
+$S=\{m\mid L_H:2m+1\text{ prime}\}$, then $\Phi_q(S):=\max_{\text{assignments}}\min_r F_q(r)\ge2$
+for every prime $q\mid L_H$.
+\end{lemma}
+
+\begin{proof}
+For a single covering system, the integers $y\equiv r\ (q^J)$ that the class $b_m\ (m)$ can meet
+are exactly those with $b_m\equiv r\ (q^{\nu_q(m)})$, inside which the class has relative density
+$q^{\nu_q(m)}/m$; subadditivity forces $F_q(r)\ge1$. By Lemma~\ref{lem:parity} the two halves are
+disjoint subsets of $S$ carrying their own residues, so their fiber functions add. Enlarging the
+used set only increases $F_q$.
+\end{proof}
+
+\begin{remark}
+The Haar average of $F_q$ over $r$ equals $\sum 1/n_i$ exactly, so $\sum 1/n_i>1$ is only the
+\emph{average} condition, whereas covering demands the \emph{minimum}.
+\end{remark}
+
+\section{What is ruled out, and what is not}
+
+Combining $f(L)>1$, Theorem~\ref{thm:A3} and Lemma~\ref{lem:fiber} (the last computed exactly by
+branch and bound) eliminates explicit ranges of candidate least common multiples; the computations
+and their independent verifications are in the accompanying scripts. The smallest $L$ with
+$f(L)>1$ is $55440=2^4\cdot3^2\cdot5\cdot7\cdot11$, and $55440$ is itself eliminated, twice
+independently (by Lemma~\ref{lem:fiber} at $q=2$ and by the strengthened form of
+Theorem~\ref{thm:A3}).
+
+Finally we record an obstruction to the obstructions. For every fixed finite set $Q$ of primes,
+any $m\in S$ coprime to $\prod Q$ contributes $1/m$ to every $Q$-cell for every residue
+assignment, and $\sum_{m\in H,\ \gcd(m,\prod Q)=1}1/m=\infty$ by Mertens--Dirichlet. Hence no
+condition local at a fixed finite set of primes can prove a negative answer; explicit finite
+certificates confirm this ($H\cap[2,82899]$ already satisfies every single-prime fiber condition
+with threshold $2$). A negative resolution therefore requires a functional coupling all primes
+with a bound uniform in their number --- that is the distortion technology of Hough and of
+Balister--Bollob\'as--Morris--Sahasrabudhe--Tiba, which provably requires least modulus at least
+$616000$, whereas $\min E=4$.
+
+\section*{Status}
+
+The problem is \textbf{not resolved} by this note. The results above are constraints and
+reductions only. The decisive open question is Corollary~\ref{cor:pivot}: whether $\mathbb Z$
+admits a covering system with distinct moduli all in $H\setminus\{2\}$.
+
+\end{document}

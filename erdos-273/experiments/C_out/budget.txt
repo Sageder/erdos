@@ -1,0 +1,27 @@
+Unrestricted H-budget  B_H(Y) = sum_{m in H, m<=Y} 1/m
+   Y = 1e2    B_H =   2.4429   |H cap [2,Y]| = 44
+   Y = 1e3    B_H =   3.1311   |H cap [2,Y]| = 301
+   Y = 1e4    B_H =   3.6562   |H cap [2,Y]| = 2260
+   Y = 1e5    B_H =   4.0735   |H cap [2,Y]| = 17982
+   Y = 1e6    B_H =   4.4189   |H cap [2,Y]| = 148931
+   Y = 1e7    B_H =   4.7134   |H cap [2,Y]| = 1270605
+
+Divisor-lattice budgets  B(L) = sum_{d | L, 2d+1 prime} 1/d
+ primes<=Q                   exponent profile   log10 L    |D_H|     B(L)  B(L)-1/2
+         3                             [3, 2]      1.86        7   1.3194    0.8194
+         7                       [3, 2, 1, 1]      3.40       25   1.9036    1.4036
+        13                 [3, 2, 1, 1, 1, 1]      5.56       79   2.2114    1.7114
+        13                 [4, 3, 2, 1, 1, 1]      7.03      190   2.3518    1.8518
+        13                 [5, 3, 2, 2, 1, 1]      8.18      305   2.3991    1.8991
+        19           [4, 3, 2, 1, 1, 1, 1, 1]      9.54      616   2.4969    1.9969
+        29     [4, 3, 2, 1, 1, 1, 1, 1, 1, 1]     12.37     2004   2.6778    2.1778
+        37 [4, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1]     16.27     9849   2.7907    2.2907
+        43 [5, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]     19.82    40293   2.9092    2.4092
+        59 [6, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]     25.29   303218   3.0176    2.5176
+        79                (too many divisors)
+       109                (too many divisors)
+
+Reading: to give two DISJOINT H-coverings room inside ONE lattice one needs
+B(L) comfortably above 2 (each covering needs > 1, and measured H-coverings
+use nearly the whole budget of their lattice).  B(L) climbs past 3 only for L
+with tens of prime factors, i.e. L astronomically beyond any mod-L sweep.

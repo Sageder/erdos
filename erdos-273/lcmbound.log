@@ -1,0 +1,7 @@
+L_H <= 200000: 29 pass the budget condition (N1); smallest = 27720
+  L_H = 27720     budget 2.08734   KILL q=2
+  L_H = 32760     budget 2.02176   KILL q=2
+  L_H = 50400     budget 2.00018   KILL q=2
+  L_H = 55440     budget 2.11972   KILL q=5
+  L_H = 65520     budget 2.05018   KILL q=2
+  L_H = 75600     budget 2.02353   KILL q=2

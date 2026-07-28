@@ -1,0 +1,2 @@
+L = 900   world = H   pair = 0   #moduli = 14   budget = 1.093333
+moduli: 3 5 6 9 15 18 20 30 36 50 75 90 300 900

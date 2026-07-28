@@ -1,0 +1,5 @@
+L = 960   world = H   pair = 0   #moduli = 11   budget = 1.017708
+moduli: 3 5 6 8 15 20 30 48 96 120 320
+
+RESULT: UNSAT (exhaustive over this divisor lattice; nodes = 111609)
+CAVEAT: this settles only systems all of whose moduli divide L = 960.

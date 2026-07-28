@@ -1,0 +1,11 @@
+L = 720   world = H   pair = 0   #moduli = 13   budget = 1.209722
+moduli: 3 5 6 8 9 15 18 20 30 36 48 90 120
+Terminated
+L = 1260   world = H   pair = 0   #moduli = 19   budget = 1.244444
+moduli: 3 5 6 9 14 15 18 20 21 30 35 36 63 90 105 140 210 315 1260
+Terminated
+L = 2520   world = H   pair = 0   #moduli = 24   budget = 1.403571
+moduli: 3 5 6 8 9 14 15 18 20 21 30 35 36 56 63 90 105 120 140 168 210 315 504 1260
+
+RESULT: UNKNOWN (node/time budget exhausted; nodes = 153534464)
+CAVEAT: this settles only systems all of whose moduli divide L = 2520.

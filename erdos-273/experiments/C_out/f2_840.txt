@@ -1,0 +1,5 @@
+L = 840   world = H   pair = 0   #moduli = 16   budget = 1.176190
+moduli: 3 5 6 8 14 15 20 21 30 35 56 105 120 140 168 210
+
+RESULT: UNKNOWN (node/time budget exhausted; nodes = 132972544)
+CAVEAT: this settles only systems all of whose moduli divide L = 840.
