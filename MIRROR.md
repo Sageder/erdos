@@ -100,3 +100,34 @@ The run's rigorous localization of 727 is therefore: **not a digit problem** (al
 is discharged by SP + R‴ + the trichotomy), but a *correlation* problem — smoothness of two
 consecutive integers together with cofactor congruences at their large prime factors, i.e. the
 same binary/parity barrier that R11's literature sweep found blocking every published route.
+
+## 6. The first-moment obstruction (measured; `experiments/first_moment_obstruction.py`)
+
+Using §4(b)'s reformulation — for `p ∥ n+j` the condition is exactly `κ_p((n+j)/p) ≥ 1`, i.e.
+the cofactor has some base-`p` digit `≥ ⌈p/2⌉` — the failure density at primes `p ≤ n^{1/u}`
+and the smooth-pair density were measured exhaustively for `n ≤ 2·10⁵`:
+
+| `u` | `F(u)` = failure density | `2^{−u}` | `S(u)` = smooth-pair density | `ρ(u)²` | `S/F` |
+|---|---|---|---|---|---|
+| 2.0 | 0.40964 | 0.25000 | 0.05919 | 0.094159 | 0.1445 |
+| 2.5 | 0.25813 | 0.17678 | 0.00907 | 0.016983 | 0.0352 |
+| 3.0 | 0.16852 | 0.12500 | 0.00094 | 0.002361 | 0.0056 |
+| 4.0 | 0.07934 | 0.06250 | 0.00002 | 0.000024 | 0.0003 |
+| 5.0 | 0.03265 | 0.03125 | 0.00000 | 0.000000 | 0.0000 |
+
+`F(u)` tracks `2^{−u}` (geometric decay: one digit-poor cofactor is a `2^{−D}` event with
+`D ≈ u` usable digits), while `S(u)` tracks `ρ(u)² ≈ u^{−2u}` (super-exponential). Hence
+`S(u)/F(u) → 0` **monotonically, for every `u`**:
+
+> **First-moment obstruction.** No unconditional first-moment / union-bound argument over all
+> `n` can exhibit a member of `S_2`, at any smoothness threshold `n^{1/u}`: the set of `n`
+> failing some carry condition is geometrically thin in `u`, but the set of `n` with a smooth
+> window is *super-exponentially* thinner. Failures must be counted **inside** the smooth set.
+
+This is the rigorous form of the wall that closed every construction attempted in this run
+(power families `z⁴−2`, `w⁸−2`, `s¹⁶−2`; the raw `pq−1` family; smoothness-restricted variants):
+each died at the same accounting, and the table shows the death is structural, not slack.
+Consequently a YES proof needs a *joint* statement — smoothness of two consecutive integers
+**together with** cofactor congruences at their large prime factors — which is precisely the
+binary-correlation/parity barrier identified independently by the literature sweep
+(`attempts/route-R11/LITERATURE.md`).
