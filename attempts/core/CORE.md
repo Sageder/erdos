@@ -1487,3 +1487,33 @@ apparently severe constraint).
 
 This remark is recorded so that the effort spent on T = 1 is not mistaken, later, for
 progress on the problem itself.
+
+## Lemma 43 (record positions are controlled by the previous record's value)
+
+Let a be ANY permutation of ℕ and let w₁ < w₂ < ⋯ be its value-records (running maxima).
+Then for every i:
+
+    pos(w_{i+1})  ≤  w_i + 1.
+
+Proof. Every position strictly before pos(w_{i+1}) holds a value that is not a record
+larger than w_i, hence is ≤ w_i (the running maximum equals w_i throughout that stretch).
+Those values are distinct, so there are at most w_i of them: pos(w_{i+1}) − 1 ≤ w_i. ∎
+
+Verified on ALL 408 240 permutations of [1..7], [1..8], [1..9] (740 988 record pairs, zero
+violations).
+
+**Combined with Lemma 13(a).** In a monotone-4-AP-free permutation the record set is
+additionally 3-AP-FREE, hence sparse: |Λ ∩ [1..N]| ≤ r₃(N) = N·exp(−c(log N)^{1/9}). So a
+counterexample must have records that are simultaneously
+  (i) sparse in value (a Roth/Behrend-type set),
+  (ii) positioned very early — the (i+1)-st record sits at position at most w_i + 1, which
+      for a sparse record set is far below w_{i+1}, and
+  (iii) increasing in both value and position, with pos(w) ≤ w throughout (Lemma 11).
+(Re-verified here: zero record 3-APs with extension room across all 168 864 avoiders of
+[1..9].)
+
+This is recorded as a clean constraint on any counterexample. It is NOT by itself a
+contradiction: sparse record sets satisfying all three conditions are easy to write down
+(e.g. w_i growing geometrically), so the tension has to come from coupling these with the
+placement of the non-record values, which is where every affirmative-side attempt in this
+run has stalled.
