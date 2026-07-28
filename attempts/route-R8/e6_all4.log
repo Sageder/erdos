@@ -1,0 +1,4 @@
+=== N ternary bands, k=4, d filter: all ===
+  band 0: SAT (forced 0)  [1, 2]
+  band 1: SAT (forced 6)  [8, 6, 7, 4, 3, 5]
+  band 2 (size 18): UNSAT (forced 71)

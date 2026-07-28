@@ -8,3 +8,40 @@ cut-block sizes of canonical: [1, 35]
 canonical: values with pi(v)>=2v-1 (late wall): [1, 2, 3, 5]
 canonical: values with pi(v)<=(v+1)/2 (early wall): [1, 7, 16, 21, 24]
 canonical: min pi/v = 0.286 at v=7, max pi/v = 1.867 at v=15
+
+=== displacement profile addendum (mean pi(v)/v by value decile) ===
+--- C=2 two-sided N=49 (40 SAT-enum)
+  v/N (0.0,0.1]: mean 1.373 min 0.667 max 2.000
+  v/N (0.1,0.2]: mean 1.119 min 0.500 max 2.000
+  v/N (0.2,0.3]: mean 1.542 min 1.231 max 2.000
+  v/N (0.3,0.4]: mean 0.746 min 0.500 max 1.133
+  v/N (0.4,0.5]: mean 1.377 min 0.500 max 2.000
+  v/N (0.5,0.6]: mean 1.582 min 1.172 max 1.885
+  v/N (0.6,0.7]: mean 1.111 min 0.912 max 1.290
+  v/N (0.7,0.8]: mean 1.034 min 0.684 max 1.250
+  v/N (0.8,0.9]: mean 0.613 min 0.537 max 0.690
+  v/N (0.9,1.0]: mean 0.663 min 0.500 max 0.844
+--- A C=15/8 N=36 (40 SAT-enum)
+  v/N (0.0,0.1]: mean 1.389 min 1.000 max 1.667
+  v/N (0.1,0.2]: mean 1.215 min 0.286 max 1.833
+  v/N (0.2,0.3]: mean 1.183 min 0.778 max 1.800
+  v/N (0.3,0.4]: mean 1.459 min 1.071 max 1.818
+  v/N (0.4,0.5]: mean 1.225 min 0.375 max 1.867
+  v/N (0.5,0.6]: mean 0.626 min 0.476 max 0.789
+  v/N (0.6,0.7]: mean 1.006 min 0.455 max 1.304
+  v/N (0.7,0.8]: mean 1.246 min 0.857 max 1.385
+  v/N (0.8,0.9]: mean 0.896 min 0.677 max 1.207
+  v/N (0.9,1.0]: mean 0.767 min 0.583 max 1.000
+--- A C=7/4 N=30 (complete 6472)
+  v/N (0.0,0.1]: mean 1.389 min 1.000 max 1.667
+  v/N (0.1,0.2]: mean 1.394 min 1.000 max 1.667
+  v/N (0.2,0.3]: mean 0.609 min 0.286 max 0.875
+  v/N (0.3,0.4]: mean 1.598 min 1.250 max 1.727
+  v/N (0.4,0.5]: mean 1.351 min 0.929 max 1.733
+  v/N (0.5,0.6]: mean 1.090 min 0.500 max 1.706
+  v/N (0.6,0.7]: mean 0.782 min 0.450 max 1.190
+  v/N (0.7,0.8]: mean 0.831 min 0.391 max 1.136
+  v/N (0.8,0.9]: mean 1.090 min 1.038 max 1.120
+  v/N (0.9,1.0]: mean 0.747 min 0.667 max 0.857
+interpretation: oscillatory zig-zag; mid values late (~wall), top ~N values early (~pi=v/2);
+survivors saturate BOTH walls; defect values sit exactly at pi(v)=2v (e.g. v=21->42 at N=49).

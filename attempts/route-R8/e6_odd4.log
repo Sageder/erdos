@@ -1,0 +1,5 @@
+=== N ternary bands, k=4, d filter: odd ===
+  band 0: SAT (forced 0)  [1, 2]
+  band 1: SAT (forced 4)  [6, 8, 7, 4, 3, 5]
+  band 2: SAT (forced 35)  [26, 23, 25, 16, 18, 22, 24, 17, 20, 13, 19, 10, 21, 12, 9, 15, 14, 11]
+  band 3 (size 54): UNSAT (forced 340)

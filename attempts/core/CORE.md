@@ -405,3 +405,31 @@ EXACTLY by the profile constraints on the initial segment [1..15] — the minima
 sufficient constraint set is an initial segment. If that pattern persists as c grows
 (extinction always driven by an initial segment of bounded length), FINlin is the
 natural finite target. Probe: experiments/shallow_scan.py.
+
+## Theorem 14 (ceiling for increasing-only methods; found by route R6, proof re-derived)
+
+Let T be the "triadic reversed-block" permutation of ℕ: list the blocks
+I_k = [3^k, 3^{k+1}), k = 0, 1, 2, …, in increasing k-order, each block internally in
+DECREASING order. Then:
+ (i) T is a permutation of ℕ of order type ω with pos(v) ≤ 3v − 1 for all v;
+ (ii) T contains NO increasing monotone 4-AP.
+Consequently the hypothesis "pos(v) ≤ Cv" in Theorem 12 cannot force an increasing
+4-AP for any C ≥ 3: the critical constant C*_inc for increasing-only extinction
+satisfies 43/24 ≤ C*_inc ≤ 3 (lower bound: route R6's CP-SAT certificates), and any
+proof of plain-family extinction at C ≥ 3 must engage the decreasing orientation.
+(T is NOT a 196-witness: its blocks contain decreasing 4-APs, e.g. (12, 11, 10, 9).)
+
+Proof. (i) Blocks partition ℕ; each value v ∈ I_k sits at position
+≤ Σ_{m ≤ k} |I_m| = 3^{k+1} − 1 ≤ 3v − 1 (v ≥ 3^k). Order type ω: every position
+filled, every value at a finite position (finite blocks in a listed order).
+(ii) Suppose (t₁, t₂, t₃, t₄) is an increasing monotone 4-AP. Blocks are intervals and
+in-block order is decreasing, so no two CONSECUTIVE terms tᵢ, tᵢ₊₁ share a block (the
+pair would be positionally decreasing); hence the four terms lie in four strictly
+increasing blocks (position order = block order). But by scale confinement
+(BLOCKS.md Lemma B1): t₂ ∈ I_j ⟹ t₄ = t₂ + 2d < 3t₂ < 3^{j+2} ⟹ t₃, t₄ ∈ I_j ∪ I_{j+1},
+so t₃ and t₄ cannot occupy two distinct blocks above I_j. Contradiction. ∎
+
+Machine verification: independent prefix check (values 1..19682): profile and
+inc-4-AP-freeness confirmed; dyadic analogue REFUTED — (1, 6, 11, 16) sits at positions
+(1, 5, 12, 31), an increasing 4-AP, so ratio 2 does not work (ratio ≥ 3 is forced;
+route R6 proved ratio → 3 is exactly the boundary in this family).

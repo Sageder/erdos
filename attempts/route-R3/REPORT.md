@@ -397,9 +397,16 @@ through the level-v3(d) digit cycle a -> a+delta -> a+2delta -> a: every 4-AP
 *automatically* carries 1 or 2 pr_v-descents among its three adjacent pairs, in both
 orientations. An ordering need only *retain enough* of tau's comparisons: for each
 4-AP, one adjacent pair whose tau-comparison (at level v3(d)) is a descent must keep
-its tau-orientation. The analog of Proposition B for tau says keeping *all* of them is
-non-omega; but unlike sigma (two classes, one mechanism), tau has 6 priority choices
-per level and, on average, 2 usable descents per orientation — slack sigma never had.
+its tau-orientation. Keeping *all* of tau's mechanism comparisons is non-omega — in fact it pins the
+order completely (Proposition B'): for any u < w with first differing base-3 digit at
+level l, v3(w-u) = l exactly (lower digits equal forces 3^l | w-u; the differing
+digit forces the quotient nonzero mod 3), so (u, w, 2w-u, 3w-2u) is a 4-AP containing
+(u, w) as an adjacent pair at cycle level l; hence "respect the mechanism on every
+4-AP" already dictates every pairwise comparison, i.e. the order IS tau, which is not
+omega. So, as with sigma, any omega-repair must override tau on infinitely many
+pairs; but unlike sigma (two classes, one breaking option), tau has 6 priority
+choices per level and, on average, 2 usable descents per orientation — slack sigma
+never had.
 Concretely: find a "level-local repair schedule" — finite windows W_1 ⊂ W_2 ⊂ ...
 exhausting N, tau-comparisons preserved inside windows at low levels and overridden
 across windows only at levels where the overridden pairs' APs retain another in-window

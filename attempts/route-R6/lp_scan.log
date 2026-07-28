@@ -10,3 +10,4 @@ N=40: min grid C with SAT witness = 11/6 = 1.8333; largest adjacent UNSAT C = 43
   N=48: C=11/6 UNKNOWN (budget)
 N=48: min grid C with SAT witness = 11/6 = 1.8333; largest adjacent UNSAT C = 43/24 [UNSAT at (C,N) proves LP-inc(C'), all C'<=C, machine-assisted]
   N=64: C=2 UNKNOWN (budget)
+  N=64: C=15/8 UNKNOWN (budget)
