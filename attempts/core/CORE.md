@@ -1424,3 +1424,38 @@ Running tally of self-corrections in this run: the meaning of linear-profile ext
 vacuity of Theorem 16(c) (self-audit), the degenerate objective and dropped clauses
 (Remarks 31, 36), and now this. Every one had the same root cause: reading finite or
 partial evidence as if it settled an asymptotic statement.
+
+## Proposition 41 (condition (ii) is necessary but far from sufficient) — verified
+
+Condition (ii) constrains only the CLASS sequence. Values sharing a class are ordered
+freely, and those free orders must themselves avoid monotone 4-APs. So a delay satisfying
+(ii) need not yield any 4-AP-free permutation at all.
+
+This is not a theoretical caveat — it is what happens. Taking the aperiodic delays produced
+by the T = 1 solver (which satisfy full condition (ii), have a positive descent rate along
+every progression of step ≤ 4, and are genuinely aperiodic — best agreement with any union
+of residue classes 63%), and asking SAT whether ANY choice of within-class orders realizes
+them as a monotone-4-AP-free permutation:
+
+    N = 150 : UNSAT      N = 260 : UNSAT      N = 340 : UNSAT
+
+— impossibility over ALL within-class orders, the same logical shape as route R1's stage
+certificates (experiments/classreal.py, lazy-transitivity CEGAR, engine validated in
+profile_cegar.py).
+
+**Consequences.**
+1. The escaping solutions of the correction to Proposition 38 do NOT threaten Erdős 196:
+   they satisfy the necessary condition and fail the sufficient one. My worry that they
+   might constitute a counterexample lead was misplaced in that respect.
+2. Conjecture R21-C, as stated, is about condition (ii) alone — so those solutions may
+   still refute IT while being irrelevant to 196. The conjecture is therefore weaker than
+   the question one actually cares about, and the sharper target is: **is there a binary
+   delay t AND a choice of within-class orders giving a monotone-4-AP-free permutation, at
+   every N?** Equivalently (clean reformulation, since the architecture's permutations are
+   exactly the linear extensions of c): is there a monotone-4-AP-free permutation of [1..N]
+   together with a binary t making c = j + t non-decreasing along its position order?
+3. That reformulation is what experiments/t01_realize2.py tests, jointly over the delay and
+   the orders. Reference points: t ≡ 0 is the contiguous ratio-b block layout, dead by
+   routes R1/R3; the valuation delays are the CLS families, with CLS(3,a) dead at N = 250
+   (route R20). An UNSAT at moderate N would be an impossibility theorem for the entire
+   binary-delay architecture family, quantified over all delays and all within-class orders.

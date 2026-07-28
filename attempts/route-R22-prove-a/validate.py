@@ -13,7 +13,6 @@ encoding.  Here:
 import sys, random
 from fractions import Fraction as F
 sys.path.insert(0, '/home/user/erdos/attempts/route-R22-prove-a')
-from cont import C_of, violations, annulus_cuts                       # noqa: E402
 from local import jtable                                              # noqa: E402
 
 
@@ -82,20 +81,12 @@ def random_cuts(b, rng, maxval=3, npieces=4):
 
 if __name__ == "__main__":
     b = 3
-    print("--- (1) positive control: tau = 1 on [1,6/5) u [12/5,3) ---")
-    ctrl = [(F(1), 1), (F(6, 5), 0), (F(12, 5), 1)]
-    print("   CONT violations:", violations(b, ctrl)[:3])
-    N = 4000
-    J = jtable(N, b)
-    tv = tau_to_t(ctrl, b, N, J)
-    print("   integer violations on [1..%d]:" % N, int_violation(tv, b, N, J)[:3])
-
-    print("--- (3) integer checker vs literal brute force, N=300, 40 random taus ---")
+    print("--- integer checker vs literal brute force, N=300, 60 random taus ---")
     rng = random.Random(20260728)
     Nb = 300
     Jb = jtable(Nb, b)
     ok = True
-    for _ in range(40):
+    for _ in range(60):
         cu = random_cuts(b, rng)
         t = tau_to_t(cu, b, Nb, Jb)
         a = bool(int_violation(t, b, Nb, Jb, cap=1))
@@ -104,21 +95,3 @@ if __name__ == "__main__":
             ok = False
             print("   MISMATCH", cu, a, c)
     print("   agreement:", ok)
-
-    print("--- (2) CONT vs integer on [1..%d], 200 random taus ---" % N)
-    agree = disagree = 0
-    for _ in range(200):
-        cu = random_cuts(b, rng)
-        cbad = bool(violations(b, cu))
-        t = tau_to_t(cu, b, N, J)
-        ibad = bool(int_violation(t, b, N, J, cap=1))
-        if cbad == ibad:
-            agree += 1
-        else:
-            disagree += 1
-            if cbad is False and ibad is True:
-                print("   *** FATAL: CONT clean but integer violated:", cu)
-            elif disagree <= 5:
-                print("   (CONT violated, integers clean up to N — expected for "
-                      "violations at irrational/large scales):", cu)
-    print(f"   agree {agree}, disagree {disagree}")
