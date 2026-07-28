@@ -205,17 +205,21 @@ def solve_cpsat(sysobj, nworkers=4, tlimit=None, log=False):
 # lazy-transitivity engine for large blocks (sound for UNSAT)
 
 
-def solve_lazy(sysobj, solver_name='cadical195', max_rounds=200000,
-               per_round_cap=40000, time_cap=3600, verbose=False, tag=''):
+def solve_lazy(sysobj, solver_name='cadical195', per_round_cap=40000,
+               time_cap=3600, verbose=False, tag=''):
+    """Lazy-transitivity CEGAR.  UNSAT is sound (the formula is a SUBSET of the true
+    constraint system).  SAT returns a fully transitive per-block order, and the
+    caller re-verifies it with the trusted checker."""
     import time
     import numpy as np
     from pysat.solvers import Solver
     cls, dead = sysobj.clauses(transitivity=False)
     if dead:
         return 'GEOM_DEAD', dead[:5]
-    vals = sorted(sysobj.free)
-    idx = {v: i for i, v in enumerate(vals)}
-    n = len(vals)
+    byblock = {}
+    for v in sorted(sysobj.free):
+        byblock.setdefault(sysobj.seg(v), []).append(v)
+    blocks = [byblock[j] for j in sorted(byblock)]
     id2pair = {t: p for p, t in sysobj.vid.items()}
     s = Solver(name=solver_name, bootstrap_with=cls)
     t0 = time.time()
@@ -236,32 +240,50 @@ def solve_lazy(sysobj, solver_name='cadical195', max_rounds=200000,
             a = abs(l)
             if a <= sysobj.nvars:
                 val[a] = l > 0
-        A = np.zeros((n, n), dtype=np.uint8)
-        for t, (u, v) in id2pair.items():
-            if val[t]:
-                A[idx[u], idx[v]] = 1
-            else:
-                A[idx[v], idx[u]] = 1
-        C = (A.astype(np.uint32) @ A.astype(np.uint32))
-        bad = (C > 0) & (A.T > 0)
-        ii, kk = np.nonzero(bad)
-        if len(ii) == 0:
-            order = sorted(vals, key=lambda v: -int(np.sum(A[idx[v]])))
-            return 'SAT', order
         added = 0
-        for i, k in zip(ii, kk):
-            js = np.nonzero(A[i] & A[:, k])[0]
-            for j in js[:1]:
-                u, v, w = vals[int(i)], vals[int(j)], vals[int(k)]
-                for (a, bb, cc) in ((u, v, w), (v, w, u), (w, u, v)):
-                    la, lb, lc = sysobj.lit(a, bb), sysobj.lit(bb, cc), sysobj.lit(a, cc)
-                    s.add_clause([-la, -lb, lc])
-                added += 3
-            if added >= per_round_cap:
-                break
+        order = []
+        clean = True
+        for vals in blocks:
+            n = len(vals)
+            idx = {v: i for i, v in enumerate(vals)}
+            A = np.zeros((n, n), dtype=np.uint8)
+            for a_i in range(n):
+                for b_i in range(a_i + 1, n):
+                    key = (vals[a_i], vals[b_i])
+                    t = sysobj.vid.get(key)
+                    if t is None:
+                        continue
+                    if val[t]:
+                        A[a_i, b_i] = 1
+                    else:
+                        A[b_i, a_i] = 1
+            if n > 1:
+                C = A.astype(np.uint32) @ A.astype(np.uint32)
+                bad = (C > 0) & (A.T > 0)
+                ii, kk = np.nonzero(bad)
+            else:
+                ii = kk = []
+            if len(ii):
+                clean = False
+                for i, k in zip(ii, kk):
+                    js = np.nonzero(A[i] & A[:, k])[0]
+                    for j in js[:1]:
+                        u, v, w = vals[int(i)], vals[int(j)], vals[int(k)]
+                        for (a, bb, cc) in ((u, v, w), (v, w, u), (w, u, v)):
+                            la = sysobj.lit(a, bb)
+                            lb = sysobj.lit(bb, cc)
+                            lc = sysobj.lit(a, cc)
+                            s.add_clause([-la, -lb, lc])
+                        added += 3
+                    if added >= per_round_cap:
+                        break
+            else:
+                order.extend(sorted(vals, key=lambda v: -int(A[idx[v]].sum())))
+        if clean:
+            return 'SAT', order
         total += added
         if verbose and rounds % 25 == 0:
-            print(f"  [{tag}] round {rounds}: {len(ii)} cyc pairs +{added} "
+            print(f"  [{tag}] round {rounds}: +{added} lazy clauses "
                   f"({time.time()-t0:.0f}s)", flush=True)
 
 

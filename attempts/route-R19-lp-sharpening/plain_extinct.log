@@ -46,3 +46,5 @@ PLAIN C=7/4 (1.7500): minimal UNSAT N = 31  (max SAT N = 30)  [exact, 36s]
     C=2 N=28: SAT
     C=2 N=37: SAT
     C=2 N=49: SAT
+    C=2 N=64: UNKNOWN
+PLAIN C=2 (2.0000): minimal UNSAT N = None  (max SAT N = 49)  [UNKNOWN at N=64, 492s]

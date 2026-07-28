@@ -1,0 +1,65 @@
+# scan prefix=[2, 8, 26] next in [76,210] solver=cadical195
+SAT   [2, 8, 26, 76]  (1.2s)  [witness verified]
+unsat [2, 8, 26, 77]  (0.7s)
+unsat [2, 8, 26, 78]  (0.6s)
+unsat [2, 8, 26, 79]  (0.6s)
+unsat [2, 8, 26, 80]  (0.6s)
+unsat [2, 8, 26, 81]  (0.6s)
+unsat [2, 8, 26, 82]  (0.7s)
+unsat [2, 8, 26, 83]  (0.6s)
+unsat [2, 8, 26, 84]  (0.6s)
+unsat [2, 8, 26, 85]  (0.7s)
+unsat [2, 8, 26, 86]  (0.6s)
+unsat [2, 8, 26, 87]  (0.7s)
+unsat [2, 8, 26, 88]  (0.8s)
+unsat [2, 8, 26, 89]  (0.6s)
+unsat [2, 8, 26, 90]  (0.7s)
+unsat [2, 8, 26, 91]  (0.8s)
+unsat [2, 8, 26, 92]  (1.0s)
+unsat [2, 8, 26, 93]  (0.8s)
+unsat [2, 8, 26, 94]  (1.0s)
+unsat [2, 8, 26, 95]  (1.0s)
+unsat [2, 8, 26, 96]  (1.1s)
+unsat [2, 8, 26, 97]  (1.0s)
+unsat [2, 8, 26, 98]  (0.9s)
+unsat [2, 8, 26, 99]  (1.0s)
+unsat [2, 8, 26, 100]  (1.1s)
+unsat [2, 8, 26, 101]  (1.0s)
+unsat [2, 8, 26, 102]  (1.4s)
+unsat [2, 8, 26, 103]  (1.2s)
+unsat [2, 8, 26, 104]  (1.5s)
+unsat [2, 8, 26, 105]  (1.5s)
+unsat [2, 8, 26, 106]  (1.5s)
+unsat [2, 8, 26, 107]  (1.4s)
+unsat [2, 8, 26, 108]  (1.4s)
+unsat [2, 8, 26, 109]  (1.6s)
+unsat [2, 8, 26, 110]  (1.7s)
+unsat [2, 8, 26, 111]  (1.5s)
+unsat [2, 8, 26, 112]  (2.0s)
+unsat [2, 8, 26, 113]  (2.0s)
+unsat [2, 8, 26, 114]  (1.9s)
+unsat [2, 8, 26, 115]  (2.0s)
+unsat [2, 8, 26, 116]  (2.6s)
+unsat [2, 8, 26, 117]  (2.4s)
+unsat [2, 8, 26, 118]  (2.5s)
+unsat [2, 8, 26, 119]  (2.7s)
+unsat [2, 8, 26, 120]  (3.2s)
+unsat [2, 8, 26, 121]  (3.6s)
+SAT   [2, 8, 26, 122]  (4.9s)  [witness verified]
+SAT   [2, 8, 26, 123]  (4.9s)  [witness verified]
+SAT   [2, 8, 26, 124]  (8.9s)  [witness verified]
+SAT   [2, 8, 26, 125]  (7.3s)  [witness verified]
+SAT   [2, 8, 26, 126]  (11.0s)  [witness verified]
+SAT   [2, 8, 26, 127]  (9.0s)  [witness verified]
+SAT   [2, 8, 26, 128]  (15.1s)  [witness verified]
+SAT   [2, 8, 26, 129]  (8.5s)  [witness verified]
+SAT   [2, 8, 26, 130]  (13.0s)  [witness verified]
+SAT   [2, 8, 26, 131]  (20.4s)  [witness verified]
+SAT   [2, 8, 26, 132]  (21.2s)  [witness verified]
+SAT   [2, 8, 26, 133]  (14.0s)  [witness verified]
+SAT   [2, 8, 26, 134]  (6.2s)  [witness verified]
+SAT   [2, 8, 26, 135]  (24.4s)  [witness verified]
+SAT   [2, 8, 26, 136]  (28.9s)  [witness verified]
+SAT   [2, 8, 26, 137]  (48.2s)  [witness verified]
+SAT   [2, 8, 26, 138]  (58.5s)  [witness verified]
+SAT   [2, 8, 26, 139]  (80.5s)  [witness verified]

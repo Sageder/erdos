@@ -25,3 +25,27 @@ Group by mathematical idea, not wording. Keep YES and NO routes alive until one 
 | R18 | NO-design with bounded forcing closures (Thm 16 as design principle) | NO | active (wave 2) | SAT with closure-size caps; structured candidate to 10^4 |
 | R19 | LP sharpening: (43/24, 3) inc-only, and two-orientation past 3 | YES | active (wave 2) | Thm 14 caps inc-only at 3; certify plain C=2,2.5,3 |
 | R16 | tau-repair (base-3 comparator to order type omega) | NO | active (wave 2) | override schedules; truncated-depth tau; closure behaviour of tau |
+| R20 | Displacement Θ(v·log v) constructions (data-driven NO target) | NO | active (wave 2) | v·log₂v profile SAT through N=100; needs logarithmically growing debt — outside R1's dead bounded-lag regions |
+| FRESH | Isolated independent attack (no route history) | both | filed | independently re-derived Lemma 13(a) and the two-base-point necessity; measured ν_L(N)=L flat for L≤20, N≤128 |
+
+## Status synthesis (2026-07-28, after Theorem 21 / Remarks 20, 22, 23)
+
+NEGATIVE branch — the two natural mechanisms are now closed:
+- digit-comparator family: Remark 20 dichotomy (LSD kills 4-APs but forces infinite
+  predecessor classes; MSD gives order type ω but is a block layout);
+- block-layout family: R1's gadget-quantified SAT+König certificates, plus Remark 23's
+  pair-counting reason (the length-5 argument needs TWO pairs; four terms give
+  pair+singleton). Machine-confirmed: all four naive length-4 analogues of Theorem 21
+  die immediately, the first at (2,5,8,11), a 1+2+1 pattern.
+What remains: R20 (Θ(v log v) displacement), R18 (bounded closures), R16 (τ-repair
+beating the dichotomy), R11 (asymmetric), and R1's ratio-5 island if it survives.
+
+AFFIRMATIVE branch — barriers are explicit:
+- one-point-anchored forcing provably cannot close (R5's Generic Escape, re-derived
+  independently by FRESH);
+- displacement/LP arguments cannot decide the problem (Remark 17: Lemma 6 quantifies over
+  ALL profiles, and the known-NO case k=5 exhibits the same linear-profile extinction);
+- FIN/FINlin shallow criteria are dead at reachable scales (ν_L(N)=L flat).
+What remains: R17 (co-supply / infinite forcing chain — the Theorem 16 crux), R13
+(two-point supply), and exploiting the coupled 3-AP-free record family of Lemma 24,
+whose obstacle is the absence of any density lower bound (Roth-critical).

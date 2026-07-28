@@ -1,0 +1,12 @@
+  [[2, 8, 22, 64, 190]] UNSAT rounds=9 lazy=169638 4s
+  cuts=[2, 8, 22, 64, 190] -> UNSAT (4s)
+  [[2, 8, 26, 76, 226]] UNSAT rounds=10 lazy=279078 6s
+  cuts=[2, 8, 26, 76, 226] -> UNSAT (6s)
+  cuts=[2, 8, 22, 64, 189] -> GEOM_DEAD (0s)
+  [[2, 8, 22, 64, 191]] UNSAT rounds=8 lazy=154923 3s
+  cuts=[2, 8, 22, 64, 191] -> UNSAT (3s)
+  cuts=[2, 8, 22, 64, 188] -> GEOM_DEAD (0s)
+  cuts=[2, 8, 26, 76, 225] -> GEOM_DEAD (0s)
+  [[2, 8, 26, 76, 227]] UNSAT rounds=9 lazy=259776 9s
+  cuts=[2, 8, 26, 76, 227] -> UNSAT (9s)
+DONE custom

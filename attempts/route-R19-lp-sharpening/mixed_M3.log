@@ -1,0 +1,8 @@
+
+== M3: mixed vs increasing-only closures on SAT-found PLAIN avoiders ==
+  N=  40: max |Cl_inc| =    9, max |Cl_pm| =   34  (mean    7.4 vs    2.0); sum|Cl_pm| / (N(N+1)/2) = 0.362
+  N=  60: max |Cl_inc| =   19, max |Cl_pm| =   57  (mean   13.3 vs    3.1); sum|Cl_pm| / (N(N+1)/2) = 0.435
+  N=  80: max |Cl_inc| =   20, max |Cl_pm| =   57  (mean    9.6 vs    3.7); sum|Cl_pm| / (N(N+1)/2) = 0.238
+  N= 100: max |Cl_inc| =   32, max |Cl_pm| =   81  (mean   12.5 vs    4.8); sum|Cl_pm| / (N(N+1)/2) = 0.248
+  N= 130: max |Cl_inc| =   65, max |Cl_pm| =  110  (mean   17.9 vs    7.0); sum|Cl_pm| / (N(N+1)/2) = 0.274
+  N= 160: max |Cl_inc| =   78, max |Cl_pm| =  150  (mean   27.4 vs   10.2); sum|Cl_pm| / (N(N+1)/2) = 0.341

@@ -43,3 +43,4 @@ ALPHA-WALL N=90: alpha*(N) = 0.5
   N=130 alpha=0.35: UNSAT (1s, 0 rounds)
   N=130 alpha=0.4: UNSAT (2s, 5 rounds)
   N=130 alpha=0.45: UNSAT (2s, 33 rounds)
+  N=130 alpha=0.5: UNSAT (1721s, 4947 rounds)

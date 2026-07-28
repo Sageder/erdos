@@ -1,0 +1,4 @@
+OK  cuts=[8, 26, 120] mine=UNSAT R1=UNSAT  (326.7s) {'cadical195': 'UNSAT', 'glucose42': 'UNSAT', 'minisat22': 'UNSAT', 'cpsat': 'UNSAT'}
+OK  cuts=[8, 20, 100] mine=UNSAT R1=UNSAT  (93.0s) {'cadical195': 'UNSAT', 'glucose42': 'UNSAT', 'minisat22': 'UNSAT', 'cpsat': 'UNSAT'}
+OK  cuts=[7, 20, 100] mine=SAT R1=SAT  (172.1s) {'cadical195': 'SAT', 'witness_verified': True, 'glucose42': 'SAT', 'minisat22': 'SAT', 'cpsat': 'SAT'}
+OK  cuts=[2, 26, 76] mine=SAT R1=SAT  (32.9s) {'cadical195': 'SAT', 'witness_verified': True, 'glucose42': 'SAT', 'minisat22': 'SAT', 'cpsat': 'SAT'}

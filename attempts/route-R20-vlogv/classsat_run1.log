@@ -1,0 +1,3 @@
+CLS(3,a) N=60: SAT (0s, 93 rounds) maxpos/v=6.12
+CLS(3,a) N=100: SAT (2s, 442 rounds) maxpos/v=10.75
+CLS(3,a) N=160: SAT (14s, 1096 rounds) maxpos/v=13.00

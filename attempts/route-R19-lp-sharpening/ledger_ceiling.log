@@ -1,0 +1,11 @@
+N=  24: sum tau <=     360  (gamma <= 0.62500)   C_ledger(N) <= 1.25000 = 5/4   [UB, best of CP-SAT/triadic]
+N=  28: sum tau <=     493  (gamma <= 0.62883)   C_ledger(N) <= 1.27273 = 14/11   [UB, best of CP-SAT/triadic]
+N=  32: sum tau <=     663  (gamma <= 0.64746)   C_ledger(N) <= 1.34351 = 176/131   [UB, best of CP-SAT/triadic]
+N=  36: sum tau <=     836  (gamma <= 0.64506)   C_ledger(N) <= 1.34274 = 333/248   [UB, best of CP-SAT/triadic]
+N=  40: sum tau <=    1080  (gamma <= 0.67500)   C_ledger(N) <= 1.46429 = 41/28   [UB, best of CP-SAT/triadic]
+N=  48: sum tau <=    1576  (gamma <= 0.68403)   C_ledger(N) <= 1.51546 = 147/97   [UB, best of CP-SAT/triadic]
+N=  56: sum tau <=    2200  (gamma <= 0.70153)   C_ledger(N) <= 1.60887 = 399/248   [UB, best of CP-SAT/triadic]
+N=  64: sum tau <=    2952  (gamma <= 0.72070)   C_ledger(N) <= 1.72185 = 260/151   [UB, best of CP-SAT/triadic]
+N=  80: sum tau <=    4840  (gamma <= 0.75625)   C_ledger(N) <= 1.97561 = 81/41   [UB, best of CP-SAT/triadic]
+N=  96: sum tau <=    6376  (gamma <= 0.69184)   C_ledger(N) <= 1.58583 = 582/367   [UB, best of CP-SAT/triadic]
+112: UNKNOWN
