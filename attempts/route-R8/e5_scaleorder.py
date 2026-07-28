@@ -53,18 +53,28 @@ def scale0(v, b):
 
 def pure_cross_patterns(k, b, side, S):
     """All annulus sequences (s_1..s_k) of realizable pure-cross k-APs with every |term| <
-    b^(S+1); adjacent terms in distinct annuli."""
+    b^(S+1); adjacent terms in distinct annuli.  Scale lookup table for speed."""
     V = b ** (S + 1) - 1
+    table = [0] * (V + 1)
+    for a in range(1, V + 1):
+        table[a] = len_scale(a, b)
     pats = {}
     tlo = 1 if side == "N" else -V
-    maxd = (V - tlo) // (k - 1) if side == "N" else (2 * V) // (k - 1)
+    maxd = (V - tlo) // (k - 1)
     for d in range(1, maxd + 1):
         for t in range(tlo, V - (k - 1) * d + 1):
-            terms = [t + j * d for j in range(k)]
-            if side == "Z" and any(abs(x) > V for x in terms):
-                continue
-            ss = [scale0(x, b) for x in terms]
-            if any(ss[j] == ss[j + 1] for j in range(k - 1)):
+            ss = []
+            ok = True
+            prev = None
+            for j in range(k):
+                x = t + j * d
+                s = table[x if x >= 0 else -x]
+                if s == prev:
+                    ok = False
+                    break
+                ss.append(s)
+                prev = s
+            if not ok:
                 continue
             key = tuple(ss)
             if key not in pats:
@@ -114,7 +124,7 @@ if __name__ == "__main__":
     for side in ("N", "Z"):
         for b in (2, 3, 4):
             for k in (3, 4, 5, 6):
-                S = {2: 10, 3: 7, 4: 6}[b]
+                S = ({2: 10, 3: 7, 4: 6} if side == "N" else {2: 9, 3: 6, 4: 5})[b]
                 pats = pure_cross_patterns(k, b, side, S)
                 if not pats:
                     print(f"{side} base {b} k={k}: NO pure-cross patterns up to scale {S} "

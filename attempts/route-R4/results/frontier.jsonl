@@ -426,3 +426,6 @@
 {"cls": "C", "C": "2/1", "N": 46, "phase": "sat", "secs": 17.3, "verdict": "EXISTS"}
 {"cls": "A", "C": "15/8", "N": 35, "phase": "sat", "secs": 23.6, "verdict": "EXISTS"}
 {"cls": "C", "C": "2/1", "N": 49, "phase": "sat", "secs": 19.0, "verdict": "EXISTS"}
+{"cls": "C", "C": "2/1", "N": 52, "phase": "sat", "secs": 36.8, "verdict": "EXTINCT"}
+{"cls": "A", "C": "15/8", "N": 38, "phase": "sat", "secs": 79.7, "verdict": "EXTINCT"}
+{"cls": "C", "C": "2/1", "N": 50, "phase": "sat", "secs": 35.9, "verdict": "EXTINCT"}

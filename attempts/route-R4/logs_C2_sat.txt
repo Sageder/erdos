@@ -1,3 +1,6 @@
 [C C=2/1] N=43: SAT (6s)
 [C C=2/1] N=46: SAT (17s)
 [C C=2/1] N=49: SAT (19s)
+[C C=2/1] N=52: UNSAT (37s)
+[C C=2/1] refine: max SAT so far 49, min UNSAT 50
+[C C=2/1] THRESHOLD: max SAT N=49, min UNSAT N=50
