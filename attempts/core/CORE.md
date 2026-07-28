@@ -991,3 +991,51 @@ delay architecture is D1-compatible. It is NOT implied by Corollary 30 (which as
 congruence-determinacy), and by (b) above it cannot be settled by finite search — any
 argument that would also apply to the geometric coarsening of a finite avoider is wrong.
 That last sentence is the sanity check every candidate proof must pass.
+
+## Remark 32 (a natural proof of R21-C fails, and the natural refutation fails too)
+
+Two attempts on Conjecture R21-C, both by the coordinator, both recorded as FAILED with
+their exact failure points. Neither is a claim.
+
+**(a) The van der Waerden route — GAP, not a proof.** Suppose t is bounded by T. Colouring
+ℕ by t uses T+1 colours, so van der Waerden gives arbitrarily long finite APs on which t is
+constant; on such a window W, c = j + const is non-decreasing (j = ⌊log_b ·⌋ is
+non-decreasing along every AP — verified). One then hopes to bound the displacement of the
+restriction to W and contradict linear-profile extinction. The window bound itself is
+correct and machine-verified (experiments/bounded_delay.py): for every n,
+pos_W(n) ≤ n + #{m : j(p_m) = j(p_n)}. **But the resulting displacement is NOT bounded by
+O(b).** The ratio pos_W(n)/n is dominated by SMALL n, and a vdW window sits at an arbitrary
+position: if W begins at the start of a block, then at n = 1 the bound is 1 + (number of
+W-elements in that block), which grows with the block. Only when W is an INITIAL segment of
+its progression does the telescoping give ratio ≈ b, and van der Waerden gives no control
+over position. Measured maxima over random windows: ≈3–4 for b=2,3 and up to 19 for b=5,
+fluctuating with the window's placement rather than converging to b. So this route needs
+either a positioned-window vdW variant or a displacement statistic insensitive to small n —
+note that route R21's Proposition R21-2 shows the small-n sensitivity is exactly what made
+the AP-uniformity objective degenerate, so this is the same trap in a new guise.
+
+**(b) The Sturmian refutation — REFUTED.** The natural way to falsify R21-C is an aperiodic
+delay whose level sets are not unions of residue classes (required, by Corollary 30) and
+which is non-monotone along every progression (so that no tame AP exists). The canonical
+candidate is a Beatty/Sturmian delay t(v) = 1 if {vα} < β else 0 with α irrational. Such t
+does have both properties. But it FAILS condition (ii) immediately, for every parameter
+tested (α a high convergent of the golden ratio, β ∈ {1/2, 1/3, 2/3}, b ∈ {3,4,5}; exact
+rational arithmetic, values to 4000):
+
+    b=3, β=1/3: fails at x=1,  d=3   with classes (0,1,2,3)
+    b=4, β=1/3: fails at x=3,  d=5   with classes (0,1,2,3)
+    b=5, β=1/2: fails at x=17, d=36  with classes (1,2,3,4)
+
+Every failure has the same shape: the class sequence rises by exactly 1 at each step, with
+the block index supplying part of the increase and the delay the rest — e.g. for b=4,
+x=3, d=5 the values 3, 8, 13, 18 have block indices (0,1,1,2), so t = (0,0,1,1) completes a
+strictly increasing class sequence. Condition (ii) therefore forbids the delay from taking
+the pattern (0,0,1,1) on any progression whose block indices read (j, j+1, j+1, j+2), and
+aperiodic delays of Sturmian type hit that pattern almost immediately.
+
+**Reading.** (b) is mild evidence FOR R21-C: condition (ii) is restrictive enough to kill
+the most natural aperiodic candidate at once. (a) says the most natural proof strategy does
+not work as stated. The conjecture remains open, and the two failures together sharpen it:
+a refutation needs an aperiodic delay avoiding the (0,0,1,1)-on-(j,j+1,j+1,j+2) pattern and
+all its analogues, while a proof needs a displacement statistic that is not dominated by
+small indices.

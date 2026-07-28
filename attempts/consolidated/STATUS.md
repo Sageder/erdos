@@ -25,6 +25,13 @@ mathematical specification, not by re-running the routes' own binaries.
 | `verify_witnesses.py` | re-checks every stored R4 avoider/survivor and R9's N=50 witness with `apcheck` | — |
 | `verify_R8.py` | Theorem W and the mod-4 rate ladder, re-implemented from the prose | `apcheck` conventions |
 
+The foundation of `tamedfs.c`/`tamedfs_k.c` — the **interval theorem** (CORE Lemma 8,
+independently re-derived as R9 §1.1: the legal insertion ranks for the new maximum
+value form a contiguous interval given by an explicit [lo,hi] formula) — was
+re-verified here by the **literal definition scan**: over all 3,336 avoiders of
+[1..7] and all 22,266 avoiders of [1..8], every allowed-insertion set was an
+interval and equalled the formula, with **0 exceptions** (this reproduces R9's V3).
+
 Headline: **every claim I was able to re-run matched exactly**, including total
 node counts of billion-node searches. I found no computational error in any of
 the four routes. I found five documentation discrepancies (§6).
@@ -250,7 +257,10 @@ Directory `attempts/route-R8/`. REPORT.md **is** present and complete (25 kB).
   3-AP whose first term is a(1) and whose step d = v−c ≥ c+1 **exceeds** its first
   term. *Checked:* g(v)=2v−c maps [2c+1,∞) into itself (g(v) ≥ 3c+2 ≥ 2c+1 for c ≥ 1);
   the contrary hypothesis gives an infinite π-decreasing orbit, impossible in type ω.
-  **VALID**, and strictly stronger than CORE Lemma 2.
+  **VALID**, and sharper than CORE Lemma 2: both anchor the 3-AP at a(1), but T1
+  additionally pins **d > a(1)**, so the backward extension a(1) − d leaves ℕ.
+  That is exactly the ingredient T2 needs, and exactly the ingredient ℕ denies to
+  any attempt to extend the forcing from length 3 to length 4.
 - **T2** (split impossibility). If b: ℤ→ℤ is a bijection whose values at positions
   < s are exactly ℤ_{≤0} ∪ X with X ⊂ ℕ finite, then b contains an increasing
   monotone 4-AP. *Checked:* only finitely many v ≥ 2c+1 have g-orbits meeting X
@@ -359,9 +369,11 @@ Also reproduced: R9's k=3 calibration row (N\* = 5, 10, 12, 13, 20, 29 at
 C = 1.5, 2, 2.5, 3, 4, 6) and the verified N=50, C≤2 witness
 (permutation of [1..50], monotone-4-AP-free, max pos(v)/v = 2.000000 exactly).
 
-The **interval theorem** R9 states in §1.1 is CORE Lemma 8 (independent derivation),
-and my DFS is built on it; its correctness is implicitly re-confirmed by the exact
-agreement of all avoider counts with brute force at small N.
+The **interval theorem** R9 states in §1.1 is CORE Lemma 8 (independent derivation).
+I re-verified it directly against the literal definition over all 3,336 avoiders of
+[1..7] and all 22,266 avoiders of [1..8]: every allowed-insertion set is an interval
+and matches the [lo,hi] formula, 0 exceptions (reproduces R9's V3). Also reproduced:
+the 3-AP-free permutation counts 1, 2, 4, 10, 20, 48, 104, 282, 496 for N = 1..9.
 
 ### MEASURED but not re-run
 
@@ -551,8 +563,9 @@ warning: the blind spot is not merely computational, it is *inferential*.
 | `tamedfs.c` | independent complete DFS for φ-bounded 4-AP-free permutations |
 | `tamedfs_k.c` | same for general k (used for the k=3 and k=5 calibrations) |
 | `seqdfs.c` | independent complete DFS for class S (injective sequences a(i) ≤ ⌊Ci⌋) |
+| `seqdfs2.c` | same with incremental ban propagation (~10× faster; validated to give identical level counts and node totals at C = 5/4 and 4/3) |
 | `tame_C1.8.out`, `tame_C1.875.out`, `census_unbounded.out` | reproduced R9 certificates |
-| `k5_C1.5.out` | k=5, C=3/2 run (did **not** complete within budget) |
+| `k5_C1.5.out` | k=5, C=3/2 run — **did not complete**: killed after 45 min / >4×10¹¹-node budget unreached. Class S at C=3/2 likewise did not complete (15 min with `seqdfs2`). Both are next-step items, not results. |
 | `verify_witnesses.py` / `.out` | apcheck re-verification of all R4/R9 stored witnesses |
 | `verify_R8.py` / `.out` | Theorem W + mod-4 ladder re-implementation |
 | `rho_fit.py` / `.out` | the ρ(N) staircase, fits, and the k=5 calibration |
