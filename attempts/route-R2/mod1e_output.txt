@@ -1,0 +1,4 @@
+(2) OK: CNF pattern clauses == independent detector on 2000 orders of [4,16) and 300 of [16,64) (exact witness sets)
+(3) OK: solver's pi_2 for [16,64) has zero violations per independent detector
+(4) OK: 3 random orders of [64,256): every detector violation is realized as a genuine monotone 4-AP in the assembled permutation (validated checker); soundness confirmed end-to-end
+(5) spot-check: 0 / 20000 random orders of [64,256) are violation-free (SAT says the true number over ALL orders is 0)
