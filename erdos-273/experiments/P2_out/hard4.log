@@ -1,0 +1,3 @@
+# P2_exact2  L in [15120,15120]  minm = 3  nodecap 200000000000  work 2000000
+# minm=3 is THE PIVOT (modulus 2 banned). SCOPE: infeasibility at L excludes pivot
+# coverings with lcm | L only; H\{2} is infinite so this is never a proof of the pivot.
