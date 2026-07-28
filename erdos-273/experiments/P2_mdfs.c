@@ -42,31 +42,31 @@ static int sol_b[256];
 
 static long gcdl(long a, long b){ while(b){ long t=a%b; a=b; b=t; } return a; }
 
+static long *undo; static long undo_top;
+
 static int dfs(int i, long u, long g)
 {
     if (++nodes > NODECAP) { capped = 1; return 0; }
     if (u == 0) { for (int k = 0; k < ns; k++) sol_b[k] = chosen_b[k]; return 1; }
     if (i == ns) return 0;
     if (u > RS[i]) return 0;                          /* density prune */
-    u64 *c  = cov + (ll)i * NW;
-    u64 *nc = cov + (ll)(i+1) * NW;
     long m = S[i];
     long lim = NOSYM ? m : gcdl(g, m);                /* symmetry-normalised range for b */
     for (long b = 0; b < lim; b++) {
-        long gained = 0;
-        memcpy(nc, c, sizeof(u64)*NW);
+        long mark = undo_top, gained = 0;
         for (long t = b; t < L; t += m) {
             u64 msk = 1ULL << (t & 63);
-            if (!(nc[t>>6] & msk)) { nc[t>>6] |= msk; gained++; }
+            if (!(cov[t>>6] & msk)) { cov[t>>6] |= msk; undo[undo_top++] = t; gained++; }
         }
-        if (gained == 0 && !NODOM) continue;          /* dominated by SKIP */
-        chosen_b[i] = (int)b;
-        long ng = (g / gcdl(g, m)) * m;               /* lcm(g, m) */
-        if (dfs(i+1, u - gained, ng)) return 1;
+        if (gained > 0 || NODOM) {                    /* gained == 0 is dominated by SKIP */
+            chosen_b[i] = (int)b;
+            long ng = (g / gcdl(g, m)) * m;           /* lcm(g, m) */
+            if (dfs(i+1, u - gained, ng)) return 1;
+        }
+        while (undo_top > mark) { long t = undo[--undo_top]; cov[t>>6] &= ~(1ULL << (t & 63)); }
         if (capped) return 0;
     }
     chosen_b[i] = -1;                                 /* SKIP */
-    memcpy(nc, c, sizeof(u64)*NW);
     return dfs(i+1, u, g);
 }
 
@@ -92,7 +92,8 @@ int main(int argc, char **argv)
            L, MINM, ns, RS[0], L, (double)RS[0]/L);
     printf("# pool:"); for (int i=0;i<ns;i++) printf(" %ld", S[i]); printf("\n");
     if (RS[0] <= L) { printf("UNSAT (budget <= 1)\n"); return 0; }
-    cov = calloc((size_t)(ns+2)*NW, sizeof(u64));
+    cov = calloc(NW, sizeof(u64));
+    undo = malloc(sizeof(long)*(L+2)); undo_top = 0;
     /* mark the padding bits of the last word as covered so u counts only real residues */
     long pad = NW*64 - L;
     if (pad) cov[NW-1] |= (~0ULL) << (64 - pad);

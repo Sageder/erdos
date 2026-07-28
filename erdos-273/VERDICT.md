@@ -1,0 +1,181 @@
+# VERDICT — Erdős Problem 273
+
+**Statement.** Is there a covering system of ℤ, with finitely many classes and pairwise distinct
+moduli all $> 1$, every modulus of the form $p-1$ for a prime $p \ge 5$?
+(Equivalently: all moduli in $E = \{n \ge 4 : n+1 \text{ prime}\}$.)
+
+## ANSWER: NOT RESOLVED BY THIS RUN.
+
+Neither branch was proved. I did not find a covering system, and I did not prove that none
+exists. Everything below is a partial result. **Nothing here should be represented as a solution
+to Erdős 273, and no result below is strong enough to be one.**
+
+This file records exactly what *was* proved, what was only measured, and where the remaining gap
+sits. The lab notebook is `NOTES.md` (newest first), the route registry `ROUTES.md`, the audits
+`AUDITS.md`, the proofs `DRAFT.tex`, and all code `experiments/`.
+
+---
+
+## 1. What was rigorously proved (each independently audited)
+
+Every item here was proved on paper **and** re-verified by a from-scratch script; the audits are
+in `AUDITS.md`.
+
+**(T1) Parity split.** *An $E$-covering exists **iff** there are two **disjoint** finite sets
+$M_0, M_1 \subseteq H := \{m \ge 2 : 2m+1 \text{ prime}\}$, each carrying a covering system of ℤ
+with distinct moduli; and $\mathrm{lcm}_E = 2\,\mathrm{lcm}_H$.*
+Derived five independent times in this run (main line, routes A, D, F, G) and verified in both
+directions computationally. Proof: `attempts/route-M-main/PARITY_SPLIT.md`; verifier
+`experiments/M_parity_split.py`.
+*This is the correct frame for the problem.* The solved $p\ge3$ variant (Selfridge) is precisely
+"$H$ supports **one** covering system"; problem 273 additionally demands a **second, disjoint**
+one built from the moduli the first did not use.
+
+**(T2) The reciprocal-budget obstruction is powerless, in both directions.**
+$\inf \sum 1/n_i = 1$ over all covering systems with distinct moduli, not attained: the doubling
+map $D(C) = \{0 \bmod 2\} \cup \{(2a_i+1) \bmod 2n_i\}$ has cost $\tfrac12 + \tfrac12\mathrm{cost}(C)$,
+giving explicit systems of cost $1 + \tfrac13 2^{-k}$ (verified by full mod-lcm sweeps for
+$k \le 8$; route F pushed the same construction to $k = 14$, cost $49153/49152$).
+Consequently the natural heuristic "a covering needs cost $\approx 4/3$" is **false**, and since
+$\sum_{p \ge 5} 1/(p-1)$ diverges, *no* reciprocal-sum argument can settle the problem either way.
+Corroborated by Filaseta–Kalogirou (arXiv:2407.15280), who prove a positive lower bound on the
+excess exactly when the least modulus exceeds 4 — and $4 \in E$.
+
+**(T3) Lower bounds on the lcm.** Every modulus divides $L = \mathrm{lcm}$, so
+$f(L) := \sum_{n \mid L,\, n \in E} 1/n > 1$ is necessary. An exhaustive sieve over **all** $L$
+(not merely smooth ones) gives: the least such $L$ is $\mathbf{55440 = 2^4\cdot3^2\cdot5\cdot7\cdot11}$
+($f = 6429/6160$), and exactly **90** values $L \le 10^6$ qualify, all divisible by 60.
+Moreover $L = 55440$ itself is **eliminated**, twice independently (below), as are 110880 and
+several further candidates.
+
+**(T4) Forced-overlap lemma and the coprimality test** (route A, audited).
+For a covering with modulus set $M$ and any *pairwise coprime* $T \subseteq M$,
+$$\sum_{m\in M}\tfrac1m - 1 \;\ge\; f(T) := \sum_{m\in T}\tfrac1m - 1 + \prod_{m\in T}\bigl(1-\tfrac1m\bigr),$$
+because $S \mapsto \sum_{m\in S}1/m - \mathrm{dens}(\bigcup S)$ is monotone and coprime classes are
+independent by CRT **whatever the residues**. Consequence (Theorem A3): if $60 \mid L$ and
+$1 < f(L) \le 31/30$ then no $E$-covering has lcm dividing $L$ — this kills **63 of the 90**
+candidates $\le 10^6$ with no search at all.
+
+**(T5) Exact $q$-adic fiber test** (route D, audited by independent reimplementation).
+For a prime $q$ and a pool $S$, $\Phi_q(S) := \max_{\text{assignments}} \min_{r \in \mathbb Z_q}
+\sum_{m:\, b_m \equiv r\ (q^{\nu_q(m)})} q^{\nu_q(m)}/m$ must be $\ge 2$ (the two disjoint halves
+contribute additively). The Haar average of the fiber budget is exactly $\sum 1/n_i$, so
+"$\sum 1/n_i > 1$" is only the *average* condition while covering demands the *minimum*.
+Exact branch-and-bound kills $L_H = 27720, 32760, 50400, 55440, 65520, 75600$ and more.
+
+**(T6) Rigidity of the cheap mechanism** (route F).
+The only exact partition of $\mathbb Z$ minus one residue class by classes with pairwise distinct
+moduli $>1$ is the dyadic staircase $2,4,\dots,2^m$. Since
+$E \cap \{2^k\} = \{4,16,256,65536\}$ and $H \cap \{2^k\} = \{2,8,128,32768\}$ (Fermat primes,
+shifted) contain **no two consecutive powers of two**, and $2 \notin E$, the unique known
+mechanism for driving the reciprocal cost to 1 is structurally unavailable here.
+
+**(T7) A barrier on the negative branch** (route D, with an explicit certificate).
+For every **fixed** finite set $Q$ of primes, moduli coprime to $\prod Q$ contribute to every
+$Q$-cell for every residue assignment, and $\sum_{m\in H,\ \gcd(m,\prod Q)=1} 1/m = \infty$.
+Explicitly, $H \cap [2, 82899]$ already satisfies every single-prime fiber condition at threshold
+2, at every level, for every assignment. **Hence no obstruction local at a fixed finite set of
+primes can ever prove a negative answer.** A negative resolution needs a functional coupling all
+primes with a bound uniform in their number — i.e. Hough / Balister–Bollobás–Morris–**Sahasrabudhe**–Tiba
+distortion technology, which provably requires least modulus $\ge 616000$ whereas $\min E = 4$.
+
+**(T8) Verified partial certificates.** Several explicit sets of $E$-moduli covering *exactly the
+even integers* were found and independently re-verified, the cheapest being
+$$\{4,6,12,16,18,36,72,96,192,576\}\quad(\text{cost } 65/96,\ \mathrm{lcm}=576),$$
+the image under (T1) of the cheapest $H$-covering found anywhere (cost $65/48$, $\mathrm{lcm}=288$).
+So **one half of the problem is solved explicitly**; the entire difficulty is doing both halves
+with *disjoint* modulus sets.
+
+## 2. The precise open gap
+
+By (T1), and because $2 \in H$ can lie in at most one of $M_0, M_1$:
+
+> **PIVOT.** Is there a covering system of ℤ with distinct moduli all in $H \setminus \{2\}$
+> (equivalently, all of the form $(p-1)/2$ with $p \ge 7$ prime)?
+>
+> A **negative** answer proves Erdős 273 has answer **NO**. A positive answer is a finite
+> certificate that removes the single biggest obstacle to **YES**.
+
+State of the pivot after this run: the fiber test at threshold 1 (`experiments/M_pivot.py`)
+**eliminates 91 of the 107 lattices $M \le 5580$** whose pool has budget $> 1$ (51 via $q=2$, 32
+via $q=3$, 8 via $q=5$), reproducing route G's SAT-UNSAT results for $M \le 720$ instantly and
+extending them far beyond. The 16 undecided lattices are
+$1080, 1260, 1680, 2160, 2520, 3240, 3360, 3600, 3780, 3960, 4200, 4320, 4620, 4680, 5040, 5400$.
+Deciding even $M = 1080$ exactly is hard: SAT solves $M=180$ in 0.9 s, $M=360$ in 10.5 s,
+$M=720$ in 14.9 s, and does not finish $M=1080$ in hours — the UNSAT witness is a counting
+argument, which resolution reproduces only exponentially.
+
+**This elimination cannot close the problem, and must not be read as evidence that it will.**
+$\Phi_q(S) \ge \sum_{m \in S,\ q \nmid m} 1/m$, so the test at $q$ is vacuous once that sub-budget
+exceeds 1. Measured: the minimum over $q$ is always attained at $q=3$ and stays near *half* the
+pool budget (because $H$ is enriched at multiples of 3 — density $1/\varphi(3) = 1/2$, not $1/3$),
+reaching only 0.688 at $M = 720720$. So the test stays sharp on smooth lattices perhaps to
+$M \sim 10^9$, but dies on lattices of huge lcm — exactly where a real covering system may live
+(cf. T7).
+
+## 3. Why neither branch closed — honest diagnosis
+
+*The negative branch* has no available mechanism. Every standard tool is vacuous on $E$:
+Hough ($\le 10^{16}$) and BBMST ($\le 616000$) bound the *least* modulus, and $\min E = 4$;
+Hough–Nielsen ("some modulus divisible by 2 or 3") is automatic since all of $E$ is even;
+the squarefree results do not apply. Budget arguments are dead by (T2). Local-at-fixed-$Q$
+arguments are dead by (T7). Route D, chartered specifically to find an obstruction, proved instead
+that its own chartered method cannot work.
+
+*The affirmative branch* has no obstruction, only scale. Independent estimates agree: the cheapest
+$H$-covering anyone found costs $\approx 1.354$–$1.43$ and the minima show **no downward trend**
+(65/48 at $M = 288, 576, 864, 1152, 1728$), while two disjoint halves need pool budget
+$> 2\times$ that. Pool budget grows like $2\log\log$, so the crossing point sits at
+$\mathrm{lcm} \approx 10^{15}$–$10^{22}$ depending on which cheapest cost is used. Every search
+method available caps out around $\mathrm{lcm} \lesssim 10^7$–$10^8$ (memory) and, for exact UNSAT,
+around $10^4$–$10^5$ residues. **That is a gap of eight to fifteen orders of magnitude**, and it
+is where routes A, B, C, F, G all broke.
+
+Caveat on that estimate: no lower bound on the cost of an $H$-covering was proved. "$\mu_H \ge
+65/48$" is pure measurement and must not enter any argument. (T6) explains why the known
+cost-reducing mechanism is unavailable, but does not exclude others.
+
+## 4. Corrections to the material supplied with the task
+
+1. **PROMPT.md §4 and §7.10 name "Sawhney".** The author of the covering-systems papers is
+   **Julian Sahasrabudhe**: Balister, Bollobás, Morris, **Sahasrabudhe**, Tiba, *On the Erdős
+   covering problem: the density of the uncovered set*, Invent. Math. **228** (2022), 377–414.
+   Verified independently at bibliographic level.
+2. My own hand-written $H$-list in the wave-1 agent briefs **omitted 54** ($2\cdot54+1 = 109$ is
+   prime; correspondingly $108 \in E$). `PROBLEM.md`'s list stops at 44 and is correct, and every
+   agent recomputed $H$ itself, so no computation was affected. Caught by route G.
+
+## 5. Independent-verification plan
+
+- **Certificates.** `experiments/verify_certificate.py` re-checks any claimed system from scratch:
+  admissibility of every modulus by *deterministic trial division* (cross-checked against sympy),
+  pairwise distinctness, and coverage by **both** a full mod-$L$ sweep and an exact
+  class-elimination argument that terminates with an empty uncovered set. Tested on negative
+  controls (a non-covering, and a system using the forbidden moduli 2 and 3).
+- **Lean sketch (for a future YES).** The target is `ErdosProblems/273.lean`'s
+  `StrictCoveringSystem ℤ`. A certificate $\{(a_i,n_i)\}_{i\le k}$ formalises as a `Finset`, with:
+  `injective_moduli` from `decide` on pairwise distinctness; each ideal $\ne 0, \ne \top$ from
+  $n_i \ge 4$; the modulus condition $\exists p, p.Prime \wedge 5 \le p \wedge n_i = p-1$ by
+  `norm_num` on each $n_i + 1$; and the covering property by `Decidable` evaluation over
+  `ZMod L`, i.e. `decide (∀ r : ZMod L, ∃ i, ...)`, feasible only for small $L$ — for large $L$ one
+  instead formalises the CRT/class-elimination argument.
+- **Lean sketch (for a future NO).** `∀ (S : Finset ℕ), (∀ n ∈ S, n ∈ E) → ∀ a : ℕ → ℤ,
+  ∃ x : ℤ, ∀ n ∈ S, ¬ (x ≡ a n [ZMOD n])`. None of the partial results above formalises to this;
+  they all quantify over a *fixed* lcm.
+- **Reproduction.** `experiments/e_basics.py`, `M_lattice_scan.py`, `M_cost_infimum.py`,
+  `M_parity_split.py`, `M_audit_phi.py`, `M_audit_A2A3.py`, `M_pivot.py`, `M_eliminate.py`,
+  `M_A2plus.py` are deterministic and exact (`Fraction`, integer arithmetic, no floats near any
+  boundary that feeds a proof).
+
+## 6. Highest-value next steps
+
+1. Decide the 16 surviving pivot lattices exactly. A certificate there would be the single biggest
+   advance available; each UNSAT is a rigorous lemma.
+2. Prove *any* lower bound on the reciprocal cost of a covering with distinct moduli drawn from
+   $H$ (or from $E$). This is the one missing ingredient that would turn the measured budget
+   squeeze into a real theorem, and it appears to be new mathematics.
+3. Route D's unfinished computation: decide $\Phi_{\{2,3\}}(S) < 2$ exactly at $L_H = 720720$
+   (the pair condition is strictly stronger than any single prime; a confirmation would push the
+   lcm bound past $2 \cdot 10^6$). Needs a pseudo-Boolean/ILP solver, which was unavailable here.
+4. Replace flat SAT entirely by fiber elimination plus targeted search on survivors — measured to
+   be many orders of magnitude more effective.

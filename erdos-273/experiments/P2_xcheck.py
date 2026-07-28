@@ -13,7 +13,7 @@ Every SAT verdict is additionally verified from scratch: distinct moduli, each >
 
 usage: python3 P2_xcheck.py [LMAX]
 """
-import sys, os, subprocess, random
+import sys, os, subprocess, random, re
 from sympy import isprime
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -77,10 +77,9 @@ def mdfs_decide(L, minm, extra=()):
         return ('UNSAT', None)
     if out.startswith('CAP') or '\nCAP' in out:
         return ('CAP', None)
-    cert = []
-    for tok in out.split('SAT :')[1].split('\n')[0].split():
-        b, m = tok.replace(')', '').split('(mod')
-        cert.append((int(m), int(b)))
+    import re
+    cert = [(int(m), int(b)) for b, m in re.findall(r'(\d+)\(mod (\d+)\)', out)]
+    assert cert, f"unparsable mdfs output: {out!r}"
     return ('SAT', sorted(cert))
 
 

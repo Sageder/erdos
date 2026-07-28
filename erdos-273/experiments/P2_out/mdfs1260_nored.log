@@ -1,0 +1,4 @@
+# P2_mdfs L = 1260  minm = 3  |S| = 19  budget = 1568/1260 = 1.244444
+# pool: 3 5 6 9 14 15 18 20 21 30 35 36 63 90 105 140 210 315 1260
+UNSAT  exhaustive: Z/1260 admits no covering by distinct moduli from {m | 1260 : m >= 3, 2m+1 prime}.  nodes = 13469771
+# SCOPE: rules out pivot coverings with lcm dividing 1260 ONLY -- H\{2} is infinite, so this is a lattice lemma, not a proof of the pivot.
