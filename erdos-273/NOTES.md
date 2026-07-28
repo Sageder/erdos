@@ -1,5 +1,40 @@
 # NOTES.md — lab notebook, Erdős 273 (newest entries at top)
 
+## 2026-07-28 — WAVE 2 route P2 in: the pivot is infeasible on every lattice L ≤ 14490 (and 27720)
+
+Full report `attempts/route-P2-pivot/FINDINGS.md`. The five lattices my fiber scan left undecided
+(1080, 1260, 1680, 2160, 2520) are all **INFEASIBLE**, decided by three independent
+implementations with **identical node counts**. I re-read the reduction-free auditor
+(`experiments/P2_naive.py` — complete enumeration, one obviously-valid density prune, no symmetry,
+no dominance), confirmed its logic, and **reran it myself** on 1080 (71 837 nodes), 1680 (7 997)
+and 2160 (629 162), matching exactly; the positive control (modulus 2 permitted at L = 288)
+correctly returns FEASIBLE with a certificate re-verified from scratch, so the solver is not
+vacuously answering INFEASIBLE.
+
+Also decided: **L_H = 27720** — the first lattice where the pivot could hold on budget grounds, and
+the one routes B, C and G all failed to settle — INFEASIBLE in 116 692 nodes. And the whole range
+L ≤ 14490 (259 candidates: 203 by the exact fiber test, 56 by exhaustive search, 0 undecided,
+0 SAT), plus 134 further lattices up to 51240.
+
+**Not near misses.** Exact optimal gaps: 7.04 % (1080), 7.46 % (1260), 10.71 % (1680), 5.97 %
+(2160). A fixed 6–11 % of ℤ/L is unreachable no matter what residues are chosen.
+
+**Sharp structural fact.** In Φ_q a modulus contributes weight q^{ν_q(m)}/m ≤ 1, equality iff m is
+a power of q. The only powers of 2 in H are 2, 8, 128, 32768 (Fermat). Banning 2, the best 2-adic
+weight at level j = 2 is 1/5 (m = 20) where unrestricted it is 1 (m = 4). **That is exactly how
+"4 ∉ H" bites**: the level-2 slot, where a cheap least-modulus-3 covering buys its 2-adic mass,
+costs a factor 5.
+
+**Frontier, exactly computed.** Φ_Q ≥ B_Q := Σ 1/m over pool elements coprime to ∏Q, so B_Q ≥ 1
+makes the Q-local test vacuous. Smallest L with B₂ ≥ 1 is **45045**; max B₂ over L ≤ 10⁷ is only
+1.11399; and for **all 18 424** lattices L ≤ 10⁶ with pivot budget > 1, min over q | L of B_q is
+still < 1 (same for pairs and triples). So route D's divergence is real but log-log slow.
+
+**SCOPE, unchanged and decisive.** H ∖ {2} is infinite; a covering's lcm may be arbitrarily large.
+These are per-lattice lemmas and search pruning, **not** a proof that the pivot fails and therefore
+**not** a proof that 273 is false. The measured mechanism is precisely the fixed-finite-prime-set
+kind that route D proved cannot generalise.
+
 ## 2026-07-28 — ROUTE H in: the modulus lower bound jumps from 70 to 724 (partially audited)
 
 Route H wrote its own `attempts/route-H-minimalS/FINDINGS.md`. Two genuinely new things.
