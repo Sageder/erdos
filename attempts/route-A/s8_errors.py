@@ -94,19 +94,33 @@ def part_B(dmax=40, k_max=6, Lmax=5, window=2):
                     b = a + L - 1
                     cs.append((a, b, H(a, b) - Fraction(1, m)))
             cand.append(cs)
-        for combo in product(*cand):
+        # DFS with interval pruning on the accumulated error (errors are tiny)
+        k = len(cand)
+        lo = [Fraction(0)] * (k + 1)   # most negative achievable from suffix
+        hi = [Fraction(0)] * (k + 1)   # most positive achievable from suffix
+        for i in range(k - 1, -1, -1):
+            lo[i] = lo[i + 1] + min(c[2] for c in cand[i])
+            hi[i] = hi[i + 1] + max(c[2] for c in cand[i])
+        chosen = []
+
+        def rec(i, acc):
+            nonlocal tested
             tested += 1
-            tot = sum((c[2] for c in combo), Fraction(0))
-            if tot != 0:
-                continue
-            iv = sorted((c[0], c[1]) for c in combo)
-            ok = all(iv[i][1] < iv[i + 1][0] for i in range(len(iv) - 1))
-            if ok:
-                U = []
-                for (a, b) in iv:
-                    U.extend(range(a, b + 1))
-                found.append((S, iv))
-                print("   *** EXACT: S=%s blocks=%s" % (S, iv))
+            if acc + lo[i] > 0 or acc + hi[i] < 0:
+                return
+            if i == k:
+                if acc == 0:
+                    iv = sorted(chosen)
+                    if all(iv[j][1] < iv[j + 1][0] for j in range(len(iv) - 1)):
+                        found.append((S, iv))
+                        print("   *** EXACT: S=%s blocks=%s" % (S, iv))
+                return
+            for c in cand[i]:
+                chosen.append((c[0], c[1]))
+                rec(i + 1, acc + c[2])
+                chosen.pop()
+
+        rec(0, Fraction(0))
     print("   combinations tested: %d ; exact cancellations with disjoint blocks: %d"
           % (tested, len(found)))
     return found

@@ -1,0 +1,10 @@
+--- F1 Kuerschak: H(a,b) never an integer, 1<=a<b<=400 ---
+   integer block sums found: NONE
+   blocks with non-unique / zero maximal 2-power: NONE
+--- F2 two-attainer: unique max nu_p => nu_p(sum) = -e < 0 ---
+   verified on 55204 (set,prime) instances: nu_p(sum) = -e exactly
+--- F3 identities ---
+   all quoted identities hold: True
+   1/3+1/4+1/5+1/6+1/20 = 1
+   1/2+1/3+1/10+1/15   = 1
+--- F4 exhaustive: legal U subset [2,60] with sum 1 ---

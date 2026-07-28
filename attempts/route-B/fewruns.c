@@ -209,12 +209,17 @@ int main(int argc, char **argv) {
         for (int pos = N + 1; pos >= 2; pos--)
             for (int j = 0; j <= RMAX + 1; j++) {
                 if (j == 0 || pos > N) { runcap[(size_t)pos*(RMAX+2)+j] = 0; continue; }
-                /* weight of the universe run that starts at or after pos */
+                /* [a,b] = first universe run at or after pos (a = pos if allowed) */
                 int a = pos; while (a <= N && !allowed[a]) a++;
                 if (a > N) { runcap[(size_t)pos*(RMAX+2)+j] = 0; continue; }
                 int b = a; while (b + 1 <= N && allowed[b + 1]) b++;
                 u128 s = 0; for (int t = a; t <= b; t++) s += w[t];
-                runcap[(size_t)pos*(RMAX+2)+j] = s + runcap[(size_t)(b+2 <= N+1 ? b+2 : N+1)*(RMAX+2) + (j-1)];
+                int nxt = (b + 2 <= N + 1) ? b + 2 : N + 1;
+                /* CORRECT bound: a LATER universe run may be heavier than this one,
+                   so we must take the max of "skip this run" and "use it fully". */
+                u128 skipv = runcap[(size_t)nxt*(RMAX+2)+j];
+                u128 usev  = s + runcap[(size_t)nxt*(RMAX+2)+(j-1)];
+                runcap[(size_t)pos*(RMAX+2)+j] = skipv > usev ? skipv : usev;
             }
     }
     for (int pi = 0; pi < np; pi++) xres[pi] = 0;

@@ -1,0 +1,18 @@
+T=100   N=350   y=40   83 maxsum=0.44872 Lbits=57 Deff=1(1b) Mbits=57 | EXHAUSTED-NONE 1 nodes
+T=100   N=350   y=45   91 maxsum=0.48764 Lbits=63 Deff=1(1b) Mbits=63 | EXHAUSTED-NONE 1 nodes
+T=100   N=350   y=50   108 maxsum=0.57317 Lbits=73 Deff=1(1b) Mbits=73 | EXHAUSTED-NONE 11814 nodes
+T=100   N=350   y=55   108 maxsum=0.57317 Lbits=73 Deff=1(1b) Mbits=73 | EXHAUSTED-NONE 11814 nodes
+T=100   N=350   y=60   108 maxsum=0.57317 Lbits=73 Deff=1(1b) Mbits=73 | EXHAUSTED-NONE 11814 nodes
+T=100   N=350   y=70   108 maxsum=0.57317 Lbits=73 Deff=1(1b) Mbits=73 | EXHAUSTED-NONE 11814 nodes
+T=100   N=350   y=0    108 maxsum=0.57317 Lbits=73 Deff=1(1b) Mbits=73 | EXHAUSTED-NONE 11814 nodes
+T=100   N=400   y=40   93 maxsum=0.47525 Lbits=57 Deff=1(1b) Mbits=57 | EXHAUSTED-NONE 1 nodes
+T=100   N=400   y=45   118 maxsum=0.58990 Lbits=70 Deff=1(1b) Mbits=70 | EXHAUSTED-NONE 14180306 nodes
+T=100   N=400   y=50   127 maxsum=0.62976 Lbits=75 Deff=1(1b) Mbits=75 | TIMEOUT
+T=100   N=400   y=55   135 maxsum=0.66533 Lbits=81 Deff=1(1b) Mbits=81 | TIMEOUT
+T=100   N=400   y=60   135 maxsum=0.66533 Lbits=81 Deff=1(1b) Mbits=81 | TIMEOUT
+T=100   N=400   y=70   135 maxsum=0.66533 Lbits=81 Deff=1(1b) Mbits=81 | TIMEOUT
+T=100   N=400   y=0    135 maxsum=0.66533 Lbits=81 Deff=1(1b) Mbits=81 | TIMEOUT
+T=100   N=420   y=40   97 maxsum=0.48509 Lbits=57 Deff=1(1b) Mbits=57 | EXHAUSTED-NONE 1 nodes
+T=100   N=420   y=45   122 maxsum=0.59974 Lbits=70 Deff=1(1b) Mbits=70 | TIMEOUT
+T=100   N=420   y=50   131 maxsum=0.63960 Lbits=75 Deff=1(1b) Mbits=75 | TIMEOUT
+T=100   N=420   y=55   139 maxsum=0.67517 Lbits=81 Deff=1(1b) Mbits=81 | TIMEOUT
