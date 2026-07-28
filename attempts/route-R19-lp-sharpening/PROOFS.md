@@ -241,12 +241,31 @@ Each row is certified by an explicit increasing-4-AP-free permutation of [1..N]
 | 26 | 428 | 0.63314 | 351/274 = 1.28102 | witness |
 | 28 | 491 | 0.62628 | 406/321 = 1.26480 | witness |
 | 32 | 641 | 0.62598 | 528/415 = 1.27229 | witness (plain-target optimum) |
+| 40 | 1031 | 0.64438 | 820/609 = 1.34647 | witness (CP-SAT 420 s) |
+| 48 | 1518 | 0.65885 | 196/139 = 1.41007 | witness (local search) |
+| 56 | 2150 | 0.68559 | 798/521 = 1.53167 | witness (local search) |
+| 64 | 2776 | 0.67773 | 260/173 = 1.50289 | witness (local search) |
+| 80 | 4652 | 0.72688 | 810/457 = 1.77243 | witness (local search; weakest row) |
+| 96 | 6124 | 0.66450 | 1164/797 = 1.46048 | witness (local search) |
+| 112 | 8180 | 0.65210 | 1582/1119 = 1.41376 | witness (local search) |
+| 128 | 10734 | 0.65515 | 1376/963 = 1.42887 | witness (local search) |
 
-Needed for CORE Thm 12's 9/8: γ = 5/9 = 0.5556. Needed for R6's 43/24: γ = 31/43 =
-0.7209. Needed for C = 2: γ = 3/4. **MEASURED:** γ_min(N) = 0.62 ± 0.01 with no upward
-trend over 8 ≤ N ≤ 32. **CONJECTURED:** γ_min → ≈ 0.62 and sup_N C_ledger(N) ≈ 1.32.
-For the PLAIN (both-orientation) target the Σ τ-minima coincide with the increasing-only
-ones at N = 8, 12, 16, 20, 24, so the ledger ceiling is the same there.
+Proved optima only for N <= 16 (CP-SAT OPTIMAL, brute-force confirmed N <= 9); all other
+rows are upper bounds from explicit witnesses, and they degrade with N only because the
+search degrades. Needed for CORE Thm 12's 9/8: gamma = 5/9 = 0.5556. Needed for R6's
+43/24: gamma = 31/43 = 0.7209. Needed for C = 2: gamma = 3/4.
+
+**MEASURED:** best-known gamma(N) lies in [0.617, 0.727] over 8 <= N <= 128, and <= 0.678 at every N in that range except N = 80 (where the search stalled near triadic), against the
+0.7209 that a ledger proof of 43/24 would need and the 0.75 that C = 2 would need.
+For the PLAIN (both-orientation) target the Sigma-tau minima coincide with the
+increasing-only ones at N = 8, 12, 16, 20, 24, so the ledger ceiling is the same there.
+
+**CONJECTURED (weakly supported):** sup_N C_ledger(N) is around 1.3-1.4, i.e. strictly
+below R6's machine-assisted 43/24 = 1.7917. Support: at every N where a good witness was
+found, gamma(N) <= 0.686 << 0.7209. Caveat: these are search results, not optima (optimality is proved only to N = 16);
+at N = 80 the search stalled and gave only 1.772, so the data does NOT exclude
+sup_N C_ledger(N) = 2. The PROVED statement is only sup_N C_ledger(N) <= 2 (Prop 5),
+i.e. the ledger certainly cannot reach C = 2.
 
 ### 6.2 CERTIFIED — mixed closure (Theorems 7–9)
 

@@ -859,3 +859,47 @@ Discipline note: this is the second time in this run that a negative reading of 
 certificates had to be narrowed (the first being Remark 17, where linear-profile
 extinction turned out not to discriminate the branches at all). Finite UNSATs bound only
 the exact family they quantify over.
+
+## Corollary 26 (AP-restriction principle for displacement — route R20, verified)
+
+Let a be a monotone-4-AP-free permutation of ℕ and P = {r+q, r+2q, …} any infinite
+arithmetic progression. Transport the induced order on P to ℕ by n ↦ r+qn. Then the
+transported order is a monotone-4-AP-free permutation of ℕ of order type ω. (Same proof
+as Lemma 24's first step: affine maps carry APs to APs in both directions, and
+P-predecessors are a subset of a-predecessors, so Lemma 1 applies.)
+
+Consequence: EVERY quantitative theorem about 4-AP-free permutations applies to every AP
+restriction simultaneously. In particular Theorem 12 gives
+limsup_n pos_P(n)/n ≥ 9/8 for every infinite AP P, and the certified linear-profile
+extinctions apply to each restriction separately.
+
+**Design principle D1** (conditional on linear-profile extinction holding at every C —
+which is NOT proved; see Remark 17): a NO-witness must have unbounded relative
+displacement along EVERY infinite AP, not merely globally. This is a far sharper filter
+than any global profile condition, and route R20 used it to kill the natural
+"delay by 2-adic valuation" architectures: in those, the odd numbers carry constant delay,
+so the restriction to the odds is an in-order geometric block ordering with linear
+displacement.
+
+## Remark 27 (SEARCH BLIND SPOT — a methodological warning that qualifies several results)
+
+From the certified extinction law N*(C) ≈ 4·exp(4.15(C − 1.25)) (Remark 17), a design
+whose AP-restriction has linear displacement with constant C cannot die before roughly
+
+    C = 3 : N ≈ 6·10³      C = 5 : N ≈ 10⁷      C = 6 : N ≈ 10⁹
+
+So verifying a candidate construction to M = 10⁴–10⁵ — the standard bar used throughout
+this project — CANNOT certify or refute any design with displacement constant ≳ 3.
+Consequences that must be carried forward:
+- Route R1's surviving ratio-5/6 corridor (including the depth-5 feasible cut sequences
+  [1,2,4,10,90…92]) sits squarely in this blind spot: its survival at reachable sizes is
+  NOT evidence of survival.
+- Route R20's CLS(5,a) architecture, alive at N = 250 over all within-class orders, is in
+  the same blind spot, whereas CLS(3,a) died at N = 250 — consistent with the law rather
+  than with a real difference in viability.
+- Conversely, an UNSAT obtained at reachable N for a low-C design is genuinely
+  informative, because the law says such designs should die early.
+The methodological upshot: for the negative branch, only an explicit rule with a PROOF
+can settle anything in the C ≳ 3 regime; finite verification is structurally incapable of
+it. For the affirmative branch, extinction certificates at small C say nothing about
+large C (and by Remark 17 would not decide the problem even if extended to all C).

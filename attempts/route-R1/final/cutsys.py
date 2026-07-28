@@ -196,7 +196,14 @@ def solve_cpsat(sysobj, nworkers=4, tlimit=None, log=False):
     if st == cp_model.INFEASIBLE:
         return 'UNSAT', None
     if st in (cp_model.OPTIMAL, cp_model.FEASIBLE):
-        order = sorted(vals, key=lambda v: solver.Value(rank[v]))
+        # ranks only encode WITHIN-block order (cross-block order is a layout
+        # constant), so emit block by block in layout order
+        byblock = {}
+        for v in vals:
+            byblock.setdefault(sysobj.seg(v), []).append(v)
+        order = []
+        for j in sorted(byblock):
+            order.extend(sorted(byblock[j], key=lambda v: solver.Value(rank[v])))
         return 'SAT', order
     return 'UNKNOWN', None
 

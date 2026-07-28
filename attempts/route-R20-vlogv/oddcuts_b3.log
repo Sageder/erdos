@@ -2,3 +2,4 @@ b=3 odd-block cuts (in n-coordinates): [1, 2, 5, 14, 41, 122, 365, 1094, 3281]
 oddblocks(b=3) N=40 (odd values up to 79): SAT (0s, 145 rounds)
 oddblocks(b=3) N=70 (odd values up to 139): SAT (2s, 535 rounds)
 oddblocks(b=3) N=110 (odd values up to 219): SAT (48s, 2167 rounds)
+oddblocks(b=3) N=160 (odd values up to 319): UNSAT (569s, 830 rounds)
