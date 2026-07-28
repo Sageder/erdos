@@ -97,3 +97,49 @@ repeating. Recorded here because both corrections are load-bearing.
    inside BV range — **not** a parity or bilinear-prime problem, because no prime is detected
    and the smooth supply is unconditional. L4a (single largest prime factor) is the concrete
    first target.
+## Audit 4 — route R14 `L4A.md` (L4a, Prop O1, Theorems A/B, Hypothesis U), 2026-07-28
+
+**VERDICT: MIXED.** The unconditional core survives; one conditional theorem is broken; the
+framing overstated the reduction; and the reduction does not count as progress.
+
+**Survives (verified by the auditor from scratch, zero counterexamples):** Lemmas 1, 2, 2′, 3,
+3′, 4, 5 — 720,406 exhaustive Lemma-2 instances, 756,666 for Lemma 2′, 120,000 random large
+instances, exact Lemma-3 residue counts (including the `e ≥ 2` bound by brute force), a grid
+check of Lemma 3′, and 46,297 members of the class `157 mod 648`. All tables reproduced to the
+exact integer from an independent sieve; the eight claimed `S₂` members re-certified by Legendre
+valuations at every prime `≤ 2n`.
+
+**Broken / not proved:**
+- **Proposition O1 is NOT proved** and was falsely listed as unconditional: §7 supplies only a
+  Dickman-model asymptotic plus measurements, and the model step `S(x,b) ≍ x·ρ(1/b)²` is itself
+  an unproved independence heuristic. The measurements are correct (auditor reproduced
+  `A/S = 1.40, 2.55, 5.98, 9.17` and the raw counts exactly); the Proposition is not.
+- **Theorem A is fatally broken:** Hypothesis U is applied to an `ℓ`-dependent family
+  (right-hand side normalised by `#{n : ℓ ∥ n+1, P(n+1) = ℓ}`), which U does not cover — and the
+  `P(n+1) = ℓ` constraint is load-bearing, since only it makes the sum over `ℓ` telescope. With
+  what U legitimately gives, the bound costs `E[#{ℓ > 4 : ℓ ∥ n+1}]` ≈ 2.65/2.77/2.49/1.94 at
+  `b = .5/.4/.3/.25`, yielding `≈ 1.3·#S(x)` — worse than trivial. Not repairable by raising `J₀`
+  (that forces `J₀ ≍ log log x`, hence `b → 0` with `x`).
+- **Hypothesis U at `θ = 1` is FALSE** for every `C` and `b` (explicit construction: take `ℓ` the
+  largest prime `≤ x^{1/m}`, `m = ⌈1/b⌉`, `J = m−1`, so `ℓ^J ≈ x/ℓ` exhausts the cofactor range).
+  `θ < 1` strictly is forced.
+- **Theorem B's derivation is sound** — quantifier order, `R` never depending on `n`, coverage of
+  `p = 2, 3` and all `ℓ ≥ 5` including prime powers and the boundary `ℓ ≈ x^b`, and the
+  summation interchange all check out — but it inherits the false `θ = 1` column.
+
+**Framing overstatement:** "any `θ > 0` and any `C` suffice because `b` is free" hides that the
+binding constraint is the *ratio* `θ/b ≥ 62.8`, i.e. moduli `q ≥ y^{62.8}` (`y = x^b`) versus
+`y^{6.59}` known for a single smooth number; and Soundararajan's range condition at `u = 1/b ≈ 63`
+caps `y ≲ 2·10⁷`, so that theorem cannot be invoked as `x → ∞`. Highest-value repair identified:
+sharpening Lemma 3′ at prime powers `a ≥ 2` would drop the requirement from `y^{63}` to `y^{7.3}`,
+right at the edge of the known range — the crude prime-power step is the single reason the route
+asks for `y^{63}`.
+
+**Judgement on Hypothesis U (the question this audit was asked to settle).** Logically weaker
+than 727(k=2) in form — an upper bound only, with an arbitrary constant, no asymptotic, no
+converse, and with all digit/carry combinatorics stripped out. But: no case is known for pairs
+above `(log x)^c`; no standard conjecture (GRH, EH, ABC) implies it; the operative parameters are
+far more extreme than advertised; and it is precisely the conjunction of two items PROBLEM.md
+excludes **by name** — "smooth-neighbor conjectures" and "digit equidistribution along sparse
+families". **DECISION: Hypothesis U counts as a reduction to an unproved statement of comparable
+strength, and is NOT progress on 727 under the stated rules.**
