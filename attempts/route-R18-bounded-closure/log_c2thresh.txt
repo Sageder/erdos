@@ -1,0 +1,1 @@
+plain C=2 N=68 [cadical]: SAT (6.5s)

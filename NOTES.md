@@ -1,5 +1,31 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 (Opus-5) — STRATEGIC PIVOT: linear-profile extinction cannot decide 196
+- NEW CERTIFIED EXTINCTIONS (plain target, pos(v) <= floor(Cv)): N*(C) = 4, 15, 31, 90
+  for C = 1.25, 1.5, 1.75, 2.0. C=1.5/1.75 agree with route R9's EXHAUSTIVE enumeration
+  (independent method); C=2.0 (N=90) from CEGAR, eager two-solver re-verification running.
+- k=5 CALIBRATION (experiments/k5_calibration.py, eager encoding, cadical+glucose agree):
+  for k=5 — where an infinite avoider is KNOWN to exist (DEGS77(b)) — finite avoiders
+  under pos(v) <= 1.25v ALSO go extinct (N=13). At C=1.5, 1.75 k=5 survives past N=70
+  while k=4 dies at 15, 31.
+- THEREFORE (CORE.md Remark 17): linear-profile extinction is NOT evidence for YES.
+  Two independent reasons: (a) Lemma 6 quantifies over ALL profiles phi — killing every
+  LINEAR phi leaves v log v, v^{1+eps} untouched; (b) the same extinction signature
+  appears in the known-NO case k=5. R19's LP program is re-scoped: it yields a structure
+  theorem (any NO-witness has superlinear displacement) but is NOT a path to YES.
+- NEW NO-SIDE TARGET (data-driven): displacement pos(v) = Theta(v log v) is consistent
+  with every certificate so far (N*(C) ~ 4 e^{4.15(C-1.25)}; R9 independently fits
+  a e^{bC}, b ~ 2.2-2.8, i.e. avoiders of [1..N] exist with max pos(v)/v ~ O(log N)).
+  R9's own read: weak lean NO. Its other key numbers: avoider tree strongly supercritical
+  (mean branching 9.4 at N=12 -> 14.6 at N=32); dead ends only from N=12, still ~5.7% at
+  N=32; on every measured axis k=4 sits between k=3 (YES) and k=5 (NO), closer to k=5.
+- R8 report landed: Z-side map (195's answer lies in {2,3,4}; length 4 open on BOTH
+  sides and neither transfers), theorem T3 (no annulus-macro arrangement of Z avoids
+  monotone 3-APs), theorem T2 (any split extension of an N-permutation to Z contains a
+  monotone 4-AP, so 196-NO does not yield a Z-avoider by concatenation).
+- YES side must therefore attack ∀phi-extinction directly, or bypass Lemma 6 via
+  Theorem 16's forcing chains.
+
 ## 2026-07-28 (Opus-5) — CEGAR engine + CORRECTION to the linear-profile picture
 - Built experiments/profile_cegar.py: order encoding + AP clauses + per-value
   predecessor-count cardinality, with LAZY transitivity (CEGAR). Two bugs found and

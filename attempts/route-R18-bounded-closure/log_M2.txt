@@ -1,0 +1,3 @@
+
+=== (M2) no two consecutive forcing edges share a scale (exhaustive N<=9) ===
+   195154 4-AP-free boards, repeated-scale chain steps found: 0 (expected 0)

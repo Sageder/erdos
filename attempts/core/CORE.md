@@ -517,3 +517,45 @@ Consequences and status.
 - Finite criterion (with Lemma 6): 196-NO requires a compatible tower of finite avoiders
   in which, for each fixed u, the closure size computed inside σ_N stays BOUNDED as
   N → ∞. Closure growth is therefore a direct obstruction measure for the NO side.
+
+## Remark 17 (STRATEGIC: linear-profile extinction cannot decide 196)
+
+Certified extinction data for the plain target (no monotone 4-AP, both orientations)
+under pos(v) ≤ ⌊C·v⌋ — the minimal N with no such permutation of [1..N]:
+
+    C     = 1.25   1.5    1.75   2.0
+    N*(C) =    4     15      31    90
+
+The C = 1.5 and C = 1.75 entries were obtained twice by unrelated methods (route R9's
+exhaustive enumeration of the extension tree and this session's SAT), and C = 2.0 by
+lazy-transitivity CEGAR (experiments/profile_cegar.py) with an independent eager
+two-solver re-verification (experiments/verify_c2_n90.out). Growth is roughly
+N*(C) ≈ 4·exp(4.15 (C − 1.25)), so C = 3 would first die near N ≈ 6·10³ and C = 5 far
+beyond any feasible search — consistent with route R9's independent fit N*(C) ≈ a e^{bC},
+b ≈ 2.2–2.8.
+
+The strategic point. It is tempting to read "every linear profile eventually dies" as
+progress toward 196-YES. It is NOT, for two independent reasons.
+
+(a) **Lemma 6 quantifies over ALL profiles φ, not just linear ones.** 196-NO requires
+    only SOME φ : ℕ → ℕ admitting φ-bounded avoiders at every N. Proving extinction for
+    every LINEAR φ leaves φ(v) = v log v, v^{1+ε}, etc. completely untouched. A complete
+    "LP theorem for all C" would therefore refute only linear-displacement witnesses.
+
+(b) **The same phenomenon occurs in the known-NO case k = 5.** By [DEGS77](b) an
+    infinite monotone-5-AP-free permutation of ℕ exists, yet finite 5-AP-free
+    permutations of [1..N] under pos(v) ≤ ⌊1.25 v⌋ go EXTINCT at N = 13
+    (experiments/k5_calibration.py; eager encoding, cadical and glucose agreeing).
+    So linear-profile extinction is observed in a case where the negative answer is a
+    theorem: the signature simply does not distinguish the two branches.
+    (Side-by-side: at C = 1.5 and C = 1.75, k = 4 dies at N = 15 and N = 31 while k = 5
+    survives past N = 70 — so k = 4 is harder to embed than k = 5, as expected, but the
+    qualitative behaviour is shared.)
+
+Consequences for the portfolio. Route R19's LP program is re-scoped: it can prove that
+any NO-witness has superlinear displacement — a genuine structure theorem, and the
+sharpest constraint we have on a counterexample — but it is not a path to YES.
+A YES proof must attack ∀φ-extinction (or avoid Lemma 6 entirely, e.g. via the forcing
+chains of Theorem 16). Conversely the NO side gains a concrete, data-driven target:
+a construction with displacement pos(v) = Θ(v log v) is consistent with every
+certificate obtained so far.
