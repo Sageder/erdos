@@ -1,0 +1,5 @@
+INJECTIVITY: 5187 blocks (2<=a<=400, 2<=k<=14) each checked against ALL blocks in Z_{>=2} of ALL lengths.
+   collisions: NONE
+DENOMINATORS: v_2(den)=t and R | den and den | lcm verified for all 1791 blocks tested.
+   distribution of the cofactor lcm(a..b)/den : [(1, 1447), (3, 198), (5, 112), (7, 23), (15, 8), (9, 2), (63, 1)]
+   fraction with den = lcm(a..b) : 1447/1791

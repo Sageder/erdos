@@ -1,9 +1,0 @@
-I1 Legendre digit form: PASS
-I2 per-prime digit equivalence: PASS
-I3 Kummer form A (low addition): PASS
-I4 Kummer form B (doubling): PASS
-I5 carries-vs-borrows identity (2e4 random triples): PASS
-I6 c=nu(C(2m,m)), b=nu(C(2m,2k)), Legendre-(2k): PASS
-I7 product forms (bigint, k<=4, n<260): PASS
-I8 large-prime criterion: PASS
-IDENTITIES: ALL PASS

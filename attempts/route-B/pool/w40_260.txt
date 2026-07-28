@@ -1,0 +1,2 @@
+N=260 |A|=104 L=216212407272976514400 (68 bits)
+done job=0/1 nodes=1360 solutions=0

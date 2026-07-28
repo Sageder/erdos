@@ -1,0 +1,9 @@
+window [2,30]: 8745217 subsets with no isolated point (including the empty one)
+values with denominator <= 12 : 7
+   7/12            (1 reps)  e.g. [(3, 4)]
+   5/7             (1 reps)  e.g. [(4, 6), (20, 21)]
+   5/6             (1 reps)  e.g. [(2, 3)]
+   6/7             (1 reps)  e.g. [(4, 7), (20, 21)]
+   13/12           (1 reps)  e.g. [(2, 4)]
+   8/7             (1 reps)  e.g. [(2, 3), (6, 7)]
+   6/5             (1 reps)  e.g. [(2, 3), (5, 6)]

@@ -1,123 +1,95 @@
-# PROBLEM.md — Erdős Problem 727 (immutable; written once at session start)
+# PROBLEM.md — Erdős Problem 289 (immutable; written once at session start)
 
 ## Statement
 
-$n, k$ range over positive integers. $m!$ is the factorial. $\nu_p(m)$ is the exponent of the
-prime $p$ in $m$; $s_p(m)$ is the sum of the base-$p$ digits of $m$; $\binom{a}{b}$ is the
-binomial coefficient. The notation $(n+k)!^2$ means $((n+k)!)^2$: the square of the factorial
-of $n+k$. For fixed $k$ define
-$$S_k = \{\, n \ge 1 : ((n+k)!)^2 \mid (2n)! \,\}.$$
+Integers only; $\ln$ is the natural logarithm; every reciprocal sum is an exact element of
+$\mathbb{Q}$ (no floating point anywhere in a proof). A **block** (interval) is a set of
+consecutive positive integers
+$$[a,b] := \{a, a+1, \dots, b\},\qquad 1 \le a \le b,$$
+of length $|[a,b]| = b-a+1$, with **block sum** $H(a,b) := \sum_{n=a}^{b} 1/n \in \mathbb{Q}$.
+Blocks $[a_1,b_1],[a_2,b_2]$ are disjoint iff $b_1 < a_2$ or $b_2 < a_1$; **adjacent blocks
+$[a,b]$ and $[b+1,c]$ ARE disjoint and count as two blocks** (no gap or maximality condition
+is imposed).
 
-**Problem (erdosproblems.com/727, verbatim; this governs):** "Does $(n+k)!^2 \mid (2n)!$ for
-infinitely many $n$?" — asked for every fixed $k \ge 2$. (Site commentary: "It is open even for
-$k = 2$." Source: conjecture of Erdős–Graham–Ruzsa–Straus [EGRS75].)
+**The predicate.** For $k \ge 1$, $k$ is *representable*, written $P(k)$, iff there exist $k$
+pairwise disjoint blocks $I_1,\dots,I_k$ of positive integers, each of length $|I_i| \ge 2$, with
+$$\sum_{i=1}^{k}\ \sum_{n \in I_i} \frac1n \;=\; 1 .$$
+Blocks are unordered; there must be EXACTLY $k$ of them.
 
-Lean cross-check (google-deepmind/formal-conjectures, `ErdosProblems/727.lean`), fully
-consistent with the site:
-- Headline `erdos_727`: `answer(sorry) ↔ ∀ k ≥ 2, Set.Infinite {n : ℕ | (n+k)! ^ 2 ∣ (2*n)!}`.
-- `erdos_727.variants.k_2` (research open): the $k=2$ case alone — a legitimately named open
-  variant; resolving it affirmatively settles the variant but NOT the headline.
-- `erdos_727.variants.k_1` (solved, True): Balakran's $k=1$ theorem — background.
-- Lean's $n$ includes $0$, the site's starts at $1$: irrelevant for infinitude.
+**The problem (erdosproblems.com/289, verbatim; this governs).** "Is it true that, for all
+sufficiently large $k$, there exist intervals $I_1,\dots,I_k$ with $|I_i| \ge 2$ for
+$1 \le i \le k$ such that $1 = \sum_{i=1}^k \sum_{n \in I_i} 1/n$?" That is: does there exist
+$K$ with $P(k)$ true for every $k \ge K$?
+
+**Lean cross-check** (google-deepmind/formal-conjectures, `ErdosProblems/289.lean`):
+$\forall^{f} k$ in `atTop`, $\exists I : \mathrm{Fin}\,k \to \mathbb{N}\times\mathbb{N}$ with
+(a) $(I\,i).1 < (I\,i).2$; (b) for $i \ne j$, $(I\,i).2 < (I\,j).1$ or $(I\,j).2 < (I\,i).1$;
+(c) $\sum_i \sum_{n \in \mathrm{Icc}((I\,i).1,(I\,i).2)} n^{-1} = 1$ in $\mathbb{Q}$.
+
+## Ambiguity resolutions (binding for this run)
+
+1. **Exactly $k$ blocks**, not "at most $k$" (index type $\mathrm{Fin}\,k$). Padding is impossible
+   anyway: every legal block has strictly positive sum.
+2. **$|I_i| \ge 2$ for every $i$.** Site and Lean agree. Bare unit fractions are forbidden.
+3. **Disjointness is REQUIRED.** The quoted site sentence is silent; the Lean file imposes
+   pairwise separation, which for nonempty integer intervals is exactly pairwise disjointness.
+   *Noted discrepancy:* under a non-disjoint reading the problem would be different (and
+   overlapping/repeated blocks resolve nothing); the disjoint reading governs here.
+4. **Minimum element $\ge 1$.** Lean's $\mathbb{N}$ contains $0$ and Mathlib's junk value
+   $0^{-1}=0$ would let $\mathrm{Icc}(0,1)$ "sum" to $1$. The site statement governs: blocks
+   consist of positive integers and $1/n$ is the genuine rational. Using the $0$-junk encoding is
+   forbidden.
+5. **Derived normalization (proved, not assumed).** No block of a solution contains $1$: such a
+   block has length $\ge 2$ so contributes $\ge 1 + \tfrac12 > 1$, while all other terms are
+   positive. Hence every element of every solution is $\ge 2$.
 
 ## What a complete resolution must establish
 
-Exactly one branch, proved in full; the answer must not be assumed in advance.
+Let $S := \{k \ge 1 : P(k)\}$. Exactly one branch, proved in full; the answer is not assumed in
+advance.
 
-**YES branch:** $\forall k \ge 2\ \forall N\ \exists n > N: ((n+k)!)^2 \mid (2n)!$
-(i.e. $S_k$ is infinite for every fixed $k \ge 2$).
+**YES.** $\exists K\ \forall k \ge K:\ P(k)$. Equivalently $S \supseteq [K,\infty)$, i.e. $S$ is
+cofinite in $\mathbb{Z}_{\ge1}$.
 
-**NO branch:** $\exists k_0 \ge 2\ \exists N_0\ \forall n > N_0: ((n+k_0)!)^2 \nmid (2n)!$
-(i.e. some single $S_{k_0}$ is finite).
+**NO.** $\forall K\ \exists k \ge K:\ \neg P(k)$. Equivalently $\mathbb{Z}_{\ge1}\setminus S$ is
+infinite; the bad $k$ need not be explicit but their infinitude must be proved against ALL block
+systems.
 
-**Monotonicity.** $S_{k+1} \subseteq S_k$ (since $(n+k)! \mid (n+k+1)!$). Hence YES $\iff$
-$S_k$ infinite for arbitrarily large $k$; and one finite $S_{k_0}$ makes $S_k$ finite for all
-$k \ge k_0$. Proving $S_2$ infinite resolves only the named $k=2$ variant; proving some single
-$S_{k_0}$ finite resolves the entire headline negatively.
+**Quantifier order.** In the YES branch the blocks may depend on $k$ arbitrarily; only one
+threshold $K$ must work for all larger $k$. "$P(k)$ for infinitely many $k$" is strictly weaker
+than YES; "one bad $k$" is strictly weaker than NO. Truth values at finitely many $k$ constrain
+neither branch — $P(1)$ is FALSE and that is compatible with both.
 
-**Quantifier order.** $k$ is fixed FIRST; $n \to \infty$ afterwards; $k$ must never depend on
-$n$. Inside the per-prime criterion below, the prime $p$ is universally quantified AFTER $n$ is
-chosen: one $n$ must beat EVERY prime simultaneously. "Infinitely many $n$" permits arbitrarily
-sparse families and forbids any finite list.
+## Working reformulation (equivalent; used throughout)
 
-## Exact per-prime forms
+For a finite $U \subseteq \mathbb{Z}_{\ge 2}$ let its **maximal runs** be its maximal blocks of
+consecutive integers, of lengths $L_1,\dots,L_r$.
 
-By Legendre, $\nu_p(m!) = \sum_{i\ge1} \lfloor m/p^i \rfloor = \frac{m - s_p(m)}{p-1}$. Then
-$$n \in S_k \iff \forall p:\ \nu_p((2n)!) \ge 2\nu_p((n+k)!) \iff \forall p:\ 2 s_p(n+k) - s_p(2n) \ge 2k.$$
-(Second equivalence: $2n - s_p(2n) \ge 2(n+k) - 2s_p(n+k) \iff 2s_p(n+k) - s_p(2n) \ge 2k$.)
+> $P(k)$ holds **iff** there is a finite $U \subseteq \mathbb{Z}_{\ge2}$ with
+> $\sum_{n\in U} 1/n = 1$, every maximal run of length $\ge 2$ (equivalently: **$U$ has no
+> isolated point**), and $r \le k \le M := \sum_{i=1}^{r}\lfloor L_i/2\rfloor$.
 
-WARNING — the $2k$-deficit is the technical crux. Since $2(n+k) = 2n + 2k > 2n$, this is NOT
-the central-binomial carry condition: the digit-sum inequality carries the additive constant
-$2k$. The naive framing "enough base-$p$ carries when adding $(n+k)+(n+k)$" is wrong without
-the deficit correction.
+*Proof.* ($\Leftarrow$) The splitting lemma: a block of length $L$ splits into $t$ adjacent blocks
+of length $\ge 2$ for each $1 \le t \le \lfloor L/2\rfloor$ (take $t-1$ parts of length $2$ and
+one of length $L-2(t-1)\ge2$); doing this inside each run realises every $k \in [r,M]$.
+($\Rightarrow$) Given $k$ disjoint blocks, let $U$ be their union; each maximal run of $U$ is a
+union of adjacent blocks of length $\ge2$, so $L_i \ge 2$ and the $k$ blocks distribute among the
+runs with at most $\lfloor L_i/2\rfloor$ in run $i$; also $r \le k$. $\square$
 
-Exact carry forms (Kummer). With $m = n+k$:
-- $\forall p$: $\#(\text{base-}p\text{ carries in } (n+k)+(n-k)) \ge \nu_p((n-k+1)(n-k+2)\cdots(n+k))$;
-- $\forall p$: $\#(\text{base-}p\text{ carries in } (n+k)+(n+k)) \ge \nu_p((2n+1)(2n+2)\cdots(2n+2k))$;
-- carries-vs-borrows: with $c_p = \#(\text{carries in } m + m)$ and $b_p = \#(\text{borrows in }
-  (2m) - 2k)$, both base $p$, the identity
-  $2 s_p(m) - s_p(2m-2k) - 2k = (p-1)(c_p - b_p) + s_p(2k) - 2k$ holds, so
-  $$n \in S_k \iff \forall p:\ (p-1)(c_p - b_p) \ge 2k - s_p(2k).$$
-  For $p > 2k$ the right side is $0$: the condition is exactly $c_p \ge b_p$. By Kummer,
-  $c_p = \nu_p\binom{2m}{m}$ and $b_p = \nu_p\binom{2m}{2k}$, and since
-  $2k - s_p(2k) = (p-1)\nu_p((2k)!)$, the full condition over all $p$ is equivalent to the
-  product form below. For $k=2$ concretely: $c_2 - b_2 \ge 3$ at $p=2$; $c_3 - b_3 \ge 1$ at
-  $p=3$; $c_p \ge b_p$ for all $p \ge 5$.
+## Background facts (assumable; each re-verified in `experiments/`)
 
-Product forms: for $n \ge k$,
-$$n \in S_k \iff \prod_{j=n-k+1}^{n+k} j \,\Big|\, \binom{2n}{n+k}
-        \iff \prod_{j=1}^{2k}(2n+j) \,\Big|\, \binom{2n+2k}{n+k}
-        \iff (2m)(2m-1)\cdots(2m-2k+1) \,\Big|\, \binom{2m}{m} \text{ with } m = n+k.$$
-
-Range of relevant primes: only $p \le n+k$ can fail (for $p > n+k$, $\nu_p((n+k)!) = 0$).
-Every prime $p \in (n, n+k]$ DOES fail ($\nu_p((2n)!) = 1 < 2$), so all of $n+1, \dots, n+k$
-must be composite for $n \in S_k$.
-
-Large-prime criterion: for $p > \max(\sqrt{2n}, 2k)$, writing $n+k = qp + r$, $0 \le r < p$:
-the condition at $p$ holds iff $r \ge k$, i.e. fails iff $p$ has a multiple in $(n, n+k]$.
-Consequently every $n \in S_k$ with $n > 2k^2$ has $n+1, \dots, n+k$ all $\sqrt{2n}$-smooth,
-and conversely along $\sqrt{2n}$-smooth windows all conditions at $p > \sqrt{2n}$ hold
-automatically. ($p = 2$: note $s_2(2n) = s_2(n)$.)
-
-## Sanity data (verified during prompt preparation; calibration gate)
-
-- $k=1$: $S_1$ starts $5, 14, 27, 41, 44, 65, 76, 90, 109, 125, 139, 152, 155, 169, \dots$
-  ($40$ elements up to $441$). $n=5$: $(6!)^2 = 518400 \mid 10! = 3628800$, quotient $7$.
-- $k=2$: smallest element $n = 208$ (no $n < 208$ works). $S_2$ starts
-  $208, 458, 987, 1220, 1455, 1597, 1889, 2012, 2144, 2330, 2477, 2663, 2991, 3353, 3415,
-  3430, 3439, 3475, 3476, 3551, \dots$; $|S_2 \cap [1, 2\cdot10^5]| = 1981$.
-- $k=3$: $S_3$ starts $3475, 8174, 8175, 15195, 16168, 18682, 18743, 19290, \dots$;
-  $|S_3 \cap [1, 6\cdot10^4]| = 41$.
-- $k=4$: $S_4 \cap [1, 6\cdot10^4] = \{8174, 51984\}$.
-
-## Known background that may be assumed (with attribution)
-
-- **Balakran [Ba29]:** infinitely many $n$ with $((n+1)!)^2 \mid (2n)!$.
-- **Catalan:** $(n+1) \mid \binom{2n}{n}$ for all $n \ge 0$.
-- **EGRS75:** infinitely many $n$ with $(n+k)!\,(n+1)! \mid (2n)!$; holds whenever
-  $k < c \log n$ for a small absolute $c > 0$.
-- **Erdős [Er68c]:** $a!\,b! \mid n!$ forces $a + b \le n + O(\log n)$; so solutions of 727
-  force $k = O(\log n)$ — fixed $k$ is exactly at the edge.
-- Standard toolbox (hypotheses verified, uniformity in $p, n, k$ tracked): Legendre, Kummer,
-  Bertrand/prime counting, smooth-number counts (Dickman–de Bruijn, Hildebrand), sieves, CRT,
-  Pell/Störmer parametrizations, digit/exponential-sum equidistribution.
-
-## What does NOT count
-
-- $(n+k)!\,(n+1)! \mid (2n)!$ (that is EGRS75), or $k=1$ (Balakran), or any reproof of either.
-- Finite lists of $n$; numerics of any size.
-- $k$ growing with $n$ in any form.
-- Affirmative resolution of some $k \ge 2$ but not all, presented as resolving the headline.
-- Heuristic density/independence arguments.
-- Shifted/weakened divisibilities: $((n+k)!)^2 \mid (2n+C)!$ with $C > 0$; bounded cofactors;
-  conditions verified only for partial prime ranges.
-- Misreadings: $(n+k^2)!$, $((n+k)^2)!$, reversed divisibility, trivial integrality of
-  $\binom{2n}{n+k}$ confused with $\prod_{j=n-k+1}^{n+k} j \mid \binom{2n}{n+k}$.
-- Reductions to unproved statements of comparable strength (infinitude of $k$-term
-  $\sqrt{2n}$-smooth windows for $k \ge 3$ assumed rather than proved, smooth-neighbor
-  conjectures, Schinzel/Bunyakovsky, digit equidistribution along sparse families).
-- Conditional results (ABC, GRH, Cramér, etc.).
-- Importing any statement about 727 itself from any source (arXiv 2601.07421 solves 728/729/401
-  and explicitly does not claim 727; its methods are usable, its results prove nothing here).
-- NO branch: gaps or density-0 statements about $S_{k_0}$; finiteness needs an
-  eventual-obstruction proof for EVERY $n > N_0$.
+- **(B1) Non-integrality (Kürschák).** For $b>a\ge1$, $H(a,b)\notin\mathbb{Z}$. Proof: let $2^t$
+  be the largest power of $2$ dividing an element of $[a,b]$ ($t\ge1$ as the block contains an
+  even number); its multiple in $[a,b]$ is unique (two would be consecutive multiples of $2^t$,
+  one divisible by $2^{t+1}$); so exactly one term has $\nu_2 = -t$ and $\nu_2(H(a,b)) = -t \le -1$.
+  Hence $P(1)$ is FALSE.
+- **(B2) Two-attainer prune.** If $\sum_{n\in U}1/n = 1$ and $p$ is prime with
+  $e := \max_{n\in U}\nu_p(n) \ge 1$, then at least TWO elements of $U$ attain $\nu_p = e$
+  (else the unique term $1/n_0$ has $\nu_p = -e$ strictly below all others, forcing
+  $\nu_p(\text{sum}) = -e < 0 = \nu_p(1)$). Necessary, never sufficient.
+- **(B3) Splitting lemma** — as in the reformulation above.
+- **(B4) Telescoping.** $\frac1n = \frac1{n+1}+\frac1{n(n+1)}$; block adaptations must verify that
+  newly created elements avoid all existing blocks.
+- **(B5) Verified identities.** $1 = \frac13+\frac14+\frac15+\frac16+\frac1{20}$ and
+  $1 = \frac12+\frac13+\frac1{10}+\frac1{15}$ (neither is a certificate here — singleton blocks).
+  The circulating $1 = \frac12+\frac13+\frac14+\frac15+\frac16+\frac1{20}$ is FALSE ($=\frac32$).

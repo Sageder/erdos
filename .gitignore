@@ -1,3 +1,13 @@
 references/
 __pycache__/
 *.pyc
+experiments/csearch
+experiments/csearch2
+experiments/csearch3
+experiments/gsearch
+experiments/collide
+experiments/two_to_block
+experiments/universe.txt
+attempts/route-C/dfs
+attempts/route-C/dfs2
+attempts/route-C/dfs3

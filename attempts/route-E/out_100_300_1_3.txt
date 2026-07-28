@@ -1,0 +1,2 @@
+# T=100 N=300 target=1/3 |univ|=80 L=1757824449373792800
+# done exhaustive nodes=39103586845 solutions=0

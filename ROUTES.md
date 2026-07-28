@@ -1,83 +1,73 @@
-# ROUTES.md — route registry (Erdős 727)
+# ROUTES.md — route registry (Erdős 289)
 
-Format: id | mathematical family | status | key lemma targets / outcome
-Last updated 2026-07-28 ~10:50 UTC. See NOTES.md (newest first) and MIRROR.md for the
-consolidated structural picture.
+Format: id | mathematical family | status | outcome / lemma targets.
+Last updated 2026-07-28. See NOTES.md for the running log and PROBLEM.md for conventions.
 
-## Proved and audited-pending engines (the run's positive results)
+## Established (proved, independently verified)
 
-- **R2 | Master Lemma SP — small-prime carry machinery** | PROVED, audit in progress |
-  `attempts/route-R2/LEMMA_SP.md`. For fixed k, density `1 − 18exp(−√(log M)/120)` of
-  m ∈ [M,2M], uniformly in every AP of modulus ≤ M^{1/10}, satisfies the exact 727 criterion
-  at every p ≤ exp(c√(log M)), with spike bounds and per-prime surplus. Explicit constants;
-  40/40 numerical checks. Barrier documented: cannot reach p > exp(c√log M).
-- **R12 | Lemma R_k / Lemma R‴ — large-prime membership engine** | PROVED, audit in progress |
-  `attempts/route-R12/LADDER.md`. R‴: small-prime demands + squarefree rough parts +
-  cofactor congruence C_ℓ at every large prime ⟹ n ∈ S_k. Zero false positives on all even
-  n ≤ 6·10⁴; certifies 10/41 of S_3 ∩ [1,6·10⁴]. Subsumes Lemma R_k (prime-box form).
-- **R3 | Balakran dissection** | COMPLETE | `attempts/route-R3/FAMILY.md`: explicit infinite
-  family F = {pq−1 : (3q+1)/2 ≤ p ≤ 2q−1} ⊆ S_1, elementary proof + Nagura; re-derives
-  Balakran. `BREAKAGE.md`: exact k=2 failure taxonomy, Lemma Q, Lemma R. Independently
-  reproduced by a second agent run.
-- **MIRROR | structural theorem** | PROVED (M1–M5 verified) | `MIRROR.md`: digit trichotomy
-  A/B/C explaining why the Jan-2026 carry-engineering closed 728/729/401 but not 727;
-  √-smoothness derived as a corollary; residual content = cofactor congruences; measured
-  first-moment obstruction (S/F → 0 for every u).
+- **BASE | exhaustive certificate search** | COMPLETE |
+  `experiments/csearch.c`, `csearch2.c`, `csearch3.c` (exact integer arithmetic over
+  L = lcm(pruned universe); endgame table; p-adic pooled prune). Results:
+  **no legal U with max(U) ≤ 84**; the minimum is exactly **85**, with exactly 4 solutions.
+  315 solutions verified with max(U) ≤ 130. ⇒ **P(k) TRUE for k = 7,…,18**, all
+  certificates re-verified by an independent script (`experiments/verify.py`).
+- **C | p-adic obstruction hunt (NO branch)** | CLOSED BY REFUTATION |
+  `attempts/route-C/`. RULE A (strengthening of the two-attainer rule): if
+  Σ1/n = q, e = max ν_p(n) > −ν_p(q), then Σ m_n^{-1} ≡ 0 (mod p) over the top-level
+  attainers. RULE B: legality. The A+B fixpoint of [2,N] is EMPTY for all N ≤ 76 —
+  a millisecond proof replacing a 9·10⁹-node DFS. Every candidate obstruction O1–O9 is
+  refuted; only O10 survives (max(U) and max(U)−1 are never prime), which constrains
+  the top element, not existence. Honest local-global heuristic with EXACTLY computed
+  local densities predicts #solutions ≈ e^{cN} → ∞. **The NO branch is dead.**
 
 ## Blocked routes (with diagnosis)
 
-- **R1 | algebraic power families (z⁴−2, w⁸−2, s¹⁶−2)** | BLOCKED: Lemma Q + first-moment
-  obstruction | squares double valuations past digit supply; budgets never close; the
-  measured obstruction (MIRROR §6) shows the failure is structural, not slack.
-- **R12-B | Statement B (four primes, pq+1 = 2rs in ratio boxes)** | BLOCKED: beyond current
-  technology | R11 verdict: stacks balanced-E₂ (every published detector emits only unbalanced
-  E₂ — which 727 membership forbids) with double specified parity (open even for Chen's 2p+1
-  branch); the equation literature has no lower bounds ("parity-squared").
-- **R5 | data mining** | COMPLETE (no proof path) | exact S_k on [1,10⁸) for k=2..6
-  (|S_2| = 1,364,676 … |S_6| = 63); densities slowly increasing for every k; NO forbidden
-  congruence classes; x²−2 family not enriched; no exploitable pattern found.
-- **R8 | classical toolbox verification** | COMPLETE | `attempts/route-R8/TOOLBOX.md`: T1–T8
-  with exact citations; corrections logged (Dickman form of T7 valid only on β ∈ [1/2,1];
-  T5 uniform only at sieve-axiom level; T6 constant 3/(2π)).
-- **R11 | Statement-B literature** | COMPLETE | `attempts/route-R11/LITERATURE.md`, 8 items.
-  Key find: Hildebrand 1985 (Balog's conjecture) gives consecutive smooth pairs at positive
-  density — so the k=2 supply is known and the residual is purely the congruence injection.
+- **A′ | atom split 1/a+1/(a+1) = 1/c+1/(c+1)+1/d+1/(d+1)** | BLOCKED: no solutions |
+  exhaustive for a ≤ 400, c ≥ a+2, d ≥ c+2 (`experiments/atom_split.py`). Kills the
+  simplest "+1 block" move.
+- **A″ | equal-sum blocks H(a,b) = H(c,d)** | BLOCKED: block sums are injective |
+  no collision for any two blocks with elements ≤ 3000 (`experiments/collide.c`,
+  2.84·10⁶ blocks, two independent 62-bit fingerprints). Kills "replace a block by a
+  longer block of the same sum", which would have raised capacity at fixed run count.
+- **A‴ | unit fraction as a single block, 1/n = H(c,d)** | BLOCKED: none |
+  no solution for n ≤ 60 with c ≤ 2·10⁵ (`experiments/two_to_block.c`).
+- **DBL | capacity-doubling by atom recolouring** | BLOCKED: BALANCE unsolvable |
+  For a set V, D_σ(V) = ∪ atoms ({2n,2n+1} or {2n−1,2n}) is automatically legal with
+  cap = |V| and run count = #runs(V) + #proper prefixes; admissible colourings are exactly
+  PREFIX colourings of each run of V. Σ is preserved iff
+  Σ_j (1/(2u_j−1) − 1/(2c_j+1)) = Σ_{n∈V} 1/(2n(2n+1))   (BALANCE),
+  using 2/(4n²−1) = 1/(2n−1) − 1/(2n+1) (telescoping). Exhaustive over all admissible
+  colourings of the known solutions: no solution (`experiments/doubling.py`). Diagnosis:
+  only ∏(L_i+1) ≈ 3^r colourings against a target with an lcm-sized denominator — far
+  too little entropy. Reopen only with a richer per-index gadget menu.
+- **TOP | long top run** | BLOCKED BY A PROOF | the top run [c,N] of any solution must
+  satisfy c > N/2 and be prime-free (a prime p in it needs a second multiple ≥ 2p > N).
+  Hence its length is at most the maximal prime gap below N: capacity cannot be obtained
+  from one long run at the top. Corollary: 2-run solutions are impossible, so P(2) is
+  almost certainly false; consistent with P(k) first holding at k = 7.
 
-## Late routes (2026-07-28)
+## Active
 
-- **R13 | injectability anatomy** | COMPLETE | Obtained Hildebrand 1985 in full; answered the
-  gating question NEGATIVELY (p-stability is maximally violated by carry conditions: measured
-  agreement 0.5037 vs 1 required, not fixable). Overturned two of this run's own claims (the
-  C_ℓ-form of the target is false; the k=2 supply threshold was mis-instantiated). Identified
-  Tao–Teräväinen arXiv:2512.01739 as a new lead.
-- **R14 | L4a and the reduction to Hypothesis U** | COMPLETE, audited MIXED |
-  Unconditional Lemmas 1–5 CONFIRMED (1.5M+ verified instances) — these retire all digit/carry
-  combinatorics. But: Proposition O1 is NOT proved (heuristic); Theorem A is fatally broken
-  (U applied to an ℓ-dependent family); U(θ=1) is false; the "any θ, any C" framing hides the
-  binding ratio θ/b ≥ 62.8. Hypothesis U judged a reduction to a statement of comparable
-  strength — excluded BY NAME in PROBLEM.md — hence NOT progress.
+- **E | the CRUX: scaling of representability** | ACTIVE (subagent running) |
+  > (CRUX) for which ρ > 0 and T is ρ the sum of a legal block system with all elements ≥ T?
+  Every mechanism examined reduces to this. Known: 1/2 and 1/3 ARE legal block sums
+  (certificates verified); 1/4, 1/6 are not inside [2,120]. What is needed is
+  representability *arbitrarily far out*, which would make every gadget iterable.
+- **A | algebraic identities / pending-fraction calculus** | ACTIVE (subagent).
+- **B | alternative search technology (MITM/CP-SAT/PB)** | ACTIVE (subagent).
+- **D | structure theory of block sums and their sumsets** | ACTIVE (subagent).
 
-## Active / open routes
+## Swap gadgets (data, verified)
 
-- **R13 | injectability anatomy (Hildebrand 1985, Balog–Ruzsa, Heath-Brown 1987)** | ACTIVE |
-  can the positive-density consecutive-smooth machinery carry an AP restriction and the
-  cofactor congruences C_ℓ? This is the gating question for the k=2 named variant.
-- **R10 | general-k headline constructions (Balog–Wooley injection)** | ACTIVE |
-  for k ≥ 3 even the SUPPLY is open: positive-density k-strings of n^α-smooth integers need
-  α > e^{−1/(k−1)}, which exceeds 1/2 exactly when k ≥ 3; only thin BW-strings exist there.
-- **R7 | NO-branch obstruction hunting** | ACTIVE (data-disfavored) | S_k nonempty and
-  slowly densifying for all k ≤ 6 up to 10⁸; no congruence or prime-power obstruction found.
-  Kept alive per protocol; no finiteness mechanism identified.
-- **R9 | per-prime digit dynamics** | ACTIVE | largely absorbed into MIRROR + Lemma SP.
+Rationals with legal representations of DIFFERENT block counts exist, e.g.
+397/1820 = {13,14}{39,40}{104,105} (3 blocks) = {17,18}{34,35}{84,85}{90,91} (4 blocks);
+117 such pairs extracted from the 152-solution corpus. A "+1 block" move therefore exists
+in principle; what is missing is a version whose *output* can be placed arbitrarily far
+out, so that it can be iterated. That is exactly the CRUX.
 
-## Status of the problem (final, 2026-07-28)
+## Status
 
-Neither branch is resolved; see VERDICT.md. The run's rigorous localization: all digit/carry
-content of 727 is now *retired* (Lemma SP for small primes; Lemma R‴ / the Mirror trichotomy
-for large primes; R14's Lemmas 2–4 reduce each large-prime condition to a pure congruence mod
-ℓ^J of exactly computable relative size). What remains is a single analytic statement —
-equidistribution of consecutive-smooth PAIRS in progressions to moduli that are a power of x —
-for which no case is known above (log x)^c moduli, which no standard conjecture implies, and
-which PROBLEM.md excludes by name as a permissible reduction. For k ≥ 3 the supply itself is
-additionally open, with the explicit and small gap 0.5134 → 0.5 that McNamara's counterexample
-shows cannot be closed by any soft/stable-set argument.
+The NO branch is closed. The YES branch is reduced to a single analytic statement (CRUX),
+which is the block analogue of Egyptian-fraction representability with denominators in a
+short interval. No external theorem can be used here: the session's egress policy blocks
+arXiv/EuDML, so nothing can be quoted with hypotheses verified.

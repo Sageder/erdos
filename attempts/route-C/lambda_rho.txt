@@ -1,0 +1,3 @@
+char poly: x**3 - 2*x**2 + x - 1  lambda = CRootOf(x**3 - 2*x**2 + x - 1, 0) = 1.7548776662466927
+rho (density of chosen n) = 0.5885044113373542
+n=20: #legal = 55405   lambda^n approx 76725.00716845825   empirical density 0.5837740276148362

@@ -1,0 +1,1 @@
+== (1) naive greedy: numerators along the run ==
