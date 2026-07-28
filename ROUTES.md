@@ -4,7 +4,7 @@ Format: id | mathematical family | status (active / blocked: reason / merged) | 
 
 ## YES routes
 
-- **R1 | CRT digit engineering on algebraic smooth-window families** | active |
+ - **R1 [SUPERSEDED by R12 — Lemma Q: polynomial parametrizations force squares; power-family budgets do not close unconditionally] | CRT digit engineering on algebraic smooth-window families** | active |
   For k=2: family n = x^2 - 2 (window {x^2-1, x^2} is (x+1)-smooth). Targets: (L1a) mid-range
   lemma — along a sub-family of x's, digit condition holds at every p ≤ √(2n); (L1b) generalize
   window ansatz to k ≥ 3 with PROVED infinitude.
@@ -37,3 +37,14 @@ Format: id | mathematical family | status (active / blocked: reason / merged) | 
 - **R9 | Per-prime digit dynamics** | active |
   Study {m : (p-1)(c_p(m) - b_p(m)) ≥ 2k - s_p(2k)} as a carry/borrow counting problem;
   characterize intersections across primes at growing depth. Both signs.
+
+## Post-wave-1 additions (2026-07-28)
+
+- **R11 | Statement-B literature (consecutive almost-primes, E_2 levels, dispersion)** | active |
+- **R12 | FLAGSHIP k=2: Lemma R + Statement B** | active |
+  Lemma R proved+verified (attempts/route-R3/BREAKAGE.md §4). Targets: (L12a) Statement B or
+  a relaxation (more prime factors per side: pq+1 = 2r_1..r_t, or pqr+1 = 2stu) provable with
+  published dispersion/Harman technology; (L12b) full audit of Lemma R; (L12c) generalization
+  ladder toward fixed k ≥ 3 (k−1 simultaneous equations — hard; document exactly).
+- **R1 status detail** | blocked: superseded | Lemma Q (route-R3) explains the square-burden;
+  independent budget analysis (PROOF_SKELETON.md) reached the same wall analytically.

@@ -1,5 +1,29 @@
 # NOTES.md — lab notebook (newest entries at top)
 
+## 2026-07-28 ~01:20 UTC — STRATEGIC MERGE: Lemma R supersedes power families for k=2
+
+- Wave-1 died at session limit but R3 delivered before dying: FAMILY.md (complete re-proof of
+  Balakran: F = {pq−1: (3q+1)/2 ≤ p ≤ 2q−1} ⊆ S_1 via 2 forced carries at p and q;
+  infinitude via Nagura) and BREAKAGE.md (k=2 failure taxonomy + LEMMA R + LEMMA Q).
+- LEMMA R (elementary, complete proof, verified on 123/123 solutions): primes q,p,s,r with
+  pq+1 = 2rs, (3q+1)/2 ≤ p ≤ 2q−1, 2s+1 ≤ r ≤ 4s−1, 2r mod s ≥ (s+1)/2, n = pq−1 not a
+  2-power ⟹ n ∈ S_2. NO probabilistic mid-range — every prime of (n+1)(n+2) is a parameter
+  with hand-forced carries. Missing ingredient = STATEMENT B: infinitude of such quadruples.
+- I verified: condition 4 is ARCHIMEDEAN: r/s ∈ [9/4,5/2)∪[11/4,3)∪[13/4,7/2)∪[15/4,4).
+  So Statement B = solutions of pq − 2rs = −1, four primes, ratio boxes. Frontier analytic
+  number theory (dispersion/BFI/Harman; adjacent: Chen 2p+1=P_2, Heath-Brown consecutive
+  almost-primes, GGPY E_2 machinery, Motohashi BV-for-E_2, Titchmarsh for pq+1).
+- LEMMA Q (R3): consecutive-splitting polynomial identities force a square on one side;
+  squares double valuations past digit supply. EXPLAINS why quartic/octic/hexadecic budgets
+  kept failing (my independent hexadecic-budget analysis reached the same wall from the
+  analytic side: no (2^r, theta) closes unconditionally). Power-family route R1 → SUPERSEDED.
+- First-moment over the RAW {pq−1} family genuinely fails (true E ≈ 2 > 1, measured 11.7%
+  survival) — structure on n+2 is NECESSARY, not an artifact of lossy bounds.
+- General k: Lemma R generalizes to k−1 simultaneous equations (much harder); the t-factor
+  relaxation (n+2 = 2r_1..r_t) trades equation-hardness against digit-freedom.
+- NEXT: R11 literature route (consecutive almost-primes / E_2 levels / pq+1 technology);
+  then Statement-B attack plan; independent re-verification of Lemma R (audit-grade).
+
 ## 2026-07-27 ~23:40 UTC — Prop N verified; quartic→octic calibration; K2 program viable
 
 - Prop N (master reduction) + Lemma O VERIFIED (attempts/route-R1/verify_propN.py: PASS,
