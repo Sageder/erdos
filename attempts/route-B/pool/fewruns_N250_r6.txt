@@ -1,0 +1,4 @@
+total-weight bits = 70 (safe)
+N=250 |A|=143 L=216212407272976514400 (68 bits)
+SOL 4 5 6 9 10 19 20 44 45 132 133 209 210
+done RMAX=6 job=0/1 nodes=6322165390 solutions=1
