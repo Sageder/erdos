@@ -20,3 +20,4 @@
   W3 b=7 h=2 N=60: SAT  (1s, 264 cegar rounds)
   W3 b=7 h=2 N=90: SAT  (14s, 2257 cegar rounds)
   W3 b=7 h=2 N=130: SAT  (94s, 4729 cegar rounds)
+  W3 b=7 h=2 N=180: SAT  (263s, 7928 cegar rounds)

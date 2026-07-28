@@ -1638,3 +1638,35 @@ propagation system for 4-AP-freeness. They are the right engine for SEARCH (rout
 the same locality to get a 2–3 order-of-magnitude speedup on layered architectures, and to
 localize each death to a single block), and they give sharp finite structure. They are
 simply not a route to the affirmative branch.
+
+## Corollary 48 (class-records have density zero at EVERY modulus)
+
+Let a be a monotone-4-AP-free permutation of ℕ. For q ≥ 1 define
+
+    S_q := { v : no value v + kq (k ≥ 1) precedes v }
+         = the values not overtaken inside their own residue class mod q.
+
+Then S_q has density 0 for every fixed q. Indeed S_q ∩ P_{q,r} is exactly the record set of
+a restricted to the progression P_{q,r} = {r, r+q, r+2q, …}, which by Lemma 24 is 3-AP-free;
+Roth's theorem gives |S_q ∩ P_{q,r} ∩ [1..N]| = o(N/q), and summing the q classes gives
+|S_q ∩ [1..N]| = o(N). With the Kelley–Meka/Bloom–Sisask bound this is quantitative:
+|S_q ∩ [1..N]| ≤ q·r₃(N/q) ≤ N·exp(−c(log(N/q))^{1/9}).
+
+So: **for every fixed modulus q, almost every value is overtaken by a larger value in its
+own residue class mod q.** For q = 1 this is the (already known) density-0 statement for
+records; the content is that it holds simultaneously at every modulus, which is the
+sharpest form of the "coupled family" of Lemma 24 obtained so far.
+
+**Honest assessment — this does NOT give a contradiction, and I checked why.** Converting
+it into a lower bound on the inversion count I of the restriction σ_N: each (v, q) with
+v ∉ S_q supplies an inverted pair (v, w) with q | (w−v), and a single pair serves at most
+d(w−v) ≤ N^{o(1)} moduli, so summing over q ≤ N/K gives
+
+    I ≥ N² · exp(−O(log N / log log N)) = N^{2−o(1)}.
+
+That is WEAKER than what Theorem 12's demand count already gives (I ≥ N²/18 − O(N), a
+constant fraction), because the divisor factor costs more than the density saving buys. So
+the multi-modulus structure, in this counting form, is not a route to the affirmative
+branch. Recorded both because the structural statement is worth having and because the
+natural counting use of it is now closed — anyone tempted by "sum over all moduli" should
+know the divisor loss kills it.
