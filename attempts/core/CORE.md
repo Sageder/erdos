@@ -1517,3 +1517,75 @@ contradiction: sparse record sets satisfying all three conditions are easy to wr
 (e.g. w_i growing geometrically), so the tension has to come from coupling these with the
 placement of the non-record values, which is where every affirmative-side attempt in this
 run has stalled.
+
+## Theorem 44 (CO-SUPPLY IS REFUTED — the Theorem 16 chain programme is dead)
+
+Route R17's result, re-derived and checked here. **Every value-record is closed.**
+
+Proof. If u is open at scale d then Theorem 16(a) gives pos(u+d) < pos(u); since u+d > u,
+a value larger than u precedes u, so u is not a record. Contrapositive: every record is
+closed (has no increasing 3-AP ending at it). ∎
+
+Since the record set Λ is infinite (Lemma 11), a 4-AP-free permutation has infinitely many
+closed values. So the co-supply statement — "all but finitely many values are open" — is
+FALSE, not merely unproved. Machine check: 0 violations across all 195 154 avoiders with
+N ≤ 9 (apparent violations are board-edge artifacts with u+d > N, separated and counted).
+
+**Consequences, stated bluntly.**
+1. The programme announced with Theorem 16 — prove co-supply, get an infinite forcing
+   chain, contradict order type ω — cannot work. Any proof of co-supply must break at Λ.
+2. **Every propagation-style weakening is refuted as a family** (R17's Thm R17.2): in ANY
+   digraph whose edges descend in position, closures are finite and acyclic, so every
+   maximal chain terminates at a sink; hence an open value whose forced successor is closed
+   always exists. Universally quantified "openness propagates" statements are therefore all
+   false. Measured: 40–67% of Theorem 16's forcing edges land on a closed value (84%
+   exhaustively at N = 9). Only existential-selection forms survive, and those are
+   literally equivalent to 196-YES.
+3. **The quantitative reading of Theorem 16(b) was mis-calibrated — my error.** I wrote that
+   "any unbounded lower bound on |Cl(u)| resolves 196-YES". That is wrong: |Cl(u)| ≥ f(u)
+   only gives pos(u) ≥ f(u), which is a contradiction iff #{u : f(u) ≤ P} < P for some P
+   (so f(u) ≥ u+1 eventually suffices, while f(u) = log u or even f(u) = u prove nothing).
+   And for Theorem 16's own digraph no admissible f exists at all, since |Cl(w)| = 1 at
+   every record.
+
+What survives: Theorem 16(a) and (b) remain true and are still the correct local forcing
+rule and closure bound. What is withdrawn is the programme built on them.
+
+**Net positive from R17.** A six-rule forced-descent digraph G* that removes the record
+obstruction: sinks drop from 40–65% to 1–3%, immediate-death edges from 40–67% to 2–9%,
+and the longest chain grows from 14 to 132 at N = 320. Also an ω-free explicit chain
+construction quantifying route R5's barrier: one anchor buys at most log₂ m steps, and the
+adversary holds it to 2–3 steps regardless of N.
+
+## Theorem 45 (Theorem 16 says NOTHING about block architectures — route R18)
+
+In any LAYERED permutation (value-intervals listed in increasing order, arbitrary order
+inside each), every forcing edge stays inside a single block: u ⟶ u+d has u+d > u, and
+Theorem 16(a) forces pos(u+d) < pos(u), so u+d cannot be in a later block. Hence
+Cl(u) ⊆ B(u) automatically and |Cl(u)| ≤ |B(u)| for free.
+
+So "make forcing chains terminate" imposes ZERO constraint on the entire block-architecture
+family — it is satisfied by every block construction ever tried, including all the dead
+ones. The bounded-closure design mission I commissioned was therefore vacuous, and route
+R18 proved it (its Prop R18.1: the parity permutation σ_N has no monotone 3-AP at all,
+hence no open value, hence trivial closures at every N — so "all closures ≤ B" is SAT at
+every N for every B ≥ 1). Its UNSAT direction would not have been a YES theorem either
+(Prop R18.3).
+
+Net positive from R18: an exact block decomposition of 4-AP-freeness read off the forcing
+relation, deciding layered architectures 2–3 orders of magnitude faster than global SAT and
+localizing each death to a single block; two new finite theorems (geometric cuts at ratios
+3 and 4 are dead); and a reduction of "parity inside blocks" to 2-SAT, dead for every ratio.
+
+## Theorem 46 (the ledger ceiling is exactly 2 — route R19)
+
+Route R19 reduced Theorem 12's ledger to an exact identity and computed its ceiling. For
+the triadic permutation T and N = 3^{K+1}−1, Σ_j τ_j(T) = (3/4)N² + N/2 exactly (verified
+K = 2…9), giving C_ledger(N) ≤ 2(N+1)/(N+2) < 2 for every N. Therefore:
+
+**No unweighted-ledger argument can prove LP-inc(C) for any C ≥ 2.**
+
+Moreover Theorem 16's forcing step IS Theorem 12's demand mechanism (the i = 2 case of its
+disjunction), and closure bounds give LOWER bounds on positions, which cannot enter a ledger
+whose content is an upper bound. So closures do not help the ledger, and the two tools I had
+been treating as independent are the same tool.
