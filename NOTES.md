@@ -1,5 +1,36 @@
 # NOTES.md — lab notebook (newest entries at top)
 
+## 2026-07-28 ~02:00 UTC — R11 literature verdict; Lemma R‴; new flagship = Hildebrand injection
+
+- LEMMA R‴ proved+verified (0 false positives, all even n ≤ 6e4): small-prime demands +
+  squarefree rough parts + per-large-prime residue condition C_ℓ:
+  ((n+j)/ℓ − 1) mod ℓ ≥ (ℓ−1)/2 ⟹ n ∈ S_k. Subsumes Lemma R_k (boxes just force C_ℓ).
+  LADDER.md §4.5–4.6 has it + the "difficulty triangle".
+- R11 (attempts/route-R11/LITERATURE.md, 8 items, citations verified):
+  * NO published result implies Statement B (four-prime pq+1=2rs): it stacks archimedean
+    windows (fine) + BALANCED E₂ (every published detector needs UNBALANCED E₂ per GGPY
+    (1.24)) + double specified parity (open even for Chen's 2p+1 branch). The equation
+    literature (item 5) is empty of lower bounds — "parity-squared".
+  * KEY STRUCTURAL IRONY: published tuple detectors (GGPY Thm 3 on {m, 2m−1}: consecutive
+    N ∈ P₂, N+1 = 2P₂, factors > N^{1/10}) produce only UNBALANCED E₂'s — and unbalanced
+    means a factor > √(2n), which 727-membership FORBIDS. Parity meets balancedness exactly
+    at the membership boundary.
+  * GAME-CHANGER: Hildebrand 1985 (Proc AMS 95, "On a conjecture of Balog") — POSITIVE
+    LOWER DENSITY of {n: P(n) ∈ (n^a, n^b) ∧ P(n+1) ∈ (·)} for ANY 0 ≤ a < b ≤ 1; also
+    Balog–Ruzsa 1995/97 (stable sets): positive density with n, an+c both n^β-smooth.
+    ⟹ consecutive-√-smooth supply at POSITIVE DENSITY is KNOWN — corner (i) of the
+    triangle is not smoothness-blocked; the entire k=2 residual = C_ℓ conditions along
+    Hildebrand-type sets.
+  * My budget analysis: unconditional subtraction of C_ℓ-failures fails (top-band moduli
+    cap the digit-truncation: subtraction ~0.3–0.4 vs base density ρ(2)²·c ~ 0.05): the
+    C_ℓ conditions MUST be counted/injected INSIDE the Hildebrand/Balog–Ruzsa/Heath-Brown
+    machinery. R11 reached the same conclusion independently ("residual difficulty...
+    equidistribution of digit conditions in Heath-Brown-type constructions").
+- LAUNCHED R13: obtain + dissect Hildebrand 1985, Balog–Ruzsa, Heath-Brown 1987,
+  Hildebrand 1989; verdict on injectability of AP-restriction + C_ℓ conditions.
+- Statement B (pure four-prime) reclassified: blocked at current technology (keep as the
+  clean formal target it is; the R‴/Hildebrand path is now the flagship for k=2).
+
 ## 2026-07-28 ~01:20 UTC — STRATEGIC MERGE: Lemma R supersedes power families for k=2
 
 - Wave-1 died at session limit but R3 delivered before dying: FAMILY.md (complete re-proof of

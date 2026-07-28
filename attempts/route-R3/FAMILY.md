@@ -142,6 +142,7 @@ proof was written.
 | script | what it verifies | result |
 |---|---|---|
 | membership.py | PROBLEM.md digit criterion vs. independent Legendre-valuation check (n < 500, k ≤ 3); reproduces PROBLEM.md tables for S_1 (all 40 elements ≤ 441), S_2 (first 20, smallest 208), S_3 (first 4) | all gates pass |
+| s2_count_gate.py | PROBLEM.md calibration count \|S_2 ∩ [1, 2·10⁵]\| = 1981 (fast R4 form) | 1981 exactly |
 | reductions.py | Lemma 1 forms R1–R4 and Kummer/Legendre identity R5, n ≤ 3000 | confirmed |
 | family_test.py | F ⊆ S_1 by the FULL all-primes PROBLEM.md criterion for all 1137 members with q ≤ 400; the exact digit expansions of Lemmas 2–3; sharpness; Nagura coverage: the only prime q < 2·10⁵ with no admissible p is q = 5 | confirmed |
 | family_verify_extra.py | V1: direct big-integer ((n+1)!)² \| (2n)! for the 29 members with n ≤ 3000; V2: per-prime test for all 36 697 members with q ≤ 3000 (largest n = 17 955 012); V3: carry counts exactly 2 | confirmed |

@@ -1,0 +1,68 @@
+== T2: kappa_2(m) = s_2(m); integrality; Kummer ==
+[PASS] T2.1 kappa_2(m)==s_2(m) for m<=2e5
+[PASS] T2.2 (p-1) | 2 s_p(m)-s_p(2m)
+[PASS] T2.3 Kummer: kappa_p(m) == #carries in m+m base p
+== T3: interval bound W <= nu_p((2k)!) + V ; exact identity ==
+[PASS] T3.1 W_p <= nu_p((2k)!) + V_p (random)
+[PASS] T3.2 W bound exhaustive m<3000, k=2,3, p=2,3,5
+[PASS] T3.3 identity W_p == nu_p(C(2m,2k)) + nu_p((2k)!)
+== T4: forced carries kappa_p >= X_p^{[e,L)} (masked positions) ==
+[PASS] T4.1 kappa_p(m) >= #large digits in positions [e,L)
+== T5: chain X^{[e,L)} >= nu_p((2k)!)+V_p ==> 727 criterion at p ==
+[PASS] T5.1 implication holds on all sampled instances  instances used=187619
+== T6: binomial tail bounds, exact rational vs bound ==
+[PASS] T6.a trivial small-count tail bound
+[PASS] T6.b entropy (KL) Chernoff bound
+[PASS] T6.c classic mu/2 Chernoff, constant 1/8 (P(X<=mu/2)<=e^{-mu/8})
+[PASS] T6.d sum_{j<D} C(F,j) <= F^D  (1<=D<=F)
+== T7: spike residue classes; AP-forced spikes ==
+[PASS] T7.1 {m: p^T | 2m-i} is a single class mod p^{T-nu_p(2)} (or empty)
+[PASS] T7.2 naive spike bound WITHOUT nu_p(2 q0) term is FALSE on AP (every m=0 mod 2^10 has nu_2(2m)>=11, as the corrected lemma predicts)
+== T9: CRT counting for bad classes inside an AP ==
+[PASS] T9.1 AP cap class mod p^L = one class mod q0*p^{L-e}; count <= (M+1)/Q + 1
+== T10: in-AP masked sufficiency chain, exhaustive ==
+[PASS] T10.1 in-AP: X^{[e_p,*)} >= nu_p((2k)!)+V_p ==> criterion at p (exhaustive, three APs)  instances used=46922
+== T11: threshold lemma SP.9 and scalar inequalities for E(M) ==
+[PASS] T11.a c - 7/(240c) <= -1/120 for c in (0,1/6], equality at c=1/6
+[PASS] T11.b sum_{n>=2} n^{-t} <= 3*2^{-t} for 3<=t<=50
+[PASS] T11.c J_p = floor(log_p 2k): p^J <= 2k < p^{J+1}
+[PASS] T11.d (1-ln2)/2 >= 1/8
+[PASS] T11.e threshold SP.9 holds at u_min (and at small primes) for k=2,3,10, log M >= 1e4 where t_max>=3
+[PASS] T11.f 7/60 - 1/10 = 1/60 > 0
+== T13: packaged lemma at large M (exact sampling test) ==
+[PASS] T13.thr[A: M=2^200, k=2, q0=1] exact threshold mu'_p/2 >= nu_p((2k)!)+nu_p(2q0)+J_p+t for all p<=13
+[PASS] T13.i[A: M=2^200, k=2, q0=1] every sampled good m satisfies criterion (i) at all p<=13  good=18919/20000 (0.946)
+[PASS] T13.r[A: M=2^200, k=2, q0=1] empirical C/S failure rates within proved bounds (+4 sigma)  p=2:C 0.0000<=0.0000  p=3:C 0.0001<=0.0155  p=5:C 0.0003<=0.0334  p=7:C 0.0003<=0.0498  p=11:C 0.0006<=0.0733  p=13:C 0.0005<=0.0837
+[PASS] T13.thr[B: M=2^200, k=3, q0=24, a=7] exact threshold mu'_p/2 >= nu_p((2k)!)+nu_p(2q0)+J_p+t for all p<=13
+[PASS] T13.i[B: M=2^200, k=3, q0=24, a=7] every sampled good m satisfies criterion (i) at all p<=13  good=19896/20000 (0.995)
+[PASS] T13.r[B: M=2^200, k=3, q0=24, a=7] empirical C/S failure rates within proved bounds (+4 sigma)  p=2:C 0.0000<=0.0001  p=3:C 0.0001<=0.0162  p=5:C 0.0002<=0.0334  p=7:C 0.0001<=0.0498  p=11:C 0.0009<=0.0733  p=13:C 0.0006<=0.0837
+[PASS] T13.thr[C: M=10^60, k=3, q0=2^10*3^4] exact threshold mu'_p/2 >= nu_p((2k)!)+nu_p(2q0)+J_p+t for all p<=13
+[PASS] T13.i[C: M=10^60, k=3, q0=2^10*3^4] every sampled good m satisfies criterion (i) at all p<=13  good=19958/20000 (0.998)
+[PASS] T13.r[C: M=10^60, k=3, q0=2^10*3^4] empirical C/S failure rates within proved bounds (+4 sigma)  p=2:C 0.0000<=0.0001  p=3:C 0.0001<=0.0183  p=5:C 0.0001<=0.0334  p=7:C 0.0000<=0.0498  p=11:C 0.0006<=0.0733  p=13:C 0.0005<=0.0837
+[PASS] T13.thr[D: M=2^64, k=2, q0=1] exact threshold mu'_p/2 >= nu_p((2k)!)+nu_p(2q0)+J_p+t for all p<=13
+[PASS] T13.i[D: M=2^64, k=2, q0=1] every sampled good m satisfies criterion (i) at all p<=13  good=14720/20000 (0.736)
+[PASS] T13.r[D: M=2^64, k=2, q0=1] empirical C/S failure rates within proved bounds (+4 sigma)  p=2:C 0.0001<=0.0413  p=3:C 0.0209<=0.2636  p=5:C 0.0259<=0.3329  p=7:C 0.0189<=0.3813  p=11:C 0.0586<=0.4514  p=13:C 0.0225<=0.4724
+== T1: criterion implementations vs PROBLEM.md sanity data ==
+[PASS] T1.0 fast==direct membership (k=2, n<1200)  direct=[208, 458, 987] fast=[208, 458, 987]
+[PASS] T1.1 S_1 prefix & count to 441  len=40 prefix=[5, 14, 27, 41, 44, 65, 76, 90, 109, 125, 139, 152, 155, 169]
+[PASS] T1.2 S_2: min=208, first 20, |S_2 cap [1,2e5]|=1981  len=1981
+[PASS] T1.3 S_3 prefix & |S_3 cap [1,6e4]|=41  len=41 prefix=[3475, 8174, 8175, 15195, 16168, 18682, 18743, 19290]
+[PASS] T1.4 S_4 cap [1,6e4] = {8174, 51984}  [8174, 51984]
+[PASS] T1.5 product form (all p) == digit-sum form (n<400, k=2,3)
+[PASS] T1.6 digit-sum form == raw factorial divisibility (n<120)
+[PASS] T1.7 identity nu_p((2n)!)-2nu_p((n+k)!) == kappa_p(m)-W_p(m)
+== T8: density measurements (k=3, P0=13); union-bound check ==
+   M=  100000: density(i for all p<=13) = 0.6264   fail(i)=37364/100001  union-bound sum=0.4414  fail(ii,t=3)=7509 (0.0751)
+      per-prime fail(i) rates: p=2:0.1167, p=3:0.1063, p=5:0.1014, p=7:0.0502, p=11:0.0287, p=13:0.0381
+[PASS] T8.1 M=100000: union bound >= actual failure rate
+   M= 1000000: density(i for all p<=13) = 0.7970   fail(i)=202963/1000001  union-bound sum=0.2222  fail(ii,t=3)=75078 (0.0751)
+      per-prime fail(i) rates: p=2:0.0564, p=3:0.0705, p=5:0.0256, p=7:0.0301, p=11:0.0132, p=13:0.0265
+[PASS] T8.1 M=1000000: union bound >= actual failure rate
+[PASS] T8.2 fail(i) rate decreases from M=1e5 to M=1e6  0.3736 -> 0.2030
+   M=1e6, AP m=7 mod 24: density(i)=0.8237  N_AP=41667  fail(ii)=547
+[PASS] T8.3 AP density also high (sanity)  fail rate 0.1763
+   M=1e6, AP m=0 mod 2^10: density(i)=0.0000  N_AP=977  p=2 fail(i)=1.0000  fail(ii, corrected thr)=43
+[PASS] T8.4 corrected spike threshold (with nu_2(2 q0)=11) makes fail(ii) rare even in AP mod 2^10  0.0440
+   (note: density(i) in the 2^10-AP is lower at this small scale because the forced demand at p=2 is ~11+ while s_2(m)~10 on average here; the lemma's threshold requires larger M in this AP, exactly as SP.9 predicts)
+
+ALL CHECKS PASSED
