@@ -1,6 +1,6 @@
 # NOTES.md — Erdős 289 lab notebook (newest first)
 
-## 2026-07-28 ~18:15 UTC — consolidated state
+## 2026-07-28 ~18:40 UTC — consolidated state
 
 ### The reformulation everything runs on
 $P(k)$ holds iff there is a finite $U\subseteq\mathbb{Z}_{\ge2}$ with $\sum_{n\in U}1/n=1$,
@@ -16,13 +16,14 @@ $M$ its capacity.
 2. **No solution has $\max U\le84$** — three independent engines agree (mine with the pooled
    $p$-adic prune, route B's Rule (P) DP, route C's RULE A+B fixpoint, which is EMPTY for
    all $N\le76$).
-3. **$P(k)$ is TRUE for $k=7,\dots,20$**, with explicit exactly-$k$ block certificates
+3. **$P(k)$ is TRUE for $k=6,\dots,57$**, with explicit exactly-$k$ block certificates
    emitted and re-verified by `experiments/certificates.py` (count $=k$, all lengths $\ge2$,
    pairwise disjoint, elements $\ge2$, sum $=1$ in $\mathbb{Q}$).
-4. **$P(1)$ is FALSE** (Kürschák). $P(2)$ is false too: the top run $[c,N]$ of a solution
-   must have $c>N/2$ and be prime-free (a prime $p$ in it needs a second multiple $\ge2p$),
-   and the same forces the lower run to be nearly prime-free — two short runs cannot sum
-   to 1. $P(3)\dots P(6)$ remain open (no solution with $\max U\le150$ has $<7$ blocks).
+4. **$P(1)$ is FALSE** (Kürschák). $P(2)\dots P(5)$ are OPEN. What *is* proved is that the
+   top run $[c,N]$ of any solution satisfies $c>N/2$ and is prime-free (a prime $p$ in it
+   needs a second multiple $\ge 2p$), so a 2-run solution needs both runs nearly prime-free;
+   that is strong evidence against $P(2)$ but NOT a proof. Empirically the minimum run count
+   over all 27 069 solutions is exactly 6, attained once.
 5. **$H(a,b)$ is never a unit fraction** — PROVED (route D), via the 2-adic level plus a
    rough-part bound and Kummer, with one exceptional pair $(k,b)=(5,16)$ checked by hand.
 6. **A legal block system CAN sum to a unit fraction:**
@@ -96,6 +97,6 @@ with the RULE A+B fixpoint that holds up to $N=600$ (126 bits) — 68 bits at $N
 ### Next actions
 1. Await routes A, B, E (E is searching $\tfrac12$ on $[100,350]$ and $[100,400]$ — the
    direct CRUX test).
-2. Keep pushing exhaustive/size-targeted searches for larger $k$ (currently 20).
+2. Keep pushing exhaustive/size-targeted searches for larger $k$ (currently 57).
 3. If CRUX stays open, VERDICT.md must say the problem is NOT resolved and record exactly
    what is proved.

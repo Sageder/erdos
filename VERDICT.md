@@ -38,12 +38,12 @@ verification path. Audit in `AUDITS.md` walks PROMPT §7 item by item.
    Established by four independent engines (mine, and routes A, B, C), which agree on both
    the emptiness below 85 and the count at 85.
 
-2. **$P(k)$ is TRUE for $k=6,7,\dots,51$**, with explicit exactly-$k$ block certificates.
-   26 487 distinct solutions verified. Examples:
+2. **$P(k)$ is TRUE for $k=6,7,\dots,57$**, with explicit exactly-$k$ block certificates.
+   27 069 distinct solutions verified. Examples:
    - $k=6$: $(\tfrac14+\tfrac15+\tfrac16)+(\tfrac19+\tfrac1{10})+(\tfrac1{19}+\tfrac1{20})+(\tfrac1{44}+\tfrac1{45})+(\tfrac1{132}+\tfrac1{133})+(\tfrac1{209}+\tfrac1{210})=1$;
-   - $k=51$: a 51-block certificate with all elements in $[45,345]$.
+   - $k=57$: a 57-block certificate; solutions are known with every element $\ge 50$.
    $P(1)$ is FALSE (Kürschák). $P(2),\dots,P(5)$ remain open (no solution with $\max U\le345$
-   has fewer than 6 blocks).
+   has fewer than 6 blocks (the minimum run count over all 27 069 solutions is exactly 6, attained once)).
 
 3. **Rule (P)** (proved; strictly stronger than the two-attainer rule of PROBLEM.md B2). If
    $\Sigma(U)=q$ and $p$ is prime with $E=\max\{\nu_p(n):n\in U\}$, then
@@ -78,7 +78,7 @@ verification path. Audit in `AUDITS.md` walks PROMPT §7 item by item.
 
 ## Where the problem now sits
 
-Solutions exist with all elements $\ge45$ (max 345, $r=40$, $M=51$). A legal system with
+Solutions exist with all elements $\ge50$; as $T$ grows the searches keep producing solutions with $\min U\ge T$ (verified for $T$ up to 50). A legal system with
 elements $\asymp T$ and reciprocal sum $\tfrac12$ (or $1$) necessarily has $\asymp T$
 elements, so its capacity grows linearly in $T$. Hence:
 
@@ -162,7 +162,7 @@ which fights the multiplicative structure such proofs rely on.
 ## Honest bottom line
 
 The run turned Erdős 289 from "no example known here" into "examples are abundant and the
-statement is verified for every $k$ from 6 to 51", proved the exact threshold
+statement is verified for every $k$ from 6 to 57", proved the exact threshold
 $\min\max U=85$, proved several structure theorems (Rule (P), prime-free top run, no block
 sum is a unit fraction), and killed the negative branch. It reduced the cofinite statement to
 one clean analytic question (CRUX) and ruled out, with proofs or exhaustive searches, every
