@@ -22,7 +22,7 @@ The problem asks whether, for all sufficiently large $k$, one is a sum of the re
 $k$ pairwise disjoint blocks of consecutive integers, each of length at least $2$. What is
 proved below is: the first block systems of this kind (none were previously exhibited here),
 the exact minimum of their largest element, the truth of the statement for
-$k=7,\dots,20$, and several structural theorems. The cofinite statement remains open, and
+$k=6,\dots,57$, and several structural theorems. The cofinite statement remains open, and
 \S\ref{sec:open} states precisely the one analytic statement to which it has been reduced.}}
 \end{center}
 
@@ -150,22 +150,24 @@ by three independent programs (see \S\ref{sec:comp}); the four certificates were
 from scratch with rational arithmetic.
 
 \begin{theorem}\label{thm:k}
-$P(k)$ holds for $k=7,8,\dots,20$.
+$P(k)$ holds for $k=6,7,\dots,57$.
 \end{theorem}
 
 \begin{proof}
 By Proposition~\ref{prop:reform} it suffices to exhibit, for each such $k$, a solution $U$
 with $r(U)\le k\le M(U)$; explicit block systems with exactly $k$ blocks are listed in
-\texttt{experiments/certificates.py} and re-verified there in exact rational arithmetic
-(count $=k$; every length $\ge2$; pairwise disjoint; all elements $\ge2$; sum $=1$). For
-example $k=9$ is certified by the first solution of Theorem~\ref{thm:min} and $k=20$ by
+\texttt{experiments/CERTIFICATES.txt}, generated and re-verified by
+\texttt{experiments/certificates.py} in exact rational arithmetic (count $=k$; every length
+$\ge2$; pairwise disjoint; all elements $\ge2$; sum $=1$); the extreme cases were checked a
+second and third time with \texttt{sympy.Rational} and with pure integer arithmetic
+$\sum L/n = L$, $L=\mathrm{lcm}(U)$. For instance $k=9$ is certified by the first solution
+of Theorem~\ref{thm:min}, and
 \[
-(9,10)(16,17)(22,23)(27,28)(29,30)(32,33)(35,36)(51,52)(55,57)(69,70)(76,77)
-(84,85)(90,91)(95,96)
+1=\Bigl(\tfrac14+\tfrac15+\tfrac16\Bigr)+\Bigl(\tfrac19+\tfrac1{10}\Bigr)
++\Bigl(\tfrac1{19}+\tfrac1{20}\Bigr)+\Bigl(\tfrac1{44}+\tfrac1{45}\Bigr)
++\Bigl(\tfrac1{132}+\tfrac1{133}\Bigr)+\Bigl(\tfrac1{209}+\tfrac1{210}\Bigr)
 \]
-\[
-(104,105)(114,115)(116,117)(119,120)(135,136)(143,145). \qedhere
-\]
+certifies $k=6$, the smallest value for which $P(k)$ is currently known. \qedhere
 \end{proof}
 
 \begin{theorem}\label{thm:unit}
@@ -197,8 +199,9 @@ For $T\ge2$ let $B(T)$ be the set of rationals expressible as $\Sigma(W)$ for a 
 of whose elements are $\ge T$.
 
 \begin{proposition}\label{prop:reduction}
-Suppose $\tfrac12\in B(T)$ for arbitrarily large $T$. Then $P(k)$ holds for all sufficiently
-large $k$.
+Suppose $\tfrac12\in B(T)$ for arbitrarily large $T$ (equivalently: there are solutions
+with $\min U\ge T$ for arbitrarily large $T$). Then $P(k)$ holds for all sufficiently large
+$k$.
 \end{proposition}
 
 \begin{proof}[Proof sketch]
@@ -228,7 +231,9 @@ equal sum (which would have raised capacity at fixed run count).
 \item $\tfrac1a+\tfrac1{a+1}=\tfrac1c+\tfrac1{c+1}+\tfrac1d+\tfrac1{d+1}$ has no solution
 with $a\le400$, $c\ge a+2$, $d\ge c+2$: an atom does not split into two atoms.
 \item $B(T)$ is not shift-invariant: $\tfrac56\in B(2)$ but $\tfrac56\notin B(5)$ even
-allowing elements $\le66$; $\tfrac7{12}\in B(3)\setminus B(4)$.
+allowing elements $\le66$; $\tfrac7{12}\in B(3)\setminus B(4)$. On the other hand solutions
+with $\min U\ge T$ have been found for every $T\le50$ tried, so the hypothesis of
+Proposition~\ref{prop:reduction} is empirically well supported.
 \item Parametric families of the shape ``main term plus small corrections'' fail for an
 arithmetic reason. For $c\ge3$ the maps $n\mapsto\{cn,cn+1\}$ and $n\mapsto\{cn-1,cn\}$ give
 pairwise disjoint atoms for every colouring, and the image realises exactly $k=|U|$ blocks;
