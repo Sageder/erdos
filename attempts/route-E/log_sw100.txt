@@ -43,3 +43,6 @@ T=100   N=550   y=0    205 maxsum=0.86048 Lbits=99 Deff=1(1b) Mbits=99 | TIMEOUT
 T=100   N=600   y=40   133 maxsum=0.55901 Lbits=58 Deff=1(1b) Mbits=58 | TIMEOUT
 T=100   N=600   y=45   166 maxsum=0.68761 Lbits=70 Deff=1(1b) Mbits=70 | TIMEOUT
 T=100   N=600   y=50   178 maxsum=0.73327 Lbits=75 Deff=1(1b) Mbits=75 | TIMEOUT
+T=100   N=600   y=55   190 maxsum=0.77802 Lbits=81 Deff=1(1b) Mbits=81 | TIMEOUT
+T=100   N=600   y=60   202 maxsum=0.81770 Lbits=87 Deff=1(1b) Mbits=87 | TIMEOUT
+T=100   N=600   y=70   202 maxsum=0.81770 Lbits=87 Deff=1(1b) Mbits=87 | TIMEOUT

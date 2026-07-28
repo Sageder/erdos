@@ -4,3 +4,4 @@
 1/3 : max 105          |V|=15 sum=1/3   admissible balanced B: 0
 1/3 : max 100          |V|=15 sum=1/3   admissible balanced B: 0
 2/3 : max 105          |V|=14 sum=2/3   admissible balanced B: 0
+all 96 target-1 certificates in [2,105]: 0 of 96 admit a balanced doubling

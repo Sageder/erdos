@@ -1,2 +1,3 @@
 wrote /home/user/erdos/attempts/route-E/prob_B_401_1600.txt |univ|=586 maxsum=0.72167 Lbits=222 Deff=3628800(22b) Mbits=200
   seed 1 -> pool 0 (294s)
+  seed 2 -> pool 0 (2700s)
