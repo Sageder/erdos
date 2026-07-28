@@ -43,6 +43,20 @@ consolidated structural picture.
   Key find: Hildebrand 1985 (Balog's conjecture) gives consecutive smooth pairs at positive
   density — so the k=2 supply is known and the residual is purely the congruence injection.
 
+## Late routes (2026-07-28)
+
+- **R13 | injectability anatomy** | COMPLETE | Obtained Hildebrand 1985 in full; answered the
+  gating question NEGATIVELY (p-stability is maximally violated by carry conditions: measured
+  agreement 0.5037 vs 1 required, not fixable). Overturned two of this run's own claims (the
+  C_ℓ-form of the target is false; the k=2 supply threshold was mis-instantiated). Identified
+  Tao–Teräväinen arXiv:2512.01739 as a new lead.
+- **R14 | L4a and the reduction to Hypothesis U** | COMPLETE, audited MIXED |
+  Unconditional Lemmas 1–5 CONFIRMED (1.5M+ verified instances) — these retire all digit/carry
+  combinatorics. But: Proposition O1 is NOT proved (heuristic); Theorem A is fatally broken
+  (U applied to an ℓ-dependent family); U(θ=1) is false; the "any θ, any C" framing hides the
+  binding ratio θ/b ≥ 62.8. Hypothesis U judged a reduction to a statement of comparable
+  strength — excluded BY NAME in PROBLEM.md — hence NOT progress.
+
 ## Active / open routes
 
 - **R13 | injectability anatomy (Hildebrand 1985, Balog–Ruzsa, Heath-Brown 1987)** | ACTIVE |
@@ -56,10 +70,14 @@ consolidated structural picture.
   Kept alive per protocol; no finiteness mechanism identified.
 - **R9 | per-prime digit dynamics** | ACTIVE | largely absorbed into MIRROR + Lemma SP.
 
-## Status of the problem
+## Status of the problem (final, 2026-07-28)
 
-Neither branch is resolved. The run's rigorous localization: all digit/carry content is
-discharged (SP + R‴ + trichotomy); what remains is a *joint* arithmetic statement —
-smoothness of consecutive integers together with cofactor congruences at their large prime
-factors — which sits behind the binary-correlation/parity barrier for k = 2, and behind an
-additionally open smooth-supply problem for k ≥ 3.
+Neither branch is resolved; see VERDICT.md. The run's rigorous localization: all digit/carry
+content of 727 is now *retired* (Lemma SP for small primes; Lemma R‴ / the Mirror trichotomy
+for large primes; R14's Lemmas 2–4 reduce each large-prime condition to a pure congruence mod
+ℓ^J of exactly computable relative size). What remains is a single analytic statement —
+equidistribution of consecutive-smooth PAIRS in progressions to moduli that are a power of x —
+for which no case is known above (log x)^c moduli, which no standard conjecture implies, and
+which PROBLEM.md excludes by name as a permissible reduction. For k ≥ 3 the supply itself is
+additionally open, with the explicit and small gap 0.5134 → 0.5 that McNamara's counterexample
+shows cannot be closed by any soft/stable-set argument.
