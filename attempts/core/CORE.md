@@ -1695,3 +1695,39 @@ the multi-modulus structure, in this counting form, is not a route to the affirm
 branch. Recorded both because the structural statement is worth having and because the
 natural counting use of it is now closed — anyone tempted by "sum over all moduli" should
 know the divisor loss kills it.
+
+## Proposition 49 (avoiders are overwhelmingly INDECOMPOSABLE — a scope correction to the block programme)
+
+Call V a *cut point* of a permutation if the values [1..V] occupy exactly the positions
+[1..V] (equivalently the running maximum equals the index at V); a permutation with
+infinitely many cut points is precisely a block layout with those cuts. Measured:
+
+- **Exhaustively over all 168 864 monotone-4-AP-free permutations of [1..9]:** 78.9% have
+  ZERO proper cut points, 17.8% have one, 2.9% have two, 0.3% have three, 0.02% have four.
+- **The parity construction σ_N** — the standard avoider, existing at every N — has cut
+  points only at 1, N−1 and N, for every N tested (8, 16, 32, 64, 128, 256). It is
+  essentially indecomposable.
+- **Solver-found avoiders at scale have no proper cut point at all:** at N = 200, 300, 400
+  the only cut is the trivial one at N.
+
+**Why this matters, and what it corrects.** Route R1's programme — and the impossibility
+results built on it (REQUIREMENTS B4, and the cut-set {8, 26, 80}, the window law, the
+accelerating-cut corridor) — is a statement about permutations WITH an infinite cut
+sequence. The data says avoiders overwhelmingly have no proper cuts at all, and the
+proportion with several decays sharply. So those theorems, while genuine, constrain a thin
+subfamily, and "block layouts are dead" is much weaker evidence against the negative branch
+than the accumulated weight of that work suggests. The natural home of a counterexample is
+the INDECOMPOSABLE permutations, which the cut-based results do not touch.
+
+**A distinction that must be kept.** This scope limitation applies to the cut-sequence work
+(R1, and REQUIREMENTS B4's ratio-3/4 statements). It does NOT apply to the class-architecture
+results (Propositions 29, 30, 40, 41): there the fibres F_j need not be intervals, so
+emitting classes in increasing index order does NOT make the permutation a block layout, and
+those propositions constrain a genuinely wider family. Likewise the digit-comparator
+dichotomy (REQUIREMENTS B2) and the length-5 pair-counting obstruction (B5) are not
+cut-based.
+
+**Consequence for the portfolio.** The negative branch is less constrained than this run's
+own summary implied. The right target is an indecomposable permutation of ℕ, and the tools
+that still bite on it are the class-architecture propositions and the displacement bounds —
+not the cut certificates. REQUIREMENTS.md B4 should be read with this scope attached.

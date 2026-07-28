@@ -86,7 +86,12 @@ prime, shifted variants, every function of v mod m, and every Boolean combinatio
 (Propositions 29, 30.)
 
 **B4. It cannot be an in-order geometric block layout at ratio 3 or 4, nor a bounded-lag
-interleaving.** Established by SAT over construction stages plus König, so the finite UNSAT
+interleaving. SCOPE (Proposition 49): this constrains only permutations WITH an infinite
+cut sequence, and avoiders are overwhelmingly indecomposable — 78.9% of the avoiders of
+[1..9] have no proper cut point, the standard parity construction has essentially none, and
+solver-found avoiders at N = 200–400 have none. So B4 is a real theorem about a THIN
+subfamily and is much weaker evidence against the negative branch than its provenance
+suggests.** Established by SAT over construction stages plus König, so the finite UNSAT
 results are impossibility theorems quantified over ALL within-block gadgets. Minimal
 infeasible cut-set {8, 26, 80}; the lag-2 interleaving dies at stage 7. (Route R1; route
 R18 re-derived the ratio-3 and ratio-4 deaths faster via block localization.)
