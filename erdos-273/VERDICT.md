@@ -107,11 +107,26 @@ argument, which resolution reproduces only exponentially.
 
 **This elimination cannot close the problem, and must not be read as evidence that it will.**
 $\Phi_q(S) \ge \sum_{m \in S,\ q \nmid m} 1/m$, so the test at $q$ is vacuous once that sub-budget
-exceeds 1. Measured: the minimum over $q$ is always attained at $q=3$ and stays near *half* the
-pool budget (because $H$ is enriched at multiples of 3 — density $1/\varphi(3) = 1/2$, not $1/3$),
-reaching only 0.688 at $M = 720720$. So the test stays sharp on smooth lattices perhaps to
-$M \sim 10^9$, but dies on lattices of huge lcm — exactly where a real covering system may live
-(cf. T7).
+exceeds 1. Worse, route C checked the *first genuinely relevant* lattice directly and the test
+**already fails there**: at $M = 27720$ the pool $H$-divisors $\setminus\{2\}$ satisfies
+$\Phi_2, \Phi_3 \ge 1$ comfortably ($q=2$: the odd part alone gives 0.9605 per leaf against a
+deficit of 0.0395 with supply 2.81; $q=3$: base 0.6192, deficit 0.3808, supply 6.5). So the long
+run of kills up to $M = 5580$ does **not** continue — it is an artefact of small lattices being
+budget-starved, not a trend. (My frontier estimate said the test *could* bite at 27720 since
+$A_3 = 0.619 \le 1$; "can bite" is not "does bite", and I record the correction.)
+
+Route C independently searched for an $H$-covering avoiding the modulus 2 at
+$L = 360, 630, 660, 720, 810, 840, 900, 960, 990, 1260, 2520, 5040, 27720, 151200, 360360,
+720720, 2162160, 10810800$ by three different methods and found **none** — search failure, which
+per the problem's own ground rules is zero evidence for a negative answer.
+
+**A further structural fact about $H$** (route C, verified independently): for every odd prime $q$,
+$2m+1 \equiv 0 \pmod q \iff m \equiv (q-1)/2 \pmod q$, so $H$ meets that class only at the single
+point $m = (q-1)/2$. Hence $H$ contains **no** $m \equiv 1 \pmod 3$ (equivalently $E$ contains no
+$n \equiv 2 \pmod 6$), $H \cap \{m \equiv 2 \bmod 5\} = \{2\}$, and so on. This is exactly why the
+moduli every cheap least-modulus-3 covering wants are unavailable: $4, 10 \equiv 1 \pmod 3$ and
+$12 \equiv 2 \pmod 5$. It yields no obstruction, however: it constrains the *residue* of a modulus,
+while covering feasibility depends only on the *divisibility lattice* of the chosen moduli.
 
 ## 3. Why neither branch closed — honest diagnosis
 
