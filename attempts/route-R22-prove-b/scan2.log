@@ -1,3 +1,4 @@
 HEAD b=3 s=m+1 K=m : first UNSAT N = 76
 HEAD b=4 s=m+1 K=m : first UNSAT N = 69
 HEAD b=5 s=m+1 K=m : first UNSAT N = 127
+HEAD b=6 s=m+1 K=m : first UNSAT N = 162
