@@ -1,0 +1,17 @@
+=== (a) doubling image D_+(U) = U_{n in U}{2n,2n+1}: exact reciprocal-sum deficit
+    Sigma(D_+(U)) = 1 - sum_{n in U} 1/(2n(2n+1)).   D_+(U) is ALWAYS legal,
+    has cap = |U| and run count = #runs(U) + #(proper prefixes) -- capacity DOUBLES.
+  T    |U|   deficit          1/deficit   smallest single atom 1/(2N)+1/(2N+1)
+  20    48   0.0070873        141.10     0.0056738   (deficit / smallest atom = 1.249)
+  22    55   0.0064793        154.34     0.0046030   (deficit / smallest atom = 1.408)
+  24    62   0.0057724        173.24     0.0046030   (deficit / smallest atom = 1.254)
+  26    70   0.0053405        187.25     0.0040445   (deficit / smallest atom = 1.320)
+  28    72   0.0050252        199.00     0.0036199   (deficit / smallest atom = 1.388)
+  30    78   0.0045076        221.85     0.0040445   (deficit / smallest atom = 1.115)
+  34    90   0.0038815        257.63     0.0034935   (deficit / smallest atom = 1.111)
+  36    89   0.0038024        263.00     0.0033642   (deficit / smallest atom = 1.130)
+  40   105   0.0032606        306.69     0.0033306   (deficit / smallest atom = 0.979)
+  45   112   0.0030361        329.37     0.0030280   (deficit / smallest atom = 1.003)
+  50   132   0.0025534        391.63     0.0027082   (deficit / smallest atom = 0.943)
+
+=== (b) best overlap of D_sigma(U) with an actual corpus solution ===

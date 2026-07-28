@@ -1,1 +1,0 @@
-wrote /home/user/erdos/attempts/route-E/prob_b_401_1600_2.txt |univ|=587 maxsum=0.72265 Lbits=223 Dbits=11 Mbits=213 target=1 reachable=False

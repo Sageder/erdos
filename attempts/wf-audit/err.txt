@@ -1,0 +1,1 @@
+T=50 N=369  |universe|=163  lcm bits=80  sum=1.1960

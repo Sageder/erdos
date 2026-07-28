@@ -76,6 +76,23 @@ verification path. Audit in `AUDITS.md` walks PROMPT §7 item by item.
    $\#\{\text{solutions}:\max U\le N\}\approx e^{cN}\to\infty$ (fitted $e^{0.098N}$ on
    $[80,200]$), matching the observed counts.
 
+## MAJOR ADVANCE (late in the run): the CRUX holds at $T=100$
+
+A legal system with **all elements $\ge 100$** and reciprocal sum exactly $\tfrac12$ was found
+(`attempts/route-E/cert_T100_half.txt`): 145 elements in $[104,900]$, 65 runs, capacity 66,
+verified three independent ways (`Fraction`, `sympy.Rational`, integer $\sum L/n=L$).
+Combining it with the $\tfrac12$-gadget in $[6,91]$ gives a genuine **solution with 155
+elements, $r=70$, capacity $71$** — hence $P(70)$ and $P(71)$.
+
+**The method that worked** (and that makes a proof of the CRUX conceivable) is two-scale:
+(i) in a window, collect *gadgets* — legal systems whose sum has denominator dividing a
+**fixed smooth $D$** (here $D=10!$); (ii) in a disjoint higher window find a gadget
+$\sigma_2$ with $\tfrac12-\sigma_2$ among the first window's gadget values. A union of legal
+systems in separated windows is legal and sums add, so the combination is exact. This
+replaces one astronomically hard exact condition (denominators of size $\mathrm{lcm}$ of the
+window) by an exact condition modulo a **small fixed** $D$ — the first framework in this run
+in which the entropy comfortably exceeds the constraint.
+
 ## Where the problem now sits
 
 Solutions exist with all elements $\ge50$; as $T$ grows the searches keep producing solutions with $\min U\ge T$ (verified for $T$ up to 50). A legal system with

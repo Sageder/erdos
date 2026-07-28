@@ -1,0 +1,6 @@
+none  T=60 N=369 | T=60 N=369 target=1/1 |A|=150  lcm bits=80  words=2 | done nodes=4251 solutions=0 cpu=0.2s
+none  T=60 N=376 | T=60 N=376 target=1/1 |A|=158  lcm bits=86  words=2 | done nodes=3184119 solutions=0 cpu=0.4s
+none  T=60 N=383 | T=60 N=383 target=1/1 |A|=160  lcm bits=86  words=2 | done nodes=9843924 solutions=0 cpu=0.6s
+nonone  T=60 N=396 | T=60 N=396 target=1/1 |A|=166  lcm bits=87  words=2 | TIMEOUT nodes=184549376 solutions=0
+none  T=60 N=405 | T=60 N=405 target=1/1 |A|=168  lcm bits=87  words=2 |   endgame at index 138 (element 306): distinct sums 344064 344064 688128  (0.2s)
+3s)

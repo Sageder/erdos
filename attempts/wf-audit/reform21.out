@@ -1,0 +1,5 @@
+universe [2,21]
+distinct sums realised by block systems : 42207
+distinct sums realised by legal sets    : 42207
+targets where LHS != RHS                : 0
+REFORMULATION VERIFIED EXHAUSTIVELY on [2,21] for every target q.

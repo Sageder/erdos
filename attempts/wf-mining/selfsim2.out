@@ -1,0 +1,28 @@
+=== (b) best overlap of a doubling image D_sigma(U) with a corpus solution ===
+   candidate pairs with |D&V| >= |D|/2 : 7821
+     J=0.4382 |D|=68 |V|=60 common=39 shift=0 T(U)=11 T(V)=22
+     J=0.4348 |D|=72 |V|=60 common=40 shift=0 T(U)=11 T(V)=22
+     J=0.4321 |D|=56 |V|=60 common=35 shift=0 T(U)=11 T(V)=22
+     J=0.4286 |D|=60 |V|=60 common=36 shift=0 T(U)=11 T(V)=22
+     J=0.4268 |D|=58 |V|=59 common=35 shift=1 T(U)=12 T(V)=22
+     J=0.4268 |D|=58 |V|=59 common=35 shift=1 T(U)=12 T(V)=22
+     J=0.4268 |D|=58 |V|=59 common=35 shift=1 T(U)=11 T(V)=22
+     J=0.4250 |D|=56 |V|=58 common=34 shift=0 T(U)=11 T(V)=22
+     J=0.4211 |D|=72 |V|=63 common=40 shift=1 T(U)=12 T(V)=22
+     J=0.4198 |D|=56 |V|=59 common=34 shift=0 T(U)=11 T(V)=22
+     J=0.4198 |D|=56 |V|=59 common=34 shift=0 T(U)=11 T(V)=22
+     J=0.4186 |D|=60 |V|=62 common=36 shift=0 T(U)=11 T(V)=22
+
+   best overlap achieved at all (over U with T(U)>=20):
+     (jaccard, |D|, |V|, common, shift, T(U), T(V)) = (0.38571428571428573, 98, 96, 54, 1, 20, 40)
+
+=== (c) parity signature of runs (a D_+ image is 100% at start-even/length-even) ===
+     start parity 0, length parity 0 :  39.29%
+     start parity 0, length parity 1 :  14.31%
+     start parity 1, length parity 0 :  37.38%
+     start parity 1, length parity 1 :   9.03%
+
+=== (d) exact doubling images that are solutions ===
+     count: 0 (must be 0)
+
+=== (e) corpus solutions V containing a full doubling image D(U) ===

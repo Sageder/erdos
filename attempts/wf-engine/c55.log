@@ -1,0 +1,6 @@
+none  T=55 N=345 | T=55 N=345 target=1/1 |A|=143  lcm bits=80  words=2 | done nodes=520622 solutions=0 cpu=0.1s
+none  T=55 N=351 | T=55 N=351 target=1/1 |A|=145  lcm bits=80  words=2 | done nodes=1599506 solutions=0 cpu=0.1s
+none  T=55 N=357 | T=55 N=357 target=1/1 |A|=146  lcm bits=80  words=2 | done nodes=2750545 solutions=0 cpu=0.2s
+none  T=55 N=363 | T=55 N=363 target=1/1 |A|=146  lcm bits=80  words=2 | done nodes=2750545 solutions=0 cpu=0none  T=55 N=377 | T=55 N=377 target=1/1 |A|=162  lcm bits=86  words=2 | TIMEOUT nodes=184549376 solutions=0
+none  T=55 N=385 | T=55 N=385 target=1/1 |A|=167  lcm bits=87  words=2 |   endgame at index 137 (element 299): distinct sums 688128 516096 860160  (0.3s)
+.3s)

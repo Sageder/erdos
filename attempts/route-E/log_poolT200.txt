@@ -1,0 +1,2 @@
+wrote /home/user/erdos/attempts/route-E/prob_T2_200_900.txt |univ|=203 maxsum=0.48881 Lbits=82 Deff=3628800(22b) Mbits=60
+  seed 1 -> pool 62 (240s)

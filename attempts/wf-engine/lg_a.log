@@ -1,0 +1,6 @@
+  [104,400] seed 1: pool 24417
+  [104,400] seed 2: pool 54447
+  [104,400] seed 3: pool 86284
+[104,400] D=3628800 |universe|=120 distinct gadget values=86284
+   value range 21601/86400 .. 1702069/3628800 (0.25001 .. 0.46904)
+wrote pl_104_400.txt

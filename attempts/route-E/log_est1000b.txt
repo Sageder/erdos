@@ -1,0 +1,2 @@
+y=45   |U|= 546 maxsum=0.1776 Lbits=117  log2 E[#sol] = 36.3
+y=50   |U|= 655 maxsum=0.2103 Lbits=122  log2 E[#sol] = 180.3

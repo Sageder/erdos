@@ -157,7 +157,8 @@ Distribution of `max(U)` over the 20,993 with `max(U) <= 160`
 ```
 
 **Exact k-realisability inside the exhaustive class.** Over all 25,650 certificates
-with `max(U) <= 170` the number of maximal runs `r` ranges over `7..`, and
+with `max(U) <= 170`, the number of maximal runs is `r >= 7` always, and the union of
+the intervals `[r, M]` is exactly `[7, 23]`. Hence
 
 > for `k >= 1`, a witness for `P(k)` using only integers `<= 170` exists
 > **iff `7 <= k <= 23`**.
@@ -169,8 +170,25 @@ universe reduction, different node ordering — was run at `N = 85` to completio
 27,143,471,018 nodes, and it output **exactly the same four certificates**.
 This independently validates both rule (P) and `bsearch.c`.
 
+**Third method — meet in the middle** (`mitm.py`, pure Python, exact integers, no DFS
+and no pruning at all): the runs of `A(N)` are independent, so all choices for a
+"left" group of runs are hashed by their exact partial weight and all choices for the
+"right" group look up `L - s`. Counts obtained:
+
+| N | MITM count | `bsearch` count |
+|---|---|---|
+| 85 | 4 | 4 |
+| 90 | 4 | 4 |
+| 100 | 39 | 39 |
+| 110 | 96 | 96 |
+| 120 | 163 | 163 |
+| 140 | 425 | 425 |
+
 The 4-way job-split of `bsearch` was validated at `N = 150`:
 `1531 + 1329 + 1317 + 1274 = 5451`, matching the single-job count.
+
+So each exhaustive count rests on at least two, and up to three, independent
+implementations.
 
 ---
 
@@ -200,6 +218,7 @@ Results:
 | 6 | 200 | 444,324,346 | 0 |
 | 6 | 250 | 6,322,165,390 | **1** |
 | 5 | 300 | 1,206,484,145 | **0** |
+| 5 | 400 | 15,756,202,883 | **0** |
 
 The unique certificate with at most 6 maximal runs and `max(U) <= 250` is
 
@@ -212,9 +231,27 @@ i.e. `U = {4,5,6, 9,10, 19,20, 44,45, 132,133, 209,210}`, six blocks
 `r = M = 6`. **So `P(6)` is TRUE**, and 210 is the smallest possible maximum
 element of a `k = 6` witness.
 
-> **Exhaustively: no legal `U` with at most 5 maximal runs has `max(U) <= 300`.**
-> Hence `P(k)` for `k <= 5` has no witness using integers `<= 300`.
+> **Exhaustively: no legal `U` with at most 5 maximal runs has `max(U) <= 400`.**
+> Hence `P(k)` for `k <= 5` has no witness using integers `<= 400`.
 > (`P(1)` is false outright, by Kürschák non-integrality.)
+
+### 3.5 A restricted class where negatives are sharp: all runs of length exactly 2
+
+`pairsearch.c` searches only `U = {a_1,a_1+1} u ... u {a_k,a_k+1}` with
+`a_{i+1} >= a_i + 3`. Such a `U` has `r = M = k`, so it decides one `k` exactly.
+Exhaustive over that class with `max(U) <= 200` (`pairsearch_N200.log`):
+
+| k | result (pairs class, max <= 200) |
+|---|---|
+| 1-7 | none (exhaustive) |
+| 8-23 | certificate found |
+| 24 | **none** (exhaustive, 6,034,225,370 nodes) |
+| 25 | certificate found |
+| 26 | **none** (exhaustive, 1,604,885,897 nodes) |
+
+This is a **class-relative** negative: `P(24)` and `P(26)` are in fact TRUE, witnessed
+by certificates that use runs of length 3 and more. It is recorded as an illustration
+that "no certificate of shape X" says nothing about `P(k)` itself.
 
 ## 4. Certificates and the block count k
 

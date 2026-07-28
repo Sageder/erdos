@@ -1,0 +1,8 @@
+none  T=70 N=476 | T=70 N=476 target=1/1 |A|=186  lcm bits=87  words=2 | done nodes=71 solutions=0 cpu=0.0s
+none  T=70 N=484 | T=70 N=484 target=1/1 |A|=189  lcm bits=87  words=2 | done nodes=223 solutions=0 cpu=0.1s
+none  T=70 N=492 | T=70 N=492 target=1/1 |A|=189  lcm bits=87  words=2 | done nodes=223 solutions=0 cpu=0.1s
+none  T=70 N=500 | T=70 N=500 target=1/1 |A|=194  lcm bits=87  words=2 | done nodes=2766 solutions=0 cpu=0.1s
+none  T=70 N=508 | T=70 N=508 target=1/1 |A|=194  lcm bits=87  words=2 | done nodes=2766 solutions=0 cpu=0.1s
+none  T=70 N=516 | T=70 N=516 target=1/1 |A|=194  lcm bits=87  words=2 | done nodes=2766 solutions=0 cpu=0.1s
+nonone  T=70 N=542 | T=70 N=542 target=1/1 |A|=214  lcm bits=93  words=2 | TIMEOUT nodes=201326592 solutions=0
+none  T=70 N=553 | T=70 N=553 target=1/1 |A|=217  lcm bits=93  words=2 |   endgame at index 187 (element 460):none  T=70 N=540 | T=70 N=540 target=1/1 |A|=214  lcm bits=93  words=2 |   endgame at index 184 (element 455): distinct sums 301056 301056 451584  (0.1s)

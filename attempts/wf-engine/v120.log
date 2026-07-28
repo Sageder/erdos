@@ -1,0 +1,3 @@
+T=2 N=120 target=1/1 |A|=66  lcm bits=38  words=1
+  endgame at index 40 (element 55): distinct sums 28672 21504 35840  (0.0s)
+done nodes=27891613 solutions=163 cpu=0.7s
