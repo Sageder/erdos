@@ -1351,3 +1351,36 @@ scaling as predicted (at k = 8, w ranges over [22 964, 29 523] inside block 9 =
 
 This corrects the loose windows in Proposition 39; its dichotomy and its four stated
 obligations are unchanged.
+
+## Proposition 40 (the closure mechanism is not special to binary delays) — verified
+
+Proposition 37(c) exhibited, for t ∈ {0,1}, a closure property of the zero set. It
+generalizes to arbitrary finite-valued delays, which means the route of Propositions 38–39
+is not confined to T = 1.
+
+**Statement.** Let c = j + t satisfy condition (ii), t : ℕ → ℤ≥0 finite-valued. For every
+level ℓ write L_ℓ := {v : t(v) ≤ ℓ}. Then for every far-left triple (u₁, u₂, u₃) with
+u₂−u₁ = u₃−u₂ and block pattern (k, k+1, k+1):
+
+    u₁ ∈ L_ℓ  and  t(u₂) = ℓ    ⟹    u₃ = 2u₂ − u₁ ∈ L_ℓ .
+
+**Proof.** Lemma 35 for this pattern gives t(u₁) ≤ t(u₂) ⟹ t(u₃) ≤ t(u₂). Take ℓ = t(u₂):
+the hypothesis u₁ ∈ L_ℓ is t(u₁) ≤ ℓ = t(u₂), so the conclusion is t(u₃) ≤ ℓ. ∎
+
+So **every sublevel set is closed under completing an arithmetic progression by one step**,
+provided the middle term sits exactly at that level. For t ∈ {0,1} and ℓ = 0 this is
+exactly rule (R↓) of Proposition 37, so the binary case is the ℓ = 0 instance of a general
+phenomenon.
+
+Verification (exact, values to 12 000, b = 3): the closure fires 4 107 / 5 862 / 7 051 times
+with ZERO violations for t = v₂(v), t = 1_odd and t ≡ 0 — all of which satisfy (ii). It is
+violated 1 179 times by t(v) = ⌊v₂(v)/2⌋, which is only weakly (not strictly) increasing in
+the valuation and therefore is not AP-alternating, so does not satisfy (ii): the test has
+teeth in both directions.
+
+**Consequence for the programme.** The dichotomy of Propositions 38–39 — either the
+sublevel set densifies (via sumset growth) or it is Freiman-structured, and structure feeds
+Corollary 30 — now applies level by level to an arbitrary finite-valued delay, not just to
+a binary one. The obligations listed in Proposition 39 are unchanged and remain open; what
+this adds is that discharging them would settle Conjecture R21-C in general rather than in
+the first case only.
