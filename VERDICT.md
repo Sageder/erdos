@@ -82,8 +82,20 @@ After the above, all digit/carry content of 727 is discharged. What remains is a
 > infinitely many `n` whose window `n+1,…,n+k` is `√(2n)`-smooth **and** whose large prime
 > factors all satisfy the cofactor congruence of Lemma R‴.
 
-- For **k = 2** the smooth supply alone is a *known theorem* (Hildebrand 1985, proving Balog's
-  conjecture: positive lower density of `n` with `P(n)`, `P(n+1)` both in a prescribed band).
+- For **k = 2** the smooth supply alone is a *known theorem*. Verified directly from the paper
+  (`attempts/route-R13/papers/hildebrand1985_balog.txt`): Hildebrand's Theorem states that
+  `d(A) > 0` implies `d(A_N ∩ (A_N + 1)) > 0` for all large `N`, where `A_N` is the
+  dilation-closure of `A`; for a set that is `k`-stable for every `k` (Balog's hypothesis)
+  `A_N ⊆ A` up to density zero, giving `d(A ∩ (A+1)) > 0`. The smooth set
+  `A = {n : P(n) ≤ n^{1/u}}` is `k`-stable for every `k` — `kA ⊆ A` is immediate, and
+  `k^{-1}(A ∩ kℕ) ⊆ A` fails only on `{n : P(n) ∈ (n^{1/u}, k^{1/u} n^{1/u}]}`, a set of density
+  zero since the exponent window shrinks to a point — and has density `ρ(u) > 0`. Hence there is
+  **positive density** of `n` with `n` and `n+1` both `n^{1/u}`-smooth, which is exactly the
+  k = 2 window supply.
+  *Correction to an earlier second-hand characterisation in this run:* the stronger "both largest
+  prime factors in a prescribed band `(n^a, n^b)` for any `0 ≤ a < b ≤ 1`" form was attributed to
+  this paper by the literature sweep; the paper's own stated consequence is the large-prime-factor
+  case (`P(n), P(n+1) > n^{1-ε}`). Only the smooth-set instance is used above, and it is verified.
   By result 6 the congruences cannot be stripped off by an unconditional first moment, so they
   must be counted *inside* the smooth set — and there they are positively correlated
   (measured joint pass rate 0.1105 against 0.3297 for an independence model). This injection

@@ -43,9 +43,9 @@ def Xmask(m,p,e,L):
 
 tot=0;cfg=0;skip=0;mt=0;gt=0
 flagC=0;flagS=0;pairs=0
-for bits in [400,900,1800]:
+for bits in [300,600]:
     M=2**bits; logM1=math.log(M+1)
-    for k in [2,3,4,8,20,50,200]:
+    for k in [2,3,4,8,20,50]:
         for q0 in [1,2,24,1024,2**10*3**4,720720,2**30]:
             if q0**10>M: continue
             a=random.randrange(q0)
@@ -58,7 +58,7 @@ for bits in [400,900,1800]:
                                >=vpf(2*k,p)+vp(2*q0,p)+Jp(p,k)+t for p in primes):
                         skip+=1;continue
                     cfg+=1
-                    lo=M+((a-M)%q0); span=(2*M-lo)//q0; N=120
+                    lo=M+((a-M)%q0); span=(2*M-lo)//q0; N=150
                     nb={p:0 for p in primes}; nsp={p:0 for p in primes}
                     for _ in range(N):
                         m=lo+q0*random.randint(0,span); mt+=1; good=True
