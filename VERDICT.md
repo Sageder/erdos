@@ -185,3 +185,64 @@ proof; the affirmative-side forcing arguments are closed by an explicit barrier;
 quantitative programme is proved incapable of discriminating the two branches. The two
 remaining directions are sharply posed and each needs a genuinely new idea, in a regime
 where additional computation is provably unhelpful.
+
+---
+
+# UPDATE (later in the same run): three of this run's own programmes closed
+
+After the above was written, a 12-agent wave with adversarial audits completed and closed
+several routes — including ones this document had listed as live. Recorded here because the
+corrections matter more than the additions.
+
+## What was closed
+
+1. **The forcing-chain programme (Theorem 16) is dead.** Co-supply is not merely unproved,
+   it is FALSE: every value-record is closed (if u is open at scale d then u+d precedes u,
+   so u is not a record), and the record set is infinite. Every propagation-style weakening
+   is refuted as a family — in any digraph with position-descending edges, closures are
+   finite so every maximal chain ends at a sink. Only existential-selection forms survive,
+   and those are literally equivalent to the problem. (Theorem 44.)
+
+2. **My quantitative reading of Theorem 16(b) was wrong.** I claimed any unbounded lower
+   bound on closure size would resolve the affirmative branch. It would not: |Cl(u)| ≥ f(u)
+   gives only pos(u) ≥ f(u), which contradicts nothing unless #{u : f(u) ≤ P} < P for some
+   P. And for Theorem 16's own digraph no admissible f exists, since closures at records
+   have size 1.
+
+3. **Theorem 16 imposes nothing on block architectures.** In any layered permutation every
+   forcing edge stays inside one block, so bounded closures come for free — the
+   bounded-closure design mission I commissioned was vacuous. (Theorem 45.)
+
+4. **The displacement ledger is capped at exactly 2.** For the triadic permutation the
+   ledger sum is (3/4)N² + N/2 exactly, so no unweighted-ledger argument reaches C ≥ 2. And
+   Theorem 16's forcing step is the same mechanism as the ledger's demand step, so the two
+   tools are not independent. (Theorem 46.)
+
+## What survives, and is worth keeping
+
+- The structural facts: the far-left reduction of the class condition; the delay cannot rise
+  twice in a row; every sublevel set of an arbitrary finite-valued delay is closed under
+  completing a progression; condition (ii) is necessary but NOT sufficient (the aperiodic
+  solutions are unrealizable over all within-class orders); records are 3-AP-free and every
+  affine sub-copy has its own 3-AP-free record set; record positions are bounded by the
+  previous record's value.
+- The closure of the arithmetic-delay world (every congruence-determined delay fails).
+- The explicit verified 5-AP-free permutation and the pair-counting explanation of why its
+  mechanism has no length-4 analogue.
+- Two net positives from the closing wave: a six-rule forced-descent digraph that removes
+  the record obstruction (longest chain 14 → 132 at N = 320), and an exact block
+  decomposition that decides layered architectures orders of magnitude faster and localizes
+  each death to one block.
+
+## Honest bottom line, revised
+
+The run produced a substantial and largely NEGATIVE map: it closed the digit-comparator
+family, the arithmetic-delay family, the length-5 mechanism's transfer, the forcing-chain
+programme, the bounded-closure principle, and the unweighted ledger beyond C = 2 — several
+of them programmes this run itself proposed. Erdős 196 remains open, and the honest reading
+is that the standard toolkit is now well mapped and mostly exhausted, with both branches
+requiring an idea not present in it.
+
+Six further agents are working the successor conjecture from independent directions; their
+results, and any audit verdicts, should be folded in before this document is considered
+final.
