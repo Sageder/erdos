@@ -827,3 +827,35 @@ different blocks, i.e. when the AP straddles a boundary in PAIRS — and by Rema
 terms cannot straddle in pairs at any ratio ≥ 3. The block layout is therefore not an
 incidental choice in the length-5 construction but a forced one, and this closes the
 "replace block parity by an arithmetic sign" escape route for length 4.
+
+## Correction to Remark 22 (2026-07-28, from route R1's final pass)
+
+Remark 22 said the block architecture "fails for 4-APs", citing R1's certificates. That
+statement must be narrowed, and the narrowing matters.
+
+What R1's certificates actually establish is the death of GEOMETRIC in-order layouts at
+ratios 3 and 4 (minimal infeasible cut-set {8, 26, 80}) and of bounded-lag interleavings
+(stage 7). Earlier depth-5 probes returned UNSAT only for continuations of the SPECIFIC
+prefix {2, 8, 26, 140}. R1's final pass, scanning other prefixes, finds DEPTH-5 FEASIBLE
+cut sequences — for example
+
+    [1, 2, 4, 10, 90],  [1, 2, 4, 10, 91],  [1, 2, 4, 10, 92]
+
+whose successive ratios (2, 2, 2.5, 9) are ACCELERATING and non-geometric. So the
+in-order block program is NOT closed: the feasible window moves as the prefix changes
+rather than vanishing, exactly the behaviour the window law predicted and the reason that
+"does the island simply move?" was the right question to ask.
+
+Consequently the honest status is:
+- geometric ratios 3 and 4, and bounded-lag interleavings: DEAD (certificates);
+- tuned accelerating cut sequences: ALIVE at depth 5, unknown beyond;
+- Remarks 23 and 25 are unaffected — they explain why the length-5 PAIR mechanism has no
+  length-4 analogue and why its sign must be carried by a convex partition. They do not
+  by themselves close the block family; a surviving layout would have to kill 4-APs by
+  some other within-block mechanism, and whether the accelerating corridor supports one is
+  precisely what remains open.
+
+Discipline note: this is the second time in this run that a negative reading of finite
+certificates had to be narrowed (the first being Remark 17, where linear-profile
+extinction turned out not to discriminate the branches at all). Finite UNSATs bound only
+the exact family they quantify over.

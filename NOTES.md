@@ -1,5 +1,25 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 (Opus-5) — CORRECTION: depth-5 block layouts are ALIVE (island moves)
+- R1-final scanning other prefixes found DEPTH-5 FEASIBLE cut sequences
+  [1,2,4,10,90], [1,2,4,10,91], [1,2,4,10,92] — ratios 2, 2, 2.5, 9, ACCELERATING and
+  non-geometric. The earlier depth-5 UNSATs applied only to continuations of the specific
+  prefix {2,8,26,140}. So the in-order block program is NOT closed; the feasible window
+  MOVES with the prefix rather than vanishing.
+- CORE.md now carries an explicit correction to Remark 22. Narrowed status: geometric
+  ratios 3/4 and bounded-lag interleavings are DEAD by certificate; tuned accelerating
+  cut sequences are ALIVE at depth 5, unknown beyond. Remarks 23 (pair counting) and 25
+  (sign must live on a convex partition) are unaffected but do not by themselves close
+  the block family.
+- Second time this run a negative reading of finite certificates had to be narrowed
+  (first: Remark 17). Standing discipline: finite UNSATs bound only the family they
+  quantify over.
+- NEW Remark 25 (proved + exhaustively classified): the escape 'replace block parity by
+  an arithmetic sign' fails because such rules are NOT TRANSITIVE. Over the family
+  eps(u,l)=f_l(bit_{l+1}(u)), f_l in {0,1,id,not}: only 16/256 transitive on [1..64] and
+  [1..96], and NONE genuinely u-dependent. Transitivity forces the sign constant on
+  pieces of a convex partition -> block layouts are forced, not incidental.
+
 ## 2026-07-28 (Opus-5) — THE 4-vs-5 GAP, PINNED (Theorem 21, Remarks 22-23)
 - R2's Construction A INDEPENDENTLY VERIFIED by me to N=65535: blocks B_m=[4^m,4^{m+1})
   concatenated in increasing order, each sorted by van der Corput (binary LSB-first),

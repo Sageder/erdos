@@ -1,0 +1,3 @@
+N=  40: sum tau <=     1043  gamma <= 0.65187   C_ledger(N) <= 1.37353 = 820/597   (triadic gave 1080)
+N=  48: sum tau <=     1518  gamma <= 0.65885   C_ledger(N) <= 1.41007 = 196/139   (triadic gave 1576)
+N=  56: sum tau <=     2150  gamma <= 0.68559   C_ledger(N) <= 1.53167 = 798/521   (triadic gave 2200)
