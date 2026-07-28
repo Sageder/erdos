@@ -1,5 +1,24 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 (Opus-5) — CEGAR validated 3 ways; C=2 extinction independently confirmed
+- CEGAR engine now validated against an INDEPENDENT METHOD: it reproduces route R9's
+  exhaustive extension-tree thresholds exactly (C=1.5: SAT at N=14, UNSAT at N=15;
+  C=1.75: SAT at N=30, UNSAT at N=31), plus unconstrained controls SAT at N=50, 120.
+- C=2 extinction CONFIRMED by the eager O(N^3)-transitivity encoding: N=85 UNSAT
+  (cadical, 298593 clauses, 297s); glucose cross-check running. So the plain-target
+  extinction threshold for pos(v) <= 2v is <= 85 (CEGAR found UNSAT at 90; eager pins
+  it at <= 85).
+- v log v PROBE (the decisive NO-side feasibility question, CORE.md Remark 18):
+  phi(v) = v*log2(v) is SAT at N=60 (15 values constrained). Larger N running.
+  Rationale: phi(v) >= N once v >~ N/log N, so on a board of size N this profile
+  constrains only the SMALL values — precisely the regime where shallow probes found
+  avoiders alive (pos(v)<=2v for all v<=8 at N=355). Linear profiles die because they
+  bind the LARGE values; v log v does not bind them at all.
+- Ledger check (by hand): Theorem 12's drop-ledger CANNOT kill phi = v log v — the
+  demand Sum e* >= N^2/18 costs only a constant factor in Sum f(w-e*) with f(x)=x log x,
+  whereas a contradiction would need a log N factor. So the LP machinery is provably
+  silent on the candidate profile; killing it needs a different mechanism.
+
 ## 2026-07-28 (Opus-5) — STRATEGIC PIVOT: linear-profile extinction cannot decide 196
 - NEW CERTIFIED EXTINCTIONS (plain target, pos(v) <= floor(Cv)): N*(C) = 4, 15, 31, 90
   for C = 1.25, 1.5, 1.75, 2.0. C=1.5/1.75 agree with route R9's EXHAUSTIVE enumeration
