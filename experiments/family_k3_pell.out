@@ -4,3 +4,4 @@ x=338 n=114241 window-smooth(sqrt(2n)=477): True in_S3: False failing_primes: [1
 x=1970 n=3880897 window-smooth(sqrt(2n)=2785): True in_S3: False failing_primes: [197, 199]
 x=11482 n=131836321 window-smooth(sqrt(2n)=16237): True in_S3: False failing_primes: [353, 5741]
 x=66922 n=4478554081 window-smooth(sqrt(2n)=94641): True in_S3: False failing_primes: [599, 22307, 33461]
+x=390050 n=152139002497 window-smooth(sqrt(2n)=551613): True in_S3: False failing_primes: [31, 41, 269]

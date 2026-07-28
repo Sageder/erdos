@@ -1,5 +1,30 @@
 # NOTES.md — lab notebook (newest entries at top)
 
+## 2026-07-28 ~06:30 UTC — Wave-1 complete: MASTER LEMMA SP proved; S_2..S_6 to 1e8; R3 reproduced
+
+- R2 delivered MASTER LEMMA SP (attempts/route-R2/LEMMA_SP.md), FULLY PROVED, explicit
+  constants, verified 40/40 (incl. 2e4-sample checks at M = 2^64, 2^200, 10^60 in APs):
+  for fixed k, all but 18·exp(−√(log M)/120) of m in [M,2M] — uniformly in EVERY AP of
+  modulus q0 ≤ M^{1/10} — satisfy the exact 727 criterion at every p ≤ exp(√(log M)/6),
+  plus spike bounds and a per-prime surplus (log M/log p)/120. AP-specific discoveries:
+  naive spike bound FALSE in APs (needs ν_p(2q0) correction); carries counted on masked
+  positions [ν_p(q0), L_p). HARD BARRIER (documented): this counting cannot reach
+  p > exp(c√log M); AP moduli beyond M^{1/8} need new ideas.
+  ⟹ For any future family argument: small primes are DONE via SP; the fight is entirely
+  at p ∈ (exp(c√log M), √(2n)] — consistent with the triangle analysis.
+- R3 rerun independently reproduced FAMILY.md/BREAKAGE.md conclusions (same family, same
+  Lemma R, same Statement B; falsified hexagonal folklore; Pell square-parametrization
+  carry-deficit confirmed). Good reproducibility.
+- R5: complete exact S_k on [1, 1e8), k = 2..6, in 250 s (segmented rough-remainder sieve
+  + vectorized digit checks; validated vs PROBLEM.md tables):
+  |S_2| = 1,364,676; |S_3| = 139,975; |S_4| = 13,188; |S_5| = 1,012; |S_6| = 63;
+  min S_5 = 252,965; min S_6 = 3,648,835. Per-decade densities slowly INCREASING for all
+  k ≤ 6 (log-log slopes 1.04–1.45); NO forbidden congruence classes (mod 2..27, 5..);
+  x²−2 family NOT enriched (120 hits vs 136.5 expected — slight deficit, consistent with
+  the auto-fail structure); slot-of-max-LPF uniform. NO branch: data-disfavored ≤ 1e8.
+- R7/R9 (wave-1) + R10 (wave-2) + R13 (anatomy) all died at session limit (reset 5:40 UTC,
+  now past); relaunching all four now. R7 left verify_members.py (committed).
+
 ## 2026-07-28 ~02:00 UTC — R11 literature verdict; Lemma R‴; new flagship = Hildebrand injection
 
 - LEMMA R‴ proved+verified (0 false positives, all even n ≤ 6e4): small-prime demands +
