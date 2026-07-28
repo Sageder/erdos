@@ -1,5 +1,39 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 (Opus-5) — THE 4-vs-5 GAP, PINNED (Theorem 21, Remarks 22-23)
+- R2's Construction A INDEPENDENTLY VERIFIED by me to N=65535: blocks B_m=[4^m,4^{m+1})
+  concatenated in increasing order, each sorted by van der Corput (binary LSB-first),
+  REVERSED for odd m. Order type omega is trivial (finite blocks listed in order).
+  NO monotone 5-AP. Contains monotone 4-APs (first: 2,7,12,17). This is an explicit,
+  machine-confirmed instance of DEGS77(b) with an explicit kill mechanism.
+- REMARK 22 (the gap, exactly): the length-5 solution is a CONTIGUOUS GEOMETRIC BLOCK
+  LAYOUT — MSD-like at top level (finite blocks => order type omega), LSD-like inside
+  each block (vdC => AP killing). It threads Remark 20's dichotomy by putting the two
+  priorities at DIFFERENT SCALES. Route R1 proved by SAT+Koenig certificates (quantified
+  over ALL gadgets) that this architecture fails for 4-APs at ratios 3 and 4. So the
+  exact mechanism that settles length 5 is PROVABLY UNAVAILABLE at length 4.
+- REMARK 23 (why, structurally): Theorem 21's contradiction is a TWO-PAIR parity
+  argument. For a k-AP in a ratio-r layout, t2..tk occupy <= ceil(log_r(k-1))+1 blocks:
+  k=5, r=4 gives FOUR terms in two blocks = PAIR+PAIR (two pair-criteria, contradiction
+  since the pairs' first elements differ by 2d so their bit_l agree while adjacent blocks
+  demand opposite parity); k=4, r=3 gives THREE terms in two blocks = PAIR+SINGLETON —
+  only one pair criterion, no contradiction. Four terms simply do not supply two pairs.
+- MACHINE CONFIRMATION of Remark 23: all four naive length-4 analogues die instantly —
+  ratio-3 + base-2 vdC + alt: (2,5,8,11); no reversal: (5,7,9,11); base-3 vdC + alt:
+  (8,9,10,11); no reversal: (1,2,3,4). And (2,5,8,11) is exactly a 1+2+1 pattern
+  (2 in B_0, 5,8 in B_1, 11 in B_2) — the pair+singleton case.
+- FRESH-EYES agent (isolated from all route history) INDEPENDENTLY re-derived Lemma 13(a)
+  (records infinite + no (k-1)-AP; 3-line reproof of DEGS77(a); length 4 <=> records
+  3-AP-free, Roth-critical) and independently proved the one-base-point argument cannot
+  close at length 4 (its (R) is false, via a 2-adic/3-adic antidiagonal order) — matching
+  R5's Generic Escape. Two independent derivations of both facts.
+  It also measured nu_L(N) := min over avoiders of max_{v<=L} pos(v) = L (FLAT) for all
+  L <= 20, N <= 128 — so FIN(K)-type criteria are dead at reachable scales, and cut
+  points exist at every tested L (consistent with R1's E(V) result).
+- CPU: box was at load 38 on 4 cores; killed my prefix/vlogv probes to give the agent
+  fleet the cores. Certified data already banked: N*(C)=4,15,31,90 (C=1.25..2, C=2 also
+  eager-verified at N=85 with cadical+glucose agreeing); v log v SAT through N=100.
+
 ## 2026-07-28 (Opus-5) — CEGAR validated 3 ways; C=2 extinction independently confirmed
 - CEGAR engine now validated against an INDEPENDENT METHOD: it reproduces route R9's
   exhaustive extension-tree thresholds exactly (C=1.5: SAT at N=14, UNSAT at N=15;
