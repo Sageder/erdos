@@ -588,3 +588,39 @@ Caution for the write-up: none of this is a proof of either branch. (i) and (ii)
 finite computations; the infinite statement needs a construction (with the three
 obligations of PROBLEM.md: no monotone 4-AP, bijectivity, order type ω) or an
 ∀φ-extinction theorem.
+
+## Remark 19 (exactly what the prefix experiments can and cannot prove)
+
+Because pos(v) ≤ N holds automatically on a board of size N, a profile bound
+pos(v) ≤ φ(v) is vacuous for every v with φ(v) ≥ N. For a fast-growing φ (say φ(v) = 2^v)
+the entire content of Lemma 6 at board size N is therefore a statement about an INITIAL
+SEGMENT of values: can 1, 2, …, K be held at bounded positions while N → ∞?
+
+Two directions, with different logical strength — do not conflate them.
+
+(⇒ decisive) If FIN(K) holds for some K — i.e. for EVERY c there is an N such that every
+monotone-4-AP-free permutation of [1..N] has some v ≤ K with pos(v) > c·v — then 196-YES
+(Lemma 7). A single UNSAT at one c is NOT enough: it must hold for every c. So a machine
+UNSAT at (K, c, N) is a genuine finite theorem ("every avoider of [1..N] pushes some
+v ≤ K past c·v") and one instance of the family FIN(K) needs, but it does not by itself
+resolve the problem.
+
+(⇐ NOT automatic) Suppose that for every K there is a constant c(K) with avoiders at
+every N satisfying pos(v) ≤ c(K)·v for all v ≤ K. This does NOT immediately give 196-NO.
+Lemma 6 needs ONE profile φ working simultaneously for all values on each board; the
+natural candidate φ(v) := c(v)·v is SMALLER than the bound c(N)·v that the hypothesis
+supplies at board size N, so the implication fails as stated. Closing that gap requires a
+diagonal/compactness argument that produces a single avoider per N meeting all the
+prefix bounds at once — an explicit construction is the honest way to get it.
+
+Consequently: prefix experiments (experiments/prefix_bounded.py, shallow_scan.py) can
+PROVE the affirmative branch if they go extinct across every c, and can only SUPPORT the
+negative branch when they stay satisfiable. The negative branch still requires a
+construction discharging all three obligations of PROBLEM.md.
+
+Status of the surrounding certificates (all cross-verified):
+- plain pos(v) ≤ 2v: UNSAT at N = 85 under the eager O(N³)-transitivity encoding, with
+  cadical and glucose agreeing (298 593 clauses); CEGAR independently UNSAT at N = 90.
+- The CEGAR engine reproduces route R9's exhaustive extension-tree thresholds exactly
+  (C = 1.5: SAT 14 / UNSAT 15; C = 1.75: SAT 30 / UNSAT 31) and is SAT on unconstrained
+  controls at N = 50, 120.

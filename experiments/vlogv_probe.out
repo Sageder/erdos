@@ -1,1 +1,2 @@
 phi=v*log2(v) N=60: SAT (4s, 963 rounds, 15 values constrained)
+phi=v*log2(v) N=100: SAT (195s, 6854 rounds, 22 values constrained)
