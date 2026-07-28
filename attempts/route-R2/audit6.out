@@ -1,0 +1,6 @@
+=== E1: exhaustive counterexample hunt for the part-(1) chain ===
+  configs=0 m tested=0 |G|=0 violations=0
+=== E2: SP-A / SP-B hypothesis + error algebra, in logs (no overflow) ===
+  SP-A failures (P>=2 cases): 0  (vacuous P<2 cases skipped: 14 )
+  SP-B failures: 0
+DONE

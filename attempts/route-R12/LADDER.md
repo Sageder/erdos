@@ -25,10 +25,16 @@ Fix k ≥ 2 and set P₀ = 2k (any P₀ ≥ 2k works). Choose:
  - for each j ∈ {1, ..., k}: DISTINCT primes s_j ≠ r_j, both > max(P₀, c_j), with
    (n+j)/c_j = r_j s_j,   c_j s_j − 1 < r_j ≤ 2 c_j s_j − 1,   (c_j r_j mod s_j) ≥ (s_j+1)/2.
 
-**Lemma R_k.** Any n ≡ c₀ (mod Q₀), n > (2k)^4 (large enough that s_j > c_j is
-automatic), satisfying all of the above lies in S_k. [Audit note: r_j = s_j must be
-excluded explicitly — the c_j = 1 box does not exclude it; distinctness across j is
-automatic (gcd of window elements divides differences < k < s).]
+**Lemma R_k.** Any n ≡ c₀ (mod Q₀) with n > 2·(max_j c_j)^4, satisfying all of the above,
+lies in S_k.
+[Audit repairs applied 2026-07-28, AUDIT_LADDER.md:
+ R1 — the earlier threshold "(2k)^4, large enough that s_j > c_j is automatic" was FALSE:
+   c_j is the pinned P₀-smooth part of n+j and is unbounded in k (e.g. k=2, P₀=4, ν_2(n+2)=10,
+   ν_3(n+2)=5 gives c_2 = 248832, needing n ≳ 7.7·10^21 ≫ (2k)^4 = 256). The threshold is now
+   stated in terms of the class constant max_j c_j; alternatively drop it and rely on the
+   hypothesis s_j > max(P₀, c_j) stated in the bullet above.
+ Distinctness: r_j ≠ s_j must be required explicitly (the c_j = 1 box does not exclude it);
+   distinctness across j is automatic (gcd of window elements divides differences < k < s).]
 
 Proof. Primes ℓ ≤ P₀: demand 2V_ℓ met by (ii) (digits ≥ ⌈ℓ/2⌉ each force a carry
 regardless of neighbours). Primes ℓ > P₀ = 2k divide at most one window element (else
@@ -49,9 +55,15 @@ class). Verified: 18/18 regenerated solutions q ≤ 1500 in S₂ (full criterion
 
 ## 3. The analytic targets B_k
 
-**Statement B_k.** For the (any) admissible class (c₀, Q₀) of Lemma R_k: there are
-infinitely many n ≡ c₀ (mod Q₀) such that for every j ≤ k, (n+j)/c_j = r_j s_j with primes
-in the Lemma-R_k boxes.
+**Statement B_k.** (Audit repair R2: conditions inlined; quantifier fixed to ∃-class.)
+There EXISTS an admissible class (c₀, Q₀) as in Lemma R_k such that there are infinitely many
+n ≡ c₀ (mod Q₀) for which, for every j ≤ k, one can write (n+j)/c_j = r_j s_j with r_j, s_j
+prime and
+  (α) r_j ≠ s_j;
+  (β) r_j, s_j > max(P₀, c_j);
+  (γ) c_j s_j − 1 < r_j ≤ 2 c_j s_j − 1   and   (c_j r_j mod s_j) ≥ (s_j + 1)/2.
+Condition (γ)'s second half is the ENTIRE content of the position-1 carry at s_j; without it
+Lemma R_k is false, so it must appear in the statement of B_k, not only in the proof.
 
 **Theorem (ladder).** B_k ⟹ S_k infinite. (∀k ≥ 2: B_k) ⟹ 727-YES. B_2 ⟹ the named
 k=2 variant. [Immediate from Lemma R_k. Quantifiers: k fixed first; the class and boxes
@@ -88,7 +100,9 @@ growth ≍ Q²/log⁴Q). For k = 3: 0 structural hits below 4·10⁵ — consist
 ## 4.5 Lemma R‴ — the definitive membership engine (proved; verified, 0 false positives
 on all even n ≤ 6·10⁴: attempts/route-R12/, run 2026-07-28)
 
-**Lemma R‴.** Fix k ≥ 2 and P₀ ≥ 2k. Suppose:
+**Lemma R‴.** Fix k ≥ 2 and P₀ such that every prime ℓ > P₀ satisfies ℓ > 2k
+(equivalently P₀ ≥ 2k − 1; audit repair R3 — the hypothesis in the form the proof uses).
+Suppose:
  (a) for every prime ℓ ≤ P₀: c_ℓ(n) ≥ 2 Σ_{j=1}^k ν_ℓ(n+j)  [class-forceable when the
      small parts are bounded; else checked/counted];
  (b) for every j ≤ k and every prime ℓ > P₀ dividing n+j: ℓ ∥ n+j, and
@@ -139,7 +153,10 @@ Waiting on R11 literature verdict to calibrate feasibility.
 ## 6. R‴ certification data + the supply boundary (2026-07-28 ~02:20)
 
 - R‴ predicate, k=3, P₀=5: certifies 10/41 of the S₃ members ≤ 6·10⁴ (incl. 3475),
-  zero false positives. The engine is correct for all k; supply is the fight.
+  zero false positives. NOTE (audit repair R3): P₀ = 5 satisfies the corrected hypothesis
+  (every prime > 5 is > 6 = 2k) but NOT the old "P₀ ≥ 2k" form; with a genuinely too-small P₀
+  (k=3, P₀=4) the predicate DOES produce false positives — the hypothesis is load-bearing.
+  The engine is correct for all k; supply is the fight.
 - Supply boundary (via Hildebrand's thresholds, cf. BW98 intro): positive-density
   k-strings of n^α-smooth integers are known for α > e^{−1/(k−1)}:
   k=2: 0.368 < 1/2 ✓ (Hildebrand 1985 pairs cover the needed exponent 1/2);

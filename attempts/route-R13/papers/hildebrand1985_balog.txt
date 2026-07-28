@@ -1,0 +1,367 @@
+PROCEEDINGS OF THE
+AMERICAN MATHEMATICAL SOCIETY
+Volume 95. Number 4. December 1985
+
+
+
+
+                                ON A CONJECTURE OF BALOG
+                                            ADOLF HILDEBRAND
+
+           Abstract.    A conjecture of A. Balog is proved which gives a sufficient condition on a
+           set A of positive integers such that A n (A + 1) is infinite. A consequence of this
+           result is that, for every e > 0, there are infinitely many integers n such that both n
+           and n + 1 have a prime factor > nl~'.
+
+
+   1. Introduction. Some of the most difficult and seemingly unattackable problems
+in number theory deal with simultaneous properties of integers n and their translates
+n + t, where . e N is fixed. The twin prime conjecture, for example, asserts that n
+and n + 2 are prime infinitely often.
+   Another problem of this type, posed by Erdös several times (see e.g. [3]), is to
+show that, for every fixed e > 0, there are infinitely many integers n such that both n
+and n + 1 have a prime factor > nl~c. In other words, putting
+                                      Qa=     {n^N:P(n)>na},
+where P(n) denotes the largest prime factor of n, the conjecture asserts that
+Qa n (Qa + 1) is infinite for every a < 1.
+   At the Oberwolfach meeting on analytic number theory in 1982, A. Balog
+proposed a general conjecture, which gives a sufficient condition on a set A c M,
+such that A n (A + 1) contains infinitely many elements. To this end, he introduced
+the concept of "Ac-stability". A set A a N is called zc-stable if
+                                     kAczA,       k-l(AnkN)cA,
+
+where XA denotes the set {Aa: a € A), and A cz B means that A is contained in B
+up to a set of density zero, i.e., d(A \ B) = 0. Here and in the sequel, d(-) denotes
+the asymptotic density, defined by
+
+                                         d(A)- lim I £ 1
+                                                             nsA
+
+(provided this limit exists), and the lower and upper densities d() and <_(■)are
+defined analogously by taking the limit inferior and the limit superior, respectively.
+   Balog [1] showed by an elementary argument that A n (__ + 1) is infinite whenever
+A is 2-stable and d(A) > 1/3, and he made the following
+  Conjecture     (Balog [1]). If A c r\l is p-stable for every prime p and has positive
+density, then., n (A + 1) is infinite.
+
+
+  Received by the editors December 14, 1984 and, in revised form, February 4, 1985.
+  1980 Mathematics Subject Classification. Primary 10A50, 10L99; Secondary 10H15.
+                                                                       ©1985 American Mathematical   Society
+                                                                        0002-9939/85 $1.00 + $.25 per page
+                                                     517
+518                                     ADOLF HILDEBRAND
+
+
+   The sets Qa, a < 1, introduced above, have positive density (see e.g. [2]), and it is
+easy to see that they are z_-stable for every .eN.    Thus Balog's conjecture implies
+the above-mentioned conjecture that P(n) > nl~e and P(n + 1) > (n + l)1_e holds
+infinitely often for every fixed e > 0.
+   The purpose of this paper is to prove Balog's conjecture in a more general form.
+  2. Results. Given a set A c N, we define, for N e N,
+
+                                    AN=       U     ^(ACdN).
+                                            n,d=\
+These sets form an ascending chain starting with __,=__.
+
+  Theorem. // d(_4) > 0, then d(AN n (AN + 1)) > 0 for all sufficiently large N.
+More precisely, for every e > 0 there exist _V(e) e M and ô(e) > 0 such that d(A) 5- e
+implies
+                        d(ANn(AN+l))>8(e)                       (N>N(e)).
+  If A is p-stable for every prime p < N, then A is zc-stable for all k < N, so that
+                                  zv
+                              ^¿v= U         §(¿ ndN)c/i           c-4w,
+and, therefore, ¿(.4^ O (AN + 1)) = d(-4 n (_4 + 1)). Thus the theorem implies
+Balog's conjecture in the following form.
+
+  Corollary    1. If A c N satisfies d(A) > e and is p-stable for every prime
+p < N(e), then d(A n (A + 1)) > 8(e) holds, where N(e) and 8(e) are as in the
+Theorem.
+  Applying this result to the sets Qa \ Qß, 0 < a < ß < 1, we obtain the conjecture
+mentioned in the introduction in the following slightly more general form.
+  Corollary  2. Let 0 < o < ß < 1. Then the set of integers n for which n" < P(n)
+< n^,(n + 1)" < P(n + 1)< (n + 1)^ holds has positive lower density.
+
+  3. Lemmas.
+   Lemma 1. For every k ^ 2 there exist positive integers nx < ■■■ < n k satisfying
+(1)                           ny - n( - (n„ ny)         (1 « i <j « k).
+
+   Proof.1 We define an auxiliary sequence (Nk)k>1 recursively by
+
+                        ¿vi-i, Nk+l-in                  i-vJ          (*>i).
+By construction,
+                        y-i
+                         L Nh\Nj\NJ+l\ ■•• \Nk              (1</<;<*).
+                        A-i
+
+
+   'Heath-Brown [4] proved a stronger form of the lemma, where the n, were required to satisfy an
+additional condition besides (1). Since this additional condition is of no relevance here and complicates
+the proof considerably, we preferred to give a short proof of the lemma in the form stated.
+                                     ON A CONJECTURE OF BALOG                              519
+
+Thus, if for given k > 2 we put
+                                                      Zc-l
+                  nk = Nk, n, = Nk-       £ TV,                       (l < / < k - 1),
+                                          y-<
+we have nk>    • • ■ > zz, ,» A^/2 > 1, and
+                             y-l                Zc-i
+              »y- »,- IJW                    - I **= »j                    Q.<i<j<k),
+                             h= i                   h=j
+
+which is equivalent to (1).
+
+  Lemma 2. Let r be a positive integer, and for D ^ \ let 2> = 3l(D, r) be the set of
+positive integers d < D of the form
+(2)                      d=dlP,              (p,r)           = l,    q\dl^>q\r,
+where p and q denote primes. Then we have
+                             lLl=1o8.ogU>                           + 2) + 0(1)
+                              r d^s¿d                     <f(n
+and
+                                                                        <p(r)
+(4)                    d(lM\ U d(rN - 1))
+                        V   _•«=*
+                            ,V___£3)    /                           loglog(Z) + 2)'
+w/iere <p« ./ze Euler function and the implied constants are absolute.
+
+  Proof. Letting d, be an integer all of whose prime factors divide r, we have
+
+                    zU z f Li<n(i-i)"i:i
+                                      r
+                                           (loglog(£> + 2) + 0(1))
+                                    V(r)
+and
+
+                 Zh> I -r E 1
+                                              ptr
+
+
+                               -7-T-           £          4-]loglog(Z) + 2) + 0(i-).
+
+This yields (3), since
+
+                   I     t         < ¿)-1/4ldr1/2             = ö-1/4n(i        -r172)-1
+
+
+                                   « D-1/4exp(2Xp"1/2)                  « rD-V\
+
+  For the proof of (4) we may suppose
+(5)                                        loglog D>C<p(r),
+520                                           ADOLF HILDEBRAND
+
+
+where C is an arbitrary, but fixed, positive constant. Set S = UdeS d(rN                                                 — 1) and
+define
+                                            /(«)           =                         1.
+                                                                  d\n.d^B
+                                                                n/d=-\     mod r
+
+Thus f(n) > 0 for all « e N, and f(n) > 0 if and only if n e S. We use a variance
+argument to obtain the desired upper bound for d(N \S).
+   Putting
+
+(6)        M= lim I £/(«) = £±
+                             -^dx^oo
+                                    lim ^x                                                £           1= 7 I i
+                                                                                                            r d~Bd'
+                                                                                 « = -1 mod r
+
+we have
+
+          \S) = lim -            £          1 < "m                                            1
+                   . —» OO -^
+                                n< je                 c—►
+                                                        00 X
+                                                                      |/(n)-/W|>W/2
+
+                    4     ,.        1 ^       , „           ,       ...2           4 ( ..             1 r       „   ,2
+              < —2 um - £ (/(«)                                 - M)¿ = —                     lim :: E /(«)2 - M
+                                                                        AT
+
+                         [M2-M2},                          say.
+                   M
+In view of (3), (6), and (5) (with a sufficiently large constant C), the asserted upper
+bound (4) follows if we can show
+                                                                                     ,2
+                                 . ^         ,.       x2 . /loglog/)^
+(7)           M,         lim - E /(") «                                                   +, o^ /log lOg g
+                        . —♦oo -^                                        <p(0                          cp(r)
+with an absolute O-constant.
+  Expanding/(zz)2, we get
+                                                                           [d,d'\
+                     M,              --                            lim                            E        1.
+                                     . a [d,d'\
+                                </,_"e                            *-<*                    n<x/\d,d'\
+                                                                                               (*)
+where (*) denotes the condition
+, ,                                     nd                      nd'
+(*)                                                                        s -1 mod /-.
+
+Let d = dxp and d' = d[p' be the (unique) decompositions of the form (2) for d and
+d '. Then (*) has a solution in zzif and only if d1 = d[, p = p' mod r, and in this case
+the limit in the last expression equals 1/r. Thus we get
+
+                         M,<-I
+                                     " d^D            dl
+                                                                p.p'4,D       iP'P
+                                                            p—p' mod /■
+                                                               p\r
+
+                                                                                                       \
+                                        1         v- 1
+                                < ~~TT E _                                E          ^ + 0(1)
+                                                  ^                p' =p mod r
+                                    ON A CONJECTURE OF BALOG                                              521
+
+
+The innermost sum equals
+
+                      E ¿ + o( i                              i
+                  e'^p'^D   r               \      n^er
+                   ,      ,                     n = p mod r
+                 p =p mod r                         r
+
+
+                           /%(,,,,,)£+0(1)-**!*£+0(1),
+                           ■V            x2            <p(r)
+where the last step follows from the Siegel-Walfisz theorem. We therefore obtain
+
+                          M^-^fl^f^M^fOd)
+                            »('MA? A «PÍO
+                                    /logjog_D\2           + ^/loglogZ)'
+                                       <p(0/                       I <?('•)
+i.e., estimate (7). This completes the proof of Lemma 2.
+  4. Proof of the Theorem. For x > 0 let d _( •) be defined by
+                             <U*0 = ^ £ 1                             (_lfc IM),
+                                                     «e/VZ
+so that
+                 d(M) = liminfd-(M),                              d(M) = limsupd-(M).
+
+If X S- 1, then obviously
+                           dx(XM) = (1/X)dx/X(M) < dx(M),
+and for every fixed t g IMwe have
+                          dx(M + t) = dx(M)                   + o(l)         as;c->oo.
+  Given a set .I c IM and positive integers «,<•••                            < nk satisfying (1), we define
+the sets
+                   Bid=ni(A           + d)r\nd\                      (1 < i < k,de        IM),
+where n = nf=1z?,2. By the inclusion-exclusion                         principle we have, for x > 0 and
+every d G IM,
+                  /   k         \      *
+(8)            dx U^,-U               IM*,,,,)-                       £       d-(5,,,n^,J.
+                  \; = 1        /     f-1                          i<i<y<*
+ We shall estimate from above the second term on the right in terms of
+                                            dx(ANn(AN+l)),
+ where N > max(d, n), and bound the first term, averaged over a suitable range for
+ d, from below in terms of dx/nifA). This will lead to the desired relation between
+ the densities of A andAN C\ (AN + I).
+   Using the stated properties of the function d _, we obtain
+
+          dx(B„d) = àx[nt[{A + d) n rf^))                            = ¿-¿„„((.i         + d) n d^-fcl)
+522                                   ADOLF HILDEBRAND
+
+
+where T¡ = (zz/z.,)r\l - 1. Moreover, for 1 < / < y < /_, we get
+d„(5.,_-n By,d) < d-(/i,(_- + d) n nj(A + d) n dh.^lM)
+                   /          /Í n dIM     »,   _4 n dN                      «, - "z    ,„,.
+              <d-
+                          k(»<. »y)      d          \(",»"y)        d        («z. "y)
+                   <d,(-4wn(-lw+l))             + o(l),
+provided TV> max(«, d), where the last step follows from (1) and the definition of
+AN. Substituting these estimates together with the trivial bound
+
+                               dJlM._ Ud_(d«IM)<¿
+into (8) yields
+
+           ¿ > f E dx/ni(/i n ¿r,) - fcM,(i_wn(_4w+ l)) + o(i)
+for every fixed d g IMand TV3* max(zz, d).
+   We now fix D 5- 1 and let 3) = S¿i(D, n/n¡) be defined as in Lemma 2, with
+r = «//.,-. Since __}(A r) depends only on the set of prime factors of r, and the
+numbers n/n¡ = ITJL,/.2/«,, 1 < i < k, have the same set of prime factors, this
+definition does not depend on the choice of the index i. Summing the last inequality
+over d G 3>, we obtain, for N > max(«, D),
+                         k
+      l-L^>^Z                E dx/nt(A n dTt) - Dk2dx(ANn(AN + 1)) + 0(1)
+        d<=3         k. , = i de@
+
+                    1    *
+                  > — E d./B4(-4 n S,) - Dk2dx(ANn(AN                   + 1)) + 0(1),
+                     * ,= i
+where
+
+                              si- UdT,=u4>-i.
+  Letting x -» oo, we deduce
+                                      1 ' ,.    _,    1 --, 1
+(9)      Z)*2^          n(¿w + 1)) > - £ d(_- n s,) - - £ -,
+                                         "k , = 1                 " rf— «
+
+
+                                      >±u.(A)-±Íd(H\Si)-l
+                                              '* i-I
+                                                             £ i.
+                                                          " des'
+By Lemma 2 we have
+                              n¿ y. 1 <<;loglog(Z) + 2) + ,
+                               zz  sd       ç>(»/«*)
+and
+                                                    œ ( «/zz, )
+                                      \_?,) «
+                                                 loglog(Z) + 2) '
+                                   ON A CONJECTURE OF BALOG                                          523
+
+Since
+
+                      ïîsaî - n fi- i) - n '■ '
+                      m(n/n.\
+
+                         "/«i
+                                       _
+
+                                      p\n/n,\
+                                                /     1 \
+
+                                                      PI
+                                                                  _
+
+                                                             p\n1---nk\
+                                                                          ¡
+
+                                                                               P.
+is independent of the choice of i, and since, in view of (1),
+                                       ZZi< zz, < zz¿.< 2z71;
+the last estimate remains valid with <p(n/nk) in place of cp(n/nA. Thus, defining
+D = D(k) by
+                                      loglog(£> + 2)          ^
+                                           <f(n/nk)
+we obtain, from (9),
+
+                     Dk2d(AN n(AN + 1)) > ^íáU)                       + o(¿)
+
+with an absolute 0-constant. If now d(A) > e (> 0), then by choosing k = k(e)
+sufficiently large (which is possible by Lemma 1), the O-term becomes < e/2, and
+we get
+                        d{ANn(AN+l))>8(t)                         (N>N(e)),
+with
+
+
+
+as asserted in the Theorem.
+  By a minor modification of the proof, one can show that the theorem remains
+valid, when d is replaced by the upper density d.
+   Acknowledgement.       This work was done while the author was visiting the
+University of Illinois at Urbana-Champaign. I would like to thank the Department
+of Mathematics       at Urbana     for its hospitality and the Deutsche For-
+schungsgemeinschaft for financial support. Also, I am grateful to A. Balog for
+calling my attention to reference [4].
+
+                                                References
+  1. A. Balog, Problem in Tagungsbericht 41 (1982), Math. Forschungsinstitut Oberwolfach, p. 29.
+  2. N. G. de Bruijn, On the number of positive integers < x and free of prime factors > y, Nederl. Akad.
+Wetensch. Proc. Ser. A 54 (1951), 50-60.
+  3. P. Erdös, Problems and results on number theoretic properties of consecutive integers and related
+questions, Proc. Fifth Manitoba Conf. on Num. Math. (Univ. Manitoba, Winnipeg, Man., 1975).
+Congressus Numeratium, no. XVI, Utilitas Math., Winnipeg, Man., 1976, pp. 25-44.
+  4. D. R. Heath-Brown, The divisor function at consecutive integers, Mathematika 31 (1984), 141-149.
+
+  Department of Mathematics, University of Illinois, Urbana, Illinois 61801
+  Current address: School of Mathematics, Institute for Advanced Study, Princeton, New Jersey 08540
+

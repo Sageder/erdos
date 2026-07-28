@@ -1,0 +1,6 @@
+|S_2 cap [1,2e5]| = 1981  (PROBLEM.md: 1981)
+|S_3 cap [1,6e4]|  = 41  (PROBLEM.md: 41)
+S_4 cap [1,6e4]    = [8174, 51984]  (PROBLEM.md: {8174, 51984})
+criterion code validated against all four PROBLEM.md counts.
+
+AP m=0 mod 2^10, M=1e6: mean s_2(m) = 5.885, max = 10  (doc says 'kappa_2(m)=s_2(m) ~ 10')

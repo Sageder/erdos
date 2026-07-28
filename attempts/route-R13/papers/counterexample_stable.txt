@@ -1,0 +1,836 @@
+                                           A COUNTEREXAMPLE TO HILDEBRAND’S CONJECTURE ON
+                                                            STABLE SETS
+
+
+                                                                                REDMOND MCNAMARA
+arXiv:2312.08544v2 [math.CO] 25 Sep 2025
+
+
+
+
+                                                     Abstract. We provide a counterexample to a conjecture of Hildebrand which
+                                                     states that if S has positive lower density and is stable i.e. for all d, n is in S if
+                                                     and only if dn is in S except on a set of density 0 then S ∩ (S + 1) ∩ (S + 2) has
+                                                     positive lower density and in particular is nonempty. We further show there
+                                                                                         1
+                                                     exists a stable set of density 1 − q−1 such that S ∩ · · · ∩ (S + q − 1) = ∅ when
+                                                     q is a prime matching a bound proven by Hildebrand. Finally, we construct
+                                                     a function f : N → {±1} such that f (pn) = −f (n) for all but a 0 density set
+                                                     of n depending on the prime p but which fails the analogues of Sarnak and
+                                                     Chowla’s conjectures.
+
+
+                                                                                   1. Introduction
+                                               Erdős ([Erd76]) asked whether there are infinitely many twin smooth numbers,
+                                           numbers n and n+1 all of whose prime factors are less than nε for some fixed ε > 0.
+                                           Hildebrand ([Hil85]) solved the question, showing not only that there are infinitely
+                                           many twin smooth numbers, but that the set of such numbers has positive lower
+                                           density. In fact Hildebrand showed something much more general.
+                                               We say a set S is stable if for all p, for all but a zero density set of n, n is in S
+                                           if and only if pn is in S i.e.
+                                           (1)                             d({n ∈ N : 1n∈S ̸= 1pn∈S }) = 0
+                                           We remark that knowing (1) for primes p implies the same for all natural numbers.
+                                           We also remark that examples of stables sets include:
+                                                 (1) nε -smooth numbers n for any fixed value of ε
+                                                 (2) any set of density 0
+                                                 (3) the set of numbers n for which Ω(n)−log
+                                                                                       √
+                                                                                                log n
+                                                                                         log log n
+                                                                                                      is between 100 and 101
+                                                 (4) the set of numbers n which have more prime factors which are 1 mod 10
+                                                     than 9 mod 10 and more prime factors which are 1 mod 3 than 2 mod 3
+                                                 (5) the intersection of any finite number of stable sets.
+                                           Hildebrand proved the following remarkable conjecture of Balog:
+                                           Theorem 1.1 ([Hil85]). Let S be a stable set with positive lower density. Then
+                                                                                   d(S ∩ (S + 1)) > 0.
+                                              It is perhaps worth remarking that [BW98] later found a specific infinite sequence
+                                           of k consecutive smooth numbers for any k and [Ter18] show that with logarithmic
+                                           density the probability that n and n + 1 are smooth is the product of the proba-
+                                           bilities. Hildebrand ([Hil89]) was also able to show to following generalization of
+                                           Theorem 1.1
+                                                                                               1
+2                                REDMOND MCNAMARA
+
+
+Theorem 1.2 ([Hil89]). Let k be a natural number and let S be a stable set with
+                                                 1
+                                     d(S) > 1 −     .
+                                                k−1
+Then for any integers h1 , . . . , hk
+                           d((S + h1 ) ∩ · · · ∩ (S + hk )) > 0.
+    This led Hildebrand to conjecture
+Conjecture 1.3 ([Hil89]). Let S be a stable set with positive lower density. Then
+for any k
+              d(S ∩ (S + 1) ∩ (S + 2) ∩ · · · ∩ (S + (k − 1))) > 0.
+    A weaker version of this conjecture could be
+Conjecture 1.4. Let S be a stable set with positive lower density. Then for any k
+                   S ∩ (S + 1) ∩ (S + 2) ∩ · · · ∩ (S + (k − 1)) ̸= ∅.
+Remark 1.5. Note that this is equivalent to the conjecture that the upper density
+of S ∩ (S + 1) ∩ (S + 2) ∩ · · · ∩ (S + (k − 1)) is positive. Otherwise, given a set where
+the density is 0, we could delete the set S ∩ · · · ∩ (S + k) from S and since that
+would only affect a set of density 0 it would not change whether S was a stable set.
+   Tao and Teräväinen ([TT19]) showed a number of variants of Conjecture 1.3 hold.
+For example if S is uniformly distributed in small intervals and d(S) > 1− k− 4 1+o(1)
+                                                                              3
+then the conjecture holds. In this note we prove
+Theorem 1.6. Conjecture 1.4 fails for k = 3 for a set of density 12 .
+   We will do this by constructing a set S for which the intersection has density
+zero. Applying Remark 1.5, one can obtain a set where the intersection is actually
+empty. More generally, we will show
+                                                                            1
+Theorem 1.7. Conjecture 1.4 fails for any prime k for a set of density 1 − k−1 .
+   We remark that this perfectly matches Hildebrand’s bound, meaning this is
+essentially best possible.
+   We also give a construction which may be of interest to those studying multi-
+plicative functions. Note that a stable set can be thought of as a binary valued
+function f satisfying f (pn) = f (n) for all but a density 0 set of n depending on p.
+We can likewise use a similar construction to prove the following.
+Theorem 1.8. There exists a function f : N → {±1} such that, for any prime p,
+the set
+                            {n ∈ N : f (n) ̸= −f (pn)}
+has density 0 and for which
+                          1X
+                                f (n)f (n + 1) < −ε < 0
+                          x
+                               n≤x
+
+for some ε and for all x sufficiently large. Furthermore
+
+                           1X 1 X                  1
+                    lim lim       f (n)1n=1 mod 3 = .
+                   H→∞ x→∞ x  H                    3
+                                 n≤x      h≤H
+       A COUNTEREXAMPLE TO HILDEBRAND’S CONJECTURE ON STABLE SETS                       3
+
+
+   We remark that the construction is somewhat similar to constructions in [MRT15]
+and [MRT20]. The property that f (pn) = −f (n) except on a set of density 0 means
+f behaves somewhat like the Liouville function, the completely multiplicative func-
+tion λ such that λ(pn) = −λ(n) for any prime p and any n. The Chowla and
+Sarnak conjectures for the Liouville function suggest that λ does not correlate with
+any of its shifts nor with any entropy 0 sequence. However, Theorem 1.8 suggests
+that there exists a function f such that f (pn) = −f (n) 100% of the time but
+which fails the Chowla and Sarnak conjectures. Thus, it is not enough to use that
+f (pn) = −f (n) 100% of the time in order to prove those conjectures. In particular,
+there is a method introduced to the field by Bourgain, Sarnak and Ziegler ([BSZ13])
+sometimes called the Katai criterion, the Turan-Kubilius method, or some combi-
+nation of the six names which has been used to show many instances of the Sarnak
+conjecture. And yet, the Bourgain-Sarnak-Ziegler-Katai-Turan-Kubilius method
+works for any function which satisfies f (pn) = −f (n) 100% of the time. Therefore,
+Theorem 1.8 rules out this method by itself and others like it when it comes to
+proving the full Sarnak or Chowla conjectures.
+
+                                      Notation
+   We use d, d and d for lower density, upper density and density respectively.
+We say x = y + O(z) if there is a constant C such that |x − y| ≤ C|z|. We say
+x = ok→∞ (y) if limk→∞ xy = 0. We say x ≲ y if there exists a constant C such
+that x ≤ Cy. We use [N ] for {1, 2, . . . , N } and [a, b], (a, b] and (a, b) for closed,
+half-open and open intervals. We set e(t) = e2πit . Let 1x∈A denote the indicator
+function which is 1 if x is in A and 0 otherwise.
+
+                                Acknowledgments
+   I would like to greatly thank Terence Tao for suggesting this problem and sharing
+his thoughts, in particular that near counterexamples from his work with Matomaki
+and Radziwill might be useful (see [MRT20]). I would also like to thank Joni
+Teräväinen and Nikos Frantzikinakis for their comments on earlier drafts. Sup-
+ported by the research grant ELIDEK-HFRI-NextGenerationEU-15689.
+
+                        2. Proof of the Main Theorem
+  The basic idea is to choose T such that
+                      (
+                        piT ≈ 1    whenever p = 1 mod 3
+                        piT ≈ −1 whenever p = −1 mod 3
+and then define our set S by
+             
+                ℓ                                      iT
+             3 · n ∈ S whenever n = 1 mod 3 and Re(n ) > 0
+             
+(2)            3ℓ · n ∈ S whenever n = −1 mod 3 and Re(niT ) < 0
+             
+              ℓ
+               3 ∈S        for all ℓ.
+Since niT ≈ (n + 1)iT for large n, for most n either Re(niT ) > 0, Re((n + 1)iT ) >
+0 and Re((n + 2)iT ) > 0, one of which is −1 mod 3 and therefore not in S or
+Re(niT ) < 0, Re((n + 1)iT ) < 0 and Re((n + 2)iT ) < 0, one of which is −1 mod 3
+and therefore not in S. Thus, S ∩ (S + 1) ∩ (S + 2) will have density 0. Furthermore,
+for any p = 1 mod 3 we have (pn)iT = piT niT ≈ niT by choice of T , so for most
+4                                 REDMOND MCNAMARA
+
+
+n multiplying by p does not change whether n is 1 or −1 mod 3 and also does
+not change whether Re(niT ) > 0. Thus, n is in S if and only if pn is in S unless
+Re(n) ≈ 0. Similarly for p = −1 mod 3, Re((pn)iT ) ≈ −Re(niT ) so for most n not
+divisible by 3 multiplying by p swaps whether n is 1 or −1 mod 3 and also swaps
+whether Re(niT ) > 0 so again n is in S if and only if pn is in S.
+   The main difficulty with this solution is that for a given finite T we can only
+ensure (2) holds for finitely many p and with a small but positive error term. The
+rest of the paper will be dealing with these difficulties by allowing T to grow in
+such a way that does not prevent S from being a stable set.
+   First, we need a few lemmas.
+Lemma 2.1. For all natural numbers D, all real numbers ε, T0 > 0 and all func-
+tions f : [D] → S 1 there exists T > T0 such that for all p ≤ D
+
+                                     |piT − f (p)| ≤ ε.
+Proof. Classically, the points {log p : p ≤ D} are linearly independent over Q. (Us-
+ing logarithm rules and exponentiating both sides, any linear dependence would pro-
+duce a way of writing 1 as a product of primes). Thus {T log 2, T log 3, T log 5, . . .}
+equidistributes in the torus so the set for which |piT − f (p)| ≤ ε for all p ≤ D,
+which has size εO(π(D)) where π(D) is the number of primes less than D, is visited
+by some sequence of T tending to infinity. Choosing some T > T0 completes the
+proof.                                                                                □
+
+
+Lemma 2.2. Let T1 and T2 be real numbers greater than 2 and let N ≥ 2, a1 , a2
+and m be nonnegative integers with 0 ≤ ai < m. Then
+              |{n ≤ N : niT1 ∈ e([ am1 , a1m+1 )) and niT2 ∈ e([ am2 , a2m+1 ))}|
+                                            N                                
+                                1              1    T1 log T1     T2 log T1
+                             = 2 +O               +           +                 .
+                               m              T1       T2              N
+    We postpone the proof to Section 3.
+Remark 2.3. We remark that the error term could be improved but what is really
+important for us is that the error term is o(1) in the regime T1 ≪ T2 ≪ N .
+Remark 2.4. We remark that for fixed Ti the error term cannot go to 0 as N → ∞.
+                                        1                                   iT2
+For example, suppose we T1 = 1, T2 = 2 log 2 , m = 2 and a2 = 0 so that (2n)    =
+   iT2
+−n . Then for some choices of N we will have the following points contained in
+our interval:                                    
+                       N          N N           N N
+                         ,N ∪       ,     ∪       ,     ∪ ···
+                       2          8 4           32 16
+which by the geometric series formula should have size ≈ 23 N . Similarly, for some
+choices of N the complement will be our interval which will have size approximately
+1
+3N.
+
+   It is perhaps worth remarking that this gives the following corollary which ex-
+tends Lemma 2.2 to arbitrary real intervals, although this is not really necessary
+for our main argument.
+        A COUNTEREXAMPLE TO HILDEBRAND’S CONJECTURE ON STABLE SETS                        5
+
+
+Corollary 2.5. Let T1 and T2 be real numbers greater than 1 and let N ≥ 2 and
+m be natural numbers. Let I1 and I2 be subsets of [0, 1]. Then
+                                   |{n ≤ N : niT1 ∈ e(I1 ) and niT2 ∈ e(I2 )}|
+                                                   N                    
+                                 1              1    T1 log T1   T2 log T1
+               = |I1 ||I2 | + O      +m·O         +            +             .
+                                 m             T1       T2           N
+   Again we remark that the error term could be optimized more and the important
+thing is that it is o(1) in the regime m ≪ T1 ≪ T2 ≪ N . We also remark that the
+optimal choice of m for the error term above is the square root of the original error
+term. The result essentially follows from chopping up the interval from [0, 1] into
+                1
+pieces of size m  . Except for at most O(1) many pieces, each piece is contained or
+disjoint from each Ij . We leave the details to the interested reader.
+   Now we can finally return to the proof of Theorem 1.6. Let D1 , D2 , D3 , . . . be an
+increasing sequence of natural numbers and ε1 , ε2 , ε3 , . . . be a decreasing sequence
+of positive real numbers approaching 0. Let Jk = ⌈ ε2k ⌉ + 1. By Lemma 2.1, for all
+real numbers T0 , there exists Tk ≥ T0 such that for all p ≤ Dk ,
+                     (
+                       |piTk − 1| ≤ εk whenever p = 1 mod 3
+(3)
+                       |piTk + 1| ≤ εk whenever p = −1 mod 3.
+We can also fix tk ≥ Tk such that
+(4)                                    |pitk − 1| ≤ εk
+for all p ≤ Dk .
+   We will fix two sequences of real numbers Tk and tk and a sequence of natural
+numbers Nk,0 , . . . , Nk,Jk such that for each k, Tk is sufficiently large depending on
+εk and Dk , tk is sufficiently large depending on Tk , Dk and εk and Nk,j is sufficiently
+large depending on Tk , Tk+1 , tk , εk and Nr,s for r < k and any s or for r = k and
+any s < j. Thus
+               1
+        Dk ,      ≪ Tk ≪ tk ≪ Tk+1 ≪ Nk,0 ≪ Nk,1 ≪ · · · ≪ Nk,Jk ≪ Nk+1,1 .
+               εk
+For convenience define Nk = Nk,0 , Nk,Jk +1 = Nk+1 and N0 = 1. The precise nature
+of how big each variable needs to be depending on the last could be worked out by
+the interested reader but for instance
+      (1) T1k + Tk log
+                    tk
+                       Tk
+                          + Tk log
+                                Nk
+                                   Tk+1
+                                        tends to 0 as k tends to infinity.
+      (2) Nk,j Dk < Nk,j+1 and Nk,Jk Dk < Nk+1,0 .
+      (3) In particular, we may assume Nk,j 2 < Nk,j+1 which is enough to imply
+                         d({n : |n − Nk,j | < 3 for some k, j}) = 0.
+
+
+Let n be a natural number in the interval [Nk,j , Nk,j+1 ) or in the interval [Nk,j , Nk+1,0 )
+if j = Jk and suppose n is not divisible by 3. Let α(n) = (εk · j) − 1. Let
+                                  
+                                  +1 if n = 1 mod 3
+                                  
+                         χ(n) = −1 if n = −1 mod 3
+                                  
+                                    0      if n = 0 mod 3.
+                                  
+6                               REDMOND MCNAMARA
+
+
+Then we say 3ℓ n is in S for all ℓ if and only if
+           (
+             χ(n) · sign(Re(niTk )) > 0         and Re(nitk ) ≥ α(n) or
+             χ(n) · sign(Re(niTk+1 )) > 0 and Re(nitk ) < α(n)
+
+Remark 2.6. Whether you use the condition χ(n) · sign(Re(niTk )) > 0 or χ(n) ·
+ sign(Re(niTk+1 )) > 0 depends whether Re(nitk ) ≥ α(n). When n is in [Nk,0 , Nk,1 )
+and α(n) = −1, then the conditions that Re(nitk ) ≥ α(n) is trivially satisfied and
+when α(n) > 1 it is necessarily false. Thus, by slowly changing α we slowly “turn
+on” and “turn off” the restrictions that χ(n)Re(niTk ) > 0 and χ(n)Re(niTk+1 ) > 0.
+    Now we verify the necessary claims about S.
+Claim 2.7. S is stable.
+   Let p be a prime. If p = 3 then by examining the definition of S, n is in S if and
+only if 3n is in S so assume p ̸= 3. Let k be such that p ≤ Dk which exists since
+Dk tends to infinity by assumption. Consider the case of some n in [Nk,j , Nk,j+1 )
+which is not divisible by 3. Then if j < Jk , by (2) either pn is in [Nk,j , Nk,j+1 ) or
+in [Nk,j+1 , Nk,j+2 ). Observe that, by (3), we have
+                      χ(pn)Re((pn)iTk ) =Re(niTk piTk χ(p))
+                                         =Re(niTk (1 + O(εk )))
+                                         =Re(niTk ) + O(εk )
+and similarly
+                     χ(pn)Re((pn)iTk+1 ) =Re(niTk+1 piTk+1 χ(p))
+                                          =Re(niTk+1 ) + O(εk )
+and also because α(pn) = α(n) + O(εk ) and (4) we have
+            Re((pn)itk ) − α(pn) =Re(nitk pitk ) − α(n) + O(εk )
+                                  =Re(nitk )(1 + O(εk )) − α(n) + O(εk ).
+Therefore, each of these expressions can only change signs if one of niTk , niTk+1 , or
+nitk is in one of two small intervals of length O(εk ). By Lemma 2.2 we can estimate
+the probability that any of these happen. In particular by (1) that probability goes
+to 0.
+   The other important case to consider is what happens if n is in [Nk,2Jk , Nk+1,0 )
+and pn is in [Nk+1,0 , Nk+1,1 ). In this case, notice that the Re(nitk ) < αk (n) for n
+and the Re((pn)itk ) ≥ αk+1 (pn) actually play no role because each is of the form
+Re(z) ≥ −1 or Re(z) ≤ 1 which are trivially true. Thus as before n is in S if and
+only if pn is in S unless Re(niTk+1 ) = O(εk ) which is rare.
+   So far, we only handled the case of n not divisible by 3. Let’s see how this allows
+us to estimate the number of n such that 1n∈S ̸= 1pn∈S in general. Let ℓ be a
+natural number. Let E(A, B) denote the number of n between A and B such that
+1n∈S ̸= 1pn∈S and let E0 (A, B) be the number of such n which are not divisible
+by 3. Then we can write E(1, N ) as a kind of Cesàro average:
+                                                                          
+                       N                 N N                     N N            N
+(5) E(1, N ) ≤ E0        , N + 2E0         ,     + · · · + ℓE0     ,       +O
+                       3                  9 3                    3ℓ 3ℓ−1        3ℓ
+        A COUNTEREXAMPLE TO HILDEBRAND’S CONJECTURE ON STABLE SETS                   7
+
+
+since each n ≥ N 3−j can show up j times until 3j n ≥ N i.e. we have the ex-
+pression 13h n∈S ̸= 1p3h n∈S for each h ≤ j. The remaining O 3Nℓ accounts for all
+numbers divisible by 3ℓ and therefore not included in our count and also for all the
+numbers between 1 and 3Nℓ . We conclude that if the frequency of 1n∈S ̸= 1pn∈S
+in [3−j N, 3−j+1 N ) for j ≤ ℓ and for n not divisible by 3 is at most εk then at a
+minimum                                             
+                                                     N
+                              E(1, N ) ≤ ℓεk N + O       .
+                                                     3ℓ
+(Of course we can get a substantially better error term but this is all that is need
+for our purposes). Since this holds for all k for N sufficiently large and ℓ fixed, we
+conclude that
+                             d({n : 1n∈S ̸= 1pn∈S }) ≲ 3−ℓ
+for all ℓ. Since this holds for all ℓ we conclude
+                             d({n : 1n∈S ̸= 1pn∈S }) = 0.
+Since p was arbitrary, S is stable.
+Claim 2.8.
+                            d(S ∩ (S + 1) ∩ (S + 2)) = 0.
+  We also note that by Taylor expansion for all real numbers T and natural num-
+bers h and n such that T h ≪ n
+                                                    
+                          iT   iT                   h
+                  (n + h) =n exp iT log 1 +
+                                                    n
+                                                       
+                               iT                       h
+                             =n · 1 + O T log 1 +
+                                                        n
+                                              
+                                            Th
+                             =niT · 1 + O           .
+                                             n
+Thus, for all n ≫ Tk+1 , at least one of the following three things happens
+      Re(niTk+1 ) > α(n), Re((n + 1)iTk+1 ) > α(n), and Re((n + 2)iTk+1 ) > α(n),
+or
+      Re(niTk+1 ) < α(n), Re((n + 1)iTk+1 ) < α(n), and Re((n + 2)iTk+1 ) < α(n),
+or
+                                                    
+                                            Tk+1 h
+               Re(niTk+1 ) = α(n) + O                    .
+                                              n
+                                                              
+The last condition happens with probability O t1k + tkNlog
+                                                         k,j
+                                                            tk
+                                                                 which in particular
+tends to 0 as k tends to infinity. Similarly, for all n outside of a set of density
+tending to 0,
+         sign Re(niTk ) = sign Re((n + 1)iTk )) = sign Re((n + 2)iTk )
+                                                                        
+
+and
+        sign Re(niTk+1 ) = sign Re((n + 1)iTk+1 ) = sign Re((n + 2)iTk+1 )
+                                                                         
+
+However, if, for instance, both
+                    Re((n + j)itk ) > α(n) and Re((n + j)iTk ) > 0
+8                                 REDMOND MCNAMARA
+
+
+for each of j = 0, 1 and 2, then one of those three terms will have n = −1 mod 3
+and therefore that n will not be in S. Similarly, if,
+                    Re((n + j)itk ) > α(n) and Re((n + j)iTk ) < 0
+for each of j = 0, 1 and 2, then one of those three terms will have n = 1 mod 3 and
+therefore that n will not be in S. Likewise in the other two cases.
+Claim 2.9.
+                                           1
+                                         d(S) =
+                                             .
+                                           2
+    For each for all n between Nk and Nk+1 not divisible by 3, n is in S if
+                          Re(χ(n)nitk ) ≥ 0 and Re(niTk ) > 0
+                                                                               
+By Lemma 2.2, this happens with probability 14 + O T1k + Tk log
+                                                              tk
+                                                                 Tk
+                                                                    + tk N
+                                                                         log tk
+                                                                           k
+                                                                                  .
+Alternately, n is in S if
+                    Re(χ(n)nitk ) > 0 and Re(niTk+1 ) > 0
+                                                                                     
+                                                                          Tk+1 log tk
+which again by Lemma 2.2 happens with probability 14 +O t1k + tkTlog
+                                                                 k+1
+                                                                     tk
+                                                                        +    Nk         .
+The error term in both cases goes to zero by (1). Again, summing the contributions
+from powers of 3 as in (5) yields the claim.
+   Now we can conclude the proof of Theorem 1.6 modulo the proof of Lemma 2.2.
+By Claims 2.7, (2.8) and (2.9), S is a stable set where S ∩ (S + 1) ∩ (S + 2) has
+density 0 and such that d(S) = 21 . Thus S satisfies the hypothesis of Theorem 1.6.
+
+                               3. Proof of Lemma 2.2
+    This section is devoted to the proof of the following lemma:
+Lemma 2.2. Let T1 and T2 be real numbers greater than 2 and let N ≥ 2, a1 , a2
+and m be nonnegative integers with 0 ≤ ai < m. Then
+              |{n ≤ N : niT1 ∈ e([ am1 , a1m+1 )) and niT2 ∈ e([ am2 , a2m+1 ))}|
+                                            N                                
+                                1              1    T1 log T1     T2 log T1
+                             = 2 +O               +           +                 .
+                               m              T1       T2              N
+    We prove the lemma in three steps.
+Claim 3.1. The map defined by [0, 1] ∋ x 7→ (N x)iT1 is almost equidistributed in
+the sense that
+                                                                      
+                                               a1 a1 + 1            1        1
+                 x ∈ [0, 1] : (N x)iT1 ∈ e       ,              =     +O
+                                               m    m              m         T1
+                                                                                 b b+1 
+Proof of Claim 3.1. Note that for any integer b that (N x)iT1 is in e m            , m     if
+and only if                                            
+                                     1      b b+1
+                            log x ∈           ,        + ℓ − log N
+                                     T1     m m
+for some integer    ℓ.
+             b b+1  We    can  partition the unit interval into pieces such that (N x)iT1
+lies in e m , m         as follows:
+                   [ [                     1
+                                                
+                                                   b b+1
+                                                                          
+        [0, 1] =               x : log x ∈          ,         + ℓ − log N ∩ [0, 1].
+                                            T1     m m
+               0≤b<m ℓ
+      A COUNTEREXAMPLE TO HILDEBRAND’S CONJECTURE ON STABLE SETS                                9
+
+                                                                        2π(a−b)
+For each 0 ≤ b < m, the map which multiplies every point by e mT1 is a bijection
+from the set
+                                                       
+                                 1    b b+1
+                   x : log x ∈          ,       + ℓ − log N
+                                T1    m m
+to the set
+                                                         
+                                 1    a1 a1 + 1
+                   x : log x ∈          ,         + ℓ − log N
+                                T1    m    m
+                              2π(a−b)
+                                              
+and multiplies lengths by e mT1 = 1 + O T11 by the Taylor expansion for ex .
+This almost gives a bijection on the sets in our partition
+             [                  1
+                                   
+                                      b b+1
+                                                          
+                   x : log x ∈          ,       + ℓ − log N ∩ [0, 1]
+                                T1    m m
+               ℓ
+except that we have intersected with the interval [0, 1]. However, this only effects
+                                       −1
+                                                                                      1
+those x which are in the interval [e T1 , 1] which again has length 1 + O             T1   . Thus
+
+                   [ [                  1
+                                              
+                                                   b b+1
+                                                                            
+                             x : log x ∈            ,           + ℓ − log N       ∩ [0, 1] =
+                                         T1        m m
+                0≤b<m ℓ
+
+       [                                                                     !
+                        1         a1 a1 + 1                                      1
+  m         x : log x ∈             ,             + ℓ − log N       ∩ [0, 1] + O       =
+                        T1        m    m                                         T1
+        ℓ
+                                                                                  
+                                                                                    1
+                                                                             1+O      .
+                                                                                   T1
+Dividing by m completes the proof of Claim 3.1.                                                □
+Claim 3.2. The map defined by [0, 1] ∋ x 7→ ((N x)iT1 , (N x)iT2 ) is almost equidis-
+tributed in the sense that
+                                                                      
+                       iT1         a1 a1 + 1             iT2      a2 a2 + 1
+     x ∈ [0, 1] : (N x) ∈ e          ,          and (N x) ∈ e         ,
+                                   m    m                          m     m
+                                  
+       1           1     T1 log T1
+   = 2 +O             +
+      m            T1       T2
+Proof of Claim 3.2. We basically emulate the proof of Claim 3.1 on each interval
+of the form                                              
+                                1     a1 a1 + 1
+                   x : log x ∈          ,         + ℓ − log N .
+                                T1    m     m
+We split each such interval up into pieces
+              [ [                  1
+                                       
+                                           b b+1
+                                                               
+                        x : log x ∈         ,        + ℓ − log N
+                                    T2    m m
+            0≤b<m ℓ
+                                                              
+                   [                1     a1 a1 + 1
+                 ∩      x : log x ∈          ,        + ℓ′ − log N .
+                    ′
+                                    T1    m     m
+                    ℓ
+By the previous argument, each piece of our partition corresponding to some b is the
+same size up to an error of size T12 . However now in estimating the full expression
+                                                                     
+                      iT1      a1 a1 + 1                iT2       a2 a2 + 1
+    x ∈ [0, 1] : (N x) ∈ e        ,           and (N x) ∈ e         ,
+                               m       m                          m     m
+10                                    REDMOND MCNAMARA
+
+
+we have one such error for each interval of the form
+                                                          
+                              1     a1 a1 + 1
+                  x : log x ∈          ,          + ℓ′ − log N .
+                              T1    m      m
+                                                                          h       i
+Accepting an error of size O T11 , we can restrict ourselves to intervals in T11 , 1 .
+                                                               2π
+Since we get another interval each time we multiply by e T1 this is precisely log T2π T1 =
+                                                                                       e   1
+T1
+2π log T1 . Altogether we find
+            [ [                 1
+                                      
+                                  b b+1
+                                                       
+                   x : log x ∈      ,        + ℓ − log N
+                                 T2
+                                  m m
+    0≤b<m ℓ
+
+    [                1
+                         
+                            a1 a1 + 1
+                                                   
+                                                           1
+                                                               
+  ∩       x : log x ∈         ,         + ℓ′ − log N ∩       ,1
+                      T1    m    m                        T1
+     ℓ′
+                                               
+    [                 1     a2 a2 + 1
+=m        x : log x ∈         ,         + ℓ − log N
+                      T2    m    m
+     ℓ
+    [                1
+                         
+                            a1 a1 + 1
+                                                   
+                                                           1
+                                                                   
+                                                                      mT1 log T1
+                                                                                 
+  ∩       x : log x ∈         ,         + ℓ′ − log N ∩       ,1 + O
+      ′
+                      T1    m    m                        T1             T2
+        ℓ
+
+
+
+which gives Claim 3.2 after dividing by m and applying Claim 3.1.                              □
+     Finally we complete the proof of Lemma 2.2.
+Proof. Recall that for any real numbers x < y the interval [x, y) contains y − x +
+Error many integers where Error < 1. By Claim 3.2,
+                                                                      
+                                  a1 a1 + 1                        a2 a2 + 1
+    x ∈ [0, 1] : (N x)iT1 ∈ e       ,          and (N x)iT2 ∈ e      ,
+                                  m    m                           m    m
+                                 
+       1          1     T1 log T1
+   = 2 +O            +
+      m           T1       T2
+Note that we are trying to estimate
+                |{n ≤ N : niT1 ∈ e([ am1 , a1m+1 )) and niT2 ∈ e([ am2 , a2m+1 ))}|
+(6)
+                                                N
+                                                               n
+i.e. which fraction of natural numbers n for which N            is one    of those values x
+such that x 7→ ((N x) , (N x) ) lands in the set e am1 , a1m+1
+                         iT1      iT2
+                                                                                 and (N x)iT2 ∈
+    a2 a2 +1 
+e m, m           . Claim 3.2 shows that (6) is
+                                                        
+                           1           1       T1 log T1
+                              + O          +               + Error
+                          m2           T1          T2
+where the error term corresponds to the fact that an each interval of the form
+                                                                      
+              1     a2 a2 + 1                   1     a1 a1 + 1
+  x : log x ∈         ,         + ℓ − log N, ∈          ,          + ℓ − log N
+              T2    m    m                      T1    m     m
+whose end points we might call [y, z) does not correspond to exactly N (z − y)
+natural numbers but only up to an error of size at most 1. Thus, we simply have to
+estimate the number of intervals. The number of intervals in question is at most the
+sum of the number of times niT1 and niT2 go through a full rotation in the interval
+             A COUNTEREXAMPLE TO HILDEBRAND’S CONJECTURE ON STABLE SETS              11
+
+h        i
+    1
+    T1 , 1   and since Lemma 2.2 is trivial unless T1 ≪ T2 we make restrict attention
+                                                                             iT2
+to the second term. As in the proof of h Claimi 3.2 the number of times n        goes
+                                         1
+through a full rotation in the interval T1 , 1 is O (T2 log T1 ) which, upon dividing
+by N , completes the proof of Lemma 2.2 and thus Theorem 1.6.                      □
+
+                     4. A Remark on Variants of the Main Theorem
+   First, we show the following, giving slightly fewer details because the construction
+is very similar to the construction in Section 2:
+Theorem 4.1. For any prime number q, we can construct a stable set of density
+            1
+d(S) = 1 − q−1 for which
+                                 S ∩ (S + 1) ∩ · · · ∩ (S + q − 1)
+has density 0 (and therefore by Remark 1.5 there exists a stable set where the in-
+tersection is empty).
+   We remark that this exactly matches Hildebrand’s bound in [Hil89]. Thus, any
+stable set with greater density must have the relevant intersection nonempty.
+   The construction goes as follows. Fix χ a character on (Z/qZ)× taking q − 1
+different values. This is possible because (Z/qZ)× is a cyclic group so one can pick
+a generator and declare that it maps to a primitive (q − 1)th root of unity under
+χ, which determines such a character. As before we choose two sequences of real
+numbers: again
+                                    |pitk − 1| ≤ εk
+and now
+                                       |piTk χ(p) − 1| ≤ εk
+for all p ≤ Dk . Again, we can pick some sequence Nk,j with the property that
+                    1
+             Dk ,      ≪ Tk ≪ tk ≪ Tk+1 ≪ Nk,0 ≪ Nk,1 ≪ · · · ≪ Nk,Jk ≪ Nk+1,1
+                    εk
+where again Jk > ε2k . For n coprime to q and between Nk,j and Nk,j+1 , we will say
+that n is in S if and only if
+                                                        
+                                         iTℓ
+                                                     2π
+                            arg χ(n) · n       ̸∈ 0,
+                                                     q−1
+where ℓ = j if Re(nitk ) ≥ −1 + εk · j and ℓ = j + 1 if not. We remark that this
+essentially gives the set constructed in Section 2 when q = 3. So that the set S is
+still stable under multiplication by q, we say q m n ∈ S if and only if n ∈ S for any
+m and any n coprime to q. Also as in Section 2, for any n, because the values of
+χ(n), . . . , χ(n + q − 1) include all (q − 1)th roots of unity. Therefore, there must
+exist h ≤ q − 1 such that
+                                                            
+                                                         2π
+                             arg χ(n + h) · niTℓ ∈ 0,
+                                                
+                                                        q−1
+where again ℓ = j if Re(nitk ) ≥ −1 + εk · j and ℓ = j + 1 if not. We again conclude
+that                                                         
+                                              iTℓ
+                                                         2π
+                      arg χ(n + h) · (n + h)        ∈ 0,
+                                                         q−1
+12                               REDMOND MCNAMARA
+
+
+unless                                          q
+                                   arg niTℓ = O
+                                           
+                                                 n
+or
+                                            2π        q
+                            arg niTℓ −
+                                       
+                                                  =O
+                                           q−1          n
+or                                                    q
+                           Re(nitk ) + 1 − εk · j = O      .
+                                                       n
+By a similar argument as before, using Lemma 2.2, one can show this happens only
+on a set of density 0. Thus, S ∩ · · · ∩ (S + q) has density 0.
+   Also, just as in Section 2, for any p ≤ Dk and any n between Nk,j and Nk,j+1 ,
+we have that
+                        χ(pn)(pn)iTℓ = χ(p)piTℓ χ(n)niTℓ
+                                        = (1 + O(εk )) · χ(n)niTℓ
+for both ℓ = k and k + 1. Thus, either
+                                                                    
+                                2π                                  2π
+         arg χ(n)niTℓ ∈ 0,           and arg χ(pn)(pn)iTℓ ∈ 0,
+                                                          
+                               q−1                                 q−1
+or                                                                  
+                   iTℓ
+                               2π                     iTℓ
+                                                                   2π
+         arg χ(n)n       ̸∈ 0,       and arg χ(pn)(pn)       ̸∈ 0,
+                               q−1                                 q−1
+or niTℓ is in a set of size O(qεk ). Since q is fixed, this goes to 0 as k tends to infinity
+and by using Lemma 2.2 we can show this happens on a 0 density set. Similarly,
+                               (pn)itk = (1 + O(εk ))nitk
+so either
+              Re(nitk ) + 1 − εk · j ≥ 0 and Re((pn)itk ) + 1 − εk · j ≥ 0
+or
+              Re(nitk ) + 1 − εk · j < 0 and Re((pn)itk ) + 1 − εk · j < 0
+     itk
+or n is in an interval of size O(εk ) which again happens only on a sparse set.
+                                  1
+   That the density of S is 1 − q−1   can be seen because, for any m and any n =
+1 mod q, unless n is within q of Nj,k for some j and k or nitk is in an interval of
+size O nq , then all but one of
+                          q m n, q m (n + 1), . . . , q m (n + q − 2)
+will be in S. Since the relative density of the multiples of q in S is the same
+                                                            1
+as the density of S by stability, the density of S is 1 − q−1 . This completes the
+construction.
+   The other interesting construction that can be made with essentially the same
+method relates to the Liouville function. Notice that a stable set is essentially the
+same as a binary valued function f for which f (mn) = 1 · f (n) for a full density set
+of n depending on m. But the same methods allow us to construct functions which
+are “almost multiplicative” where 1 is replaced by another number. For example,
+the widely believed Chowla conjecture suggests that if λ is the unique completely
+multiplicative function for which
+                                      λ(pn) = −λ(n)
+      A COUNTEREXAMPLE TO HILDEBRAND’S CONJECTURE ON STABLE SETS                   13
+
+
+for all primes p, then             X
+                                         λ(n)λ(n + 1) = o(x).
+                                   n≤x
+However, we can construct a function for which
+                                      f (mn) = λ(m)f (n)
+for a full density set of n depending on m but for which the Chowla conjecture fails.
+This means that it is not enough to use that f is multiplicative 100% of the time to
+prove Chowla’s conjecture. For example, methods like the Bourgain-Sarnak-Ziegler-
+Katai-Turan-Kubilius method which only rely on the fact that f (mn) = λ(m)f (n)
+for 100% of n cannot hope to resolve the Chowla conjecture.
+Theorem 4.2. There exists a function f : N → {±1} such that, for any prime p,
+the set
+                            {n ∈ N : f (n) ̸= −f (pn)}
+has density 0 and for which
+                          1X
+                                f (n)f (n + 1) < −ε < 0
+                          x
+                                   n≤x
+
+for some ε and for all x sufficiently large. Furthermore
+
+                          1X 1 X                  1
+                      lim lim    f (n)1n=1 mod 3 = .
+                  H→∞ x→∞ x  H                    3
+                                     n≤x      h≤H
+
+   The construction proceeds similar to that in Section 2. For a sequence εk tending
+to 0 and Dk tending to infinity we again find sequences Tk , tk and Nk,j such that
+             1
+        Dk ,    ≪ Tk ≪ tk ≪ Tk+1 ≪ Nk,0 ≪ Nk,1 ≪ · · · ≪ Nk,Jk ≪ Nk+1,1
+             εk
+and
+                                 pitk = 1 + O(εk )
+for all p ≤ Dk not equal to 3 but now the key difference is that
+                                    piTk = −χ(p) + O(εk )
+where χ is again the real character modulo 3 i.e. χ(n) = 1 if n = 1 mod 3 and
+χ(n) = −1 if n = −1 mod 3. For n between Nk,j and Nk,j+1 coprime to 3, we set
+                          f (n) = sign Re χ(n)niTℓ
+                                                   
+
+where ℓ = k if Re(nitk ) ≥ −1 + jεk and k + 1 otherwise. Now because of the added
+minus sign
+                    f (pn) = sign Re χ(pn)(pn)iTℓ
+                                                   
+
+                           = sign Re (−1 + O(εk ))χ(n)niTℓ
+                                                            
+
+which equals
+                                 = − sign Re χ(n)niTℓ
+                                                         
+
+                                 = − f (n)
+                iTk      iTk+1
+unless one of n , n        or nitk are in a set of size O(εk ) which again happens
+on a set of density 0. We set f (3m n) = (−1)m f (n). Then f (n)f (n + 1) is always
+equal to −1 when n = 1 mod 3 but is equally likely to be ±1 for n = 0, 2 mod 3,
+14                                  REDMOND MCNAMARA
+
+
+so the two points correlations approach − 13 . Furthermore, by Taylor expansion, for
+any fixed H, unless one of niTk , niTk+1 or nitk are in a set of size O H
+                                                                           
+                                                                          n , we have
+f (n + h) is constant for all h such that n + h = 1 mod 3 giving the desired property.
+
+                                         References
+  [BW98] Antal Balog and Trevor D. Wooley, On strings of consecutive integers with no large
+            prime factors, J. Austral. Math. Soc. Ser. A 64 (1998), no. 2, 266–276. MR1619809
+ [BSZ13] J. Bourgain, P. Sarnak, and T. Ziegler, Disjointness of Moebius from horocycle flows,
+            From Fourier analysis and number theory to Radon transforms and geometry, Dev.
+            Math., vol. 28, Springer, New York, 2013, pp. 67–83, DOI 10.1007/978-1-4614-4075-8 5.
+            MR2986954
+  [Erd76] P. Erdős, Problems and results on number theoretic properties of consecutive integers
+            and related questions, Proceedings of the Fifth Manitoba Conference on Numerical
+            Mathematics, 1975, 1976, pp. 25–44. Renyi Institute Preprint, No. 39/1976.
+  [Gra08] Andrew Granville, Smooth numbers: computational number theory and beyond, Algo-
+            rithmic number theory: lattices, number fields, curves and cryptography, Math. Sci. Res.
+            Inst. Publ., vol. 44, Cambridge Univ. Press, Cambridge, 2008, pp. 267–323. MR2467549
+    [Hil85] Adolf Hildebrand, On a conjecture of Balog, Proceedings of the American Mathematical
+            Society 95 (1985), 517–523.
+    [Hil89]        , On integer sets containing strings of consecutive integers, Mathematika 36
+            (1989), 60–70.
+[MRT15] Kaisa Matomäki, Maksym Radziwill, and Terence Tao, An averaged form of
+            Chowla’s conjecture, Algebra Number Theory 9 (2015), no. 9, 2167–2196, DOI
+            10.2140/ant.2015.9.2167. MR3435814
+[MRT20]            , Fourier uniformity of bounded multiplicative functions in short intervals on
+            average, Inventiones mathematicae 220 (2020), no. 1, 1–58, DOI 10.1007/s00222-019-
+            00926-w.
+   [TT19] Terence Tao and Joni Teräväinen, Value patterns of multiplicative functions and related
+            sequences, Forum of Mathematics, Sigma 7 (2019), e33.
+   [Ter18] Joni Teräväinen, On binary correlations of multiplicative functions, Forum of Mathe-
+            matics, Sigma 6 (2018), e10.
+
+   University of Crete, Department of Mathematics and Applied Mathematics, Herak-
+lion, Greece
+
