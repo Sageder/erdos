@@ -21,7 +21,8 @@ exhaustive statements carry an explicit modulus bound.
 | E | **Theorem T2**: no E-covering with all moduli `<= 254` (pure budget after R) | PROVED |
 | F | Lemmas L8 (coprime pairs), L9 (quantitative DMNR), L10/L10b (Fourier balance) | PROVED |
 | G | `H` **does** support covering systems — explicit 15-class certificate | PROVED |
-| H | **Theorem T3**: no E-covering with all moduli `<= 700` | PROVED (exhaustive family enumeration) |
+| H | **Theorem T3**: no E-covering with all moduli `<= 724` | PROVED (exhaustive family enumeration) |
+| I | Lemma L8+ (coprime-subset inequality) | PROVED, numerically validated |
 
 ---
 
@@ -177,34 +178,48 @@ that survive: the budget window `1 < budget <= κ`, the waste bound `< Δ`, L8, 
 (`|A_q| ∈ {0} ∪ [q,∞)`), L10b, and the L10 balance partition test.  This is complete: if an
 E-covering with moduli `<= 2Y` existed, its (L5-reduced) parity halves would appear.
 
-Results (all **0 surviving families**, i.e. the enumeration of part (a) is EMPTY):
+Results — **the enumeration of part (a) is EMPTY at every bound reached**:
 
-| Y | \|R(Y)\| | Δ | DFS nodes (H_pair / H_pair2) | families | conclusion |
-|---|---|---|---|---|---|
-| 128 | 28 | .00123 | 100 / — | 0 | no E-covering, moduli ≤ 256 |
-| 150 | 30 | .01578 | 229 | 0 | ≤ 300 |
-| 165 | 30 | .01578 | 229 | 0 | ≤ 330 |
-| 200 | 33 | .03202 | 1 247 | 0 | ≤ 400 |
-| 225 | 36 | .04588 | 11 416 | 0 | ≤ 450 |
-| 250 | 38 | .05407 | 22 576 / 6 | 0 | ≤ 500 |
-| 275 | 39 | .05778 | 50 608 | 0 | ≤ 550 |
-| 300 | 41 | .06458 | 98 857 / 6 | 0 | ≤ 600 |
-| 350 | 45 | .07671 | 7 (H_pair2) | 0 | ≤ 700 |
+| X = 2Y | Y | \|E∩[4,X]\| | \|R(Y)\| | budget R(Y) | Δ | surviving families | how |
+|---|---|---|---|---|---|---|---|
+| 100 | 50 | 24 | 13 | 1.710278 | — | 0 | budget ≤ 2 |
+| 150 | 75 | 34 | 15 | 1.742130 | — | 0 | budget ≤ 2 |
+| 200 | 100 | 44 | 18 | 1.776003 | — | 0 | budget ≤ 2 |
+| 254 | 127 | 52 | 27 | 1.993414 | — | 0 | budget ≤ 2 |
+| 300 | 150 | 60 | 30 | 2.015776 | .0158 | 0 | enumeration (229 nodes) |
+| 400 | 200 | 77 | 33 | 2.032020 | .0320 | 0 | enumeration (1 247) |
+| 500 | 250 | 93 | 38 | 2.054072 | .0541 | 0 | enumeration (22 576 / 6) |
+| 600 | 300 | 108 | 41 | 2.064582 | .0646 | 0 | enumeration (98 857 / 6) |
+| 700 | 350 | 124 | 45 | 2.076715 | .0767 | 0 | enumeration (7) |
+| **724** | **362** | **126** | **45** | **2.076715** | **.0767** | **0** | enumeration (7) |
+| 726 | 363 | 127 | 56 | 2.260909 | .2609 | ? | **NOT DECIDED** |
+| 1000 | 500 | 166 | 63 | 2.277855 | .2779 | ? | **NOT DECIDED** |
+
+(node counts: `H_pair.py` / `H_pair2.py`; `H_pair3.py` reproduces all of them.)
 
 > **Theorem T3 (PROVED).** There is no covering system of Z with distinct moduli, all of the
-> form `p-1` (`p >= 5` prime), and all `<= 700`.
+> form `p-1` (`p >= 5` prime), and all `<= 724`.
 
-Why the enumeration is so brutal in this range: `budget(R(Y)) - 2 = Δ` is tiny, so the two
-halves must between them use **essentially every** element of `R(Y)` (unused budget `< Δ`),
-while L8 forbids two coprime moduli with product `< 1/Δ` inside the *same* half.  With `2 ∈ A`
-and `3 ∈ B` forced, the modulus `5` (which cannot be wasted, `1/5 > Δ`) is coprime to both and
-too small for either half — contradiction.
+Why the enumeration is brutal in this range: `Δ = budget(R(Y)) - 2` is tiny, so the two halves
+must between them use **essentially every** element of `R(Y)` (unused budget `< Δ`), while L8
+forbids two coprime moduli of product `< 1/Δ` inside the *same* half.  Concretely: `2` and `3`
+must go to different halves (`1/6 > Δ`); `5` cannot be wasted (`1/5 > Δ`) yet is coprime to both
+and `2·5, 3·5 < 1/Δ` — contradiction, in 6-7 search nodes.
 
-**Frontier.**  `Y = 350` (`X = 700`) is the largest bound reached.  At `Y = 363` the reduction
-stops removing `11` (`H∩[2,363]` finally has 11 multiples of 11), `|R|` jumps `45 → 56` and
-`Δ` jumps `0.077 → 0.261`; the L8 conflict graph loses most of its teeth and the enumeration
-becomes much larger.  A run at `Y = 400` (`Δ = 0.269`) did not terminate within the session's
-time budget.
+**Additional lemma used from `Y = 363` on (Lemma L8+).** If `S ⊆ A` is pairwise coprime then
+`budget(A) >= W(S) := Σ_{S} 1/m + Π_{S}(1-1/m)` (the `S`-classes are CRT-independent, so their
+union has density exactly `1 - Π(1-1/m)`; the rest of `A` must cover the complement).  `W` is
+monotone under adding coprime elements, and since `R(Y)` is `{2,3,5,7,11}`-smooth for the `Y`
+handled, pairwise-coprime subsets have `<= 5` elements and are enumerable by prime-support mask.
+Validated: `maxW(A) <= budget(A)` on every genuine covering system tested.
+E.g. at `Y=363` (`κ = 1.26091`): `W({2,3,5}) = 1.3` and `W({2,3,7}) = 1.26190` both exceed `κ`,
+so neither half may contain `{2,3,5}` or `{2,3,7}`.
+
+**Frontier.**  `X = 724`.  At `Y = 363` the reduction stops deleting `11` (`H∩[2,363]` at last
+contains 11 multiples of 11), `|R|` jumps `45 → 56`, `Δ` jumps `0.077 → 0.261`, `1/Δ` falls to
+`3.8` so Lemma L8 has essentially no teeth (`2·3 = 6 > 3.8`), and the enumeration blows up.
+Runs at `Y = 363` and `Y = 400` did not terminate inside the session budget (the machine was
+also shared with other jobs).
 
 **Correctness safeguards run before any of the above was believed:**
 * `H_lemma_check.py` — L5 on independently generated coverings: 0 failures;
@@ -236,13 +251,15 @@ larger than `budget(R(Y)) - 1`.  **Measured:** the minimum reciprocal sum of a `
 `H`-covering is `<= 1.4`; a search at cap `1.35` did not terminate.  Establishing
 `σ_H := inf{budget(A) : A ⊆ H a covering set}` is the natural next target of this route —
 every unit of `σ_H` above `1` translates directly into a modulus bound via
-`budget(R(Y)) < 1 + σ_H`.
+`budget(R(Y)) < 1 + σ_H`.  Numerically `budget(R(Y)) - 1` reaches `1.4` only near `Y ≈ 700`
+(`X ≈ 1400`), so *even a complete determination of* `σ_H` *would cap this route near* `X ≈ 1400`
+unless the enumeration itself (which uses much more than budget) carries further.
 
 ---
 
 ## 8. Explicit scope disclaimer
 
-Theorems T2 and T3 are statements about covering systems **all of whose moduli are bounded**.
+Theorems T2 (X=254) and T3 (X=724) are statements about covering systems **all of whose moduli are bounded**.
 `E` is infinite, so they are *not* evidence that the answer to 273 is NO, and they are not a
 proof of anything about unbounded systems.  They are (i) rigorous lemmas usable as raw material
-in a NO proof, and (ii) pruning for a YES search: any certificate must use a modulus `> 700`.
+in a NO proof, and (ii) pruning for a YES search: any certificate must use a modulus `> 724`.

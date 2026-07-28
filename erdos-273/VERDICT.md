@@ -24,31 +24,46 @@ in `AUDITS.md`.
 **(T1) Parity split.** *An $E$-covering exists **iff** there are two **disjoint** finite sets
 $M_0, M_1 \subseteq H := \{m \ge 2 : 2m+1 \text{ prime}\}$, each carrying a covering system of ℤ
 with distinct moduli; and $\mathrm{lcm}_E = 2\,\mathrm{lcm}_H$.*
-Derived five independent times in this run (main line, routes A, D, F, G) and verified in both
-directions computationally. Proof: `attempts/route-M-main/PARITY_SPLIT.md`; verifier
+Derived **six** independent times in this run (main line, routes A, C, D, F, G) and verified in
+both directions computationally, including on negative residues. Proof: `attempts/route-M-main/PARITY_SPLIT.md`; verifier
 `experiments/M_parity_split.py`.
 *This is the correct frame for the problem.* The solved $p\ge3$ variant (Selfridge) is precisely
 "$H$ supports **one** covering system"; problem 273 additionally demands a **second, disjoint**
 one built from the moduli the first did not use.
 
-**(T2) The reciprocal-budget obstruction is powerless, in both directions.**
+**(T2) There is no universal reciprocal-sum constant to exploit.**
 $\inf \sum 1/n_i = 1$ over all covering systems with distinct moduli, not attained: the doubling
 map $D(C) = \{0 \bmod 2\} \cup \{(2a_i+1) \bmod 2n_i\}$ has cost $\tfrac12 + \tfrac12\mathrm{cost}(C)$,
 giving explicit systems of cost $1 + \tfrac13 2^{-k}$ (verified by full mod-lcm sweeps for
 $k \le 8$; route F pushed the same construction to $k = 14$, cost $49153/49152$).
-Consequently the natural heuristic "a covering needs cost $\approx 4/3$" is **false**, and since
-$\sum_{p \ge 5} 1/(p-1)$ diverges, *no* reciprocal-sum argument can settle the problem either way.
-Corroborated by Filaseta–Kalogirou (arXiv:2407.15280), who prove a positive lower bound on the
-excess exactly when the least modulus exceeds 4 — and $4 \in E$.
+Consequently the natural heuristic "a covering needs cost $\approx 4/3$" is **false**, and no
+argument that derives a contradiction from an absolute lower bound $\sum 1/n_i \ge c > 1$ can work.
+**Scope correction (adversarial audit):** this concerns *unrestricted* systems and does **not**
+show that $E$- or $H$-coverings can have cost near 1. No lower bound on the cost of an $E$- or
+$H$-covering is proved anywhere in this run; the cheapest $H$-covering found costs $65/48$ with no
+downward trend. The earlier phrasing "no reciprocal-sum argument can decide the problem in either
+direction" was a non-sequitur and is withdrawn.
+Filaseta–Kalogirou (arXiv:2407.15280) reportedly prove that a least modulus $> 4$ forces the excess
+to be bounded away from 0. **The primary source could not be opened** (egress blocked), so this is
+unverified and not load-bearing. If true it gives a *dichotomy*, not a blanket conclusion: an
+$E$-covering **using** the modulus 4 lies in the no-bound regime, whereas one **avoiding** 4 has
+least modulus $\ge 6$ and would inherit a positive excess bound.
 
 **(T3) Lower bounds on the lcm.** Every modulus divides $L = \mathrm{lcm}$, so
 $f(L) := \sum_{n \mid L,\, n \in E} 1/n > 1$ is necessary. An exhaustive sieve over **all** $L$
 (not merely smooth ones) gives: the least such $L$ is $\mathbf{55440 = 2^4\cdot3^2\cdot5\cdot7\cdot11}$
 ($f = 6429/6160$), and exactly **90** values $L \le 10^6$ qualify, all divisible by 60.
 Moreover $L = 55440$ itself is **eliminated**, twice independently (below), as are 110880 and
-several further candidates.
+several further candidates. Combining the budget condition with the fiber test and checking the
+complete candidate list, the adversarial auditor independently confirmed that the only $L_H \le
+95000$ with $H$-pool budget $\ge 2$ are $27720, 32760, 50400, 55440, 65520, 75600, 83160, 90720$
+and that the first seven are all killed — giving the unconditional bound
+$$\boxed{\ \mathrm{lcm} \ \ge\ 2\cdot 90720 \ =\ 181440\ }$$
+for any covering system with all moduli in $E$. (Route D obtained this first; it was reproduced by
+two further independent solvers.)
 
-**(T4) Forced-overlap lemma and the coprimality test** (route A, audited).
+**(T4) Forced-overlap lemma and the coprimality test** (now stated in full in `DRAFT.tex`,
+including the strengthened Theorem A3+ that was previously cited but unstated) (route A, audited).
 For a covering with modulus set $M$ and any *pairwise coprime* $T \subseteq M$,
 $$\sum_{m\in M}\tfrac1m - 1 \;\ge\; f(T) := \sum_{m\in T}\tfrac1m - 1 + \prod_{m\in T}\bigl(1-\tfrac1m\bigr),$$
 because $S \mapsto \sum_{m\in S}1/m - \mathrm{dens}(\bigcup S)$ is monotone and coprime classes are
@@ -65,26 +80,43 @@ Exact branch-and-bound kills $L_H = 27720, 32760, 50400, 55440, 65520, 75600$ an
 
 **(T6) Rigidity of the cheap mechanism** (route F).
 The only exact partition of $\mathbb Z$ minus one residue class by classes with pairwise distinct
-moduli $>1$ is the dyadic staircase $2,4,\dots,2^m$. Since
-$E \cap \{2^k\} = \{4,16,256,65536\}$ and $H \cap \{2^k\} = \{2,8,128,32768\}$ (Fermat primes,
-shifted) contain **no two consecutive powers of two**, and $2 \notin E$, the unique known
-mechanism for driving the reciprocal cost to 1 is structurally unavailable here.
+moduli $>1$ is the dyadic staircase $2,4,\dots,2^m$.
+**Correction (adversarial audit):** the earlier claim "$E \cap \{2^k\} = \{4,16,256,65536\}$" asserted
+that the known Fermat primes are the only ones — an open problem — and is withdrawn; those are
+$\subseteq$, the known members. The corollary survives unconditionally by a different route:
+$2^k+1$ prime forces $k$ to be a power of 2, and $k, k+1$ are both powers of 2 only for $k=1$, so
+$E$ contains **no two consecutive powers of two** and $2 \notin E$; also $4 \notin H$ since
+$9 = 3^2$. Hence no non-empty dyadic staircase lies in $E$, and only the trivial $\{2\}$ lies in $H$.
+So the *only known* mechanism for driving the reciprocal cost to 1 is unavailable here — which is
+not a lower bound on that cost, and other mechanisms are not excluded.
 
 **(T7) A barrier on the negative branch** (route D, with an explicit certificate).
 For every **fixed** finite set $Q$ of primes, moduli coprime to $\prod Q$ contribute to every
 $Q$-cell for every residue assignment, and $\sum_{m\in H,\ \gcd(m,\prod Q)=1} 1/m = \infty$.
 Explicitly, $H \cap [2, 82899]$ already satisfies every single-prime fiber condition at threshold
-2, at every level, for every assignment. **Hence no obstruction local at a fixed finite set of
-primes can ever prove a negative answer.** A negative resolution needs a functional coupling all
-primes with a bound uniform in their number — i.e. Hough / Balister–Bollobás–Morris–**Sahasrabudhe**–Tiba
-distortion technology, which provably requires least modulus $\ge 616000$ whereas $\min E = 4$.
+2, at every level, for every assignment. **Hence no elimination test built from monotone additive
+fiber budgets over the cells of a *fixed* finite set of primes can eliminate all lattices.** (The
+eliminations used in this run are not refuted by this: they use a prime $q$ depending on $L$.)
+A negative resolution therefore appears to need a functional coupling all primes with a bound
+uniform in their number.
+**Corrections (adversarial audit):** (a) the available technology of that kind — Hough's and
+Balister–Bollobás–Morris–**Sahasrabudhe**–Tiba's distortion method — proves an *upper* bound
+($\le 10^{16}$, resp. $\le 616000$) on the least modulus of a distinct-moduli covering system, so it
+yields a contradiction only for systems all of whose moduli exceed that bound; since $\min E = 4$
+it does not apply. The earlier wording "provably requires least modulus $\ge 616000$" mis-described
+the theorem and is withdrawn. (b) $H \cap [2,82899]$ is an *interval*, not the divisor pool of any
+lattice; the transfer to a lattice uses monotonicity of $\Phi_q$ in the pool (take
+$L_H = \mathrm{lcm}$ of that set). (c) "obstruction local at a fixed finite set of primes" is not a
+formally defined class; what is actually proved covers monotone additive fiber-budget functionals.
 
 **(T8) Verified partial certificates.** Several explicit sets of $E$-moduli covering *exactly the
 even integers* were found and independently re-verified, the cheapest being
 $$\{4,6,12,16,18,36,72,96,192,576\}\quad(\text{cost } 65/96,\ \mathrm{lcm}=576),$$
 the image under (T1) of the cheapest $H$-covering found anywhere (cost $65/48$, $\mathrm{lcm}=288$).
-So **one half of the problem is solved explicitly**; the entire difficulty is doing both halves
-with *disjoint* modulus sets.
+So covering one parity class with $E$-moduli is easy and explicit. **This is not "half the
+problem"** (an earlier phrasing, withdrawn after audit): by Corollary/pivot below, the easy half
+carries essentially none of the difficulty, which lies entirely in doing *both* halves with
+*disjoint* modulus sets.
 
 ## 2. The precise open gap
 

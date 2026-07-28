@@ -88,11 +88,13 @@ def main(LMAX):
     for L in range(4, LMAX + 1):
         for minm in (2, 3):
             tests.append((L, minm))
-    random.seed(273)
-    for L in [420, 480, 540, 600, 630, 660, 720, 840, 900, 960, 990, 1008, 1080, 1170, 1200,
+    for L in [420, 480, 540, 600, 630, 660, 720, 840, 900, 960, 990, 1008, 1170, 1200,
               288, 576, 864, 1152, 1440, 1512, 1530, 1560]:
         for minm in (2, 3):
             tests.append((L, minm))
+    # THE FIVE PIVOT SURVIVORS -- the headline instances
+    for L in [1080, 1260, 1680, 2160, 2520]:
+        tests.append((L, 3))
     nsat = nunsat = 0
     bad = []
     for (L, minm) in tests:
@@ -110,6 +112,8 @@ def main(LMAX):
             nsat += 1
         else:
             nunsat += 1
+        if L >= 240:
+            print(f"    L={L:6d} minm={minm}: mdfs={v1} == sat={v2}", flush=True)
     print(f"\nagreement on {nsat + nunsat} instances: {nsat} SAT (certificates re-verified), "
           f"{nunsat} UNSAT;  mismatches: {len(bad)}")
     if bad:

@@ -1,0 +1,11 @@
+    L=   240 minm=2: mdfs=UNSAT == sat=UNSAT
+    L=   240 minm=3: mdfs=UNSAT == sat=UNSAT
+    L=   420 minm=2: mdfs=UNSAT == sat=UNSAT
+    L=   420 minm=3: mdfs=UNSAT == sat=UNSAT
+    L=   480 minm=2: mdfs=UNSAT == sat=UNSAT
+    L=   480 minm=3: mdfs=UNSAT == sat=UNSAT
+    L=   540 minm=2: mdfs=SAT == sat=SAT
+    L=   540 minm=3: mdfs=UNSAT == sat=UNSAT
+    L=   600 minm=2: mdfs=UNSAT == sat=UNSAT
+    L=   600 minm=3: mdfs=UNSAT == sat=UNSAT
+    L=   630 minm=2: mdfs=SAT == sat=SAT

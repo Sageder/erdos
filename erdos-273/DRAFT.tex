@@ -23,14 +23,14 @@ are of the form $p-1$ for primes $p\ge5$. We do \emph{not} answer this. We recor
 rigorously proved structural constraints and reductions, each independently audited and
 machine-verified, together with an explicit determination of why several natural attacks cannot
 work. In particular we prove: an exact parity-split equivalence reducing the problem to the
-existence of two \emph{disjoint} covering systems inside the halved set $H=\{m:2m+1\text{ prime}\}$;
-that the reciprocal-sum (``budget'') obstruction is powerless in both directions, since the
-infimum of $\sum 1/n_i$ over distinct-moduli covering systems is exactly $1$; a rigidity theorem
-identifying the dyadic staircase as the unique exact cover of $\mathbb Z$ minus one class by
-distinct moduli, whence the only known cost-minimising mechanism is unavailable in this setting;
-and two effective elimination tests (a coprimality/pigeonhole test and an exact $q$-adic fiber
-test) which together rule out explicit ranges of possible least common multiples. All claims are
-accompanied by independent verification scripts.
+existence of two \emph{disjoint} covering systems inside the halved set $H=\{m\ge2:2m+1\text{ prime}\}$;
+that the infimum of $\sum 1/n_i$ over \emph{unrestricted} distinct-moduli covering systems is
+exactly $1$, so that no universal constant $c>1$ with $\sum 1/n_i\ge c$ exists to be exploited;
+a rigidity theorem identifying the dyadic staircase as the unique exact cover of $\mathbb Z$ minus
+one class by distinct moduli, which no subset of $E$ can realise; and two effective elimination
+tests (a coprimality/pigeonhole test and an exact $q$-adic fiber test) which together rule out
+explicit lists of possible least common multiples. All claims are accompanied by independent
+verification scripts.
 \end{abstract}
 
 \section{Setting}
@@ -43,7 +43,8 @@ E:=\{p-1:\ p\ \text{prime},\ p\ge5\}=\{n\ge4:\ n+1\ \text{prime}\},\qquad
 H:=\{m\ge2:\ 2m+1\ \text{prime}\}=\tfrac12E .
 \]
 Every $n\in E$ is even, and $n\mapsto n/2$ is a bijection $E\to H$. We write
-$B_E(X)=\sum_{n\in E,\ n\le X}1/n$ and, for $L\ge1$, $f(L)=\sum_{n\mid L,\ n\in E}1/n$.
+$B_E(X)=\sum_{n\in E,\ n\le X}1/n$ and, for $L\ge1$, $\beta(L)=\sum_{n\mid L,\ n\in E}1/n$.
+(We reserve the letter $f$ for the functional of Lemma~\ref{lem:A2}.)
 
 \smallskip
 \noindent\textbf{Question (Erd\H{o}s--Graham, 1980).} Is there a covering system with all moduli in
@@ -55,29 +56,31 @@ $E$?
 The following are equivalent.
 \begin{enumerate}
 \item[\rm(i)] There is a covering system with all moduli in $E$.
-\item[\rm(ii)] There are two \emph{disjoint} finite sets $M_0,M_1\subseteq H$ such that for each
-$j$ there is a covering system of $\mathbb Z$ whose set of moduli is exactly $M_j$.
+\item[\rm(ii)] There are two \emph{disjoint} finite nonempty sets $M_0,M_1\subseteq H$ such that for
+each $j$ there is a covering system of $\mathbb Z$ whose set of moduli is exactly $M_j$.
 \end{enumerate}
 Moreover $\operatorname{lcm}(E\text{-moduli})=2\operatorname{lcm}(H\text{-moduli})$.
 \end{lemma}
 
 \begin{proof}
-(i)$\Rightarrow$(ii). Let $\{a_i\bmod n_i\}$ be such a system, $n_i=2m_i$ with $m_i\in H$ pairwise
-distinct. Since $n_i$ is even, $a_i+n_i\mathbb Z$ consists solely of integers of the parity of
-$a_i$; so $I_j=\{i:a_i\equiv j\ (2)\}$ partitions the index set, and $M_j=\{m_i:i\in I_j\}$ are
-disjoint. Fix $j$ and $y\in\mathbb Z$; put $x=2y+j$. Some $i$ has $x\equiv a_i\ (2m_i)$, forcing
-$a_i\equiv j\ (2)$, i.e. $i\in I_j$; writing $a_i=2b_i+j$,
+(i)$\Rightarrow$(ii). Let $\{a_i\bmod n_i\}$ be such a system, $n_i=2m_i$ with $m_i\in H$; the
+$m_i$ are pairwise distinct because the $n_i$ are. Since $n_i$ is even, $a_i+n_i\mathbb Z$ consists
+solely of integers of the parity of $a_i$; so $I_j=\{i:a_i\equiv j\ (2)\}$ partitions the index
+set, and $M_j=\{m_i:i\in I_j\}$ are disjoint. Fix $j$ and $y\in\mathbb Z$; put $x=2y+j$. Some $i$
+has $x\equiv a_i\ (2m_i)$, forcing $a_i\equiv j\ (2)$, i.e. $i\in I_j$; writing $a_i=2b_i+j$,
 \[
 2y+j\equiv 2b_i+j \pmod{2m_i}\iff 2(y-b_i)\in 2m_i\mathbb Z\iff y\equiv b_i\pmod{m_i},
 \]
 so $\{b_i\bmod m_i\}_{i\in I_j}$ covers $\mathbb Z$. (The argument quantifies over all
-$y\in\mathbb Z$, negative ones included; classes are two-sided.)
+$y\in\mathbb Z$, negative ones included; classes are two-sided.) Each $M_j$ is nonempty, since
+otherwise no class would cover the integers of parity $j$.
 
 (ii)$\Rightarrow$(i). Given coverings $\{b^{(j)}_m\bmod m\}_{m\in M_j}$, take the classes
 $2b^{(j)}_m+j \pmod{2m}$ for all $m\in M_j$, $j=0,1$. The moduli $2m$ lie in $E$ and are pairwise
-distinct (within a block because the $m$ are, across blocks because $M_0\cap M_1=\varnothing$).
-If $x=2y+j$ then $y\equiv b^{(j)}_m\ (m)$ for some $m\in M_j$, whence
-$x\equiv 2b^{(j)}_m+j\ (2m)$.
+distinct: within a block because the $m$ are, across blocks because $M_0\cap M_1=\varnothing$.
+(The disjointness hypothesis is essential and not decorative: $M_0=M_1=\{2\}$ would produce the
+modulus list $4,4$, violating distinctness.) If $x=2y+j$ then $y\equiv b^{(j)}_m\ (m)$ for some
+$m\in M_j$, whence $x\equiv 2b^{(j)}_m+j\ (2m)$.
 \end{proof}
 
 \begin{corollary}\label{cor:pivot}
@@ -92,7 +95,7 @@ Any construction forcing one of $M_0,M_1$ to consist of odd moduli only is a dea
 Erd\H{o}s--Selfridge odd covering problem, which is open.
 \end{remark}
 
-\section{The budget obstruction is powerless}
+\section{The infimum of the reciprocal sum}
 
 \begin{lemma}[Doubling map]\label{lem:double}
 If $C=\{a_i\bmod n_i\}$ is a covering system with distinct moduli, so is
@@ -118,36 +121,60 @@ with distinct moduli (two classes are disjoint or meet in a class of positive de
 impossible by Davenport--Mirsky--Newman--Rado. The upper bound is Lemma~\ref{lem:double}.
 \end{proof}
 
-\begin{remark}
-Consequently no reciprocal-sum argument can decide the problem in either direction: costs may be
-arbitrarily close to $1$, and $\sum_{p\ge5}1/(p-1)$ diverges. (Filaseta and Kalogirou,
-arXiv:2407.15280, prove the sharper statement that a positive lower bound on the excess holds
-precisely when the least modulus exceeds $4$; since $4\in E$, our setting lies in the regime where
-no such bound is available.) Lemma~\ref{lem:double} does not act on $E$: admissibility of $n$ and
-of $2n$ are unrelated conditions.
+\begin{remark}[what this does and does not give]\label{rem:budget}
+Theorem~\ref{thm:inf} concerns \emph{unrestricted} distinct-moduli systems. It shows that no
+universal constant $c>1$ with $\sum_i 1/n_i\ge c$ exists, so any attack that would derive a
+contradiction from an absolute lower bound on the reciprocal sum is dead. It does \emph{not} say
+that $E$- or $H$-systems can have cost close to $1$: no lower bound on the cost of an $E$- or
+$H$-covering is known, and the cheapest $H$-covering found in extensive search costs $65/48$ with
+no downward trend. Indeed $D$ never produces an $E$-system: every $D(C)$ contains the modulus
+$2\notin E$, and admissibility of $n$ and of $2n$ are unrelated conditions.
+\end{remark}
+
+\begin{remark}[a dichotomy, on unverified authority]\label{rem:FK}
+Filaseta and Kalogirou (arXiv:2407.15280, ``Covering systems with the sum of the reciprocals of the
+moduli close to $1$'') are reported to prove the 1973 Erd\H{o}s--Selfridge conjecture that a least
+modulus exceeding $4$ forces $\sum 1/n_i$ to be bounded away from $1$. \emph{We were unable to
+open the primary source} (network egress was blocked); the statement was confirmed only at
+abstract level and must not be treated as established. If it is as reported, it yields a
+dichotomy rather than a blanket conclusion: an $E$-covering that \emph{uses} the modulus $4$ has
+least modulus $4$ and lies in the regime where no excess bound is available, whereas an
+$E$-covering \emph{avoiding} $4$ has least modulus $\ge 6$ and would inherit a positive excess
+bound. We do not use either horn below.
 \end{remark}
 
 \section{Rigidity of the cheap mechanism}
 
 \begin{theorem}[Rigidity]\label{thm:rigid}
-If residue classes with pairwise distinct moduli $>1$ partition $\mathbb Z\setminus(c\bmod D)$
-exactly, then $D=2^m$ and the moduli are exactly $2,4,\dots,2^m$.
+If residue classes $a_i\bmod n_i$ ($0\le a_i<n_i$) with pairwise distinct moduli $>1$ partition
+$\mathbb Z\setminus(c\bmod D)$ exactly, then $D=2^m$ and the moduli are exactly $2,4,\dots,2^m$.
 \end{theorem}
 
-\begin{proof}[Proof sketch]
-From $\sum_i z^{a_i}/(1-z^{n_i})=\frac1{1-z}-\frac{z^{c}}{1-z^{D}}$, evaluate at a primitive
-$n_k$-th root of unity, $n_k$ the largest modulus: only $i=k$ contributes a pole, forcing $n_k=D$,
-$D$ even and $a_k\equiv c+D/2$. Deleting that class leaves an exact partition of
-$\mathbb Z\setminus(c\bmod D/2)$; induct.
+\begin{proof}[Proof]
+For $|z|<1$, $\sum_i z^{a_i}/(1-z^{n_i})=\frac1{1-z}-\frac{z^{c}}{1-z^{D}}$. Let $n_k$ be the
+largest modulus. At a primitive $n_k$-th root of unity the left side has a pole (only $i=k$ can
+contribute), so the right side must too, giving $n_k\mid D$; at a primitive $D$-th root the right
+side has a pole, so some $n_i$ is divisible by $D$, giving $D\mid n_i\le n_k$. Hence $n_k=D$.
+Matching residues at the primitive $D$-th roots forces $\zeta^{a_k-c}=-1$ for all of them, so $D$
+is even and $a_k\equiv c+D/2$. Deleting that class leaves an exact partition of
+$\mathbb Z\setminus(c\bmod D/2)$ by the remaining classes; induct, with base $D=2$.
 \end{proof}
 
-\begin{corollary}
-$E\cap\{2^k\}=\{4,16,256,65536\}$ and $H\cap\{2^k\}=\{2,8,128,32768\}$ (Fermat primes minus one,
-respectively halved). Neither contains two consecutive powers of $2$, and $2\notin E$. Hence there
-is no exact partition of $\mathbb Z$ minus one class by distinct $E$-moduli at all, and only the
-trivial one ($D=2$) by distinct $H$-moduli. The unique known mechanism driving the cost to $1$ is
-therefore unavailable here.
+\begin{corollary}\label{cor:rigid}
+$\{4,16,256,65536\}\subseteq E\cap\{2^k\}$ and $\{2,8,128,32768\}\subseteq H\cap\{2^k\}$; these are
+the known members, coming from the known Fermat primes. Unconditionally, however,
+$2\notin E$ and $4\notin H$ (since $9=3^2$), and $E$ contains no two consecutive powers of $2$:
+$2^k+1$ prime forces $k$ to be a power of $2$, and $k,k+1$ are both powers of $2$ only for $k=1$,
+which gives $2\notin E$. Consequently \emph{no} non-empty dyadic staircase lies in $E$, and the
+only one inside $H$ is the trivial $\{2\}$. So the mechanism of Theorem~\ref{thm:rigid} is
+unavailable in $E$ and essentially unavailable in $H$.
 \end{corollary}
+
+\begin{remark}
+Corollary~\ref{cor:rigid} removes the \emph{only known} mechanism for driving the reciprocal cost
+to $1$; it does not exclude other mechanisms, and in particular it is not a lower bound on the cost
+of an $E$- or $H$-covering. No such lower bound is proved anywhere in this note.
+\end{remark}
 
 \section{Two effective elimination tests}
 
@@ -157,69 +184,108 @@ pairwise coprime. Then
 \[
 \sum_{m\in M}\frac1m-1\ \ge\ f(T):=\sum_{m\in T}\frac1m-1+\prod_{m\in T}\Bigl(1-\frac1m\Bigr).
 \]
+Both hypotheses are needed: $T\subseteq M$ and pairwise coprimality each fail the conclusion
+otherwise.
 \end{lemma}
 
 \begin{proof}
-For a family $S$ of chosen classes put $g(S)=\sum_{m\in S}1/m-\operatorname{dens}(\bigcup S)$.
-Adding a class of modulus $m'$ raises the first term by $1/m'$ and the density by at most $1/m'$,
-so $g$ is non-decreasing. $g(M)=\sum_M 1/m-1$ since the union is $\mathbb Z$. For pairwise coprime
-$T$ the classes are independent by the Chinese remainder theorem, \emph{whatever the residues},
-so $\operatorname{dens}(\bigcup T)=1-\prod_{m\in T}(1-1/m)$ exactly, i.e. $g(T)=f(T)$.
+For a subfamily $S$ of the chosen classes put $g(S)=\sum_{m\in S}1/m-\operatorname{dens}(\bigcup S)$;
+the density exists because a finite union of classes is periodic modulo the lcm. Adding a class of
+a new modulus $m'$ raises the first term by $1/m'$ and the density by at most $1/m'$, so $g$ is
+non-decreasing. $g(M)=\sum_M 1/m-1$ since the union is $\mathbb Z$. For pairwise coprime $T$ the
+classes are independent by the Chinese remainder theorem, \emph{whatever the residues}: the
+complement has exactly $\prod_{m\in T}(m-1)$ residues modulo $\prod_{m\in T}m$, so
+$\operatorname{dens}(\bigcup T)=1-\prod_{m\in T}(1-1/m)$ and $g(T)=f(T)$.
 \end{proof}
 
 \begin{theorem}\label{thm:A3}
-If $60\mid L$ and $1<f(L)\le\frac{31}{30}$, then no covering system with all moduli in $E$ has
+If $60\mid L$ and $1<\beta(L)\le\frac{31}{30}$, then no covering system with all moduli in $E$ has
 lcm dividing $L$.
 \end{theorem}
 
 \begin{proof}
-$60\mid L$ gives $4,6,10\mid L$, all in $E$. Since $f(L)-1\le\frac1{30}<\frac1{10}$, each of
-$4,6,10$ is forced: deleting it leaves reciprocal sum $<1$. Their halves $2,3,5$ are pairwise
-coprime, and with $X_j=\sum_{m\in M_j}1/m-1$ we have $X_0+X_1\le 2f(L)-2\le\frac1{15}$ while both
-$X_j>0$ strictly (Theorem~\ref{thm:inf}); so $X_j<\frac1{15}$ for each $j$. As
-$f(\{2,3\})=\frac16$, $f(\{2,5\})=\frac1{10}$, $f(\{3,5\})=\frac1{15}$, Lemma~\ref{lem:A2} forbids
-any two of $2,3,5$ from lying in the same $M_j$. Three objects cannot occupy two blocks.
-\end{proof}
-
-\begin{lemma}[$q$-adic fiber test]\label{lem:fiber}
-Let $q$ be a prime, $S$ a set of $H$-moduli, and for an assignment of residues $b_m$ and
-$r\in\mathbb Z_q$ put $F_q(r)=\sum_{m:\,b_m\equiv r\ (q^{\nu_q(m)})} q^{\nu_q(m)}/m$. If some
-covering system with all moduli in $E$ has $\operatorname{lcm}/2=L_H$ and
-$S=\{m\mid L_H:2m+1\text{ prime}\}$, then $\Phi_q(S):=\max_{\text{assignments}}\min_r F_q(r)\ge2$
-for every prime $q\mid L_H$.
-\end{lemma}
-
-\begin{proof}
-For a single covering system, the integers $y\equiv r\ (q^J)$ that the class $b_m\ (m)$ can meet
-are exactly those with $b_m\equiv r\ (q^{\nu_q(m)})$, inside which the class has relative density
-$q^{\nu_q(m)}/m$; subadditivity forces $F_q(r)\ge1$. By Lemma~\ref{lem:parity} the two halves are
-disjoint subsets of $S$ carrying their own residues, so their fiber functions add. Enlarging the
-used set only increases $F_q$.
+$60\mid L$ gives $4,6,10\mid L$, all in $E$. Since $\beta(L)-1\le\frac1{30}<\frac1{10}$, each of
+$4,6,10$ is forced to be used: deleting it leaves reciprocal sum $<1$. Their halves $2,3,5$ then
+lie in $M_0\cup M_1$, which is what licenses $T\subseteq M_j$ in Lemma~\ref{lem:A2}. With
+$X_j=\sum_{m\in M_j}1/m-1$, disjointness gives $X_0+X_1=\sum_{M_0\cup M_1}1/m-2\le 2\beta(L)-2
+\le\frac1{15}$, while both $X_j>0$ strictly (Theorem~\ref{thm:inf}); hence $X_j<\frac1{15}$ for
+each $j$. As $f(\{2,3\})=\frac16$, $f(\{2,5\})=\frac1{10}$, $f(\{3,5\})=\frac1{15}$,
+Lemma~\ref{lem:A2} forbids any two of $2,3,5$ from lying in the same $M_j$. Three objects cannot
+occupy two blocks.
 \end{proof}
 
 \begin{remark}
-The Haar average of $F_q$ over $r$ equals $\sum 1/n_i$ exactly, so $\sum 1/n_i>1$ is only the
-\emph{average} condition, whereas covering demands the \emph{minimum}.
+The inequality is tight: $f(\{3,5\})$ \emph{equals} the bound on $X_0+X_1$, so the proof survives
+only because both strict inequalities above are strict. Theorem~\ref{thm:A3} is a statement about
+a fixed $L$, never about all finite subsets of $E$.
+\end{remark}
+
+\begin{theorem}[strengthened form]\label{thm:A3plus}
+Fix $L$ even, put $S=\{m\mid L/2:\ m\in H\}$ and $B=\sum_{m\in S}1/m$. Call $m\in S$
+\emph{forced} if $B-1/m<2$, and let $F$ be the set of forced moduli. For $S'\subseteq S$ let
+$g^*(S')=\max\{f(T):T\subseteq S'\text{ pairwise coprime}\}$. If
+\[
+\min_{F=F_0\sqcup F_1}\bigl(g^*(F_0)+g^*(F_1)\bigr)\ >\ B-2 ,
+\]
+then no covering system with all moduli in $E$ has lcm $L$.
+\end{theorem}
+
+\begin{proof}
+Every used modulus lies in $S$; if $m$ were unused the two halves would have total reciprocal mass
+at most $B-1/m<2$, contradicting $X_0,X_1>0$. So $F\subseteq M_0\cup M_1$ and the halves induce a
+2-colouring of $F$. By Lemma~\ref{lem:A2}, $X_j\ge g^*(F_j)$, while $X_0+X_1\le B-2$.
+\end{proof}
+
+\noindent Theorem~\ref{thm:A3} is the case $F\supseteq\{2,3,5\}$ with $|T|=2$.
+
+\begin{lemma}[$q$-adic fiber test]\label{lem:fiber}
+Let $q$ be a prime, and let $S$ be a set of $H$-moduli (so every element is $\ge2$). For an
+assignment of residues $b_m$ and $r\in\mathbb Z_q$ put
+$F_q(r)=\sum_{m:\,b_m\equiv r\ (q^{\nu_q(m)})} q^{\nu_q(m)}/m$. If some covering system with all
+moduli in $E$ has $\operatorname{lcm}/2=L_H$ and $S=\{m\mid L_H:\ m\ge2,\ 2m+1\text{ prime}\}$,
+then $\Phi_q(S):=\max_{\text{assignments}}\min_r F_q(r)\ \ge\ 2$ for every prime $q\mid L_H$.
+\end{lemma}
+
+\begin{proof}
+For a single covering system drawn from $S$, and $J\ge\max_m\nu_q(m)$: since
+$\gcd(m,q^J)=q^{\nu_q(m)}$, the integers $y\equiv r\ (q^J)$ that the class $b_m\ (m)$ meets are
+exactly those with $b_m\equiv r\ (q^{\nu_q(m)})$, and inside that fiber the class has relative
+density $q^{\nu_q(m)}/m$; subadditivity forces $F_q(r)\ge1$. By Lemma~\ref{lem:parity} the two
+halves are disjoint subsets of $S$ carrying their own residues, so their fiber functions add.
+Enlarging the used set to all of $S$ only increases $F_q$ pointwise.
+\end{proof}
+
+\begin{remark}
+With $\mu$ the Haar measure on $\mathbb Z_q$, $\int F_q\,d\mu=\sum_{m\in S}1/m$ exactly, the sum
+being over the \emph{$H$}-moduli. So the reciprocal-sum condition is only the \emph{average} of the
+fiber condition, whereas covering demands the \emph{minimum}.
 \end{remark}
 
 \section{What is ruled out, and what is not}
 
-Combining $f(L)>1$, Theorem~\ref{thm:A3} and Lemma~\ref{lem:fiber} (the last computed exactly by
-branch and bound) eliminates explicit ranges of candidate least common multiples; the computations
-and their independent verifications are in the accompanying scripts. The smallest $L$ with
-$f(L)>1$ is $55440=2^4\cdot3^2\cdot5\cdot7\cdot11$, and $55440$ is itself eliminated, twice
-independently (by Lemma~\ref{lem:fiber} at $q=2$ and by the strengthened form of
-Theorem~\ref{thm:A3}).
+Combining $\beta(L)>1$, Theorem~\ref{thm:A3}, Theorem~\ref{thm:A3plus} and Lemma~\ref{lem:fiber}
+(the last computed exactly by branch and bound) eliminates explicit candidate least common
+multiples; the computations and their independent verifications are in the accompanying scripts.
+The smallest $L$ with $\beta(L)>1$ is $55440=2^4\cdot3^2\cdot5\cdot7\cdot11$, and $55440$ is itself
+eliminated twice independently: by Lemma~\ref{lem:fiber} at $q=2$, and by
+Theorem~\ref{thm:A3plus} (the forced set is $\{2,3,5,6,8,9,11\}$ and every 2-colouring gives
+$g^*(F_0)+g^*(F_1)\ge 6/55>269/3080=B-2$, a witness colouring being
+$\{3,5,6,9,11\}\mid\{2,8\}$ with $T=\{3,5,11\}$).
 
-Finally we record an obstruction to the obstructions. For every fixed finite set $Q$ of primes,
-any $m\in S$ coprime to $\prod Q$ contributes $1/m$ to every $Q$-cell for every residue
-assignment, and $\sum_{m\in H,\ \gcd(m,\prod Q)=1}1/m=\infty$ by Mertens--Dirichlet. Hence no
-condition local at a fixed finite set of primes can prove a negative answer; explicit finite
-certificates confirm this ($H\cap[2,82899]$ already satisfies every single-prime fiber condition
-with threshold $2$). A negative resolution therefore requires a functional coupling all primes
-with a bound uniform in their number --- that is the distortion technology of Hough and of
-Balister--Bollob\'as--Morris--Sahasrabudhe--Tiba, which provably requires least modulus at least
-$616000$, whereas $\min E=4$.
+Finally we record an obstruction to the obstructions. Fix a finite set $Q$ of primes and consider
+any elimination test built from monotone additive fiber budgets over the cells of
+$\prod_{q\in Q}\mathbb Z_q$. Any $m$ coprime to $\prod Q$ has $\nu_q(m)=0$ for all $q\in Q$ and so
+contributes $1/m$ to every cell for every residue assignment; and
+$\sum_{m\in H,\ \gcd(m,\prod Q)=1}1/m=\infty$, being $\sum 2/(p-1)$ over the primes $p$ in a union
+of admissible residue classes (Mertens--Dirichlet). Hence for each fixed $Q$ there are arbitrarily
+large pools passing the $Q$-local test trivially, so no \emph{fixed}-$Q$ test can eliminate all
+lattices. (The eliminations above are not refuted by this: they use a prime $q$ depending on $L$.)
+A negative resolution therefore appears to need a functional coupling all primes with a bound
+uniform in their number. The available technology of that kind --- Hough's and
+Balister--Bollob\'as--Morris--Sahasrabudhe--Tiba's distortion method --- proves that the least
+modulus of a distinct-moduli covering system is at most $10^{16}$, respectively $616000$; it
+yields a contradiction only for systems all of whose moduli exceed such a bound, whereas
+$\min E=4$. So it does not apply here.
 
 \section*{Status}
 

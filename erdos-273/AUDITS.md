@@ -93,3 +93,53 @@ SAT and DFS runs at 55440 were therefore chasing an already-decided instance; bo
    contributes a lower bound on the lcm, never a NO proof. Route A stated this correctly.
 8. Note: A3 does NOT kill 55440 (B_E = 6429/6160 > 31/30); the fiber condition does. The two
    tools are genuinely complementary and are combined in `experiments/M_eliminate.py`.
+
+## Audit 6 — FRESH ADVERSARIAL AUDIT of the whole draft (wave 2, PROMPT §7 mandated)
+Auditor given only the problem statement and the draft, instructed to BREAK the claims. It wrote
+its own independent solvers (`experiments/AUD_*`): a literal-definition brute force and a Pareto DP
+with wreath-product canonicalisation, agreeing with `M_audit_phi.py` on 330+ instances.
+
+**Verdicts.** Parity split CONFIRMED. Doubling map / infimum = 1 CONFIRMED. Lemma A2 CONFIRMED
+(both hypotheses shown load-bearing with explicit witnesses: for M = {2,4,8,16,24,32,48,96},
+X = 1/24 while f({2,3}) = 1/6 with 3 ∉ M, and f({2,4}) = 1/8 > X with 2,4 not coprime).
+Theorem A3 CONFIRMED (the strictness is razor-thin — f({3,5}) = 1/15 EQUALS the bound on X_0+X_1,
+so the proof survives only because both inequalities are strict; no off-by-one). Fiber test
+CONFIRMED with two corrections. Rigidity CONFIRMED. Fixed-Q barrier CONFIRMED with corrections.
+Scope discipline PASSES; **no sentence anywhere claims to resolve Erdős 273.**
+
+**Five overclaims found — ALL NOW FIXED in DRAFT.tex and VERDICT.md:**
+1. "E ∩ {2^k} = {4,16,256,65536}" asserted the Fermat prime list is COMPLETE — an open problem.
+   Replaced by ⊇ plus an unconditional argument (2^k+1 prime ⟹ k a power of 2; k, k+1 both powers
+   of 2 only at k = 1) that gives the corollary without any Fermat hypothesis.
+2. "no reciprocal-sum argument can decide the problem in either direction" — non-sequitur:
+   Theorem inf = 1 is about UNRESTRICTED systems and says nothing about the cost of E- or
+   H-systems. Weakened to: no universal constant c > 1 exists to exploit.
+3. The Filaseta–Kalogirou citation dropped the qualifier. Corrected: it gives a DICHOTOMY — an
+   E-covering USING the modulus 4 is in the no-bound regime, one AVOIDING 4 has least modulus ≥ 6
+   and would inherit a positive excess bound. Also flagged as unverified (no primary source).
+4. The draft cited "the strengthened form of Theorem A3" which it never stated. Now stated as
+   Theorem A3+ with proof, and the auditor independently re-derived it and confirmed the 55440 kill
+   (min over 2-colourings of g*(F_0)+g*(F_1) = 6/55 > 269/3080 = B−2, witness {3,5,6,9,11}|{2,8}
+   with T = {3,5,11}).
+5. "one half of the problem is solved explicitly" — rhetorically inflated; the easy parity class
+   carries none of the difficulty. Withdrawn.
+
+**Technical corrections applied:** (a) the fiber lemma's pool must specify m ≥ 2, else m = 1 is
+included (3 is prime) and the printed statement is weaker than the one the code uses; (b) the Haar
+average equals Σ1/m over the H-moduli — the n_i/m ambiguity is now disambiguated; (c) the rigidity
+proof needs BOTH evaluations (primitive n_k-th root gives n_k | D, primitive D-th root gives D | n_i
+≤ n_k, hence n_k = D) — now written out; (d) the symbol f was overloaded (β(L) vs f(T)) — renamed;
+(e) BBMST/Hough give an UPPER bound on the least modulus, not a requirement — rewritten.
+
+**Implementation notes recorded (sound but lossy):** `M_eliminate.py` and `M_pivot.py` break out of
+the q-loop on the first node cap, so a lattice can be filed UNDECIDED when a later q would kill it;
+and the `best` value returned alongside a False verdict is only a LOWER bound on Φ_q (pruned
+branches were never evaluated) and must not be read as Φ_q itself.
+
+**Code audit of `M_audit_phi.py`:** both prunes sound (they are relaxations); the symmetry break
+valid (only item 0 pinned; Aut of the complete q-ary tree is transitive on level-j nodes and
+preserves min_r F_q); the contiguous-block relabelling — the one step that could have hidden a bug,
+since {r : r ≡ b mod q^j} is not an interval — validated against a literal congruence-based
+enumerator and an exact tree recursion, 3-way agreement at 5 thresholds; 300 randomised stress
+instances against an independent DP with 0 disagreements; the node cap correctly returns UNKNOWN,
+never a kill.
