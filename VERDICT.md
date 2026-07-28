@@ -39,7 +39,7 @@ verification path. Audit in `AUDITS.md` walks PROMPT §7 item by item.
    the emptiness below 85 and the count at 85.
 
 2. **$P(k)$ is TRUE for $k=6,7,\dots,57$**, with explicit exactly-$k$ block certificates.
-   27 069 distinct solutions verified. Examples:
+   27 582 distinct solutions verified. Examples:
    - $k=6$: $(\tfrac14+\tfrac15+\tfrac16)+(\tfrac19+\tfrac1{10})+(\tfrac1{19}+\tfrac1{20})+(\tfrac1{44}+\tfrac1{45})+(\tfrac1{132}+\tfrac1{133})+(\tfrac1{209}+\tfrac1{210})=1$;
    - $k=57$: a 57-block certificate; solutions are known with every element $\ge 50$.
    $P(1)$ is FALSE (Kürschák). $P(2),\dots,P(5)$ remain open (no solution with $\max U\le345$
