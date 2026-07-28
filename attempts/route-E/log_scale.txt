@@ -1,0 +1,6 @@
+1 : max 85             |V|=19 sum=1     admissible balanced B: 0
+1/2 : max 91           |V|=10 sum=1/2   admissible balanced B: 0
+1/2 : max 105          |V|=12 sum=1/2   admissible balanced B: 0
+1/3 : max 105          |V|=15 sum=1/3   admissible balanced B: 0
+1/3 : max 100          |V|=15 sum=1/3   admissible balanced B: 0
+2/3 : max 105          |V|=14 sum=2/3   admissible balanced B: 0

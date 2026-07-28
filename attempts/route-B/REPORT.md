@@ -135,17 +135,25 @@ sets are precomputed per position).
 | 140 | 799,979,228 | 425 | 8.0 s |
 | 150 | 12,284,280,908 | 5,451 | 173 s |
 | 160 | 39,793,513,500 | 20,993 | ~14 min |
+| 170 | 94,036,672,206 | 25,650 | ~2 h on 4 cores (heavy machine contention) |
 
 > **Exhaustively: there is no legal `U` with `max(U) <= 84`; there are exactly four
-> with `max(U) = 85`; and the complete list of legal `U` with `max(U) <= 160`
-> consists of 20,993 sets, every one re-verified with `fractions.Fraction`.**
+> with `max(U) = 85`; and the complete list of legal `U` with `max(U) <= 170`
+> consists of 25,650 sets, every one re-verified with `fractions.Fraction`.**
 
-Distribution of `max(U)` over those 20,993 (only run-ends of `A(160)` can occur):
+Distribution of `max(U)` over the 20,993 with `max(U) <= 160`
+(only run-ends of `A(160)` can occur):
 
 ```
 85:4  91:2  96:1  100:32  105:57  115:16  120:51  133:78
 136:184  144:512  145:4514  153:5379  154:10163
 ```
+
+**Exact k-realisability inside the exhaustive class.** Over all 25,650 certificates
+with `max(U) <= 170` the number of maximal runs `r` ranges over `7..`, and
+
+> for `k >= 1`, a witness for `P(k)` using only integers `<= 170` exists
+> **iff `7 <= k <= 23`**.
 
 ### 3.3 Independent cross-validation
 
@@ -158,6 +166,48 @@ The 4-way job-split of `bsearch` was validated at `N = 150`:
 `1531 + 1329 + 1317 + 1274 = 5451`, matching the single-job count.
 
 ---
+
+## 3.4 Restricted exhaustive search: few blocks (`fewruns2`)
+
+`P(k)` needs a certificate with `r <= k <= M`, so bounding the number of maximal
+runs `r` bounds `k` from below. `fewruns.c` (derived from `bsearch.c`) adds a cap
+`RMAX` on the number of maximal runs together with the exact bound
+
+> a `U`-run always lies inside one run of the universe `A`, so a `U` using at most
+> `j` further runs from position `pos` has sum at most
+> `runcap[pos][j] = max(runcap[nxt][j], weight(first universe run) + runcap[nxt][j-1])`.
+
+(The naive "the first `j` universe runs are the heaviest" version of this bound is
+WRONG — a later, longer universe run can outweigh an earlier one — and it silently
+lost solutions; the bug was caught by cross-checking against the certificate list
+and is fixed. Validation of the fixed version: `RMAX=25` reproduces the exhaustive
+counts 163 at `N=120` and 425 at `N=140`; `RMAX=13` gives 206 and `RMAX=10` gives
+74 at `N=140`, both matching a direct count of the run numbers in the exhaustive
+certificate list.)
+
+Results:
+
+| RMAX | N | nodes | certificates |
+|---|---|---|---|
+| 6 | 160 | 147,941,463 | 0 |
+| 6 | 200 | 444,324,346 | 0 |
+| 6 | 250 | 6,322,165,390 | **1** |
+| 5 | 300 | 1,206,484,145 | **0** |
+
+The unique certificate with at most 6 maximal runs and `max(U) <= 250` is
+
+```
+1 = 1/4+1/5+1/6 + 1/9+1/10 + 1/19+1/20 + 1/44+1/45 + 1/132+1/133 + 1/209+1/210
+```
+
+i.e. `U = {4,5,6, 9,10, 19,20, 44,45, 132,133, 209,210}`, six blocks
+`[4,6],[9,10],[19,20],[44,45],[132,133],[209,210]`, run lengths `3,2,2,2,2,2`,
+`r = M = 6`. **So `P(6)` is TRUE**, and 210 is the smallest possible maximum
+element of a `k = 6` witness.
+
+> **Exhaustively: no legal `U` with at most 5 maximal runs has `max(U) <= 300`.**
+> Hence `P(k)` for `k <= 5` has no witness using integers `<= 300`.
+> (`P(1)` is false outright, by Kürschák non-integrality.)
 
 ## 4. Certificates and the block count k
 

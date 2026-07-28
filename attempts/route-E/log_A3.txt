@@ -5,3 +5,5 @@ wrote /home/user/erdos/attempts/route-E/prob_A_100_400.txt |univ|=137 maxsum=0.6
   seed 4 -> pool 67724 (211s)
   seed 5 -> pool 81345 (209s)
   seed 6 -> pool 94150 (211s)
+  seed 7 -> pool 106509 (211s)
+  seed 8 -> pool 116274 (211s)
