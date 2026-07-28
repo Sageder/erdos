@@ -1,2 +1,3 @@
 CLS(5,a) N=100: SAT (7s, 499 rounds) maxpos/v=13.50
 CLS(5,a) N=160: SAT (71s, 1582 rounds) maxpos/v=17.25
+CLS(5,a) N=250: SAT (895s, 6892 rounds) maxpos/v=23.50

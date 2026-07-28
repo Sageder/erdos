@@ -9,3 +9,6 @@ N=  64: sum tau <=    2952  (gamma <= 0.72070)   C_ledger(N) <= 1.72185 = 260/15
 N=  80: sum tau <=    4840  (gamma <= 0.75625)   C_ledger(N) <= 1.97561 = 81/41   [UB, best of CP-SAT/triadic]
 N=  96: sum tau <=    6376  (gamma <= 0.69184)   C_ledger(N) <= 1.58583 = 582/367   [UB, best of CP-SAT/triadic]
 112: UNKNOWN
+128: UNKNOWN
+160: UNKNOWN
+200: UNKNOWN

@@ -213,3 +213,85 @@ pos(u) ≥ |Cl±(u)|, and the ledger derives its contradiction from *upper* boun
 Σ pos, which is pinned to N(N+1)/2; the only inequality a lower bound yields is
 Σ_u |Cl±(u)| ≤ N(N+1)/2, an independent constraint (measured occupancy 0.24–0.44 on SAT
 avoiders at N ≤ 160, i.e. slack of a factor 2–4). ∎
+
+---
+
+## §6. Machine results (status record for route R19)
+
+Tags: **PROVED** (§§1–5 above) / **CERTIFIED** (machine, explicit witness or multi-engine
+agreement) / **MEASURED** / **CONJECTURED**. Finite computations are evidence about
+finite boards only; they never prove an infinite statement.
+
+### 6.1 CERTIFIED — ledger ceiling C_ledger(N) at concrete N
+
+Each row is certified by an explicit increasing-4-AP-free permutation of [1..N]
+(`witnesses.txt`), re-verified by a checker cross-validated against
+`experiments/apcheck.py`. Upper bounds only; a better witness can only lower them.
+`OPT` = CP-SAT proved optimum (brute-force confirmed for N ≤ 9).
+
+| N | best Σ τ | γ = Στ/N² | C_ledger(N) ≤ | status |
+|---|---|---|---|---|
+| 8  | 40  | 0.62500 | 9/8 = 1.12500 | OPT (brute force = CP-SAT) |
+| 12 | 90  | 0.62500 | 13/11 = 1.18182 | OPT |
+| 16 | 159 | 0.62109 | 136/113 = 1.20354 | OPT |
+| 18 | 200 | 0.61728 | 171/142 = 1.20423 | witness (CP-SAT lb 196) |
+| 20 | 248 | 0.62000 | 105/86 = 1.22093 | witness |
+| 22 | 301 | 0.62190 | 253/205 = 1.23415 | witness |
+| 24 | 360 | 0.62500 | 5/4 = 1.25000 | witness |
+| 26 | 428 | 0.63314 | 351/274 = 1.28102 | witness |
+| 28 | 491 | 0.62628 | 406/321 = 1.26480 | witness |
+| 32 | 641 | 0.62598 | 528/415 = 1.27229 | witness (plain-target optimum) |
+
+Needed for CORE Thm 12's 9/8: γ = 5/9 = 0.5556. Needed for R6's 43/24: γ = 31/43 =
+0.7209. Needed for C = 2: γ = 3/4. **MEASURED:** γ_min(N) = 0.62 ± 0.01 with no upward
+trend over 8 ≤ N ≤ 32. **CONJECTURED:** γ_min → ≈ 0.62 and sup_N C_ledger(N) ≈ 1.32.
+For the PLAIN (both-orientation) target the Σ τ-minima coincide with the increasing-only
+ones at N = 8, 12, 16, 20, 24, so the ledger ceiling is the same there.
+
+### 6.2 CERTIFIED — mixed closure (Theorems 7–9)
+
+`mixed_closure.py M1`: I-step, D-step and Theorem 8 hold on **all 195 154
+monotone-4-AP-free permutations of [1..N], N = 4..9** (22 / 102 / 564 / 3336 / 22 266 /
+168 864 boards), zero violations.
+
+### 6.3 MEASURED — triadic violates the D-step (mission item 2)
+
+| N | I-triggers | I-violations | D-triggers | D-violations | u with escaping Cl± | max \|Cl±(u)\|/pos(u) |
+|---|---|---|---|---|---|---|
+| 26 | 7 | 0 | 78 | 48 | 18/26 | 2.18 |
+| 80 | 95 | 0 | 780 | 507 | 69/80 | 2.69 |
+| 242 | 966 | 0 | 7260 | 4800 | 228/242 | 2.89 |
+
+The ratio tends to 3, matching pos(v) ≤ 3v−1: the triadic's only defence against the
+mixed closure bound is its profile constant 3.
+
+### 6.4 MEASURED — mixed closures on SAT-found plain avoiders
+
+| N | max \|Cl_inc\| (Thm 16) | max \|Cl±\| | max \|Cl±(u)\|/pos(u), pos ≥ N/4 | stuck values | Σ\|Cl±\|/(N(N+1)/2) |
+|---|---|---|---|---|---|
+| 40 | 9 | 34 | 0.935 | 35.0% | 0.362 |
+| 80 | 20 | 57 | 0.826 | 35.0% | 0.238 |
+| 130 | 65 | 110 | 0.948 | 28.5% | 0.274 |
+| 160 | 78 | 150 | 0.980 (u = 97, pos(u) = 153) | 30.6% | 0.341 |
+
+### 6.5 CERTIFIED — plain linear-profile extinction, pos(v) ≤ ⌊Cv⌋
+
+| C | max SAT N | minimal UNSAT N | engines |
+|---|---|---|---|
+| 1 | 3 | 4 | CP-SAT, Cadical195, Glucose42 |
+| 5/4 | 3 | 4 | CP-SAT, Cadical195, Glucose42 |
+| 3/2 | 14 | **15** | CP-SAT, Cadical195, Glucose42 (agree) |
+| 7/4 | 30 | **31** | CP-SAT, Cadical195, Glucose42 (agree); DRUP trace 39 993 B |
+| 2 | ≥ 49 | unresolved (UNKNOWN at N = 64, 500 s) | — |
+
+Witnesses (verified with `experiments/apcheck.py` and against the profile):
+C = 3/2, N = 14: `[1,4,2,3,10,7,5,6,11,8,13,12,9,14]`;
+C = 7/4, N = 30: `[1,7,2,4,3,9,8,5,6,23,19,16,20,18,14,10,12,13,11,28,30,24,22,29,21,15,26,25,17,27]`.
+
+**Limitation (honest).** The logged DRUP/DRAT trace for (C = 7/4, N = 31) is NOT
+independently checkable by the checker written here: `drup_check.py` (forward RUP +
+RAT-on-pivot, and also RAT-on-any-literal) validates the first 478 additions and then
+rejects lemma #1171 `(69, 533, −280)`. Most likely pysat's Cadical proof stream is not
+a stand-alone DRAT trace for the formula as rebuilt. **The UNSAT results rest on
+three-engine agreement across two structurally different encodings, not on a checked
+proof.**

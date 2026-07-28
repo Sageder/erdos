@@ -789,3 +789,41 @@ on |R(P) ∩ [1..N]| for suitably chosen P, or an incompatibility between R(ℕ)
 for P a sub-progression. Both are open; note that any such lower bound must be consistent
 with Theorem 21's 5-AP-free permutation under the analogous (weaker) statement, which is
 a useful sanity target for candidate inequalities.
+
+## Remark 25 (why the length-5 sign must be carried by a convex block partition)
+
+Remark 23 showed the length-5 argument needs two pairs, which four terms cannot supply.
+There is a natural attempt to escape this: keep ONE pair and get the second constraint
+from an arithmetic sign instead of a block parity. Spelled out, one looks for a rule
+
+    u ≺ u+d  ⟺  ε(u, l) = bit_l(u),     where l = v₂(d)
+
+(note l is exactly the lowest bit at which u and u+d differ, so this is the general shape
+of a van der Corput-style rule). For a monotone 4-AP with v₂(d) = l one has
+t₃ = t₁ + 2d with v₂(2d) = l+1, hence bit_l(t₁) = bit_l(t₃); so if ε could be made to
+FLIP between t₁ and t₃ — e.g. ε(u,l) := bit_{l+1}(u), which does flip when 2^{l+1}·odd is
+added — then exactly one of "t₁ ≺ t₂", "t₃ ≺ t₄" could hold, killing both orientations at
+once, with no blocks and no second pair.
+
+This fails, and the reason is instructive: **such rules are not transitive.**
+Machine classification (exact, exhaustive over the family ε(u,l) = f_l(bit_{l+1}(u)) with
+f_l ∈ {0, 1, id, not} independently at each level l):
+  - ε = bit_{l+1}(u), its complement, the parity of u above level l, and bit_{l+2}(u) all
+    fail transitivity on [1..40], with witnesses as small as (1,2,3) and (1,4,5);
+  - over the whole family, only 16 of 256 combinations (levels l = 0..3) are transitive on
+    [1..64] and on [1..96], and NONE of them is genuinely u-dependent — every transitive
+    member has the sign constant in u at each level where bit_{l+1} actually varies.
+    (Apparent u-dependent survivors at the top level are a boundary artifact: there
+    bit_{l+1} is constant on the tested range.)
+  - The constant-sign member is exactly the van der Corput order, which is the base-2
+    comparator τ₂ of Remark 20: transitive, kills even 3-APs — and has infinite
+    predecessor classes (evens before odds), so it is not a permutation of ℕ.
+
+Conclusion. A sign that varies with u cannot be an arithmetic function of u's bits above
+the critical level; transitivity forces it to be constant on the pieces of a CONVEX
+partition — which is precisely what a block layout provides, and why Theorem 21 carries
+the sign in the block index. But then the argument only bites when t₁ and t₃ lie in
+different blocks, i.e. when the AP straddles a boundary in PAIRS — and by Remark 23 four
+terms cannot straddle in pairs at any ratio ≥ 3. The block layout is therefore not an
+incidental choice in the length-5 construction but a forced one, and this closes the
+"replace block parity by an arithmetic sign" escape route for length 4.

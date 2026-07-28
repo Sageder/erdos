@@ -7,3 +7,4 @@ PLAIN target.  N   min sum tau   gamma   C_ledger(N) (exact)
  28       492   0.62755   1.26875 = 203/160   [UB]  [UB only; lb=407 -> C_ledger >= 1.0025]
  32       641   0.62598   1.27229 = 528/415   [UB]  [UB only; lb=529 -> C_ledger >= 1.0019]
  36       817   0.63040   1.29320 = 666/515   [UB]  [UB only; lb=666 -> C_ledger >= 1.0000]
+ 40      1028   0.64250   1.33987 = 205/153   [UB]  [UB only; lb=820 -> C_ledger >= 1.0000]
