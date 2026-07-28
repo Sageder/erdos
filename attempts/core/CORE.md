@@ -1039,3 +1039,45 @@ not work as stated. The conjecture remains open, and the two failures together s
 a refutation needs an aperiodic delay avoiding the (0,0,1,1)-on-(j,j+1,j+1,j+2) pattern and
 all its analogues, while a proof needs a displacement statistic that is not dominated by
 small indices.
+
+## Correction to Theorem 16(c) (self-audit prompted by the route R19 audit, 2026-07-28)
+
+The route R19 audit rated that route's analogous claim — "196-YES ⟺ some value has an
+infinite mixed chain" — as **SOUND BUT VACUOUS (P ⟺ P)**. The same criticism applies to
+Theorem 16(c) above, and it is correct. Recorded here rather than quietly left standing.
+
+Theorem 16(c) reads: 196-YES ⟺ every monotone-4-AP-free permutation of ℕ admits an
+infinite forcing chain. Both directions are immediate: if 196-YES there are no such
+permutations and the right-hand side is vacuously true; if 196-NO then part (b) says the
+closures of the witness are finite, so it admits no infinite chain. So (c) is a genuine
+equivalence but carries no information beyond (b) — it is "YES ⟺ no counterexample exists"
+in chain language. It should NOT be described as a reduction of the problem, and earlier
+descriptions of it in this file and in the run's reports as "an exact ω-reformulation"
+overstate it.
+
+What Theorem 16 does contribute, and what survives unchanged:
+- **(a) is a real constraint.** If (u−2d, u−d, u) is positionally increasing then u+d must
+  precede u. This is a usable local forcing rule, verified exhaustively on all 195 154
+  avoiders with N ≤ 9.
+- **(b) is a real quantitative constraint.** The forward closure Cl(u) sits inside pred(u),
+  so |Cl(u)| ≤ pos(u): a lower bound on closure size is a lower bound on position. That is
+  genuine content and is what any use of Theorem 16 should rest on.
+- The heuristic value of (c) is that it names the missing ingredient precisely (co-supply —
+  an increasing 3-AP ENDING at a prescribed value), which is why the route was worth
+  running. Naming a target is not reducing a problem.
+
+Discipline note: this is the third vacuity-or-overstatement caught in this run
+(Remark 31's degenerate objective, route R17's circular biconditional, and now this).
+All three had the same shape — an equivalence or optimum that is true but empty. Every
+future claimed reformulation in this project must be checked by asking explicitly whether
+it is P ⟺ P.
+
+## Remark 33 (third independent confirmation of the extinction data)
+
+The route R19 audit re-derived the plain-target extinction certificates by **exhaustive
+DFS over the insertion tree with no SAT solver at all**, independently confirming
+extinction at C = 1, 5/4, 3/2, 7/4. Together with this session's CEGAR results and the
+eager two-solver encoding, the low-C extinction table now rests on three methodologically
+independent computations. The audit also found two data-integrity defects in that route's
+own artifacts (one bad table row and five stored witnesses that do not verify) — those are
+recorded in its AUDIT.md and do not affect the confirmed certificates.
