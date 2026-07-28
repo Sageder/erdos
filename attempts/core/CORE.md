@@ -1125,3 +1125,57 @@ block, to 1 for u high. The congruence solution t = 1_{odd} satisfies this (its 
 (0,1,0), which is neither forbidden pattern) but is killed by Corollary 30. So the sharp
 open question for T = 1 is whether a NON-congruence-determined 0/1 delay can satisfy these
 forcings while leaving no progression on which t is eventually non-decreasing.
+
+## Lemma 35 (local descent rules: the delay cannot rise twice in a row) — verified
+
+Immediate from Lemma 34, for far-left triples (u₁, u₂, u₃) with u₂−u₁ = u₃−u₂ = d:
+
+    block pattern (k,k,k+1)   :  t(u₁) <  t(u₂)  ⟹  t(u₃) <  t(u₂)
+    block pattern (k,k+1,k+1) :  t(u₁) ≤  t(u₂)  ⟹  t(u₃) ≤  t(u₂)
+    block pattern (k,k,k)     :  t(u₁) <  t(u₂)  ⟹  t(u₃) ≤  t(u₂)
+
+In words: along far-left triples a rise in the delay must be followed by a fall — the delay
+cannot rise twice in a row. This is the exact analogue, one level up, of the descent-word
+conditions of ASYM.md (no 000 / no 111 along every progression).
+
+Verification (exact, values to 12 000, b ∈ {3,4,5}): the rules fire 4 400–7 900 times per
+family per base with ZERO violations for every delay family that satisfies condition (ii)
+(t = v₂(v), t = 1_odd, t ≡ 0), and are violated ≈1 300 times by t = v mod 3, which does not
+satisfy (ii) — so the test has teeth in both directions.
+
+**Specialization to t ∈ {0,1}, and what tameness means there.** With c = j + t and j
+non-decreasing, c decreases along a progression only at a step where the block index does
+NOT increase and t falls from 1 to 0. Along a fixed progression of step q, steps at which
+the block index increases have density → 0 (there are only O(log X) block boundaries below
+X). Hence: a progression is tame precisely when the delay's descents along it are confined
+to those rare boundary steps — i.e. when t is eventually constant along it apart from
+vanishing density. So at T = 1, Conjecture R21-C says: condition (ii) forces the delay to be
+eventually constant along some progression.
+
+## Remark 36 (two encoding traps hit while testing T = 1 — recorded, both were mine)
+
+Both were caught by re-verifying solver models against the literal definition, which is why
+that step is non-negotiable in this project.
+
+1. **Degenerate finite proxy.** Encoding "no tame progression" as "a descent somewhere in
+   the second half of each progression window" is satisfied trivially by a delay that is 1
+   almost everywhere (all the (ii) constraints have t(u₁) = 0 in their forbidden patterns,
+   so an almost-constant delay makes them vacuous), and a handful of well-placed zeros
+   covers all the finitely many progressions tested. The correct proxy demands a descent in
+   EVERY window of L consecutive progression elements — a positive descent rate. This is the
+   same failure shape as Remark 31; finite proxies for asymptotic conditions must bound a
+   RATE, not merely require one occurrence.
+2. **Dropped clauses at automatic steps.** When a step of the 4-AP jumps ≥ 2 block indices
+   the corresponding class comparison is automatically increasing. Treating that as "no
+   literal available" and skipping the whole clause silently removes the constraint. The
+   correct encoding lets such a step contribute nothing to the conjunction and forbids the
+   REMAINING steps. (By the block-gap lemma D₂ + D₃ ≤ 1, so at most the first step can be
+   automatic and the clause is never empty.) The bug produced spurious SAT results that the
+   literal re-check caught immediately at (x, d) = (2, 10), values 2, 12, 22, 32 with block
+   indices (0,2,2,3).
+
+Corollary of trap 1 for the far-left programme: the far-left constraint set of Lemma 34 is
+STRICTLY WEAKER than full condition (ii) — a delay satisfying all far-left constraints at
+N = 3000 was found that violates full (ii) at (x, d) = (7, 11). So Lemma 34 localises the
+condition usefully but cannot by itself settle Conjecture R21-C; the near-left APs carry
+essential content.

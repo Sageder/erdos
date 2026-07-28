@@ -18,8 +18,8 @@ mid-run.
 Audit artifacts (independent code, no route-R1 code reused):
 `/tmp/claude-0/-home-user-erdos/16d68b37-9cd8-5fc8-ae52-36a43a9b9dde/scratchpad/r1audit/`
 — `a1.py` (from-scratch witness checker), `enc.py` (from-scratch encoder, **eager**
-transitivity, no CEGAR), `enc2.py` (CP-SAT integer-rank encoder), `geom.py`,
-`proof.py`, `scan6.py`.
+transitivity, no CEGAR), `enc2.py` (CP-SAT integer-rank encoder), `brute.py`
+(raw-enumeration oracle), `geom.py`, `proof.py`, `scan6.py`.
 
 ---
 
@@ -27,7 +27,7 @@ transitivity, no CEGAR), `enc2.py` (CP-SAT integer-rank encoder), `geom.py`,
 
 | # | Claim (as marked in the deliverable) | Verdict |
 |---|---|---|
-| 1 | Definition of *cut* and its two stated equivalences | **SOUND** |
+| 1 | Definition of *cut* and its stated equivalent forms | **SOUND** |
 | 2 | "in-order block construction" ≡ "Cut(a) infinite" | **SOUND** (definitional; but it narrows R1's scope — see §2) |
 | 3 | Lemma S: (C1),(C2),(C3) necessary; no decreasing-C2 family needed | **SOUND** |
 | 4 | Lemma S monotonicity (S ⊆ S′, S′ feasible ⇒ S feasible) | **SOUND** |
@@ -74,7 +74,18 @@ This reproduces every published verdict I re-ran:
 ```
 
 CP-SAT (integer ranks + AllDifferent, a different paradigm) agrees on the spot checks
-I ran. **The encoding is faithful and the certificates are real.**
+I ran.
+
+**End-to-end validation against the raw definition.** `brute.py` decides feasibility for
+every cut set with `max ≤ 10` and small enough block factorials (**633 cut sets**) by
+literally enumerating all in-order block orderings and testing the definition of a
+monotone 4-AP directly, then compares with the SAT verdict: **0 mismatches**. (This test
+first exposed a bug in *my own* encoder — forced chains were being dropped rather than
+reported as unsatisfiable — which I fixed before re-running everything below. It did not
+affect any UNSAT verdict, since dropping clauses only weakens the system, and every SAT
+verdict quoted here is backed by a witness re-checked with `apcheck.py`.)
+
+**The encoding is faithful and the certificates are real.**
 
 ---
 
@@ -247,17 +258,47 @@ versus the *small-scale* shoulders, which are all SAT:
 [1,2,4] S   [2,4,10] S   [3,4,10] S   [4,10,28] S
 [5,6,16] S  [6,16,46] S  [7,8,22] S   [8,22,64] S   [5,13,37] S
 ```
-So what actually happens is that the **3-cut shoulder `(W,U,3U−2)` dies once `U` passes
-somewhere between 22 and 28**, exactly the "scale activation" R1 already described for
-the notch. Depth is not the mechanism; scale is. A 6-cut chain is impossible *through
-these cuts* not because it has six cuts but because its top three cuts are infeasible on
-their own. Restating this correctly matters: it means the right next experiment is a
-2-parameter study of `(W,U)` shoulder feasibility, not a depth-7 search.
+So a 6-cut chain is impossible *through these cuts* not because it has six cuts, but
+because its **top three** cuts are infeasible on their own. Depth is not the mechanism.
 
-Supporting sweep run for this audit (independent encoder, eager transitivity, so these
-are unconditional): `[10,28,V]` **UNSAT for every integer `V ∈ [82,160]`** and
-`[16,46,V]` **UNSAT for every integer `V ∈ [136,175]`** — see §5 for the exact ranges
-completed.
+**And the controlling parameter is the *first* of the three cuts, not the scale.** Fixing
+`U` and varying `W` isolates it cleanly:
+
+```
+shoulder V = 3U-2 :   [8,27,79]  SAT     [9,27,79]  UNSAT
+                      [8,28,82]  SAT     [9,28,82]  UNSAT     [10,28,82] UNSAT
+                      [8,26,76]  SAT                          [10,31,91] UNSAT  [11,31,91] UNSAT
+R1's ratio-5 island:  [8,26,130] SAT     [9,26,130] UNSAT
+                      [8,28,140] SAT     [9,28,140] UNSAT     [10,28,140] UNSAT
+                                         [9,28,150] UNSAT     [10,28,150] UNSAT
+```
+
+With `U` and `V` held fixed, the shoulder **and R1's ratio-5 island** both survive at
+`W = 8` and both die at `W = 9`. This is a *first-cut* threshold, and it is the same
+phenomenon R1 already tabulated as "**first-cut memory**" (`REPORT.md` §3.7:
+`(26,80)` feasible iff `V₁ ≤ 6`; `(20,100)` iff `V₁ ≤ 7`; `(16,70)` iff `V₁ ≤ 6`) — the
+threshold value depends on `(U,V)` (e.g. `[7,20,100]` SAT vs `[8,20,100]` UNSAT gives 7
+there), so "`W ≤ 8`" is not a universal constant. Credit to R1 for the phenomenon; what
+is new here is that **this, not depth, is what stops the chain**:
+
+* every 6-cut chain has `V₄ ≥ 10` — the minimal legal chains are `1,2,4,10,…`,
+  `1,3,4,10,…`, `1,5,6,16,…` — so its top triple `(V₄,V₅,V₆)` always has first element
+  `≥ 10`, above every first-cut threshold measured so far;
+* every 5-cut chain can have `V₃` as small as 4, comfortably below them.
+
+Restating the finding this way matters: the right next experiment is the 2-parameter
+`(W,U)` feasibility map plus a **proof of the first-cut threshold**, not a depth-7
+search. If the threshold is a theorem with a bound like "`W ≥ 9` kills every
+`(W,U,V)` with `U ≥ 3W−2`", it closes the entire in-order programme at one stroke —
+far stronger than "depth 6 is empty so far".
+
+Supporting sweeps run for this audit (independent encoder, eager transitivity, every
+integer tested, both completed):
+
+```
+# DONE (10,28) V in [82,160]:  SAT at []      <- kills every 6-chain through 10,28 with V6 <= 160
+# DONE (16,46) V in [136,175]: SAT at []      <- the previously untested continuation of [1,5,6,16,46]
+```
 
 Finally, the honest hedge "everything decided is UNSAT" must be kept. No finite
 computation can establish depth-6 death: `V₆` ranges over an infinite set, and so do
@@ -305,9 +346,11 @@ Neither `exhaust5_M110.log` nor `exhaust5_M200.log` has its `# DONE M=…` line.
 witness and it has several. Any *completeness* statement at depth 5 ("the depth-5
 corridor is exactly …") is unsupported. And the missed prefixes matter for the depth-6
 question: `[1,5,6,16,46]` and `[1,7,8,22,64]` are precisely the depth-5 sets whose
-continuations the depth-6 grid never looked at. I have started closing that hole (§5):
-`[16,46,V]` is UNSAT throughout the range I completed, so no counterexample surfaced —
-but the hole was real.
+continuations the depth-6 grid never looked at. I closed most of that hole (§5):
+`[16,46,V]` is UNSAT for **every** integer `V ∈ [136,175]`, and also at the three
+island landmarks `V = 222, 244, 267` (`≈ [4.8, 5.8]·46`, where R1's window law puts the
+only surviving SAT band). No counterexample surfaced. Still untested by anyone:
+`[1,7,8,22,64]`'s continuations (`U = 64`; shoulder 190, island `≈ [307,371]`).
 
 ### 3.10 "R1's conclusion is WRONG" — partly misattributed
 
@@ -414,8 +457,13 @@ against `experiments/apcheck.py`.
 | depth-5 sets missed by `exhaust5.py`: `[1,5,6,16,46]`, `[1,7,8,22,64]` | **SAT** (witnesses verified) — breaks the exhaustiveness claim |
 | depth-5 sets missed by the `V₁` bound: `[3,4,10,28,82]`, `[4,5,13,37,109]`, `[1,9,10,28,82]`, `[1,11,12,34,100]` | UNSAT (untested, but harmless) |
 | depth-4 sets missed by the `V₁` bound: `[3,4,10,28]`, `[3,4,10,40]` | **SAT** (branch was alive) |
-| dense sweep `[10,28,V]`, every integer `V` | UNSAT throughout the completed range (see `scan_10_28` output) |
-| dense sweep `[16,46,V]`, every integer `V` — the previously untested continuation of `[1,5,6,16,46]` | UNSAT throughout the completed range |
+| dense sweep `[10,28,V]`, **every** integer `V ∈ [82,160]` | all UNSAT (`SAT at []`) |
+| dense sweep `[16,46,V]`, **every** integer `V ∈ [136,175]` — the previously untested continuation of `[1,5,6,16,46]` | all UNSAT (`SAT at []`) |
+| `[16,46,222]`, `[16,46,244]`, `[16,46,267]` (the island band for `U = 46`) | all UNSAT |
+| **W-threshold**: `[8,27,79] [8,28,82] [8,26,76] [8,26,130] [8,28,140]` | **SAT** (witnesses verified) |
+| **W-threshold**: `[9,27,79] [9,28,82] [9,26,130] [9,28,140] [9,28,150]` | **UNSAT** (same `U,V`, first cut raised by one) |
+| raw-enumeration validation of the encoder, 633 cut sets with `max ≤ 10` | 0 mismatches |
+| `[2,8,26,76]` (R1's own prefix, shoulder continuation R1 never tested) | **SAT**, witness verified |
 
 No counterexample to any UNSAT was found; no SAT verdict failed re-verification.
 
@@ -469,9 +517,13 @@ No counterexample to any UNSAT was found; no SAT verdict failed re-verification.
    what was wrong was the location of the corridor.*
 3. Drop "invisible to a coarse grid" (R1 named the shoulder) and drop "at depth 4 is
    usually a single integer" (the deliverable's own log shows `[10,37]` for `[1,2,4]`).
-4. Replace "the frontier moves to depth 6" with the accurate mechanism: **the 3-cut
-   shoulder `(W,U,3U−2)` dies once `U` exceeds ≈ 22–28**; `{10,28,82}` alone is UNSAT.
-   Next experiment: the 2-parameter `(W,U)` shoulder-feasibility map, not depth 7.
+4. Replace "the frontier moves to depth 6" with the accurate mechanism, which is a
+   3-cut **first-cut threshold** (R1's own "first-cut memory", §3.7 of `REPORT.md`):
+   with `U,V` fixed, `(8,U,V)` is SAT and `(9,U,V)` is UNSAT, at the shoulder *and* at
+   R1's ratio-5 island (§3.8). Every 6-cut chain has `V₄ ≥ 10`, above every measured
+   threshold; every 5-cut chain can keep `V₃ = 4`, below them. The right next target is a
+   **proof of the first-cut threshold**; if it is a theorem it closes the entire in-order
+   programme, not just depth 6. A depth-7 search is the wrong experiment.
 5. Withdraw the word "exhaustive" from `exhaust5.py` and its logs, or fix the three
    defects in §3.9 and re-run to completion. Add witness verification before printing
    `*** DEPTH-5 FEASIBLE`, and treat `GEOM_DEAD` as UNSAT.
