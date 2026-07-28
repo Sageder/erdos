@@ -23,8 +23,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def check_perm_file(fn):
-    base = os.path.basename(fn)[:-4]          # e.g. A_2_1
-    cls, num, den = base.split("_")
+    base = os.path.basename(fn)[:-4]          # e.g. A_2_1 or A_3_2_ceil
+    parts = base.split("_")
+    ceil = parts[-1] == "ceil"
+    if ceil:
+        parts = parts[:-1]
+    cls, num, den = parts
     C = Fraction(int(num), int(den))
     n_checked = 0
     for line in open(fn):
@@ -37,12 +41,15 @@ def check_perm_file(fn):
         assert len(perm) == N and sorted(perm) == list(range(1, N + 1)), \
             f"{fn}: N={N} not a permutation"
         pos = {v: i + 1 for i, v in enumerate(perm)}
+        num, den = C.numerator, C.denominator
         for v in range(1, N + 1):
             if cls in ("A", "C"):
-                assert pos[v] <= C * v, f"{fn}: N={N} v={v} pos={pos[v]} violates pi(v)<=Cv"
+                hi = -((-num * v) // den) if ceil else (num * v) // den
+                assert pos[v] <= hi, f"{fn}: N={N} v={v} pos={pos[v]} violates pi(v)<=Cv ({'ceil' if ceil else 'floor'})"
             if cls in ("B", "C"):
-                assert Fraction(v) <= C * pos[v], \
-                    f"{fn}: N={N} v={v} pos={pos[v]} violates a(i)<=Ci"
+                # floor: a(i) <= floor(C i);  ceil: a(i) <= ceil(C i)
+                cap = -((-num * pos[v]) // den) if ceil else (num * pos[v]) // den
+                assert v <= cap, f"{fn}: N={N} v={v} pos={pos[v]} violates a(i)<=Ci"
             if cls == "D" and v <= N // 2:
                 assert pos[v] <= 2 * v, f"{fn}: N={N} v={v} pos={pos[v]} violates D"
         assert not has_monotone_kap_pos(perm, 4), f"{fn}: N={N} has monotone 4-AP!"

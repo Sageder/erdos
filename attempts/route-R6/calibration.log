@@ -1,0 +1,15 @@
+== (A) dyadic reversed blocks ==
+minimal failing prefix length: 28  first increasing 4-AP (x,d): (1, 6)
+increasing 4-APs in dyadic[1..31]: [(1, 5), (2, 5), (1, 6)]
+  (1,6,11,16) at positions [1, 5, 12, 31]
+  (2,7,12,17) at positions [3, 4, 11, 30]
+A CONFIRMED: dyadic-reversed is NOT increasing-4-AP-free (route brief corrected).
+
+== (B) triadic reversed blocks ==
+no increasing 4-AP for prefixes 3^K-1, K=2..9 (up to 19682 values)
+all decreasing 4-APs lie inside single blocks (K=3..7); they do exist (in-block).
+
+== (C) structure formulas ==
+pi(v), records, piles, LDS=2*3^(K-1)=4374, LIS=K=8: all verified for K=8
+
+== (D)/(E) R6 conditions on triadic ==

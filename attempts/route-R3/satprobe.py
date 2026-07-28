@@ -118,9 +118,13 @@ def probe_separated(g, N, time_limit=1200, b=2):
         bmax[j] = model.NewIntVar(0, N - 1, f"mx{j}")
         model.AddMinEquality(bmin[j], [pos[v] for v in members[j]])
         model.AddMaxEquality(bmax[j], [pos[v] for v in members[j]])
+    # completeness: bmax[j] < bmin[j'] for j' in {j+g, j+g+1} implies, by induction
+    # along chains of +g/+(g+1) steps (every offset >= g is reachable since g>=1 and
+    # bmin[j'] <= bmax[j']), separation for ALL j' >= j+g.
     for j in js:
-        if j + g in bmin:
-            model.Add(bmax[j] < bmin[j + g])  # with chain, implies all j' >= j+g
+        for off in (g, g + 1):
+            if j + off in bmin:
+                model.Add(bmax[j] < bmin[j + off])
 
     inv = {}
 
@@ -150,6 +154,12 @@ def probe_separated(g, N, time_limit=1200, b=2):
         perm = sorted(range(1, N + 1), key=lambda v: solver.Value(pos[v]))
         assert sorted(perm) == list(range(1, N + 1))
         assert not find_mono4(perm), "model check failed!"
+        # verify the separation discipline explicitly on the model
+        posmap = {v: i for i, v in enumerate(perm)}
+        for u in range(1, N + 1):
+            for w in range(1, N + 1):
+                if blk[w] >= blk[u] + g:
+                    assert posmap[u] < posmap[w], ("separation violated", u, w)
         return "SAT", perm
     if st == cp_model.INFEASIBLE:
         return "UNSAT", None

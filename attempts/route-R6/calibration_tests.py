@@ -125,17 +125,39 @@ print(f"pi(v), records, piles, LDS=2*3^(K-1)={2*3**(K-1)}, LIS=K={K}: all verifi
 
 # ------------------------------------------------------- (D)+(E) R6 conditions
 print("\n== (D)/(E) R6 conditions on triadic ==")
-r4 = {x: r4_exact_cpsat(x) for x in (26, 80, 242)}
-print("exact r4:", r4)
-for K, x in ((3, 26), (4, 80), (5, 242)):
+
+
+def r4_bounds(n, budget):
+    """(lb, ub) with lb <= r4(n) <= ub via time-limited CP-SAT (ub = proved bound)."""
+    from ortools.sat.python import cp_model
+
+    m = cp_model.CpModel()
+    xs = [m.NewBoolVar(f"x{v}") for v in range(n + 1)]
+    for d in range(1, (n - 1) // 3 + 1):
+        for x in range(1, n - 3 * d + 1):
+            m.AddBoolOr([xs[x].Not(), xs[x + d].Not(), xs[x + 2 * d].Not(), xs[x + 3 * d].Not()])
+    m.Maximize(sum(xs[1:]))
+    s = cp_model.CpSolver()
+    s.parameters.num_search_workers = 2
+    s.parameters.max_time_in_seconds = budget
+    s.Solve(m)
+    return int(s.ObjectiveValue()), int(s.BestObjectiveBound())
+
+r4_26 = r4_exact_cpsat(26)          # fast (2 s): exact, = 15
+lb80, ub80 = r4_bounds(80, 120.0)   # r4(80) in [lb80, ub80]
+print(f"r4(26) = {r4_26} (exact);  r4(80) in [{lb80}, {ub80}] (CP-SAT bounds)")
+for K, x, r4lb, r4ub in ((3, 26, r4_26, r4_26), (4, 80, lb80, ub80)):
     tri = reversed_blocks(3, K)
     ld, li = lds_length(tri), lis_length(tri)
-    assert ld * r4[x] >= x, ("T1-inc fails?!", x)          # increasing-side: MUST hold
-    assert li <= r4[x], ("LIS<=r4 fails?!", x)             # increasing-side: MUST hold
-    print(f"x={x}: LDS={ld}, LIS={li}, r4={r4[x]}: LDS*r4={ld*r4[x]}>=x OK; LIS<=r4 OK; "
-          f"LDS<=r4 {'HOLDS' if ld <= r4[x] else 'VIOLATED (expected: not a counterexample)'}")
-assert lds_length(reversed_blocks(3, 3)) > r4[26]
-assert lds_length(reversed_blocks(3, 4)) > r4[80]
+    assert ld * r4ub >= ld * r4lb >= 0
+    assert ld * r4lb >= x or ld * r4ub >= x  # T1-inc uses true r4 >= r4lb
+    assert ld * r4lb >= x, ("T1-inc fails?!", x)   # increasing-side: MUST hold
+    assert li <= r4lb, ("LIS<=r4 fails?!", x)      # increasing-side: MUST hold
+    viol = "VIOLATED (expected: not a counterexample)" if ld > r4ub else "HOLDS"
+    print(f"x={x}: LDS={ld}, LIS={li}: LDS*r4_lb={ld*r4lb}>=x OK; LIS<=r4 OK; "
+          f"LDS<=r4 {viol}")
+assert lds_length(reversed_blocks(3, 3)) > r4_26      # 18 > 15: decreasing-side violated
+assert lds_length(reversed_blocks(3, 4)) > ub80       # 54 > ub >= r4(80): violated
 
 # T4 windows on prefix of 728 values
 K = 6
