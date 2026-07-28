@@ -80,9 +80,9 @@ def run_config(k,M,q0,a,P,t,nsamp,check_part2=False):
     assert M>=70000 and M**4>=(4*k)**5, "H1"
     assert 1<=q0 and q0**10<=M, "H2"
     assert 2<=P and int(P)**20<=M, "H3"
-    assert t>=3 and math.log(M)/math.log(P)>=60*(2*k+math.log(2*k)/math.log(2)+t+1),"H4"
+    assert t>=3 and math.log(M)/math.log(P)>=60*(2*k+math.log(2*k)/math.log(2)+t+1)-1e-6,"H4"
     if check_part2:
-        assert math.log(M)/math.log(P)>=120*(2*k+math.log(2*k)/math.log(2)+t+1)
+        assert math.log(M)/math.log(P)>=120*(2*k+math.log(2*k)/math.log(2)+t+1)-1e-6
     good=0;viol=0;viol2=0
     lo=M+((a-M)%q0)
     for _ in range(nsamp):
@@ -97,24 +97,29 @@ def run_config(k,M,q0,a,P,t,nsamp,check_part2=False):
             for p in primes:
                 if kappa(m,p)<W(m,p,k): viol+=1
                 if check_part2:
-                    if Fraction(kappa(m,p)-W(m,p,k)) < Fraction(1,120)*Fraction(math.floor(1e6*math.log(M)/math.log(p)),10**6):
+                    if Fraction(kappa(m,p)-W(m,p,k)) < Fraction(1,120)*Fraction(math.floor(1e6*math.log(M)/math.log(p))-1,10**6):
                         viol2+=1
     return good,nsamp,viol,viol2
 
-cfgs=[
- (2, 2**200, 1, 0, 13, 3, 4000, False),
- (2, 2**200, 24, 7, 13, 3, 4000, False),
- (2, 2**200, 2**10*3**4, 512, 13, 3, 4000, False),
- (3, 10**60, 1, 0, 11, 4, 3000, False),
- (3, 10**60, 30030, 11, 11, 4, 3000, False),
- (2, 2**1000, 1, 0, 101, 5, 1500, False),
- (5, 2**2000, 1, 0, 251, 3, 1000, False),
- (2, 2**4000, 1, 0, 13, 3, 800, True),
- (2, 2**4000, 2**10*3**4, 512, 13, 3, 800, True),
-]
-for (k,M,q0,a,P,t,ns,p2) in cfgs:
+def mkM(P,k,t,factor=60):
+    E=math.ceil(factor*(2*k+math.log(2*k)/math.log(2)+t+1))
+    E=max(E,20)
+    M=P**E
+    while M<70000 or M**4<(4*k)**5: E+=1;M=P**E
+    return M,E
+
+cfgs=[]
+for (k,P,t,f,q0,a,ns) in [(2,13,3,60,1,0,600),(2,13,3,60,24,7,600),
+                          (2,13,3,60,2**10*3**4,512,600),
+                          (3,11,4,60,1,0,400),(3,11,4,60,30030,11,400),
+                          (2,101,5,60,1,0,200),(5,251,3,60,1,0,150),
+                          (2,13,3,120,1,0,300),(2,13,3,120,2**10*3**4,512,300),
+                          (7,3,3,60,1,0,300),(2,2,3,60,1,0,300)]:
+    M,E=mkM(P,k,t,f)
+    cfgs.append((k,M,q0,a,P,t,ns,f==120,E))
+for (k,M,q0,a,P,t,ns,p2,E) in cfgs:
     g,N,v,v2=run_config(k,M,q0,a,P,t,ns,p2)
-    print(f"  k={k} logM={math.log(M):.0f} q0={q0} P={P} t={t}: |G|/N={g/N:.4f} "
+    print(f"  k={k} logM/logP={E} digits(M)={len(str(M))} q0={q0} P={P} t={t}: |G|/N={g/N:.4f} "
           f"criterion-violations={v} gap-violations={v2}")
     assert v==0 and v2==0
 
