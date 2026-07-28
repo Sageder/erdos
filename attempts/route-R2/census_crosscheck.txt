@@ -1,0 +1,4 @@
+predicted S1 configurations: 979436
+predicted S2 configurations: 324832
+total: 1304268  census: 1304268 (S1 979436, S2 324832)
+EXACT MATCH: Proposition = complete characterization of the 4-AP set (N=16383)

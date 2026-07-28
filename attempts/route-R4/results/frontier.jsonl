@@ -474,3 +474,6 @@
 {"cls": "B", "C": "2/1", "N": 89, "phase": "sat", "secs": 250.3, "verdict": "EXISTS"}
 {"cls": "B", "C": "2/1", "N": 92, "phase": "sat", "secs": 399.7, "verdict": "EXISTS"}
 {"cls": "B", "C": "2/1", "N": 95, "phase": "sat", "secs": 337.5, "verdict": "EXISTS"}
+{"cls": "A", "C": "2/1", "N": 50, "phase": "sat", "verdict": "EXISTS", "note": "pysat_A2_50_long.out"}
+{"cls": "A", "C": "2/1", "N": 50, "phase": "sat", "verdict": "EXISTS", "note": "cpsat_A2_50.out"}
+{"cls": "D", "C": "2/1", "N": 50, "phase": "sat", "verdict": "EXISTS", "note": "pysat_D2_50_long.out"}

@@ -1,0 +1,3 @@
+[cuts=[2, 8, 26, 140, 740] T=5] covered=[1, 2, 3, 4, 5] nvals=740 maxblock=600: UNSAT (41.2s)
+[cuts=[2, 8, 26, 140, 780] T=5] covered=[1, 2, 3, 4, 5] nvals=780 maxblock=640: UNSAT (37.5s)
+[cuts=[2, 8, 26, 140, 800] T=5] covered=[1, 2, 3, 4, 5] nvals=800 maxblock=660: UNSAT (30.1s)

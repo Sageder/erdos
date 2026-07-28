@@ -226,15 +226,18 @@ pos(v) ≤ ⌊Cv⌋ (equivalently max_v pos(v)/v ≤ C):
 | C = 3/2 | **15** | 78 (at n=13) | 276 nodes | cert_C1.5.txt |
 | C = 8/5 | **18** | 670 (14) | 2,168 | cert_C1.6.txt |
 | C = 7/4 | **31** | 146,238 (29) | 1,036,992 | cert_C1.75.txt |
+| C = 9/5 | **34** | — | 57,006,572 | tame_certifications2.txt |
+| C = 15/8 | run in progress (predicted 41; budget 6e10) | — | — | cert_C1.875.txt |
 | pos ≤ v+1 | **11** | — | 63 | (rerunnable in ms) |
 | pos ≤ v+2 | **14** | — | 2,764 | — |
 | pos ≤ v+3 | **19** | 43,373 (12) | 168,686 | cert_Kplus3.txt |
 | pos ≤ v+4 | **25** | — | 21,051,114 | — |
+| pos ≤ v+5 | **30** | — | 3,664,617,879 | tame_certifications2.txt |
 
-Additive crossing points are LINEAR in the slack (N*(K) ≈ 4 + ~5.3K for K = 0..4),
-versus exponential in C for the multiplicative family (§6.2) — consistent with a
-displacement-ratio floor that decays toward 1 as ~O(K/N) additive slack is spread
-over [1..N], and further support for the log-growth picture of §6.2.
+Additive crossing points are LINEAR in the slack (least squares: N*(K) ≈ 4.5 + 5.06K
+over K = 0..5), versus exponential in C for the multiplicative family (§6.2) —
+consistent with a displacement-ratio floor that decays toward 1 as ~O(K/N) additive
+slack is spread over [1..N], and further support for the log-growth picture of §6.2.
 
 All show the universal shape: exponential-ish growth → peak → cliff to 0 within 1–2
 levels (C=7/4: 146,238 → 6,472 → 0). These are unconditional, computer-verified
