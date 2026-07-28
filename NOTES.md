@@ -14,6 +14,10 @@
 - E(V) settled for ALL V via sigma_V witness (e_of_v_sigma.log): single cuts never
   obstruct; obstruction irreducibly >= 3 scales.
 - V1-memory thresholds: {V1,16,70} feasible iff V1<=6; {V1,20,100} iff V1<=7; {V1,26,80} iff V1<=6.
+- DEPTH 4/5 UPDATE: {2,8,26,150} SAT too (depth-4 island is an interval >= {140,150});
+  {2,8,26,160} UNSAT. Depth-5: {2,8,26,140,700} UNSAT (sound via relaxation);
+  760 (island center) + triple controls {26,140,700/756} did not resolve in-session.
+  Depth-5 island survival = THE open frontier for the ratio-5-6 in-order corridor.
 - Next: depth-5 island test (V5 ~ 700, fivecut.log, CEGAR); r=5 banded gadget rule + framework
   check to 1e5. Consistency with CORE.md Thm 12 (C<9/8) and linear-extinction C=3: corridor
   sits at displacement constant ~5-6, not yet excluded by those results.

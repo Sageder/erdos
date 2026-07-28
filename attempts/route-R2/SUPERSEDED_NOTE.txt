@@ -1,0 +1,2 @@
+SUPERSEDED: the mod1c/mod1d runs used an unsound A2T encoding (tail w+3e instead of w+2e).
+Authoritative results: mod1_sat_output.txt (fixed), mod1e_output.txt (validation), mod1f_output.txt (frontier+MUS).

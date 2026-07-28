@@ -11,3 +11,7 @@
   c'= 13 c= 52 C= 208 size 156 A2H=270 : UNSAT (2.5s)
   c'= 14 c= 56 C= 224 size 168 A2H=315 : UNSAT (1.5s)
   c'= 15 c= 60 C= 240 size 180 A2H=364 : UNSAT (2.6s)
+  c'= 16 c= 64 C= 256 size 192 A2H=416 : UNSAT (2.0s)
+
+=== varying C at (16, 64, *) ===
+  c'= 16 c= 64 C= 256 size 192 : UNSAT (1.8s)

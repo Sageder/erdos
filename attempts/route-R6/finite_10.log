@@ -1,1 +1,4 @@
 exact r4 table: {1: 1, 2: 2, 3: 3, 4: 3, 5: 4, 6: 5, 7: 5, 8: 6, 9: 7, 10: 8}
+N=10: avoiders=1307470  ALL T1-T6 PASS.  r4=8  min(LIS*LDS)=10 (N=10)  max LIS=7 max LDS=7  max #records=7
+      T4 tightness: min over avoiders of (min over windows len L of max disp): [(1, 0), (2, 0), (3, 0), (4, 1), (5, 1), (6, 1), (7, 2), (8, 2), (9, 2), (10, 2)]
+FINITE TESTS COMPLETE: all conditions hold on every 4-AP-free permutation, N=10..10; counts match calibration where known.

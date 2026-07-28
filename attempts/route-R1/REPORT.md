@@ -16,10 +16,11 @@ not proof.
    1..80), ratio 4 at 4 blocks (values 1..255); minimal infeasible cut-set {8,26,80}.
 3. **REVISION from the window-law data (§3.7): in-order is NOT dead at all ratios.**
    Feasible third cuts after (V1,V2) form: a geometry-dead zone (V2, 3V2−3] (exact
-   lemma, machine-checked), a thin SAT shoulder at 3V2−2 (present only when V1 ≲ V2/4),
+   lemma, machine-checked), a thin SAT shoulder from 3V2−2 (width shrinking to 1–2 points as V1/V2 grows),
    an UNSAT notch ≈ [3.2, 4.35]·V2 (activating at scale V2 ≥ 16, present even for V1=2
    once V2 ≥ 26), and a robust SAT **island ≈ [4.8, ≥5.8]·V2** ((8,26): 125–150 all SAT). Island-hopping chains pass every test we can afford:
-   {2,8,26,140} SAT (depth 4, the island point surviving full prefix memory) and the
+   {2,8,26,140} and {2,8,26,150} SAT (depth 4: the island survives full prefix memory
+   as an interval) and the
    pure ratio-5 geometric {5,25,125} SAT. **The alive corridor for R1-in-order is
    V_{k+1}/V_k ≈ 5–6**, unreachable by our SAT beyond ~4 cuts (V5 ≈ 700).
 4. E(V) (single-cut extendability) is settled for ALL V: σ_V (parity recursion) is a
@@ -148,9 +149,15 @@ First-cut memory (fixed (V2,V3), vary V1):
 | (20,100) | V1 ≤ 7 (tested 2..14) |
 | (16,70) | V1 ≤ 6 (tested 2..12) |
 
-Depth-4 memory {2,8,26,V4}: 100 U, 120 U, **140 S**, 160 U; 130, 150 in flight.
-Compare 3-cut level: {8,26,150} S vs {2,8,26,160} U — the island under full prefix
-memory retains its center (140) and appears trimmed at the edges.
+Depth-4 memory {2,8,26,V4}: 100 U, 120 U, **140 S, 150 S**, 160 U (130 in flight).
+Compare 3-cut level: {8,26,140/145/150} all S — the island survives full prefix
+memory as an interval (≥ {140,150}), trimmed at most at the outer edge (160).
+Depth-5 {2,8,26,140,V5}: **700 UNSAT** (sound: lazy-transitivity UNSAT is a
+relaxation UNSAT); 760 ≈ 5.4·140 (island center) and the triple-level controls
+{26,140,700/756} did not resolve within this session's compute — the depth-5
+island question is THE open frontier. Note 700 = 5.0·140 sits at the island's lower
+edge, where depth-4 also showed death (100 = 3.8·26 U), so 700's death is consistent
+with BOTH conjectures; 760's verdict would discriminate.
 
 **Window shape (empirical law)**: after (V1,V2) with V2 ≥ 2V1 ≥ 4:
 geometry-dead (V2, 3V2−3] (exact); a 1–2 point SAT shoulder from 3V2−2, widening as
@@ -213,9 +220,10 @@ coupled adjacent-block structure — a per-block rule with alternating phase, sa
 
 ## 5. Next steps
 
-- Decide Conjecture W at depth 5: {2,8,26,140,V5}, V5 ≈ 670–870 (attempt running,
-  `fivecut.log`; needs stronger lazy-transitivity engineering or an incremental
-  construction heuristic instead of monolithic SAT).
+- Decide Conjecture W at depth 5: {2,8,26,140,V5}. V5 = 700 is UNSAT (done);
+  V5 ≈ 740–800 (island center) is the open frontier (`fivecut.log`,
+  `triple_26_140.log`); needs stronger lazy-transitivity engineering or an
+  incremental construction heuristic instead of monolithic SAT.
 - Mine ratio-5 witnesses; hand-build an r=5 two-phase gadget rule; framework-check to
   10^5. This is now the highest-value R1 activity — the corridor is concrete.
 - Distill {8,26,80} MUS into a human lemma; likewise the notch law (which is the
