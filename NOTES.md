@@ -1,5 +1,42 @@
 # NOTES.md — lab notebook (newest entries at top)
 
+## 2026-07-28 ~10:50 UTC — MIRROR THEOREM (proved+verified) + crux experiment verdict
+
+- CRUX EXPERIMENT (experiments/crux_equidistribution.py, n ≤ 3e5, exhaustive):
+  * 98.96% of ALL n fail some per-prime condition ⟹ any first-moment/union bound taken over
+    all n is WORTHLESS against the ρ(2)²≈9.4% smooth set. (Rigorous kill of the "subtract
+    failures unconditionally" strategy — this is why every power-family budget collapsed.)
+  * smooth-window density measured 9.373% ≈ ρ(2)² (the two smoothness events are independent).
+  * membership | smooth window = 11.05%; | n^{1/3}-smooth window = 11.64% (NOT better — more
+    digits per prime is exactly cancelled by more primes: raising smoothness does not help).
+  * per-prime pass rates match the corrected digit model (top digit ~n/ℓ^{D-1} is too small to
+    carry ⟹ usable positions = 1/β − 1, not 1/β).
+  * NON-INDEPENDENCE MEASURED: P(all pass | smooth) = 0.1105 vs product model 0.3297
+    (ratio 0.335) ⟹ conditions are positively correlated in failure; independence heuristics
+    overstate the target 3×. Any injection proof must handle this.
+  * No AP obstruction (n ≡ 7 mod 24 gives 10.18%, same ballpark).
+- MIRROR THEOREM (MIRROR.md; proved elementarily, verified M1–M5 all PASS):
+  In the m = n+k variable BOTH 727 and the solved siblings ask "does a product of consecutive
+  integers divide C(2m,m)?" with the SAME supply κ_p(m). The difference is only WHERE the
+  divisor block sits, and a digit trichotomy for p > 2k decides everything:
+    TYPE A  m ≡ −i (mod p^J): digits p−i, p−1, …  ALL LARGE ⟹ J carries FREE   [728/729/401]
+    TYPE B  2m ≡ odd i:       digits (p+i)/2, (p−1)/2, … ⟹ J carries FREE      [727 odd slots]
+    TYPE C  m ≡ +i (mod p^J): digits i, 0, 0, …  ALL SMALL ⟹ ZERO low carries  [727 even slots]
+  727's block {2m,…,2m−2k+1} splits: odd slots = type B (free), even slots 2(m−i) = type C.
+  The siblings' block {m+1,…,m+k} is entirely type A (free). Same shape, mirrored location,
+  inverted digit pattern. THIS is why Jan-2026 carry-engineering closed 728/729/401 and not 727.
+  Corollaries (proved): (a) the √(2n)-smoothness of the window is not an extra hypothesis but
+  the type-C carry-room inequality p^{2J} ≲ 2m (M5: zero violations); (b) the residual content
+  is exactly the cofactor congruence C_p of Lemma R‴.
+- CONSOLIDATED LOCALIZATION: small primes DONE (Lemma SP, proved, AP-uniform, density 1);
+  large primes DONE given C_p (Lemma R‴, proved); remaining = one statement: infinitely many n
+  with √(2n)-smooth window AND all cofactor congruences. For k=2 the smooth supply is KNOWN
+  (Hildebrand 1985 = Balog's conjecture, positive density); for k ≥ 3 the supply itself is open
+  (positive-density k-strings need α > e^{−1/(k−1)} > 1/2). Injection blocked by the measured
+  correlation obstruction above + R11's parity/balancedness barrier.
+- Resources: Fable-5 credits exhausted mid-run; session switched to Opus. Audits + R13 anatomy
+  relaunched under Opus (wf_0d0ea0f6-516).
+
 ## 2026-07-28 ~06:30 UTC — Wave-1 complete: MASTER LEMMA SP proved; S_2..S_6 to 1e8; R3 reproduced
 
 - R2 delivered MASTER LEMMA SP (attempts/route-R2/LEMMA_SP.md), FULLY PROVED, explicit

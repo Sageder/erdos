@@ -1,0 +1,6 @@
+M1 product form == digit criterion (k=2,3,4; n<400): PASS
+M2 TYPE A (m=-i): 5763 cases, violations 0: PASS
+M3 TYPE B (2m=odd): 4626 cases, violations 0: PASS
+M4 TYPE C (m=+i): 5778 cases, nonzero-low-carry 0: PASS
+M5 type-C smoothness necessity (k=2,3; n<4e4): violations []: PASS
+MIRROR THEOREM: ALL PASS
