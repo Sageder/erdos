@@ -1,1 +1,2 @@
 # k=1: 0 push-up relations with b<=30, elements <=400
+# k=2: 0 push-up relations with b<=30, elements <=400

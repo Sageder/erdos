@@ -11,3 +11,6 @@ experiments/universe.txt
 attempts/route-C/dfs
 attempts/route-C/dfs2
 attempts/route-C/dfs3
+# live-append search output from still-running agents; the verified content is
+# consolidated into experiments/ALLSOLS.txt, which IS tracked
+attempts/route-B/sols_N180_j*.txt
