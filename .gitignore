@@ -14,3 +14,7 @@ attempts/route-C/dfs3
 # live-append search output from still-running agents; the verified content is
 # consolidated into experiments/ALLSOLS.txt, which IS tracked
 attempts/route-B/sols_N180_j*.txt
+# live-append far-out search output; verified content is folded into experiments/ALLSOLS.txt
+experiments/f[0-9]*.out
+experiments/far[0-9]*.out
+experiments/p[0-9]*.txt
