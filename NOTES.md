@@ -1,5 +1,25 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 (Opus-5) — CEGAR engine + CORRECTION to the linear-profile picture
+- Built experiments/profile_cegar.py: order encoding + AP clauses + per-value
+  predecessor-count cardinality, with LAZY transitivity (CEGAR). Two bugs found and
+  fixed during validation: (i) the cycle finder walked FORWARD and could dead-end,
+  falsely reporting acyclicity (fix: after Kahn every residual vertex has an alive
+  IN-neighbour, so walk BACKWARD); (ii) one cycle per round is far too slow — now
+  extracts up to 400 vertex-disjoint cycles per round. Validated against the eager
+  O(N^3)-transitivity encoding with TWO solvers (cadical + glucose) agreeing at
+  (N,C) = (20,1.5), (21,1.5), (34,2), (40,2).
+- CONVENTION NOTE: profile bound is now floor(C*v) — the exact meaning of pos(v) <= Cv.
+  Earlier scans used ceil(C*v) and are therefore slightly more permissive; the C=1.5
+  threshold moves from N=22 (ceil) to N<=20 (floor).
+- CORRECTION to the earlier reading: PLAIN (both-orientation) linear-profile avoiders are
+  ALIVE much further than the asym variant suggested: C=2 SAT at N=60, C=3 SAT at N=60,
+  C=5 SAT at N=90. So plain extinction is CERTIFIED only for C <= 1.5. The claim
+  'linear profiles die up to C=3' was ASYM-only and must not be quoted for the plain
+  problem. This materially improves the NO side's room and means route R1's ratio-5
+  island is NOT excluded by any profile theorem we have.
+- Scan running to N = 130..350 for C = 2, 3, 5.
+
 ## 2026-07-28 (Opus-5) — extension-tree thinness measured
 - tower_extend.py (E1): SAT-found plain avoiders EXTEND for M=20->30, 30->45, 40->60 but
   are DEAD ENDS at M=60->90 and 80->120 (no extension exists at all, with the prefix's
