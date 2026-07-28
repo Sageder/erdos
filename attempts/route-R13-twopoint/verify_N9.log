@@ -1,0 +1,31 @@
+=== exhaustive over ALL monotone-4-AP-free permutations of [1..9] ===
+[DEAD    ] fires=    410638 fails=   226692  CTRL-1 rec + ARBITRARY u: (w,(w+u)/2,u) increasing  [TP4 with g -> any]   witness perm=(1, 2, 4, 3, 7, 5, 8, 6, 9) at (2, 4)
+[DEAD    ] fires=    218060 fails=    90069  CTRL-2 rec + ARBITRARY u: pos(w+2d)<pos(w+d), d=(u-w)/3  [TP5 with g -> any]   witness perm=(1, 2, 4, 3, 7, 5, 8, 6, 9) at (1, 4)
+[DEAD    ] fires=    410638 fails=   226692  CTRL-3 ARBITRARY u + gnd g: (2u-g,u,g) increasing  [TP6 with the lower g -> any]   witness perm=(1, 2, 4, 3, 7, 5, 8, 6, 9) at (4, 5)
+[DEAD    ] fires=    128371 fails=    37211  CTRL-4 rec-rec k=3 section: pos(q-d) > pos(q), d=(q-p)/3   witness perm=(1, 2, 4, 5, 3, 7, 8, 6, 9) at (1, 7)
+[DEAD    ] fires=     78021 fails=    37293  CTRL-4 rec-rec k=4 section: pos(q-d) > pos(q), d=(q-p)/4   witness perm=(1, 2, 4, 3, 7, 5, 8, 6, 9) at (1, 9)
+[DEAD    ] fires=     46365 fails=    17517  CTRL-4 rec-rec k=5 section: pos(q-d) > pos(q), d=(q-p)/5   witness perm=(1, 2, 4, 3, 7, 5, 8, 6, 9) at (4, 9)
+[DEAD    ] fires=     40163 fails=    13533  CTRL-4 rec-rec k=6 section: pos(q-d) > pos(q), d=(q-p)/6   witness perm=(1, 2, 4, 3, 7, 5, 8, 6, 9) at (2, 8)
+[SURVIVES] fires=    402894 fails=        0  F1 (Thm44) no increasing 3-AP ends at a record [proof needs w+d<=N]
+[DEAD    ] fires=   1304383 fails=   120810  F1w (Thm44) same, WITHOUT the proof-side condition   witness perm=(1, 2, 4, 3, 7, 5, 8, 6, 9) at (7, 3)
+[SURVIVES] fires=    402894 fails=        0  F2 (dual) no increasing 3-AP (g,g+d,g+2d) with g grounded and d < g
+[SURVIVES] fires=     87378 fails=        0  NF-RR reduction: in a|_{p+D N_0} the first two values are p, q
+[SURVIVES] fires=     87378 fails=        0  TP1 rec-rec ascent  (p,q,2q-p) increasing
+[SURVIVES] fires=     27345 fails=        0  TP1' rec-rec L1     pos(3q-2p) < pos(2q-p)
+[SURVIVES] fires=     53463 fails=        0  TP2 rec-rec midpoint  pos((p+q)/2) > pos(q)   [proof needs (3q-p)/2<=N]
+[SURVIVES] fires=    106817 fails=        0  TP2c consec-rec midpoint  pos((p+q)/2) > pos(q)  [no proof-side cond]
+[DEAD    ] fires=    215539 fails=    72591  TP2w rec-rec midpoint  pos((p+q)/2) > pos(q)   [no proof-side cond]   witness perm=(1, 2, 4, 3, 7, 5, 8, 6, 9) at (1, 7)
+[SURVIVES] fires=    251644 fails=        0  TP3 rec-gnd sandwich  pos(w)<pos(v)<pos(g) for all v in (w,g)
+[SURVIVES] fires=     73376 fails=        0  TP4 rec-gnd halving   (w,(w+g)/2,g) is an increasing 3-AP
+[SURVIVES] fires=     51414 fails=        0  TP4' rec-gnd halving L1  pos(g+(g-w)/2) < pos(g)
+[SURVIVES] fires=     51414 fails=        0  TP4'' rec-gnd halving L2 pos(w-(g-w)/2) > pos(w)
+[SURVIVES] fires=     20771 fails=        0  TP5 rec-gnd thirds    pos(w)<pos(w+2d)<pos(w+d)<pos(g), d=(g-w)/3
+[SURVIVES] fires=     87378 fails=        0  TP6 gnd-gnd ascent  (2g-h,g,h) is an increasing 3-AP
+[SURVIVES] fires=     65227 fails=        0  TP6' gnd-gnd L1     pos(2h-g) < pos(h)
+[SURVIVES] fires=     53463 fails=        0  TP7 gnd-gnd midpoint  pos((g+h)/2) < pos(g)  [needs g-(h-g)/2 >= 1]
+[DEAD    ] fires=    215539 fails=    72591  TP7w gnd-gnd midpoint  pos((g+h)/2) < pos(g)  [no side cond]   witness perm=(1, 2, 4, 3, 7, 5, 8, 6, 9) at (1, 3)
+[SURVIVES] fires=     13235 fails=        0  TP8 rec-gnd quarters: pos(g+2d) < pos(g), d=(g-w)/4
+[SURVIVES] fires=     23902 fails=        0  TP8b rec-gnd quarters: NOT pos(w+d)<pos(w+2d)<pos(w+3d)
+[SURVIVES] fires=    372667 fails=        0  TPc-nr consec-rec  every v in (p,q) has a larger predecessor
+[DEAD    ] fires=     61389 fails=    60343  TPd two 3-AP tops: (p,q,2q-p) increasing  [CANDIDATE]   witness perm=(1, 2, 4, 3, 7, 5, 8, 6, 9) at (3, 5)
+[DEAD    ] fires=     61389 fails=    49727  TPd' two 3-AP tops: pos(q) < pos(2q-p)  [CANDIDATE]   witness perm=(1, 2, 4, 3, 7, 5, 8, 6, 9) at (3, 5)
