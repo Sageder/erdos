@@ -50,9 +50,9 @@ $E$-covering **using** the modulus 4 lies in the no-bound regime, whereas one **
 least modulus $\ge 6$ and would inherit a positive excess bound.
 
 **(T3) Lower bounds on the lcm.** Every modulus divides $L = \mathrm{lcm}$, so
-$f(L) := \sum_{n \mid L,\, n \in E} 1/n > 1$ is necessary. An exhaustive sieve over **all** $L$
+$\beta(L) := \sum_{n \mid L,\, n \in E} 1/n > 1$ is necessary. An exhaustive sieve over **all** $L$
 (not merely smooth ones) gives: the least such $L$ is $\mathbf{55440 = 2^4\cdot3^2\cdot5\cdot7\cdot11}$
-($f = 6429/6160$), and exactly **90** values $L \le 10^6$ qualify, all divisible by 60.
+($\beta = 6429/6160$), and exactly **90** values $L \le 10^6$ qualify, all divisible by 60.
 Moreover $L = 55440$ itself is **eliminated**, twice independently (below), as are 110880 and
 several further candidates. Combining the budget condition with the fiber test and checking the
 complete candidate list, the adversarial auditor independently confirmed that the only $L_H \le
@@ -62,13 +62,13 @@ $$\boxed{\ \mathrm{lcm} \ \ge\ 2\cdot 90720 \ =\ 181440\ }$$
 for any covering system with all moduli in $E$. (Route D obtained this first; it was reproduced by
 two further independent solvers.)
 
-**(T4) Forced-overlap lemma and the coprimality test** (now stated in full in `DRAFT.tex`,
-including the strengthened Theorem A3+ that was previously cited but unstated) (route A, audited).
+**(T4) Forced-overlap lemma and the coprimality test** (route A, audited; now stated in full in
+`DRAFT.tex`, together with the strengthened Theorem A3+ that was previously cited but unstated).
 For a covering with modulus set $M$ and any *pairwise coprime* $T \subseteq M$,
 $$\sum_{m\in M}\tfrac1m - 1 \;\ge\; f(T) := \sum_{m\in T}\tfrac1m - 1 + \prod_{m\in T}\bigl(1-\tfrac1m\bigr),$$
 because $S \mapsto \sum_{m\in S}1/m - \mathrm{dens}(\bigcup S)$ is monotone and coprime classes are
 independent by CRT **whatever the residues**. Consequence (Theorem A3): if $60 \mid L$ and
-$1 < f(L) \le 31/30$ then no $E$-covering has lcm dividing $L$ — this kills **63 of the 90**
+$1 < \beta(L) \le 31/30$ then no $E$-covering has lcm dividing $L$ — this kills **63 of the 90**
 candidates $\le 10^6$ with no search at all.
 
 **(T5) Exact $q$-adic fiber test** (route D, audited by independent reimplementation).
