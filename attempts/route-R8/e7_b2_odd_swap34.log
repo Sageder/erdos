@@ -22,3 +22,4 @@
     tau_1: [3, 2]
     tau_2: [7, 4, 6, 5]
     tau_3: [11, 8, 10, 12, 9, 14, 13, 15]
+  base2 M=7 k=4 d:odd/swap34: UNSAT (783234 clauses)

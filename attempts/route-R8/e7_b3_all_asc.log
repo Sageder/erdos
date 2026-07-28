@@ -1,0 +1,10 @@
+  base3 M=2 k=4 d:all/asc: SAT (1820 cls); assembled |26|; filtered monotone 4-APs: 0 (NONE -- verified)
+    tau_0: [2, 1]
+    tau_1: [3, 7, 8, 5, 4, 6]
+    tau_2: [20, 14, 10, 19, 24, 17, 12, 22, 16, 26, 18, 13, 9, 21, 15, 11, 25, 23]
+  base3 M=3 k=4 d:all/asc: SAT (52814 cls); assembled |80|; filtered monotone 4-APs: 0 (NONE -- verified)
+    tau_0: [1, 2]
+    tau_1: [6, 8, 7, 4, 3, 5]
+    tau_2: [25, 22, 26, 17, 23, 24, 15, 16, 19, 20, 21, 12, 11, 13, 9, 14, 10, 18]
+    tau_3: [54, 59, 55, 61, 60, 52, 53, 57, 56, 58, 72, 69, 75, 68, 73, 70, 76, 74, 71, 65, 63, 64, 66, 67, 37, 38, 41, 40, 39, 46, '...']
+  base3 M=4 k=4 d:all/asc: UNSAT (1456760 clauses)

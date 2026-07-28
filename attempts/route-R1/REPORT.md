@@ -17,8 +17,8 @@ not proof.
 3. **REVISION from the window-law data (§3.7): in-order is NOT dead at all ratios.**
    Feasible third cuts after (V1,V2) form: a geometry-dead zone (V2, 3V2−3] (exact
    lemma, machine-checked), a thin SAT shoulder at 3V2−2 (present only when V1 ≲ V2/4),
-   an UNSAT notch ≈ [3.05, 4.4]·V2 (activating at scale V2 ≳ 16), and a robust SAT
-   **island ≈ [4.8, 6.2]·V2**. Island-hopping chains pass every test we can afford:
+   an UNSAT notch ≈ [3.2, 4.35]·V2 (activating at scale V2 ≥ 16, present even for V1=2
+   once V2 ≥ 26), and a robust SAT **island ≈ [4.8, ≥5.8]·V2** ((8,26): 125–150 all SAT). Island-hopping chains pass every test we can afford:
    {2,8,26,140} SAT (depth 4, the island point surviving full prefix memory) and the
    pure ratio-5 geometric {5,25,125} SAT. **The alive corridor for R1-in-order is
    V_{k+1}/V_k ≈ 5–6**, unreachable by our SAT beyond ~4 cuts (V5 ≈ 700).
@@ -128,38 +128,57 @@ bans) while ascending escapes are blocked by F3/F4+ bans.
 third cuts killed by forced chains alone are EXACTLY V2 < V3 ≤ 3V2−3 (dead intervals
 [x+2d, x+3d−1] over x ≤ V1 < x+d ≤ V2 < x+2d tile the zone; V3 ≥ 3V2−2 is clean).
 
-SAT-level data (beyond geometry):
+SAT-level data (beyond geometry). S = SAT, U = UNSAT; **bold** = notch/island landmarks:
 
 | (V1,V2) | tested V3 → verdicts |
 |---------|---------------------|
-| (2,8)   | 22,26,30,36,42,50,60,70,80,100 → ALL SAT |
-| (4,12)  | 34,40,48,56,64,72,90,110 → ALL SAT |
-| (4,16)  | 46 S, 52 S, **60 U**, 70 S, 80 S, 96 S, 120 S |
-| (6,20)  | 58 S, **66 U, 76 U, 86 U**, 100 S, 120 S, 140 S |
-| (8,26)  | (≤79 geom-dead), **80 U, 90 U, 110 U**, 140 S, **180 U** |
-| (2,26)  | 76 S, 90 S, … (fast-growth triples clean; row completing) |
-| (V1,26,80) | SAT iff V1 ≤ 6 (tested 2..12) — first-cut memory |
-| 4-cut {2,8,26,V4} | 100 U, 120 U, **140 SAT** — the island survives prefix memory |
-| fixed ratio | **{5,25,125} SAT**; {6,36,216}, {4,24,144}, {5,30,180} running |
+| (2,8)   | 22,26,30,36,42,50,60,70,80,100 → ALL S |
+| (4,12)  | 34,40,48,56,64,72,90,110 → ALL S |
+| (4,16)  | 46 S, 52 S, 54 S, **56–66 U (notch)**, 68 S, 70 S, 80 S, 96 S, 120 S |
+| (6,20)  | 58 S, 60 S, 62 S, **64–86 U (notch)**, 90 S, 94 S, 100 S, 120 S, 140 S |
+| (8,26)  | ≤75 geom-dead, **76 S (shoulder = 3V2−2)**, 78 U, 80 U, 90 U, 110 U (notch), **125,135,140,145,150 S (island)**, 180 U; 160, 200, 220 in flight |
+| (2,26)  | 76 S, 90 S, **110 U (notch exists even at V1=2)**, 140 S, 180 in flight |
+| fixed ratio 5 | **{5,25,125} SAT**; {6,36,216}, {4,24,144}, {5,30,180} in flight |
 
-**Window shape (empirical law)**: geometry-dead (V2, 3V2−3]; a thin SAT shoulder at
-3V2−2 (killed when V1 ≳ V2/4, cf. {8,26,80} U vs {6,26,80} S); an UNSAT notch
-≈ [3.05, 4.4]·V2 activating at scale V2 ≳ 16 and absent for V1 ≤ V2/5-ish
-((2,8),(4,12) rows all-SAT); a robust SAT **island ≈ [4.8, 6.2]·V2**; upper structure
-partially dead (180 = 6.9·26 U) with (6,20,140 = 7·V2) still S — notch-2 onset lies
-between V2 = 20 and 26.
+First-cut memory (fixed (V2,V3), vary V1):
 
-**Conjecture W (window persistence, favored by the data)**: for every (V1,V2) with
-V2 ≥ 4V1 the island [~4.8, ~6.2]·V2 remains SAT at all scales AND is preserved under
-full prefix memory, so that in-order cut sequences with ratios in [5,6] are feasible
-at every finite depth — i.e. **the in-order block ansatz is ALIVE precisely in the
-ratio-5–6 corridor** (and dead for ratios ≤ 4.3 by the notch, for ratios ~3 by
-T-GLOBAL). Evidence: depth-4 island survival {2,8,26,140}; {5,25,125}.
-**Anti-conjecture (the inductive impossibility asked after T-GLOBAL)** — that deeper
-prefixes narrow the islands to extinction — is DISFAVORED: no narrowing was observed
-at depth 4 (the island point 140 of W(8,26) stayed alive under prefix {2,8}); it
-would need the first narrowing to start at depths ≥ 5 (V5 ≈ 700, at the edge of our
-SAT reach; `fivecut.log` records the attempt).
+| (V2,V3) | feasible iff |
+|---------|--------------|
+| (26,80) | V1 ≤ 6 (tested 2..12) |
+| (20,100) | V1 ≤ 7 (tested 2..14) |
+| (16,70) | V1 ≤ 6 (tested 2..12) |
+
+Depth-4 memory {2,8,26,V4}: 100 U, 120 U, **140 S**, 160 U; 130, 150 in flight.
+Compare 3-cut level: {8,26,150} S vs {2,8,26,160} U — the island under full prefix
+memory retains its center (140) and appears trimmed at the edges.
+
+**Window shape (empirical law)**: after (V1,V2) with V2 ≥ 2V1 ≥ 4:
+geometry-dead (V2, 3V2−3] (exact); a 1–2 point SAT shoulder from 3V2−2, widening as
+V1/V2 shrinks (at (8,26) it is exactly {76,±77}; at (2,26) it reaches 90; at V2 ≤ 12
+it merges with everything — no notch at all); an UNSAT **notch ≈ [3.2, 4.35]·V2**
+activating at scale V2 ≥ 16 and present even for V1 = 2 once V2 ≥ 26; a robust SAT
+**island ≈ [4.8, ≥5.8]·V2** ((8,26): 125–150 all SAT); death again by ≈ 6.9·V2
+(180 U for (8,26)), with notch-2 onset between V2 = 20 (absent at 7·V2 = 140) and
+V2 = 26.
+
+**Conjecture W (window persistence — favored)**: the island [~4.8, ~5.8]·V2 stays SAT
+at all scales and under full prefix memory, so in-order cut sequences with ratios
+≈ 5–6 are feasible at every finite depth: **the in-order block ansatz is ALIVE exactly
+in the ratio-5–6 corridor** (dead ≤ 4.35 by the notch; r = 3,4 dead by T-GLOBAL).
+Evidence: {2,8,26,140} S (depth 4), {5,25,125} S, island robustness across (V1,V2).
+**Anti-conjecture (inductive impossibility)**: prefixes progressively trim islands
+({2,8,26,160} U vs {8,26,160}?, {2,8,26,100/120} U) until extinction at some finite
+depth. Current data shows trimming at edges but NO trimming at the island center
+through depth 4; deciding depth 5 needs V5 ≈ 700 (attempt in `fivecut.log`, beyond
+comfortable exact-SAT reach this session). Both conjectures are stated precisely so
+either can be attacked; the data leans toward W.
+
+**Ratio-5 witness structure** (`witness_r5.log`, `witness_r5_stats.log`): the
+top segment [26,126) of the {5,25,125} witness is BANDED: values ≥ ~86 (the b-partners
+of the K-demands, b ≥ (rs+s+2·20)/2-ish) occupy the first ~40 positions in three bands
+(upper-middle, top, high-middle), the bottom 3/5 follows in descending bands with
+σ-like fine structure; 88.6% of the K-family {(a,b): 2b−a ≥ 126} is inverted. This
+suggests a parametric "banded gadget" family for an explicit ratio-5 rule (§4).
 
 ### 3.8 T-ILV (non-decomposing interleavings)
 Layouts with perpetual debt (never covering a block prefix; minimal form

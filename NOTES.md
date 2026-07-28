@@ -1,5 +1,24 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 later (route R1): MAJOR REVISION — in-order corridor at ratio 5-6 is ALIVE
+- Window law refined (attempts/route-R1/windows*.log): after cuts (V1,V2):
+  geometry-dead (V2, 3V2-3] (exact lemma, machine-checked); 1-2 point SAT shoulder at
+  3V2-2; UNSAT notch ~ [3.2, 4.35]*V2 (activates by V2=16, present even for V1=2 at
+  V2=26); robust SAT ISLAND ~ [4.8, 5.8+]*V2 ((8,26): 125,135,140,145,150 all SAT).
+- Depth-4 memory: {2,8,26,140} SAT (!), {2,8,26,100/120/160} UNSAT — island survives
+  under full prefix but seems narrowed at edges (150-comparison running).
+- Pure geometric ratio 5: {5,25,125} SAT. So earlier "in-order dead" verdict is scoped:
+  DEAD for ratios <= 4.3 (notch) and r=3,4 staged (Koenig-exact); ALIVE-UNKNOWN in the
+  ratio-5-6 island corridor. r=5 witness has clean banded structure (witness_r5_stats.log):
+  top-2/5 of block first (banded), bottom-3/5 after; 88.6% of K-family inverted.
+- E(V) settled for ALL V via sigma_V witness (e_of_v_sigma.log): single cuts never
+  obstruct; obstruction irreducibly >= 3 scales.
+- V1-memory thresholds: {V1,16,70} feasible iff V1<=6; {V1,20,100} iff V1<=7; {V1,26,80} iff V1<=6.
+- Next: depth-5 island test (V5 ~ 700, fivecut.log, CEGAR); r=5 banded gadget rule + framework
+  check to 1e5. Consistency with CORE.md Thm 12 (C<9/8) and linear-extinction C=3: corridor
+  sits at displacement constant ~5-6, not yet excluded by those results.
+
+
 ## 2026-07-28 R4 displacement-class thresholds (attempts/route-R4/)
 - CERTIFIED extinction thresholds (min N with NO 4-AP-free permutation of [1..N]), each
   by >=2 independent engines (fast/fast2 DFS + CaDiCaL order-encoding + CP-SAT spot checks;
