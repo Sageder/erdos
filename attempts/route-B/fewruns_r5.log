@@ -1,3 +1,5 @@
 RMAX=5 N=300:
 done RMAX=5 job=0/1 nodes=1206484145 solutions=0
 RMAX=5 N=400:
+done RMAX=5 job=0/1 nodes=15756202883 solutions=0
+RMAX=5 N=500:

@@ -1,0 +1,5 @@
+y=42   |U|= 351 maxsum=0.5341 Lbits= 81  log2 E[#sol] = 24.5
+y=43   |U|= 402 maxsum=0.5953 Lbits= 86  log2 E[#sol] = 93.8
+y=44   |U|= 402 maxsum=0.5953 Lbits= 86  log2 E[#sol] = 93.8
+y=45   |U|= 402 maxsum=0.5953 Lbits= 86  log2 E[#sol] = 93.8
+y=46   |U|= 402 maxsum=0.5953 Lbits= 86  log2 E[#sol] = 93.8
