@@ -45,3 +45,54 @@ canonical: min pi/v = 0.286 at v=7, max pi/v = 1.867 at v=15
   v/N (0.9,1.0]: mean 0.747 min 0.667 max 0.857
 interpretation: oscillatory zig-zag; mid values late (~wall), top ~N values early (~pi=v/2);
 survivors saturate BOTH walls; defect values sit exactly at pi(v)=2v (e.g. v=21->42 at N=49).
+
+=== ASCII picture: canonical two-sided survivor N=49 (C=2), row=position, col=value/49*60 ===
+  1 |*
+  2 |   *
+  3 |      *
+  4 | *
+  5 |         *
+  6 |       *
+  7 |    *
+  8 |                  *
+  9 |     *
+ 10 |                     *
+ 11 |                          *
+ 12 |                       *
+ 13 |                      *
+ 14 |                    *
+ 15 |              *
+ 16 |               *
+ 17 |                 *
+ 18 |          *
+ 19 |            *
+ 20 |           *
+ 21 |                                                *
+ 22 |                                           *
+ 23 |                                                    *
+ 24 |                                                          *
+ 25 |                                                           *
+ 26 |                                         *
+ 27 |                                          *
+ 28 |                *
+ 29 |                                                       *
+ 30 |                                             *
+ 31 |                                            *
+ 32 |                                                  *
+ 33 |                              *
+ 34 |                                                     *
+ 35 |                                                 *
+ 36 |                                    *
+ 37 |                                               *
+ 38 |                                                      *
+ 39 |                                     *
+ 40 |                                 *
+ 41 |                                  *
+ 42 |                         *
+ 43 |                                                        *
+ 44 |                                       *
+ 45 |                                      *
+ 46 |                           *
+ 47 |                                *
+ 48 |                            *
+ 49 |                               *
