@@ -544,7 +544,7 @@ Take `P := exp(c√(log M))`, `t := ⌊√(log M)/20⌋`, `q0, a` arbitrary with
 - (H4): `log M/log P = √L/c ≥ 6√L`. Need `6√L ≥ 60(2k + log_2(2k) + t + 1)`
   with `t ≤ √L/20`: since `60·√L/20 = 3√L`, it suffices that
   `3√L ≥ 60(2k + log_2(2k) + 1)`, i.e. `√L ≥ 20(2k + log_2(2k) + 1)`, which
-  is the definition of `M_A(k)`. Also `t ≥ 3 ⟺ √L ≥ 80`, implied. ✓
+  is the definition of `M_A(k)`. Also `t ≥ 3 ⟺ √L ≥ 60`, implied. ✓
 
 Master (3) then gives, using `c − 7/(240c) ≤ −1/120` for `0 < c ≤ 1/6`
 (the map `c ↦ c − 7/(240c)` is increasing; equality `−1/120` at `c = 1/6`;
@@ -667,3 +667,40 @@ digit supply `s_2` in positions `[e_2, L_2)` grows like `(2/5)log_2 M` — this
 is precisely why the threshold lemma SP.9 needs `L_p − e_p` large and why the
 AP-uniform statement is a genuinely asymptotic one (spike condition (ii) with
 the corrected threshold is already rare there: rate `0.044`, T8.4).
+
+
+---
+
+## Audit repairs applied 2026-07-28 (see `AUDIT_SP.md`; verdict PASS-with-repairs, no fatal errors)
+
+**R1.** In the Section-6 / Corollary SP-A hypothesis check, the equivalence "`t ≥ 3` ⟺
+`√L ≥ 80`" is wrong: with `t = ⌊√(log M)/20⌋` the correct threshold is `√L ≥ 60`. Both are
+over-satisfied by `√L ≥ 20(2k + log₂(2k) + 1) ≥ 140` (which gives `t ≥ 7`), so nothing
+downstream changes.
+
+**R2.** In Remark 7.2 / Section 8, the claim "the forced demand at `p = 2` is
+`≥ 11 + ν₂((2k)!)`" is FALSE as written. For `k = 3`, `q₀ = 2¹⁰`, `M = 10⁶`: `ν₂(6!) = 4`, so
+the claim asserts `W₂ ≥ 15`, whereas the true minimum over that progression is `W₂ = 14`, and
+`W₂ < 15` for 489 of the 977 elements. The correct — and sufficient — statement is
+`W₂(m) ≥ ν₂(2m) = 1 + ν₂(m) ≥ 11`. The conclusion drawn there (density of (i) is 0.0000 in that
+progression) is correct and was reproduced exactly by the auditor.
+
+**R3.** In Section 8, "`κ₂(m) = s₂(m) ≈ 10` at that scale" overstates the supply: on
+`m ≡ 0 (mod 2¹⁰)`, `m ∈ [10⁶, 2·10⁶]`, the mean of `s₂(m)` is 5.885 and the maximum is 10.
+Read "`s₂(m) ≤ 10`, mean ≈ 5.9" — which only strengthens the point being made.
+
+**R4.** The Section-8 verification map (row T13) is mislabelled. The configurations
+`M = 2⁶⁴, 2²⁰⁰, 10⁶⁰` do **not** satisfy the Master Lemma's own hypotheses: (H4) at `k = 2`,
+`P = 13`, `t = 3` demands `log M ≥ 60(4 + 2 + 3 + 1)log 13 ≈ 1539`, i.e. `M ≳ 10⁶⁶⁸`, versus
+`log M = 44, 139, 138` for those configurations. What T13 actually tests is the deterministic
+part-(1) chain gated on the *conclusion* of SP.9 — legitimate, but the row must not read as if
+the hypotheses were met. The auditor closed this gap independently by re-running end-to-end at
+genuinely (H1)–(H4)-compliant scales — `2⁶⁰⁰, 3⁶⁰⁰, 3¹³⁰⁹, 7¹⁵¹¹, 11⁸¹⁶, 13⁶⁰⁰, 13¹²⁰⁰,
+101⁷²⁰, 251¹⁰⁴⁰` (181 to 2496 decimal digits) — with **zero violations**.
+
+**Standing scope note (auditor's, binding).** The header "Status: proved in full" is true of the
+*lemma* and must never be quoted as a status for the route or for problem 727. The lemma covers
+only `p ≤ P ≤ M^{1/20}`; the range `(exp(√(log M)/6), √(2n)]` — essentially all of the
+difficulty — lies outside it. Note also (auditor's M5) that AP-uniformity does not by itself
+deliver the intended intersection, since "`n+1,…,n+k` all `√(2n)`-smooth" is not a union of
+arithmetic progressions.
