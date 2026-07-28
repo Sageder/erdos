@@ -1,0 +1,44 @@
+====================================================================================================
+EXPLICIT CLASS ARCHITECTURES  (t = delay, order = within-class order)
+====================================================================================================
+ b        t      order     N   inc4AP   dec4AP  (ii)viol  openPairs  C1 bad  C2 bad  C4 bad  maxreach
+ 3        0 increasing   300    14850        0         0      22350    4151       0   27960 ('VIOLATION', 242, 300)
+ 3        0 decreasing   300        0     5332         0       3286       0       0       0     2.938
+ 3        0        vdc   300     5840        0         0      13989    2287       0   26548 ('VIOLATION', 242, 300)
+ 3        0    vdc_rev   300      582      442         0       5567     226       0    9397 ('VIOLATION', 226, 299)
+ 3       v2 increasing   300     5376        0         0      10584    1839       0   21712 ('VIOLATION', 241, 300)
+ 3       v2 decreasing   300        0     1690         0       1592       0       0       0     6.775
+ 3       v2        vdc   300     2626        0         0       8085    1262       0   20512 ('VIOLATION', 239, 299)
+ 3       v2    vdc_rev   300      115      184         0       2245      50       0    1787 ('VIOLATION', 225, 299)
+ 3    1_odd increasing   300     8430        0         0      15414    2688       0   24412 ('VIOLATION', 242, 300)
+ 3    1_odd decreasing   300        0     2592         0       2252       0       0       0     8.741
+ 3    1_odd        vdc   300     3676        0         0      10617    1464       0   22266 ('VIOLATION', 242, 300)
+ 3    1_odd    vdc_rev   300      601      251         0       4165     420       0    9626 ('VIOLATION', 224, 300)
+ 4        0 increasing   300    14850        0         0      22350    3501       0   23733 ('VIOLATION', 255, 300)
+ 4        0 decreasing   300        0     6741         0       1853       0       0       0     2.235
+ 4        0        vdc   300     4739        0         0      12401    1614       0   22187 ('VIOLATION', 242, 300)
+ 4        0    vdc_rev   300      456      660         0       4070      74       0     836 ('VIOLATION', 220, 299)
+ 4       v2 increasing   300     5141        0         0       9829    1422       0   17806 ('VIOLATION', 255, 300)
+ 4       v2 decreasing   300        0     2149         0        892       0       0       0     3.295
+ 4       v2        vdc   300     2058        0         0       6867     838       0   16512 ('VIOLATION', 239, 299)
+ 4       v2    vdc_rev   300      101      255         0       1474      13       0      81 ('VIOLATION', 217, 299)
+ 4    1_odd increasing   300     8043        0         0      14697    2153       0   21090 ('VIOLATION', 254, 300)
+ 4    1_odd decreasing   300        0     3297         0       1338       0       0       0     4.828
+ 4    1_odd        vdc   300     3232        0         0      10036    1244       0   19765 ('VIOLATION', 242, 300)
+ 4    1_odd    vdc_rev   300      178      366         0       2300      25       0     204 ('VIOLATION', 216, 300)
+ 5        0 increasing   300    14850        0         0      22350    1330       0   23712 ('VIOLATION', 124, 300)
+ 5        0 decreasing   300        0     6750         0       1388       0       0       0     2.241
+ 5        0        vdc   300     4841        0         0      12533     735       0   23225 ('VIOLATION', 124, 300)
+ 5        0    vdc_rev   300      680      604         0       3725      48       0    1339 ('VIOLATION', 124, 300)
+ 5       v2 increasing   300     5478        0         0       9789    1052       0   18399 ('VIOLATION', 123, 300)
+ 5       v2 decreasing   300        0     2158         0        687       0       0       0     3.321
+ 5       v2        vdc   300     2432        0         0       6871     881       0   17897 ('VIOLATION', 123, 300)
+ 5       v2    vdc_rev   300      165      239         0       1330       7       0     131 ('VIOLATION', 123, 299)
+ 5    1_odd increasing   300     8321        0         0      14416    1522       0   20402 ('VIOLATION', 124, 300)
+ 5    1_odd decreasing   300        0     3302         0        980       0       0       0     3.333
+ 5    1_odd        vdc   300     3502        0         0       9719    1202       0   19807 ('VIOLATION', 124, 300)
+ 5    1_odd    vdc_rev   300      336      337         0       2121      60       0     849 ('VIOLATION', 124, 300)
+
+C1 = 'u open at d but c(u+d) > c(u)'  (must be 0 whenever inc4AP = 0)
+C2 = 'c(u-2d)<c(u-d)<c(u) but (u-2d,u-d,u) not positionally increasing' (must be 0 always)
+C4 = 'v in Cl(u) but c(v) > c(u)'      (must be 0 whenever inc4AP = 0)

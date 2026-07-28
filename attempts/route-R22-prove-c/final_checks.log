@@ -1,0 +1,35 @@
+================================================================================================
+THEOREM E(a): for b >= 3, c = G(j(v)) satisfies condition (ii) for EVERY G
+(and FAILS for b = 2, where the block-gap lemma D2+D3 <= 1 is unavailable)
+================================================================================================
+ b     N  random G trials  total (ii)-violations
+ 2   900               25                   8250
+ 3   900               25                      0
+ 4   900               25                      0
+ 5   900               25                      0
+
+================================================================================================
+THEOREM D: |F_m| >= c1 b^m forces {t < r} to have >= (c1/2) b^m elements of
+[b^{m-r+1}, b^{m+1}),  r = 2 + floor(log_b(2/c1))
+================================================================================================
+ b          t      N  c1 (measured)   r   m  |{t<r} cap window|  bound (c1/2)b^m   ok
+ 3         v2   2187          1.111   2   5                 486            135.0 True
+ 3         v2   2187          1.111   2   6                1458            405.0 True
+ 3      1_odd   2187          1.333   2   5                 648            162.0 True
+ 3      1_odd   2187          1.333   2   6                1944            486.0 True
+ 3          0   2187            2.0   2   5                 648            243.0 True
+ 3          0   2187            2.0   2   6                1944            729.0 True
+ 4         v2  12288          1.688   2   4                 720            216.0 True
+ 4         v2  12288          1.688   2   5                2880            864.0 True
+ 4      1_odd  12288          1.875   2   4                 960            240.0 True
+ 4      1_odd  12288          1.875   2   5                3840            960.0 True
+ 4          0  12288            3.0   2   4                 960            384.0 True
+ 4          0  12288            3.0   2   5                3840           1536.0 True
+
+================================================================================================
+LEMMA G (finite shadow): OPEN = {u : some (u-2d,u-d,u) positionally increasing}
+meets every AP of step q <= 8 -- measured density of OPEN inside each AP
+================================================================================================
+  b=3    t=0 order=decreasing: |OPEN|/N = 0.672, min AP-density = 0.759, max = 0.800  (min > 0 in every case)
+  b=3   t=v2 order=decreasing: |OPEN|/N = 0.790, min AP-density = 0.760, max = 1.000  (min > 0 in every case)
+  b=4    t=0 order=       vdc: |OPEN|/N = 0.995, min AP-density = 1.000, max = 1.000  (min > 0 in every case)

@@ -1,0 +1,4 @@
+ap4_violations vs apcheck (3 impls), 4000 random perms n=4..9: mismatches = 0
+ap4_violations exact violation-set match vs literal enumeration: 600/600 OK
+blockindex exact on v<=5000, b in {2,3,4,5,10}: OK
+architecture->permutation order law verified pairwise at N=200: OK

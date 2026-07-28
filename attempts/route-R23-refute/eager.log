@@ -1,0 +1,5 @@
+W3 b=3 h=2  N=60: eager encoding (70820 clauses) cadical=UNSAT glucose=UNSAT  (0s)
+W3 b=3 h=M+2 N=60: eager encoding (70876 clauses) cadical=UNSAT glucose=UNSAT  (0s)
+W3 b=5 h=2  N=90: eager encoding (240310 clauses) cadical=UNSAT glucose=UNSAT  (0s)
+W1 b=4 h=1  N=90: eager encoding (240071 clauses) cadical=UNSAT glucose=UNSAT  (1s)
+W3 b=4 h=2  N=130: eager encoding (726223 clauses) cadical=UNSAT glucose=UNSAT  (2s)

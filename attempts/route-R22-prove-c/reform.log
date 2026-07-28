@@ -1,0 +1,80 @@
+====================================================================================================
+PROPOSITION C  (AP-restricted displacement bound; NO fibre hypothesis)
+====================================================================================================
+ b       t       order     N   tested  bad(exact)  bad(linear)  max pos_P(n)/n
+ 3       0  decreasing   400     2400           0            0           2.988
+ 3       0         vdc   400     2400           0            0           1.704
+ 3       0  increasing   400     2400           0            0             1.0
+ 3      v2  decreasing   400     2400           0            0            21.0
+ 3      v2         vdc   400     2400           0            0          17.125
+ 3      v2  increasing   400     2400           0            0          17.125
+ 3   1_odd  decreasing   400     2400           0            0           5.963
+ 3   1_odd         vdc   400     2400           0            0           2.108
+ 3   1_odd  increasing   400     2400           0            0             2.0
+ 3 v2+1_od  decreasing   400     2400           0            0            21.0
+ 3 v2+1_od         vdc   400     2400           0            0          12.188
+ 3 v2+1_od  increasing   400     2400           0            0          12.188
+ 4       0  decreasing   400     2400           0            0           3.984
+ 4       0         vdc   400     2400           0            0           1.778
+ 4       0  increasing   400     2400           0            0             1.0
+ 4      v2  decreasing   400     2400           0            0            36.5
+ 4      v2         vdc   400     2400           0            0          21.062
+ 4      v2  increasing   400     2400           0            0          21.062
+ 4   1_odd  decreasing   400     2400           0            0           9.353
+ 4   1_odd         vdc   400     2400           0            0           2.627
+ 4   1_odd  increasing   400     2400           0            0           2.462
+ 4 v2+1_od  decreasing   400     2400           0            0          25.125
+ 4 v2+1_od         vdc   400     2400           0            0          21.062
+ 4 v2+1_od  increasing   400     2400           0            0          21.062
+ 5       0  decreasing   400     2400           0            0            4.96
+ 5       0         vdc   400     2400           0            0           1.778
+ 5       0  increasing   400     2400           0            0             1.0
+ 5      v2  decreasing   400     2400           0            0           39.75
+ 5      v2         vdc   400     2400           0            0          29.375
+ 5      v2  increasing   400     2400           0            0          29.375
+ 5   1_odd  decreasing   400     2400           0            0            14.8
+ 5   1_odd         vdc   400     2400           0            0             3.0
+ 5   1_odd  increasing   400     2400           0            0             3.0
+ 5 v2+1_od  decreasing   400     2400           0            0           39.75
+ 5 v2+1_od         vdc   400     2400           0            0          19.938
+ 5 v2+1_od  increasing   400     2400           0            0          19.938
+
+====================================================================================================
+COROLLARY C1  (global linear displacement for bounded delay: pos(v) <= b^{T+1} v)
+====================================================================================================
+ b         t       order     N   T  violations  max pos/v  bound b^(T+1)
+ 3         0  decreasing   600   0           0      2.988              3
+ 3         0         vdc   600   0           0       1.83              3
+ 3     1_odd  decreasing   600   1           0      5.963              9
+ 3     1_odd         vdc   600   1           0      2.108              9
+ 3    v2cap3  decreasing   600   3           0     23.375             81
+ 3    v2cap3         vdc   600   3           0     11.719             81
+ 4         0  decreasing   600   0           0      3.984              4
+ 4         0         vdc   600   0           0       1.83              4
+ 4     1_odd  decreasing   600   1           0      9.353             16
+ 4     1_odd         vdc   600   1           0      2.627             16
+ 4    v2cap3  decreasing   600   3           0     46.625            256
+ 4    v2cap3         vdc   600   3           0     23.375            256
+ 5         0  decreasing   600   0           0       4.96              5
+ 5         0         vdc   600   0           0       1.83              5
+ 5     1_odd  decreasing   600   1           0       14.8             25
+ 5     1_odd         vdc   600   1           0      3.059             25
+ 5    v2cap3  decreasing   600   3           0     58.625            625
+ 5    v2cap3         vdc   600   3           0     41.875            625
+
+====================================================================================================
+THEOREM E  (t = g(block index)):  strict geometric fibre design <=> g bounded
+====================================================================================================
+                 g  max g on [0,K)  #empty fibres   min(maxpre(m)-m)
+            g == 0               0              0                  0
+            g == 3               3              2                 -3
+     g = k  (c=2j)              39             20                -19
+          g = k//2              19             13                -13
+      g = isqrt(k)               6              5                 -5
+       g = k mod 2               1             20                  0
+  g = 5 - min(k,5)               5              4                  0
+  holes 0,4,20,100              80              0                -16
+
+Reading: 'min(maxpre(m)-m)' is the worst log_b-deficiency of a fibre; a strict
+geometric design needs #empty fibres = 0 AND that quantity bounded below.  Every
+unbounded g in the table fails one of the two -- as Theorem E says it must.
