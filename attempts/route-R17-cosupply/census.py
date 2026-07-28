@@ -20,7 +20,7 @@ from apcheck import has_monotone_kap_pos
 from forcing2 import (make_pos, open_scales, out_edges, closure, records, grounded,
                       RULES)
 
-ALL = ('U1', 'U2', 'D1', 'D2')
+from forcing2 import ALLRULES as ALL
 
 
 def board_stats(perm, K=3):

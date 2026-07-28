@@ -3,23 +3,28 @@
 Conventions: PROBLEM.md. perm[i] = value at position i+1; pos[v] = position of value v.
 `v < w` in VALUE, `v prec w` iff pos[v] < pos[w].
 
-THE FOUR FORCED DESCENTS (all four are single-AP unit propagations; proofs in REPORT.md).
-Let a be monotone-4-AP-free. For all s, d >= 1 (conditions on out-of-range values vacuous):
+THE SIX FORCED DESCENTS.  They are exactly the unit propagations of the two 3-literal
+clauses attached to the 4-AP (x, x+d, x+2d, x+3d):  with l_i = [x+(i-1)d prec x+id],
+   no increasing 4-AP  =  (~l1 | ~l2 | ~l3),      no decreasing 4-AP  =  (l1 | l2 | l3).
+Each clause yields three unit propagations, i.e. three forced prec-facts; written with
+the SOURCE of the resulting descending edge called s (all conditions on out-of-range
+values are vacuous, and each rule needs its mentioned values >= 1):
 
- (U)  if ( s-2d prec s-d prec s )   or   ( s+d prec s+2d prec s+3d )   then  s+d prec s
- (D)  if ( s+2d prec s+d prec s )   or   ( s-d prec s-2d prec s-3d )   then  s-d prec s
+  (U1)  s-2d prec s-d prec s                    =>  s+d prec s      [edge s -> s+d]
+  (U2)  s+d prec s+2d prec s+3d                 =>  s+d prec s      [edge s -> s+d]
+  (U3)  s-d prec s   and   s+d prec s+2d        =>  s+d prec s      [edge s -> s+d]
+  (D1)  s+2d prec s+d prec s                    =>  s-d prec s      [edge s -> s-d]
+  (D2)  s-d prec s-2d prec s-3d                 =>  s-d prec s      [edge s -> s-d]
+  (D3)  s-d prec s-2d  and  s+d prec s          =>  s-d prec s      [edge s -> s-d]
 
- (U1) = Theorem 16(a) of CORE.md (the only rule used there).
+ (U1) is Theorem 16(a) of CORE.md -- the only rule used there.
  (U2): else (s, s+d, s+2d, s+3d) is an increasing monotone 4-AP.
+ (U3): with x = s-d, l1 and l3 hold, so l2 must fail: else an increasing 4-AP.
  (D1): else (s+2d, s+d, s, s-d) read in increasing position order is a decreasing 4-AP.
  (D2): else (s, s-d, s-2d, s-3d) read in increasing position order is a decreasing 4-AP.
+ (D3): with x = s-2d, ~l1 and ~l3 hold, so l2 must hold: else a decreasing 4-AP.
 
-So: an increasing monotone 3-AP (a, a+d, a+2d) forces the two UP-descents
-    (a-d) -> a   and   (a+2d) -> (a+3d);
-    a decreasing monotone 3-AP (b+2d, b+d, b) forces the two DOWN-descents
-    b -> (b-d)   and   (b+3d) -> (b+2d).
-
-Digraph G* on the values: edge s -> t whenever one of the four rules forces t prec s.
+Digraph G* on the values: edge s -> t whenever one of the six rules forces t prec s.
 Every edge is prec-descending, out-degree is finite => Cl_{G*}(u) subset {u} u pred(u)
 is finite, |Cl_{G*}(u)| <= pos(u), and 196-YES <=> some vertex has an infinite
 G*-closure.  G (Theorem 16) is the sub-digraph using rule (U1) only.
@@ -99,17 +104,37 @@ def edges_D2(pos, s, N):
     return out
 
 
-RULES = {'U1': edges_U1, 'U2': edges_U2, 'D1': edges_D1, 'D2': edges_D2}
+def edges_U3(pos, s, N):
+    """s -> s+d because (s-d prec s) and (s+d prec s+2d)."""
+    out = []
+    for d in range(1, s):
+        if s + 2 * d <= N and pos[s - d] < pos[s] and pos[s + d] < pos[s + 2 * d]:
+            out.append(s + d)
+    return out
 
 
-def out_edges(pos, s, N, rules=('U1', 'U2', 'D1', 'D2')):
+def edges_D3(pos, s, N):
+    """s -> s-d because (s-d prec s-2d) and (s+d prec s)."""
+    out = []
+    for d in range(1, (s - 1) // 2 + 1):
+        if s + d <= N and pos[s - d] < pos[s - 2 * d] and pos[s + d] < pos[s]:
+            out.append(s - d)
+    return out
+
+
+RULES = {'U1': edges_U1, 'U2': edges_U2, 'U3': edges_U3,
+         'D1': edges_D1, 'D2': edges_D2, 'D3': edges_D3}
+ALLRULES = ('U1', 'U2', 'U3', 'D1', 'D2', 'D3')
+
+
+def out_edges(pos, s, N, rules=ALLRULES):
     out = set()
     for r in rules:
         out.update(RULES[r](pos, s, N))
     return out
 
 
-def closure(pos, u0, N, rules=('U1', 'U2', 'D1', 'D2')):
+def closure(pos, u0, N, rules=ALLRULES):
     seen = {u0}
     stack = [u0]
     while stack:
@@ -121,7 +146,7 @@ def closure(pos, u0, N, rules=('U1', 'U2', 'D1', 'D2')):
     return seen
 
 
-def longest_chain(pos, u0, N, rules=('U1', 'U2', 'D1', 'D2')):
+def longest_chain(pos, u0, N, rules=ALLRULES):
     """Length (#edges) of the longest G-path from u0; the digraph is acyclic (all
     edges strictly decrease pos), so a memoised DFS terminates."""
     memo = {}
@@ -171,13 +196,13 @@ def grounded(pos, N):
 # ---------------------------------------------------------------- validation
 
 def verify_rules(perm, brute=False):
-    """Check every instance of the four rules on a 4-AP-free board: each derived
+    """Check every instance of the six rules on a 4-AP-free board: each derived
     edge s -> t must really satisfy pos[t] < pos[s].  Returns #instances checked."""
     N = len(perm)
     pos = make_pos(perm)
     n = 0
     for s in range(1, N + 1):
-        for r in ('U1', 'U2', 'D1', 'D2'):
+        for r in ALLRULES:
             for t in RULES[r](pos, s, N):
                 assert 1 <= t <= N
                 assert pos[t] < pos[s], ("RULE VIOLATION", r, perm, s, t)

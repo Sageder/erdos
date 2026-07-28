@@ -1,0 +1,1 @@
+[cadical] cuts=[1, 3, 9, 27, 81] N=242: UNSAT (0.5s, 1456597 clauses)
