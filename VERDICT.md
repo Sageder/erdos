@@ -116,48 +116,59 @@ The decomposition of what remains:
   positive proportion of L1 pairs satisfying the condition at the largest prime factor of `n+1`.
 
 **Route R14 then attacked L4a directly, and falsified R13's optimism about it**
-(`attempts/route-R14/L4A.md`, audit in progress). L4a is **open, not classical**: the moduli it
-requires are `ℓ^J`, a *power* of `x`, whereas the only AP-restricted theorem available for smooth
-*pairs* (Tao–Teräväinen Thm 3.1) permits moduli only up to `(log x)^c`; the classical
-smooth-numbers-in-progressions results (Fouvry–Tenenbaum, Granville, Soundararajan, Harman,
-Drappeau, Pascadi) all apply to *one* smooth number. R14 additionally proved **Proposition O1**,
-which closes the obvious escape: the second neighbour's smoothness can be neither dropped nor
-recovered by sieving. Dropping it, the bad set already exceeds the entire smooth-pair set —
-measured ratio 1.42, 2.64, 6.66, 13.12 at `x = 10⁸` for `b = 0.5, 0.4, 0.3, 0.25`, and diverging
-like `2^{−1/b}/ρ(1/b)`; and an upper-bound sieve over `(x^b, x^{θ'}]` recovers only `≈ b/θ'`
-(Mertens) against a required saving of `ρ(1/b) = b^{(1/b)(1+o(1))}`.
+(`attempts/route-R14/L4A.md`; adversarially audited, `AUDIT_L4A.md`, verdict **MIXED**).
+L4a is **open, not classical**: the moduli it requires are `ℓ^J`, a *power* of `x`, whereas the
+only AP-restricted theorem available for smooth *pairs* (Tao–Teräväinen Thm 3.1) permits moduli
+only up to `(log x)^c`; the classical smooth-numbers-in-progressions results (Fouvry–Tenenbaum,
+Granville, Soundararajan, Harman, Drappeau, Pascadi) all apply to *one* smooth number.
 
-**What R14 did establish** — new, unconditional, and independently spot-checked here: the exact
-failure event at a large prime is "the cofactor minus one is digit-poor base `ℓ`" (Lemma 2);
+**What survived the audit (unconditional, and the honest achievement of the route).** Lemmas 1,
+2, 2′, 3, 3′, 4 and 5 are **correct** — re-derived by hand and machine-verified from scratch by
+the auditor (720,406 exhaustive Lemma-2 instances, 756,666 for Lemma 2′, 120,000 random large
+instances, exact Lemma-3 residue counts, 46,297 members of the class `157 mod 648`), with zero
+counterexamples, and every table reproduced to the exact integer. Substantively: the failure
+event at a large prime is exactly "the cofactor minus one is digit-poor base `ℓ`" (Lemma 2);
 truncating it to `J` digits makes it a *pure congruence condition* mod `ℓ^J` of relative size
-exactly `(1/2)((ℓ+1)/2ℓ)^{J−1}` (Lemma 3); a distribution-free budget lemma (Lemma 4) using only
-`Σβ_ℓ ≤ 1`; and an explicit class `n ≡ 157 (mod 648)` on which the `p = 2, 3` conditions hold
-identically (Lemma 5 — verified here for all such `n < 5·10⁶`, and the eight resulting members
-`≤ 3·10⁶` confirmed in `S₂`, the two smallest by exact factorial division).
+exactly `(1/2)((ℓ+1)/2ℓ)^{J−1}` (Lemma 3); a distribution-free budget (Lemma 4) uses only
+`Σβ_ℓ ≤ 1`; and `n ≡ 157 (mod 648)` kills the `p = 2, 3` conditions identically (Lemma 5 —
+independently re-verified here for all such `n < 5·10⁶`, its eight members `≤ 3·10⁶` confirmed in
+`S₂`, the two smallest by exact factorial division). **These lemmas retire all of the digit/carry
+combinatorics** — no factorials, no carries, no "one `n` beats every prime" structure remains.
 
-**The resulting conditional theorem (NOT a resolution).** R14 reduces the whole of L4 to a
-single analytic input:
+**What the audit broke — corrections to an earlier version of this file.**
+- **Proposition O1 is NOT proved.** An earlier version of this section called it proved. It is a
+  Dickman-*model* computation plus measurements; the model step `S(x,b) ≍ x·ρ(1/b)²` is itself an
+  unproved independence heuristic (unconditionally only `S ≤ Ψ(x, x^b) ≍ x·ρ(1/b)` is available,
+  which makes the argument vacuous). The *measurements* are correct and were reproduced exactly
+  by the auditor; the Proposition is not. It is downgraded here to a heuristic.
+- **Theorem A (the L4a statement) is fatally broken.** It applies Hypothesis U to an
+  `ℓ`-dependent family — normalising by `#{n : ℓ ∥ n+1, P(n+1) = ℓ}`, which U does not cover;
+  `P(n+1) = ℓ` is a multiplicative condition on the cofactor, not a congruence mod `ℓ^J`, so it
+  cannot be absorbed. With what U legitimately supplies, the union bound costs a factor
+  `E[#{ℓ > 4 : ℓ ∥ n+1}]` — measured 2.65/2.77/2.49/1.94 at `b = .5/.4/.3/.25` — giving
+  `≈ 1.3·#S(x)`, i.e. worse than trivial. Raising `J₀` cannot repair it, since one would need
+  `J₀ ≍ log log x`, forcing `b → 0` with `x`.
+- **Hypothesis U at `θ = 1` is outright FALSE** (explicit construction in the audit), so that
+  column of the route's corollary table is vacuous; `θ < 1` strictly is forced.
+- **"Any `θ > 0` and any `C` suffice because `b` is free" is misleading.** The binding constraint
+  is on the *ratio*: `θ/b ≥ 62.8`, i.e. the hypothesis is needed at moduli `q ≥ y^{62.8}` where
+  `y = x^b`, against `y^{6.59}` known for a *single* smooth number (Soundararajan) — a factor
+  ~9.5 in the exponent, not a constant. Worse, Soundararajan's own range condition
+  `u ≥ (log log y)^4` at `u = 1/b ≈ 63` forces `y ≲ 2·10⁷`, i.e. bounded `x`, so that theorem
+  cannot be invoked as `x → ∞` at all. The route's numerical support sits at `b ≥ 0.25`,
+  `x ≤ 10⁸`, while its theorem operates at `b ≤ 0.016`, i.e. `x ≳ 10⁴⁴`.
 
-> **Hypothesis U.** For some `b, θ > 0` and some `C ≥ 1`: consecutive-smooth *pairs*
-> equidistribute, up to the factor `C`, in arithmetic progressions to moduli of size `x^θ`.
-
-Given Hypothesis U for **any** `θ > 0` and **any** `C ≥ 1`, together with L1, a union bound over
-all large primes closes and `S₂` is infinite. The reason any positive level and any constant
-suffice is that `b` is free (Hildebrand gives positive density of smooth pairs for every `b > 0`):
-the budget `K(b,θ) = (4/b)·t(2−t)/(1−t)²` with `t = 2^{−θ/(7b)}` tends to `0` as `b → 0` for every
-fixed `θ`, since `t` decays exponentially in `1/b` while `4/b` grows only polynomially. Explicit
-thresholds: `b < 0.0159, 0.00704, 0.00316, 0.00112, 0.00051` for `θ = 1, 0.5, 0.25, 0.1, 0.05`
-at `C = 1`.
-
-**This is a conditional result with two unproved dependencies (Hypothesis U and L1) and is
-therefore not progress toward a resolution under this run's own insufficiency list.** It is
-recorded because it locates the frontier sharply: Hypothesis U is a *theorem* if one drops the
-second neighbour (Soundararajan; on average, Pascadi, moduli to `x^{66/107}`), and a *theorem*
-if one shrinks the modulus to `(log x)^c` (Tao–Teräväinen Thm 3.1). **Both at once is open**, and
-Proposition O1 shows the gap cannot be circumvented by discarding the pair structure. The
-underlying reason is that the only known route to smooth-pair asymptotics runs through
-correlations of multiplicative functions, where the modulus enters as a dilation `n ↦ Wn+b` and
-the available estimates lose a power of `W`, capping `W` at polylogarithmic size.
+**Verdict on the reduction itself.** Theorem B's *derivation* from Hypothesis U plus L1 is sound
+(the auditor checked quantifier order, that `R` never depends on `n`, coverage of `p = 2, 3` and
+all `ℓ ≥ 5` including prime powers and the boundary `ℓ ≈ x^b`, and the summation interchange).
+But Hypothesis U is a statement about consecutive smooth numbers asserting congruence
+equidistribution along that family — the conjunction of two things PROBLEM.md's insufficiency
+list excludes **by name** ("smooth-neighbor conjectures", "digit equidistribution along sparse
+families"). No case of it is known for pairs above `(log x)^c`, and no standard conjecture (GRH,
+EH, ABC) implies it. **Hypothesis U therefore counts as a reduction to an unproved statement of
+comparable strength, and this run does not count it as progress on 727.** The route's own §9
+reaches the same conclusion; the overstatement was confined to its framing, and to the earlier
+version of this file, both now corrected.
 
 **This changes the character of the residual problem.** Route R13's decisive negative finding is
 that the entire stable-set family (Hildebrand 85/89, Balog–Ruzsa, Heath-Brown) is a
