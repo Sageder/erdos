@@ -12,3 +12,6 @@ N=  96: sum tau <=    6376  (gamma <= 0.69184)   C_ledger(N) <= 1.58583 = 582/36
 128: UNKNOWN
 160: UNKNOWN
 200: UNKNOWN
+242: UNKNOWN
+
+MAX over the scanned N:  C_ledger(N) <= 1.97561 = 81/41
