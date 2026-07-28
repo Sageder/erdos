@@ -12,3 +12,4 @@ ratio block   values            size   inv  noinc3   no4  verdict  secs
     7     1  [7..48]     42     45    196    273  SAT         3.5
     7     2  [49..342]    294   2679   9867  14259  UNKNOWN   900.2
     8     1  [8..63]     56     70    341    495  SAT        15.1
+    8     2  [64..511]    448   5243  22293  33227  UNKNOWN   901.0

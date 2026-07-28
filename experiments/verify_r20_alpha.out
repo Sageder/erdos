@@ -1,1 +1,2 @@
 EAGER phi_0.5 N=130: cadical UNSAT (34s, 932414 clauses)
+   glucose: UNSAT -> AGREE (21s)
