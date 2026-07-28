@@ -62,6 +62,23 @@ $$\boxed{\ \mathrm{lcm} \ \ge\ 2\cdot 90720 \ =\ 181440\ }$$
 for any covering system with all moduli in $E$. (Route D obtained this first; it was reproduced by
 two further independent solvers.)
 
+**(T3b) Lower bound on the largest modulus** (route H; the $X=254$ case audited by me,
+`experiments/M_audit_routeH.py`).
+*Lemma L5 (prime removal).* If $A$ is the modulus set of a covering system, $q$ prime, and
+$A_q=\{m\in A: q\mid m\}$ has $|A_q|<q$, then $A\setminus A_q$ is again a covering modulus set
+(some $c \bmod q$ is missed by $\{a_m \bmod q\}_{A_q}$, and $x=c+qy$ leaves the other moduli
+unchanged). Hence $M$ contains a covering set — or two disjoint ones — iff its reduction $R(M)$
+does, where $R$ iteratively deletes all multiples of any prime $q$ with $\#\{m\in M: q\mid m\}<q$.
+*Theorem T2 (confirmed independently, exact arithmetic).*
+$\sum_{m\in R(H\cap[2,127])}1/m = 31647433/15876000 \approx 1.993414 \le 2$, while two disjoint
+halves need total $>2$ strictly. Therefore **no covering system with all moduli in $E$ has every
+modulus $\le 254$** — improving PROMPT.md's "some modulus $\ge 70$".
+Route H further reports **no such system with every modulus $\le 724$**, by exhaustive enumeration
+over $R(Y)$, $Y\le362$, with several additional lemmas. *I did not re-implement those enumerators
+or lemmas; that stronger bound is recorded as route H's claim, not as audited.*
+Scope: these bound all moduli by a fixed $X$; $E$ is infinite, so they are pruning for a search,
+**not** evidence for a negative answer.
+
 **(T4) Forced-overlap lemma and the coprimality test** (route A, audited; now stated in full in
 `DRAFT.tex`, together with the strengthened Theorem A3+ that was previously cited but unstated).
 For a covering with modulus set $M$ and any *pairwise coprime* $T \subseteq M$,

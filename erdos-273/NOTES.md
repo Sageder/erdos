@@ -1,5 +1,49 @@
 # NOTES.md — lab notebook, Erdős 273 (newest entries at top)
 
+## 2026-07-28 — ROUTE H in: the modulus lower bound jumps from 70 to 724 (partially audited)
+
+Route H wrote its own `attempts/route-H-minimalS/FINDINGS.md`. Two genuinely new things.
+
+**Lemma L5 (prime removal) — re-derived and confirmed by me.** If A is the modulus set of a
+covering system, q a prime, and A_q = {m ∈ A : q | m} with |A_q| < q, then A ∖ A_q is again the
+modulus set of a covering system. Proof: the residues a_m mod q for m ∈ A_q miss some c ∈ ℤ/q; no
+class with q | m meets c + qℤ; substituting x = c + qy and using gcd(q,m) = 1 turns each remaining
+class into a single class mod the SAME modulus m. Note this is the contrapositive of route D's
+minimality lemma, so for *irredundant* coverings the hypothesis is vacuous — which is why a naive
+random stress test finds zero instances (mine did); I had to construct instances by adjoining
+redundant classes with moduli divisible by a fresh prime. Tested that way: L5 held every time.
+Consequence: define R(M) by iteratively deleting all multiples of any prime q with
+#{m ∈ M : q | m} < q. Then M contains a covering set — or two disjoint ones — iff R(M) does. This
+collapses the pool dramatically: |H ∩ [2,127]| = 52 but |R| = 27.
+
+**Theorem T2 — INDEPENDENTLY CONFIRMED by me** (`experiments/M_audit_routeH.py`, exact Fractions,
+my own implementation of R): budget(R(H ∩ [2,127])) = **31647433/15876000 ≈ 1.993414 ≤ 2**, while
+two disjoint covering subsets would need total > 2 strictly. Hence
+**no covering system with distinct moduli all in E and all ≤ 254.**
+(PROMPT.md §4's stated consequence was only "uses a modulus ≥ 70".) budget(R) first exceeds 2 at
+Y = 128 (2.001226); it then creeps — 2.0320 (200), 2.0646 (300), 2.0767 (362) — and **jumps to
+2.2609 at Y = 363**, when 11 finally survives the reduction.
+
+**Theorem T3 (X = 724) — REPORTED, NOT INDEPENDENTLY AUDITED.** Route H claims exhaustive
+enumeration of disjoint pairs in R(Y) for every Y ≤ 362, surviving a stack of filters (budget
+window, waste bound, L5 multiplicity, two coprimality lemmas L8/L8+, and Fourier-balance lemmas
+L9/L10/L10b), returns ZERO families — giving "no E-covering with all moduli ≤ 724". I verified
+neither the enumerators nor L8–L10. Recorded as route H's claim. Its own cross-check: the weakest
+enumerator reproduces 0 families up to Y = 314 (X ≤ 628).
+
+**Route H's honest ceiling, which matches ours.** At Y = 363 the slack Δ = budget(R(Y)) − 2 jumps
+0.077 → 0.261, so 1/Δ = 3.8 and the coprimality lemma loses all teeth (2·3 = 6 > 3.8); the
+enumeration blows up and Y ≥ 363 is undecided. Route H also states why the route caps out: the
+per-fibre budget average is exactly Σ1/n, so all first-order fibre inequalities are vacuous and
+only integrality/balance has content — a bounded-Y phenomenon. Since Σ_{m∈H} 1/m diverges and H
+has covering sets of cost ≤ 1.4, the two-disjoint-sets budget argument must die once
+budget(R(Y)) − 1 ≥ σ_H, i.e. around Y ≈ 700, **X ≈ 1400 — the hard ceiling of this whole family of
+arguments**, even with a complete determination of σ_H := inf{cost of an H-covering}.
+
+SCOPE (route H states this itself, correctly): T2 and T3 bound ALL moduli. E is infinite, so these
+are NOT evidence for NO. They are rigorous lemmas plus pruning for a YES search: **any certificate
+must use a modulus > 724** (or > 254 on the part I audited myself).
+
 ## 2026-07-28 — ROUTE C in: the parity split re-proved a sixth time, plus new structure of H
 
 Full report `attempts/route-C-parity-H/FINDINGS.md`. Two things matter.

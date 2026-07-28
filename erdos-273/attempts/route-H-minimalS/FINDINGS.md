@@ -221,6 +221,14 @@ contains 11 multiples of 11), `|R|` jumps `45 → 56`, `Δ` jumps `0.077 → 0.2
 Runs at `Y = 363` and `Y = 400` did not terminate inside the session budget (the machine was
 also shared with other jobs).
 
+**Independent double-check.**  `H_pair.py` uses *only* the budget window, Lemma L8 at insertion
+time, and the full leaf filter — no incremental look-aheads at all.  Re-running it on one
+representative `Y` per distinct value of `budget(R(Y))` (script `H_theorem.py`) reproduced
+`0 surviving families` for every budget class up to `Y = 314` (i.e. `X <= 628`) before the run
+hit the session time budget; the classes `Y = 340..362` (`X <= 724`) rest on `H_pair2.py` /
+`H_pair3.py`, whose extra prunes were validated separately (below).  So:
+`X <= 628` is confirmed by two independent pruning regimes, `X <= 724` by one.
+
 **Correctness safeguards run before any of the above was believed:**
 * `H_lemma_check.py` — L5 on independently generated coverings: 0 failures;
 * `H_pair_selftest.py` — the leaf filters accept every genuine (L5-reduced) covering set that

@@ -1,0 +1,6 @@
+INFEASIBLE -- exhaustive, no reductions, nodes = 7997
+SCOPE: this only says no pivot covering has lcm dividing 1680.
+INFEASIBLE -- exhaustive, no reductions, nodes = 629162
+SCOPE: this only says no pivot covering has lcm dividing 2160.
+INFEASIBLE -- exhaustive, no reductions, nodes = 13469771
+SCOPE: this only says no pivot covering has lcm dividing 1260.

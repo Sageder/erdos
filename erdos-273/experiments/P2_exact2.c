@@ -29,6 +29,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 typedef unsigned long long u64;
 typedef long long ll;
@@ -114,6 +115,7 @@ static long *undo; static long undo_top;
 static int   chosen_b[256], sol_b[256];
 static ll    snodes, SNODECAP; static int scapped;
 static ll    WORK = 400000;
+static double TLIM = 0; static clock_t t_start;
 static int  *cnt;                    /* scratch for P4 */
 static long *ulist;                  /* scratch list of uncovered residues */
 
@@ -122,6 +124,8 @@ static long gcdl(long a,long b){ while(b){long t=a%b;a=b;b=t;} return a; }
 static int sdfs(int i, long u, long g)
 {
     if (++snodes > SNODECAP) { scapped = 1; return 0; }
+    if (TLIM > 0 && (snodes & 1023) == 0 &&
+        (double)(clock()-t_start)/CLOCKS_PER_SEC > TLIM) { scapped = 2; return 0; }
     if (u == 0) { for (int k=0;k<NS;k++) sol_b[k]=chosen_b[k]; return 1; }
     if (i == NS) return 0;
     if (u > RS[i] || u > UBM[i]) return 0;                       /* P1, P3 */
@@ -169,6 +173,7 @@ int main(int argc, char **argv)
         if (!strcmp(argv[i],"--minm") && i+1<argc) MINM = atol(argv[++i]);
         if (!strcmp(argv[i],"--nodes") && i+1<argc) SNODECAP = atoll(argv[++i]);
         if (!strcmp(argv[i],"--work") && i+1<argc) WORK = atoll(argv[++i]);
+        if (!strcmp(argv[i],"--timelimit") && i+1<argc) TLIM = atof(argv[++i]);
         if (!strcmp(argv[i],"--verbose")) VERBOSE = 1;
     }
     long lim = 2*LMAX+2;
@@ -226,7 +231,7 @@ int main(int argc, char **argv)
         cov = calloc(NW, sizeof(u64));
         undo = malloc(sizeof(long)*(L+2)); undo_top = 0;
         long pad = NW*64 - L; if (pad) cov[NW-1] |= (~0ULL) << (64-pad);
-        snodes = 0; scapped = 0;
+        snodes = 0; scapped = 0; t_start = clock();
         int found = sdfs(0, L, 1);
         if (snodes > worst_nodes) { worst_nodes = snodes; worst_L = L; }
         if (found) { nsat++;
@@ -234,7 +239,8 @@ int main(int argc, char **argv)
             for (int i=0;i<NS;i++) if (sol_b[i]>=0) printf(" %d(mod %ld)", sol_b[i], SS[i]);
             printf("\n");
         } else if (scapped) { ncap++;
-            printf("  L=%-8ld |S|=%3d bud %.5f  NODE CAP -- UNDECIDED\n", L, ns, bud[L]);
+            printf("  L=%-8ld |S|=%3d bud %.5f  %s -- UNDECIDED (%lld nodes)\n", L, ns, bud[L],
+                   scapped==2 ? "TIME CAP" : "NODE CAP", snodes);
         } else { nsearch++;
             printf("  L=%-8ld |S|=%3d bud %.5f  INFEASIBLE by exhaustive search (%lld nodes)\n",
                    L, ns, bud[L], snodes); }
