@@ -1274,3 +1274,51 @@ this project has repeatedly shown that finite evidence about asymptotic statemen
 mislead — see Remarks 17, 27, 31, 36. (iii) Even a complete proof of R21-C at T = 1 would
 not resolve Erdős 196; it would close one architecture family (block-index-plus-bounded-
 binary-delay) on the negative branch.
+
+## Proposition 39 (the missing step of Proposition 38 is an inverse-sumset dichotomy)
+
+The gap in Proposition 38 was: does progression-density force the closure of Z to have
+density → 1? Here is the precise additive-combinatorial shape of that step, which converts
+it from a vague "blow-up" into a standard dichotomy.
+
+Fix b = 3 and a block index k. Put
+    A' := Z ∩ [2.25·3^k, 3^{k+1})      (top of block k),
+    W  := [3^{k+1}, 1.5·3^{k+1}),      B_W := Z ∩ W,      B := Z ∩ block (k+1).
+For u ∈ A' and w ∈ B_W one checks the block geometry is the (1,0) pattern with the step-1
+condition satisfied, and 2w−u ∈ block (k+1). So rule (R↓) of Proposition 37 gives
+
+    2·B_W − A'  ⊆  B .                                            (★)
+
+Now the dichotomy. Write δ for the density of Z in blocks k, k+1, so |A'| ≍ δ·3^k,
+|B_W| ≍ δ·3^k and |B| ≍ 6δ·3^k. By (★),
+
+    |2·B_W − A'|  ≤  |B|  ≍  6δ·3^k  ≍  6·max(|A'|, |B_W|),
+
+i.e. **the sumset 2·B_W − A' has bounded doubling relative to its summands**. Two cases:
+
+- If A' and B_W behave generically, |2·B_W − A'| ≍ min(|A'|·|B_W|, |window|), which
+  exceeds 6δ·3^k as soon as δ·3^k is large — contradiction unless δ → 1. This is the
+  blow-up the numerics of Proposition 38 exhibit.
+- Otherwise the bounded-doubling hypothesis of the Freiman–Ruzsa inverse theory is met, and
+  A', B_W are each contained in arithmetic progressions of length O(max(|A'|,|B_W|)). In
+  ℤ the sharp tool is Freiman's 3k−4 theorem (for distinct summands, in the Lev–Smeliansky
+  / Stanchescu form): small doubling forces containment in a short AP.
+
+So either the density tends to 1, or Z is AP-structured inside every block. In the second
+case the cross-block coupling (★) ties the block-wise progressions together — if that
+forces a single global progression, Z is a union of residue classes and **Corollary 30
+applies**, producing a tame progression. Either way Conjecture R21-C at T = 1 follows.
+
+**What remains to be done, stated honestly.** (i) The generic case needs a quantitative
+lower bound on |2·B_W − A'| that does not assume genericity — i.e. one must actually invoke
+the inverse theorem rather than wave at it. (ii) The structured case needs the cross-block
+step: block-wise APs, coupled by (★) across all k, must be shown to have a common
+difference (or to differ from one by a density-zero set, which is enough for Corollary 30).
+(iii) All constants above are stated up to ≍ and must be made explicit; the windows were
+chosen for convenience, not optimality. (iv) This is still only T = 1.
+
+Discipline note: the hypotheses of any inverse theorem invoked here must be verified
+exactly, not by analogy — this project's audit checklist flags precisely this failure mode,
+and an earlier route in this run was caught claiming an infinite progression from a density
+hypothesis, which is false. Freiman-type conclusions give containment in a FINITE
+progression of controlled length, never an infinite one.
