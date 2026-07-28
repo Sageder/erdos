@@ -1,0 +1,31 @@
+G1 PASS: criterion == direct divisibility for all n <= 1300; S_2 starts [208, 458, 987, 1220]
+G3 PASS (trivial): l>=5 cannot divide both n+1 and n+2 since l | 1.
+G2 exhaustive n<60000: checked 203172 (l,n) pairs, violations 0
+G2 random large: checked 19939, violations 0
+   l=  5 D=1 : #digit-poor in [0,l^D) = 2, predicted 2 OK
+   l=  5 D=2 : #digit-poor in [0,l^D) = 6, predicted 6 OK
+   l=  5 D=3 : #digit-poor in [0,l^D) = 18, predicted 18 OK
+   l=  5 D=4 : #digit-poor in [0,l^D) = 54, predicted 54 OK
+   l=  7 D=1 : #digit-poor in [0,l^D) = 3, predicted 3 OK
+   l=  7 D=2 : #digit-poor in [0,l^D) = 12, predicted 12 OK
+   l=  7 D=3 : #digit-poor in [0,l^D) = 48, predicted 48 OK
+   l=  7 D=4 : #digit-poor in [0,l^D) = 192, predicted 192 OK
+   l= 11 D=1 : #digit-poor in [0,l^D) = 5, predicted 5 OK
+   l= 11 D=2 : #digit-poor in [0,l^D) = 30, predicted 30 OK
+   l= 11 D=3 : #digit-poor in [0,l^D) = 180, predicted 180 OK
+   l= 11 D=4 : #digit-poor in [0,l^D) = 1080, predicted 1080 OK
+   l=101 D=1 : #digit-poor in [0,l^D) = 50, predicted 50 OK
+   l=101 D=2 : #digit-poor in [0,l^D) = 2550, predicted 2550 OK
+   l=101 D=3 : #digit-poor in [0,l^D) = 130050, predicted 130050 OK
+   l=101 D=4 : #digit-poor in [0,l^D) = 6632550, predicted 6632550 OK
+G2' PASS: |{V < l^D : digit-poor}| = ((l-1)/2)*((l+1)/2)^(D-1) exactly.
+
+X=200000 y=200 : 10758 smooth pairs
+GATE 2 PASS: pairlib == sympy brute force on all 10758 smooth pairs (X=200000,y=200).
+GATE 2b PASS: 40 certified members re-verified by exact factorial division; e.g. [208, 458, 987, 1220, 1455, 1597, 1889, 2012]
+
+GATE 3: Q0=648 c0=157 ; 77161 values n == c0 (mod Q0) below 5*10^7 checked, violations 0
+smooth pairs (X=3000000, y=300): 51233 ; in the class: 60 ; of those with no large-prime failure: 8
+GATE 3b PASS: 0 such n (<=30000) verified in S_2 by exact factorial division: []
+GATE 3c PASS: ok_small holds for all 8 of them (the class does force p=2,3).
+GATE 3d PASS: all 8 certified n verified: ((n+2)!)^2 | (2n)! by Legendre at every prime <= 2n.  n = [48109, 67549, 216589, 312493, 508837, 561973, 1776973, 2676397]
