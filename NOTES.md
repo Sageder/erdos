@@ -1,5 +1,46 @@
 # NOTES.md — lab notebook (newest entries at top)
 
+## 2026-07-28 ~11:25 UTC — R13 verdict: TWO of my claims overturned; target re-scoped; new lead
+
+- R13 obtained Hildebrand 1985 IN FULL (AMS open archive) and reconstructed it, plus
+  Tao–Teräväinen arXiv:2512.01739 and Teräväinen 2018 (NEITHER was in the R11 sweep).
+- **L0 — MY RESIDUAL TARGET WAS FALSE.** "Positive density with C_ℓ at every large prime" has
+  density ≍ (log x)^{−1/2}: C_ℓ pins the carry to digit position 1 (~1/2 per prime) across
+  ~log log x primes. I VERIFIED THIS MYSELF (experiments/verify_L0_rescope.py):
+  among n^{1/2}-smooth pairs, all-C_ℓ = 0.0119 → 0.0110 → 0.0107 (decaying) while the EXACT
+  criterion = 0.1029 → 0.1089 → 0.1058 (stable); at b = 0.35, exact = 0.18–0.24, all-C_ℓ = 0.004.
+  ⟹ target restated with the EXACT criterion κ_ℓ(n) ≥ 2ν_ℓ(n+j) and b a FREE KNOB
+  (failure prob per prime ≲ 2^{−1/b}). My own LADDER §4.5 remark (iii) already said C_ℓ is
+  sufficient-not-necessary (45/263 coverage) — I then mis-stated the target anyway. Lesson:
+  restate targets from the exact criterion, never from a sufficient proxy.
+- **Supply threshold mis-instantiated.** Hildebrand's k-string hypothesis is on the DENSITY
+  (d(A) > (k−2)/(k−1)) — for k=2 that is just d(A) > 0, so ANY b > 0 gives positive density of
+  consecutive n^b-smooth pairs. My "e^{−1/(k−1)} = 0.368 for k=2" line was wrong (that formula
+  uses ρ(u) = 1 − log u, valid only u ≤ 2). Corrected in LADDER §6.
+- **Stable-set injection: definitively NO.** p-stability (the sole hypothesis of the whole
+  Hildebrand 85/89 / Balog–Ruzsa / Heath-Brown family) is MAXIMALLY violated by carry
+  conditions: dilation permutes a cofactor residue condition. Measured agreement of the
+  condition at n vs at 2n = 0.5037, where stability requires 1. Not fixable by strengthening
+  any lemma — the hypothesis IS the obstruction; closing under dilations ≤ N costs e^{−N}
+  against a tower-sized N(ε).
+- **NEW LEAD ROUTE (character change).** Tao–Teräväinen 2512.01739 Thm 3.1 carries the AP
+  restriction 1_{n≡b (W)} FREE in the published statement ⟹ L1 (congruence-restricted
+  consecutive smooth pairs) is hard-but-classical, essentially available. Decomposition:
+  L1 (available) + L2, L3 (routine) + L4 (THE WALL: joint cofactor/carry equidistribution).
+  Crucially L4 is NOT a parity problem and NOT a bilinear-prime problem — no prime is detected,
+  the smooth supply is unconditional; all moduli ℓ² ≤ x^{2b} ≪ x^{1/2} are inside BV range.
+  Open parts: modulus is a function of n; ~log log x simultaneous conditions; the weight is not
+  multiplicative (so not an admissible g₂ in Thm 3.1). L4a (single largest prime factor) is the
+  concrete first target — R14 LAUNCHED on it.
+- **k ≥ 3**: gap is now EXPLICIT AND SMALL: need α = 1/2; known α > e^{−1/2} = 0.6065
+  (Hildebrand 89), α > e^{−2/3} = 0.5134 (Tao–Teräväinen short-interval-uniform). McNamara
+  arXiv:2312.08544 gives a stable set of density exactly 1/2 with no 3-string ⟹ the soft /
+  stable-set route CANNOT reach 1/2 at all. Frontier = the interval 0.5134 → 0.5, non-softly.
+- Lemma SP audit repairs R1–R4 applied (R2 was a genuinely false illustrative claim: W₂ ≥ 15
+  asserted, true min 14, violated by 489/977; R4: T13 row mislabelled — auditor re-ran at
+  hypothesis-compliant scales of 181–2496 digits, zero violations).
+- Statement B route superseded as lead: it needs prime detection, L1–L4 does not.
+
 ## 2026-07-28 ~10:50 UTC — MIRROR THEOREM (proved+verified) + crux experiment verdict
 
 - CRUX EXPERIMENT (experiments/crux_equidistribution.py, n ≤ 3e5, exhaustive):
