@@ -1,0 +1,24 @@
+  base2 M=2 k=4 d:odd/swap34: SAT (13 cls); assembled |7|; filtered monotone 4-APs: 0 (NONE -- verified)
+    tau_0: [1]
+    tau_1: [3, 2]
+    tau_2: [4, 6, 5, 7]
+  base2 M=3 k=4 d:odd/swap34: SAT (144 cls); assembled |15|; filtered monotone 4-APs: 0 (NONE -- verified)
+    tau_0: [1]
+    tau_1: [3, 2]
+    tau_2: [7, 4, 6, 5]
+    tau_3: [11, 8, 10, 12, 9, 14, 13, 15]
+  base2 M=4 k=4 d:odd/swap34: SAT (1328 cls); assembled |31|; filtered monotone 4-APs: 0 (NONE -- verified)
+    tau_0: [1]
+    tau_1: [3, 2]
+    tau_2: [7, 4, 6, 5]
+    tau_3: [11, 8, 10, 12, 9, 14, 13, 15]
+  base2 M=5 k=4 d:odd/swap34: SAT (11533 cls); assembled |63|; filtered monotone 4-APs: 0 (NONE -- verified)
+    tau_0: [1]
+    tau_1: [3, 2]
+    tau_2: [7, 4, 6, 5]
+    tau_3: [11, 8, 10, 12, 9, 14, 13, 15]
+  base2 M=6 k=4 d:odd/swap34: SAT (95885 cls); assembled |127|; filtered monotone 4-APs: 0 (NONE -- verified)
+    tau_0: [1]
+    tau_1: [3, 2]
+    tau_2: [7, 4, 6, 5]
+    tau_3: [11, 8, 10, 12, 9, 14, 13, 15]

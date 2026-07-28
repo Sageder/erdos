@@ -1,0 +1,15 @@
+  base2 M=2 k=4 d:all/swap34: SAT (14 cls); assembled |7|; filtered monotone 4-APs: 0 (NONE -- verified)
+    tau_0: [1]
+    tau_1: [3, 2]
+    tau_2: [4, 6, 7, 5]
+  base2 M=3 k=4 d:all/swap34: SAT (158 cls); assembled |15|; filtered monotone 4-APs: 0 (NONE -- verified)
+    tau_0: [1]
+    tau_1: [3, 2]
+    tau_2: [6, 7, 4, 5]
+    tau_3: [12, 13, 9, 15, 11, 8, 14, 10]
+  base2 M=4 k=4 d:all/swap34: SAT (1390 cls); assembled |31|; filtered monotone 4-APs: 0 (NONE -- verified)
+    tau_0: [1]
+    tau_1: [3, 2]
+    tau_2: [6, 7, 4, 5]
+    tau_3: [12, 13, 9, 15, 11, 8, 14, 10]
+  base2 M=5 k=4 d:all/swap34: UNSAT (11848 clauses)
