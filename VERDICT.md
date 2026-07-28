@@ -79,42 +79,73 @@ the target document, each of which wrote its own independent verification script
    with per-decade densities slowly increasing for every `k`, **no** forbidden congruence
    classes, and no exploitable algebraic pattern (the `x²−2` family is *not* enriched).
 
-## Where the problem actually sits
+## Where the problem actually sits (re-scoped 2026-07-28 after route R13)
 
-After the above, all digit/carry content of 727 is discharged. What remains is a single
-**joint** arithmetic statement:
+**Correction to an earlier statement in this file.** A previous version of this section named
+the residual target as "infinitely many `n` with a smooth window **and** the cofactor congruence
+`C_ℓ` at every large prime". *That statement is false*: `C_ℓ` demands the carry at digit
+position 1 specifically, a ~1/2 event per prime, so over the ~`log log x` large prime factors
+its density decays like `∏_{ℓ>P₀}(1−1/(2ℓ)) ≍ (log x)^{−1/2}`. Verified independently
+(`experiments/verify_L0_rescope.py`): among `n^{1/2}`-smooth pairs the all-`C_ℓ` fraction falls
+(0.0119 → 0.0110 across `[10⁵,4·10⁵)` → `[4·10⁵,8·10⁵)`), while the **exact** criterion holds
+for a stable positive proportion (0.1029 → 0.1089). `C_ℓ` is sufficient, never necessary —
+carries at higher digit positions count too (LADDER §4.5 remark (iii)).
 
-> infinitely many `n` whose window `n+1,…,n+k` is `√(2n)`-smooth **and** whose large prime
-> factors all satisfy the cofactor congruence of Lemma R‴.
+**The correct residual statement** is therefore, for fixed `k` and any `b > 0`:
 
-- For **k = 2** the smooth supply alone is a *known theorem*. Verified directly from the paper
-  (`attempts/route-R13/papers/hildebrand1985_balog.txt`): Hildebrand's Theorem states that
-  `d(A) > 0` implies `d(A_N ∩ (A_N + 1)) > 0` for all large `N`, where `A_N` is the
-  dilation-closure of `A`; for a set that is `k`-stable for every `k` (Balog's hypothesis)
-  `A_N ⊆ A` up to density zero, giving `d(A ∩ (A+1)) > 0`. The smooth set
-  `A = {n : P(n) ≤ n^{1/u}}` is `k`-stable for every `k` — `kA ⊆ A` is immediate, and
-  `k^{-1}(A ∩ kℕ) ⊆ A` fails only on `{n : P(n) ∈ (n^{1/u}, k^{1/u} n^{1/u}]}`, a set of density
-  zero since the exponent window shrinks to a point — and has density `ρ(u) > 0`. Hence there is
-  **positive density** of `n` with `n` and `n+1` both `n^{1/u}`-smooth, which is exactly the
-  k = 2 window supply.
-  *Correction to an earlier second-hand characterisation in this run:* the stronger "both largest
-  prime factors in a prescribed band `(n^a, n^b)` for any `0 ≤ a < b ≤ 1`" form was attributed to
-  this paper by the literature sweep; the paper's own stated consequence is the large-prime-factor
-  case (`P(n), P(n+1) > n^{1-ε}`). Only the smooth-set instance is used above, and it is verified.
-  By result 6 the congruences cannot be stripped off by an unconditional first moment, so they
-  must be counted *inside* the smooth set — and there they are positively correlated
-  (measured joint pass rate 0.1105 against 0.3297 for an independence model). This injection
-  is the whole of the k = 2 variant.
-- For **k ≥ 3** the supply itself is open: positive-density `k`-strings of `n^α`-smooth
-  integers are known only for `α > e^{−1/(k−1)}`, which exceeds `1/2` exactly when `k ≥ 3`;
-  only Balog–Wooley's thin strings exist below that.
-- The clean prime-parametrized target (`Statement B`: infinitely many prime quadruples with
-  `pq + 1 = 2rs` in explicit ratio boxes) was shown by literature sweep to be **beyond current
-  technology**: it stacks balanced-`E₂` structure — which every published detector fails to
-  produce, per GGPY (1.24), and which 727 membership *forces* — against double specified
-  parity, open even in Chen's single-form `2p+1` branch. Under the run's own insufficiency
-  list this reduction does not count as progress toward a resolution, and it is not claimed as
-  such.
+> infinitely many `n` whose window `n+1,…,n+k` is `n^b`-smooth and which satisfy the *exact*
+> criterion `κ_ℓ(n) ≥ 2ν_ℓ(n+j)` at every prime `ℓ > P₀` dividing the window.
+
+with the failure probability per prime `≲ 2^{−1/b}`, so that `b` is a genuine free knob.
+
+**k = 2.** The supply is a theorem, and stronger than this run first recorded: Hildebrand's
+`k`-string threshold is on the *density* (`d(A) > (k−2)/(k−1)`, which is `> 0` for `k = 2`), so
+for **every** `b > 0` there is positive lower density of `n` with `n+1, n+2` both `n^b`-smooth
+(apply Hildebrand's Cor. 2 to the stable set `{P(m) ≤ m^b}`; the earlier "`e^{−1/(k−1)} = 0.368`"
+line was a mis-instantiation of that threshold and has been corrected in `LADDER.md`).
+The decomposition of what remains:
+- **L1** (congruence-restricted smooth pairs, `#{n ≤ x : n ≡ c₀ (Q₀), n+1, n+2 both n^b-smooth}
+  ≫_b x/Q₀`): *hard-but-classical, essentially available* — the AP restriction `1_{n≡b (W)}`
+  and the AP smooth-count input both appear already in Tao–Teräväinen, arXiv:2512.01739, Thm 3.1
+  and the proof of Thm 1.8 (route R13 obtained both papers; neither was in the earlier sweep).
+- **L2** (`ℓ ∥ n+j` for large `ℓ`) and **L3** (small-prime forcing, already proved and audited
+  as Lemma R_k steps (i)–(ii)): *routine*.
+- **L4** (**the wall**): joint cofactor/carry equidistribution — for a positive proportion of the
+  `n` from L1, `κ_ℓ(n) ≥ 2` at *every* large prime factor simultaneously.
+- **L4a** (the concrete first target): the single-prime version — a positive proportion of L1
+  pairs satisfying the condition at the largest prime factor of `n+1` only. One AP condition to
+  a single modulus `ℓ ≤ x^b`; assessed as within reach of existing machinery.
+
+**This changes the character of the residual problem.** Route R13's decisive negative finding is
+that the entire stable-set family (Hildebrand 85/89, Balog–Ruzsa, Heath-Brown) is a
+non-constructive pigeonhole whose sole hypothesis — `p`-stability, i.e. invariance under
+multiplicative dilation — is *maximally violated* by the carry conditions, which dilation
+permutes: measured agreement between the condition at `n` and at `2n` is **0.5037**, where
+stability requires 1. There is no lemma in that family whose strengthening would deliver the
+conditions; the hypothesis itself is the obstruction, and closing under all dilations `≤ N`
+loses `e^{−N}` in density against a tower-sized `N(ε)`. But because the smooth supply is
+unconditional and no prime is being *detected*, L4 is **not** a parity problem and **not** a
+bilinear-prime problem — the barrier identified earlier in this run (balanced-`E₂` versus parity,
+the dispersion/Chen frontier) applies to the prime-parametrized `Statement B` route and **not**
+to this one. L4 is equidistribution of cofactors `(n+j)/ℓ` modulo `ℓ`, with all moduli
+`ℓ² ≤ x^{2b} ≪ x^{1/2}`, i.e. well inside Bombieri–Vinogradov range. What is open is that the
+modulus is a function of `n`, that `~log log x` conditions must hold at once, and that the weight
+is not multiplicative (so it is not an admissible `g₂` in Thm 3.1). This is a strictly softer
+frontier than the one this run previously recorded.
+
+**k ≥ 3.** Still blocked at the supply stage, but the gap is now explicit and small: three
+consecutive `n^α`-smooth integers at positive density are known for `α > e^{−1/2} = 0.6065`
+(Hildebrand 1989) and for `α > e^{−2/3} = 0.5134` (Tao–Teräväinen's short-interval-uniform
+strengthening), while 727 needs `α = 1/2`. McNamara (arXiv:2312.08544) exhibits a stable set of
+density exactly 1/2 with no 3-term string, matching Hildebrand's threshold and proving the
+**soft/stable-set route cannot reach 1/2 at all**. The frontier is the interval 0.5134 → 0.5,
+and it must be crossed by non-soft means.
+
+**Statement B** (the prime-parametrized route: infinitely many prime quadruples with
+`pq + 1 = 2rs` in explicit ratio boxes) remains beyond current technology for the reasons
+recorded earlier — balanced-`E₂` structure, which every published detector fails to produce and
+which 727 membership forces, stacked against double specified parity. It is superseded as the
+lead route by the L1–L4 decomposition above, which needs no prime detection at all.
 
 ## Independent-verification plan
 

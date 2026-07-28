@@ -157,11 +157,15 @@ Waiting on R11 literature verdict to calibrate feasibility.
   (every prime > 5 is > 6 = 2k) but NOT the old "P₀ ≥ 2k" form; with a genuinely too-small P₀
   (k=3, P₀=4) the predicate DOES produce false positives — the hypothesis is load-bearing.
   The engine is correct for all k; supply is the fight.
-- Supply boundary (via Hildebrand's thresholds, cf. BW98 intro): positive-density
-  k-strings of n^α-smooth integers are known for α > e^{−1/(k−1)}:
-  k=2: 0.368 < 1/2 ✓ (Hildebrand 1985 pairs cover the needed exponent 1/2);
-  k=3: 0.607 > 1/2 ✗ — positive-density supply at exponent 1/2 is itself OPEN for k ≥ 3;
-  only thin BW-strings exist there. So: k=2 = injection problem (R13);
-  k ≥ 3 = supply + injection, both beyond current published technology.
+- Supply boundary — CORRECTED 2026-07-28 (route R13 obtained Hildebrand 1985 in full):
+  the earlier line "k=2: e^{−1/(k−1)} = 0.368 < 1/2" was a MIS-INSTANTIATION. Hildebrand's
+  k-string threshold is on the DENSITY, d(A) > (k−2)/(k−1), which for k = 2 is d(A) > 0.
+  Hence for k = 2 and EVERY b > 0 there is positive lower density of n with n+1, n+2 both
+  n^b-smooth (apply Hildebrand's Cor. 2 to the stable set {P(m) ≤ m^b}); b is a free knob,
+  not pinned at 1/2. For k = 3 the threshold d(A) > 1/2 forces α > e^{−1/2} = 0.6065
+  (Hildebrand 1989); Tao–Teräväinen's short-interval-uniform strengthening reaches
+  α > e^{−2/3} = 0.5134; and McNamara (arXiv:2312.08544) shows the soft/stable-set route
+  CANNOT reach 1/2 (a stable set of density exactly 1/2 with no 3-string). So for k ≥ 3 the
+  supply gap is the explicit and small interval 0.5134 → 0.5, and it cannot be closed softly.
 - B_3 box-form search: zero structural hits ≤ 3·10⁷ (consistent with ~1/log⁶ onset;
   the R‴ form is much less restrictive and certifies real members as above).

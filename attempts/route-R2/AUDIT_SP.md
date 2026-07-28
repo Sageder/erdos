@@ -10,8 +10,7 @@ written from scratch for this audit:
 `audit_sp_8.py` (remaining PROBLEM.md counts), `audit_sp_9.py` (end-to-end at (H1)–(H4)-compliant
 `M`), `audit_sp_10.py` (exact spike counts + exhaustive counting bounds), `audit_sp_11.py`
 (broad sweep). Outputs: `audit6.out`, `audit8.out`, `audit9.out`, `audit10.out`, `audit11.out`;
-`audit_sp_1/2` print to stdout. (`audit_sp_3.py`, `audit_sp_5.py`, `audit_sp_7.py` were earlier,
-slower drafts superseded by 9/10/11 — kept for transparency.)
+`audit_sp_1.py` and `audit_sp_2.py` print to stdout (rerun them to see their logs).
 
 ---
 
@@ -66,7 +65,7 @@ Specifically, all of the following adversarial hypotheses were tested and *refut
 | union-bound assembly `Ê` mis-assembled | Correct. `Σ_{n≥2} n^{−t} ≤ 3·2^{−t}` for `t ≥ 3` (checked to `t=40`, and the prime version too); `2e^{1/24} = 2.0851 < 3`; the three surviving terms are exactly `3P e^{−(7/240)log M/log P} + 6·2^{−t} + 3M^{−1/20}`. |
 | SP-A/SP-B/SP-C hypothesis derivations wrong | The (H1)–(H4) checks and the error algebra hold at every point I could construct: for SP-A over `k ∈ {2,3,10,10³,10⁶}`, `c ∈ {1/6,0.1,0.05,0.01,10⁻⁴}` and `log M ∈ [log M_A, 10⁶·log M_A]`, and for SP-B over `k` as above and `P₀ ∈ {2,3,13,10³,10⁶,10¹²}`: **0 failures** (the `P<2` cases the document declares vacuous are indeed vacuous — no primes `≤ P`). `c − 7/(240c) ≤ −1/120` with equality at `c=1/6` confirmed. |
 | circularity / smuggled unproved auxiliary | None. Only Legendre's formula is imported as background; Kummer (SP.K) and the Chernoff bound (SP.8) are proved in place. `arXiv:2601.07421` is cited for *methods* and, in Remark 3, for an explicitly-flagged **heuristic** improvement that is not used. Nothing about 727 is imported. |
-| counterexample to Master Lemma part (1) | None found. See §4. |
+| counterexample to Master Lemma part (1) | None found: 0 violations over 117600 sampled `m` in 784 configurations gated on the exact SP.9 conclusion, plus 13 configurations at genuinely (H1)-(H4)-compliant `M` (up to 2496 decimal digits). See §4. |
 
 ---
 
@@ -180,10 +179,12 @@ where explicitly comparing to the document's own float constants.
     four residues `a` each, `k ∈ {2,3,4,8,20,200}`, `p ∈ {2,3,5,7,11,13,23,31,127}`,
     `t ∈ {3,4,6,10}` — **25920 exact checks, 0 violations**, worst
     `exact/bound = 0.8889`. This settles the spike bound completely.
-12. **Broad randomized sweep** (`audit_sp_11.py`) at `M = 2^{400},2^{900},2^{1800}`,
-    `k ∈ {2,3,4,8,20,50,200}`, `q₀ ∈ {1,2,24,1024,2^{10}3^4,720720,2^{30}}`, `P ≤ 127`,
-    `t ∈ {3,6}`, gated on the exact SP.9 conclusion: hunting for any `m ∈ G` violating the
-    criterion, with per-prime bad-rate diagnostics in log space and a Poisson tail test.
+12. **Broad randomized sweep** (`audit_sp_11.py`) at `M = 2^{300}, 2^{600}`,
+    `k ∈ {2,3,4,8,20,50}`, `q₀ ∈ {1,2,24,1024,2^{10}3^4,720720,2^{30}}`, `P ≤ 127`,
+    `t ∈ {3,6}`, gated on the exact SP.9 conclusion:
+    **784 configurations, 117600 values of `m` tested, `|G| = 115846`, criterion violations
+    `= 0`**; and over 7056 `(config, p)` pairs, `0` per-prime bad-rate excesses that a Poisson
+    tail test finds implausible against the proved bounds.
 13. **Section 8 density claims** (`audit_sp_4.py`) — all reproduced **exactly**:
     `0.6264` (`M=10⁵`) and `0.7970` (`M=10⁶`) for the criterion at all `p ≤ 13`, `k=3`;
     union sums `0.4414` and `0.2222`; per-prime rates
@@ -253,12 +254,21 @@ G-B: exhaustive |BadC_p|,|BadS_p| over all of [M,2M], M in {2e4,5e4,1e5},
      1620 checks, 0 violations
 ```
 
-**Note on a false alarm I raised and then closed.** An earlier sampling sweep flagged ~10
-`(config, p)` pairs where the *empirical* spike-failure rate (`1/120` or `2/120`) exceeded the
-proved bound plus 4 Gaussian sigma. This was an artifact of my own test: for events with true
-rate `~10⁻⁴–10⁻⁶`, `√(rate/N)` is a meaningless error bar and a single hit trips it. The exact
-CRT computation above (25920 configurations, no sampling at all) shows the bound is never
-violated — worst case it is `89%` saturated. **No defect in the document.**
+### Broad sweep log (`audit_sp_11.py`)
+
+```
+configs=784 skipped=224 m tested=117600 |G|=115846 criterion violations=0
+prime-config pairs=7056;  Poisson-implausible BadC excesses=0, BadS excesses=0
+```
+
+**Note on a false alarm I raised and then closed.** An earlier version of this sweep flagged
+~10 `(config, p)` pairs where the *empirical* spike-failure rate (`1/120` or `2/120`) exceeded
+the proved bound plus 4 Gaussian sigma. This was an artifact of my own test: for events with
+true rate `~10⁻⁴–10⁻⁶`, `√(rate/N)` is a meaningless error bar and a single hit trips it. Two
+independent fixes both clear it: (a) the exact CRT computation above (25920 configurations, no
+sampling at all) shows the bound is never violated — worst case it is `89%` saturated; (b) the
+rerun with a proper Poisson tail test gives 0 flags in 7056 pairs. **No defect in the
+document.**
 
 ---
 
