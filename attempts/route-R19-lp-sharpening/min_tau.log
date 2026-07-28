@@ -1,3 +1,4 @@
 N    min sum tau  gamma=S/N^2  C_ledger(N)=N(N+1)/(2(N^2+N-S))   triadic S  C_ledger(triadic)
   8         40   0.62500      1.12500 = 9/8          52  1.80000   [brute==cpsat OPT]
  12         90   0.62500      1.18182 = 13/11         100  1.39286   [cpsat OPT]
+ 16        159   0.62109      1.20354 = 136/113         180  1.47826   [cpsat OPT]

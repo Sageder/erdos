@@ -1,3 +1,4 @@
 EAGER k=4 C=2 N=85: cadical UNSAT (297s, 298593 clauses)
    glucose: UNSAT -> AGREE (200s)
 EAGER k=4 C=2 N=90: cadical UNSAT (419s, 355094 clauses)
+   glucose: UNSAT -> AGREE (323s)

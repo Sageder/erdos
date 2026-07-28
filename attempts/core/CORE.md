@@ -757,3 +757,35 @@ not supply two pairs at any ratio ≥ 3. A negative answer at length 4 therefore
 mechanism that extracts a contradiction from ONE pair plus singletons, or an architecture
 in which 4-APs are forced to straddle blocks in pairs — which is what route R1's cut-set
 and island analysis was probing, and where its certificates currently say no.
+
+## Lemma 24 (coupled family: every affine sub-copy has a 3-AP-free record set)
+
+Let a be a monotone-4-AP-free permutation of ℕ. For α ≥ 1, β ≥ 0 let
+P = {β+α, β+2α, β+3α, …}, and let a|_P denote the values of P listed in a-position order.
+Let R(P) := the running maxima (records) of a|_P, i.e. the v ∈ P larger than every
+P-value positioned before v. Then for EVERY such P:
+
+    R(P) is infinite and contains no 3-term arithmetic progression.
+
+The same holds for every value-tail P = {m, m+1, m+2, …}.
+
+Proof. The map ι(β+jα) = j is an order isomorphism of P onto ℕ carrying APs to APs in
+both directions (affine maps preserve arithmetic progressions and their orientations).
+Listing P in a-position order gives a linear order on P in which every element has only
+finitely many predecessors (its P-predecessors are a subset of its a-predecessors), so by
+Lemma 1 the transported order is a permutation of ℕ. It is monotone-4-AP-free: a monotone
+4-AP of a|_P is, after applying ι^{-1}, a monotone 4-AP of a. Lemma 13(a) applied to that
+permutation says its record set has no 3-term AP and is infinite; transporting back by ι
+gives the claim. ∎
+
+Remark. This upgrades Lemma 13(a) from one 3-AP-free set to an infinite COUPLED family of
+them — one for every arithmetic progression and every tail, all living inside a single
+order. The fresh-eyes route independently identified the same coupling and named the
+right obstacle: each R(P) may be arbitrarily sparse (running maxima can jump far), so
+there is no density lower bound to play against Roth's theorem, and absent further
+constraints any prescribed infinite set is realizable as a record set. A contradiction
+would therefore have to come from the COUPLING between different P — e.g. a lower bound
+on |R(P) ∩ [1..N]| for suitably chosen P, or an incompatibility between R(ℕ) and R(P)
+for P a sub-progression. Both are open; note that any such lower bound must be consistent
+with Theorem 21's 5-AP-free permutation under the analogous (weaker) statement, which is
+a useful sanity target for candidate inequalities.
