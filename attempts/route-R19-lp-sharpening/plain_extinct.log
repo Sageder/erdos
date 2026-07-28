@@ -1,0 +1,47 @@
+    C=1 N=4: UNSAT
+PLAIN C=1 (1.0000): minimal UNSAT N = 4  (max SAT N = 3)  [exact, 0s]
+    C=5/4 N=4: UNSAT
+PLAIN C=5/4 (1.2500): minimal UNSAT N = 4  (max SAT N = 3)  [exact, 0s]
+    C=3/2 N=4: SAT
+    C=3/2 N=5: SAT
+    C=3/2 N=6: SAT
+    C=3/2 N=7: SAT
+    C=3/2 N=8: SAT
+    C=3/2 N=9: SAT
+    C=3/2 N=10: SAT
+    C=3/2 N=11: SAT
+    C=3/2 N=12: SAT
+    C=3/2 N=16: UNSAT
+    C=3/2 N=14: SAT
+    C=3/2 N=15: UNSAT
+PLAIN C=3/2 (1.5000): minimal UNSAT N = 15  (max SAT N = 14)  [exact, 1s]
+    C=7/4 N=4: SAT
+    C=7/4 N=5: SAT
+    C=7/4 N=6: SAT
+    C=7/4 N=7: SAT
+    C=7/4 N=8: SAT
+    C=7/4 N=9: SAT
+    C=7/4 N=10: SAT
+    C=7/4 N=11: SAT
+    C=7/4 N=12: SAT
+    C=7/4 N=16: SAT
+    C=7/4 N=21: SAT
+    C=7/4 N=28: SAT
+    C=7/4 N=37: UNSAT
+    C=7/4 N=33: UNSAT
+    C=7/4 N=31: UNSAT
+    C=7/4 N=30: SAT
+PLAIN C=7/4 (1.7500): minimal UNSAT N = 31  (max SAT N = 30)  [exact, 36s]
+    C=2 N=4: SAT
+    C=2 N=5: SAT
+    C=2 N=6: SAT
+    C=2 N=7: SAT
+    C=2 N=8: SAT
+    C=2 N=9: SAT
+    C=2 N=10: SAT
+    C=2 N=11: SAT
+    C=2 N=12: SAT
+    C=2 N=16: SAT
+    C=2 N=21: SAT
+    C=2 N=28: SAT
+    C=2 N=37: SAT

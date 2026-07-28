@@ -83,28 +83,36 @@ def verify(perm, val):
     assert sum(taus(perm)[1:]) == val, "objective mismatch"
 
 
+def C_ledger(N, S):
+    """Exact ledger ceiling at board size N given  min sum tau = S:
+    the ledger  N(N+1)/2 = sum pos <= C * sum m = C*(N + N^2 - sum tau)  refutes
+    profile C exactly when  C < N(N+1) / (2 (N^2 + N - S))."""
+    return Fraction(N * (N + 1), 2 * (N * N + N - S))
+
+
 if __name__ == "__main__":
     Ns = [int(x) for x in sys.argv[1:]] or list(range(4, 15))
-    print("N    min sum tau   gamma=min/N^2   C_ledger = 2*min/(N(N+1))   triadic sum tau")
+    budget = float(__import__("os").environ.get("BUDGET", "300"))
+    print("N    min sum tau  gamma=S/N^2  C_ledger(N)=N(N+1)/(2(N^2+N-S))   triadic S  C_ledger(triadic)")
     for N in Ns:
         if N <= 9:
             b, arg = brute_min_tau(N)
             st, val, perm = cpsat_min_tau(N)
             assert st == "OPT" and val == b, (N, st, val, b)
             verify(perm, val)
-            tag = "brute==cpsat"
+            tag = "brute==cpsat OPT"
         else:
-            st, val, perm = cpsat_min_tau(N, budget=300.0)
+            st, val, perm = cpsat_min_tau(N, budget=budget)
             if st == "OPT":
                 verify(perm, val)
                 tag = "cpsat OPT"
             elif st == "UB":
                 val, lb = val
                 verify(perm, val)
-                tag = f"cpsat UB (lb={lb})"
+                tag = f"cpsat UB={val} lb={lb} -> C_ledger in [{float(C_ledger(N,lb)):.4f},{float(C_ledger(N,val)):.4f}]"
             else:
                 print(f"{N:3d}  {st}")
                 continue
         tri = sum(taus(triadic(N))[1:])
-        print(f"{N:3d}  {val:9d}   {val/N**2:.5f}      {2*val/(N*(N+1)):.5f}"
-              f"                {tri:9d}   [{tag}]", flush=True)
+        print(f"{N:3d}  {val:9d}   {val/N**2:.5f}      {float(C_ledger(N,val)):.5f} = {C_ledger(N,val)}"
+              f"     {tri:7d}  {float(C_ledger(N,tri)):.5f}   [{tag}]", flush=True)

@@ -663,3 +663,58 @@ is closed — no member is simultaneously 4-AP-free and of order type ω. A NO-w
 one exists, must break monotone 4-APs by a mechanism that is NOT "compare at the first
 differing digit", and route R16's repair programme must be judged against this
 dichotomy rather than against individual failed instances.
+
+## Theorem 21 (explicit 5-AP-free permutation; independent confirmation of [DEGS77](b))
+
+Define a : ℕ → ℕ as the block-major concatenation π₀ π₁ π₂ ⋯ where
+  B_m := [4^m, 4^{m+1}) (so |B_m| = 3·4^m, and the B_m partition ℕ), and
+  π_m := B_m sorted in van der Corput order (compare binary expansions
+         least-significant-bit first, 0 before 1), REVERSED when m is odd.
+Then a is a permutation of ℕ of order type ω containing NO monotone 5-term AP.
+
+Order type ω is immediate: the blocks are finite, partition ℕ, and are listed one after
+another, so every value occupies a finite position and every position is filled.
+
+Kill mechanism (route R2's argument, reproduced): within a block the van der Corput order
+(and its reverse) has no monotone 3-AP, so a monotone DEcreasing AP inside one block has
+length ≤ 2; ratio-4 spread forces the last four terms of a 5-AP into at most two adjacent
+blocks, so an ascending 5-AP must split as (x)(x+d, x+2d)(x+3d, x+4d) across adjacent
+blocks B_m, B_{m+1}; the pair criterion — for u, u+d ∈ B_m with l = v₂(d), u precedes u+d
+in π_m iff bit_l(u) = m mod 2 — then demands bit_l(x+d) = m mod 2 and
+bit_l(x+3d) = (m+1) mod 2, while (x+3d) − (x+d) = 2d is divisible by 2^{l+1}, forcing
+bit_l(x+3d) = bit_l(x+d). Contradiction.
+
+Machine verification (independent re-implementation, exact integer arithmetic, fast
+checker cross-validated against the trusted checker on the N = 63 prefix): the value
+restrictions to [1..N] are permutations of [1..N] with no monotone 5-AP for
+N = 255, 1023, 4095, 16383, 65535. As expected they DO contain monotone 4-APs — the
+first is (2, 7, 12, 17) (x = 2, d = 5) — and monotone 3-APs.
+
+## Remark 22 (the 4-versus-5 gap, stated exactly)
+
+Theorem 21 and route R1's impossibility certificates together give the sharpest available
+description of why length 4 is hard.
+
+- The construction that settles length 5 is a CONTIGUOUS GEOMETRIC BLOCK LAYOUT: finite
+  value-blocks of ratio 4, listed in increasing order, with a digit-order gadget inside
+  each block and an alternating reversal. Its top-level structure is most-significant-
+  digit-like (finite blocks ⇒ order type ω) and its within-block structure is
+  least-significant-digit-like (the van der Corput order ⇒ AP killing). It threads the
+  needle of Remark 20 by putting the two priorities at different scales.
+- Route R1 proved (SAT over construction stages + König, so the finite UNSATs are
+  impossibility theorems quantified over ALL within-block gadgets) that for monotone
+  4-APs this entire architecture fails: in-order geometric layouts die at ratio 3 and
+  ratio 4, with minimal infeasible cut-set {8, 26, 80}, and bounded-lag interleavings die
+  at stage 7.
+
+So the exact mechanism that succeeds at length 5 is provably unavailable at length 4.
+That is the concrete content of the gap, and it says what a negative answer would need:
+either a layout escaping R1's cut-set certificates (the ratio-5 island, whose depth-5
+continuations all came back UNSAT — pending final verification), or a non-block mechanism
+outside the digit-comparator dichotomy of Remark 20 entirely.
+
+Independent corroboration of the core structure theory: a fresh-context agent, given only
+the problem statement and no route history, re-derived Lemma 13(a) (the record set of a
+monotone-k-AP-free permutation is infinite and contains no (k−1)-term AP) and rediscovered
+that the one-base-point argument cannot work at length 4 — matching route R5's Generic
+Escape Proposition. Two independent derivations of both facts.
