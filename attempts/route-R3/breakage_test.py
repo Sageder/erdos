@@ -53,46 +53,56 @@ print("   medium-failure examples (n, q, p, factor(n+2), failing (prime, 2s_p(n+
 for e in med_examples:
     print("   ", e)
 
-# ---------- B3: Pell ----------
+# ---------- B3: Pell (small solutions; full slow criterion + carry-deficit analysis) ----------
+# Larger Pell ranges (30 solutions each sign) are in breakage_test2.py via the fast
+# equivalent criterion; here every membership verdict uses the verbatim PROBLEM.md
+# all-primes criterion, so the range is capped at n < 2*10^7.
 print("\nB3: Pell chains")
 # x^2 - 2y^2 = -1: (x,y) = (1,1),(7,5),(41,29),... x_{k+1}=3x+4y, y_{k+1}=2x+3y
 x, y = 1, 1
 pell_neg = []
-while x < 10**12:
+while x < 10**9:
     x, y = 3 * x + 4 * y, 2 * x + 3 * y
     pell_neg.append((x, y))
 for x, y in pell_neg:
     n = x * x - 2           # n+1 = x^2, n+2 = 2y^2
-    ok = in_Sk(n, 2)
+    ok = in_Sk(n, 2) if n < 2 * 10**7 else None   # None = deferred to fast test (B3')
     fx, fy = factorint(x), factorint(y)
-    # deficit analysis at primes of x: need 4*nu_ell(x) carries
+    # deficit analysis: at ell^e || x need 4e carries (nu_ell(n+1)=2e); at ell^e || y
+    # (odd ell) need 4e carries too (nu_ell(n+2)=2e); supply is carries(n,n,ell)
     defic = []
     for ell, e in fx.items():
         c = carries(n, n, ell)
         if c < 4 * e:
             defic.append((ell, e, c))
     for ell, e in fy.items():
+        if ell == 2:
+            continue
         c = carries(n, n, ell)
         if c < 4 * e:
             defic.append((ell, e, c))
     print(f"   x={x} y={y} n=x^2-2: in S_2? {ok}; x={fx}, y={fy}; "
           f"carry-deficient primes (ell, nu, carries<4nu): {defic}")
-x, y = 1, 0
-pell_pos = []
+    if ok is not None:
+        assert ok == (not defic and bin(n).count('1') >= 2 * (1 + fy.get(2, 0))), (x, y)
 x, y = 3, 2
-while x < 10**12:
+pell_pos = []
+while x < 10**9:
     pell_pos.append((x, y))
     x, y = 3 * x + 4 * y, 2 * x + 3 * y
 for x, y in pell_pos:
     n = x * x - 2           # n+1 = 2y^2, n+2 = x^2
-    ok = in_Sk(n, 2)
+    ok = in_Sk(n, 2) if n < 2 * 10**7 else None
     print(f"   x={x} y={y} n=x^2-2 (n+1=2y^2,n+2=x^2): in S_2? {ok}")
 
 # ---------- B4: conditional repair ----------
-print("\nB4: solutions of pq+1=2rs with all carry conditions")
+# Small range (q <= 1000), every solution verified by the verbatim PROBLEM.md
+# all-primes criterion. The q <= 4000 search with fast criterion + sampled slow
+# re-checks is in breakage_test2.py (B4').
+print("\nB4: solutions of pq+1=2rs with all carry conditions, q <= 1000 (slow criterion)")
 sols = []
 near = 0
-for q, p in family_pairs(4000):
+for q, p in family_pairs(1000):
     n = p * q - 1
     m2 = (n + 2) // 2
     assert (n + 2) % 2 == 0
@@ -111,7 +121,7 @@ for q, p in family_pairs(4000):
     if n & (n - 1) == 0:
         continue
     sols.append((q, p, s, r, n))
-print(f"   semiprime n+2=2rs (r,s distinct odd primes) among family members q<=4000: {near}")
+print(f"   semiprime n+2=2rs (r,s distinct odd primes) among family members q<=1000: {near}")
 print(f"   full-condition solutions found: {len(sols)}")
 allok = all(in_Sk(n, 2) for _, _, _, _, n in sols)
 print(f"   ALL such n in S_2: {allok}")

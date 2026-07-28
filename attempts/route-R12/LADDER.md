@@ -22,10 +22,13 @@ Fix k ≥ 2 and set P₀ = 2k (any P₀ ≥ 2k works). Choose:
    EXISTENCE of the class: trivial — n is a free variable; prescribe n mod ℓ^{L_ℓ} digit
    by digit (choose the low digits to realize any consistent valuation pattern
    v_{ℓ,j} of k consecutive integers, then the forcing digits above). CRT across ℓ. □
- - for each j ∈ {1, ..., k}: primes s_j, r_j > P₀ with
+ - for each j ∈ {1, ..., k}: DISTINCT primes s_j ≠ r_j, both > max(P₀, c_j), with
    (n+j)/c_j = r_j s_j,   c_j s_j − 1 < r_j ≤ 2 c_j s_j − 1,   (c_j r_j mod s_j) ≥ (s_j+1)/2.
 
-**Lemma R_k.** Any n ≡ c₀ (mod Q₀), n > (2k)^4, satisfying all of the above lies in S_k.
+**Lemma R_k.** Any n ≡ c₀ (mod Q₀), n > (2k)^4 (large enough that s_j > c_j is
+automatic), satisfying all of the above lies in S_k. [Audit note: r_j = s_j must be
+excluded explicitly — the c_j = 1 box does not exclude it; distinctness across j is
+automatic (gcd of window elements divides differences < k < s).]
 
 Proof. Primes ℓ ≤ P₀: demand 2V_ℓ met by (ii) (digits ≥ ⌈ℓ/2⌉ each force a carry
 regardless of neighbours). Primes ℓ > P₀ = 2k divide at most one window element (else
@@ -81,3 +84,22 @@ growth ≍ Q²/log⁴Q). For k = 3: 0 structural hits below 4·10⁵ — consist
   fundamentally new analytic input — OR a different mechanism entirely (route R10).
 - The ladder itself is (we believe) a genuinely new structural localization of 727:
   every digit/carry aspect is discharged elementarily; what remains is prime equations.
+
+## 5. Sharpest analytic form for k=2 (B†; lead analysis 2026-07-28)
+
+Generalize Lemma R_2 to accept smooth-times-prime window parts (the balanced partner of a
+large prime need not be prime — any P₀-smooth C in the right size-box works, with the
+small primes of C paid by class-forced/counted carries at ℓ ≤ P₀ and the residue condition
+(C·? mod ·) versions countable):
+  n + 1 = M'·q (M' smooth-in-box, q prime, q ≤ 2M'−1-balance, residue cond),
+  n + 2 = 2·C·r (C smooth-in-box, r prime, balance, residue cond).
+Then S₂-infinitude ⟸ B†: the shift-1 correlation statement
+  #{(C, r, M', q): 2Cr − M'q = 1, boxes/classes/residues} → ∞.
+Assessment: binary (shift-1) correlation of two smooth∗prime sequences — NOT circle-method
+amenable (binary obstruction); the right technology is dispersion/BFI-Titchmarsh-style
+(one side needs level of distribution > 1/2 — plausible for smooth∗prime with the dense
+smooth average — the other side Vaughan-decomposed), or a Chen-style weighted sieve if a
+"consecutive P₂-with-structure" theorem (Heath-Brown line) can be adapted. Morally:
+"n, n+1 both P₂ with smooth-parts and localized prime factors" — STRICTLY above Titchmarsh
+(primality on both sides), below twins (dense smooth averaging available on both sides).
+Waiting on R11 literature verdict to calibrate feasibility.

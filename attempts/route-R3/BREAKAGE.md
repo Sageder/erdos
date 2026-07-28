@@ -66,10 +66,13 @@ digit positions of n). Hence if ℓ^e ∥ n+2 and 2e > ⌊log_ℓ n⌋ + 1 (in p
 whenever ℓ^{2e} > ℓn), then n ∉ S_2 unconditionally. ∎
 Examples: n = 14 (n+2 = 2⁴: demand s₂(14) ≥ 8, cap 4); n = 702 (704 = 2⁶·11:
 demand s₂(702) ≥ 12, actual 7).
-More generally, e ≈ ν means the low 2e digits of n = (n+2) − 2 base ℓ are
-(ℓ−2, ℓ−1, …, ℓ−1), which supply exactly 2e−… wait — supply exactly the low-position
-carries, but demand grows twice as fast as the valuation, so any prime POWER carrying
-a constant fraction of log n dies: the sustainable regime is ℓ^{2e} ≲ n.
+More generally, if ℓ^e ∥ n+2 (ℓ ≥ 5), the low e digits of n = (n+2) − 2 base ℓ are
+(ℓ−2, ℓ−1, …, ℓ−1): the truncations n mod ℓ^i = ℓ^i − 2 satisfy 2(ℓ^i − 2) ≥ ℓ^i, so
+positions 0, …, e−1 supply exactly e guaranteed carries — but the demand is 2e, and
+the missing e carries must come from the ⌊log_ℓ n⌋ + 1 − e higher digit positions,
+each carrying only with "probability" ≈ 1/2. Supply-vs-demand is thus e free + κ·(D+1−e)
+probable versus 2e needed: any prime power with 2e near the digit count D+1 dies
+(F-III cap), and the sustainable regime is ℓ^{2e} ≲ n with slack.
 
 **(F-IV) ℓ = 2, 3 (the 2k − s_p(2k) constants).** At ℓ = 2 the demand is
 c₂(n) = s₂(n) ≥ 2ν₂(n+2) (for even n+2); mild for ν₂ = 1, deadly for large ν₂ (F-III).
