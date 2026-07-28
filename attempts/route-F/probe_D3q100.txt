@@ -1,0 +1,4 @@
+200:400          |U|=45   lam=10   maxsum=0.1611 found=2000  in 0.0s range=[0.0713,0.1439]
+402:804          |U|=86   lam=37   maxsum=0.1530 found=2000  in 0.3s range=[0.0843,0.1285]
+806:1612         |U|=197  lam=80   maxsum=0.1712 found=0     in 25.0s range=[-,-]
+1614:3228        |U|=330  lam=98   maxsum=0.1449 found=0     in 25.0s range=[-,-]

@@ -1,0 +1,6 @@
+### z1=45
+  try 29: |R|=52 vR=0.10268 residual=0.39732 tail |A|=253 tailmass=0.61833 ratio=0.643
+    RESTART-TIMEOUT restarts=76 nodes=304000000 cpu=8.9s
+  try 32: |R|=82 vR=0.16495 residual=0.33505 tail |A|=243 tailmass=0.60088 ratio=0.558
+    RESTART-TIMEOUT restarts=75 nodes=300000000 cpu=8.5s
+  try 33: |R|=95 vR=0.18909 residual=0.31091 tail |A|=250 tailmass=0.60525 ratio=0.514

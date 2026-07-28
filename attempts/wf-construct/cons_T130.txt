@@ -1,0 +1,30 @@
+### T130 seed=3 z0=29
+  try 46: |R|=110 vR=0.29390 residual=0.20610 tail |A|=107 tailmass=0.32516 ratio=0.634
+    TIMEOUT nodes=251658240 solutions=0
+  try 59: |R|=62 vR=0.16651 residual=0.33349 tail |A|=114 tailmass=0.34105 ratio=0.978
+no solution produced in 80 tries; rejects: {'R': 0, 'r': 0, 'fix': 76, 'mass': 0, 'ratio': 2}
+### T130 seed=3 z0=31
+    TIMEOUT nodes=218103808 solutions=0
+  try 77: |R|=92 vR=0.22235 residual=0.27765 tail |A|=139 tailmass=0.41945 ratio=0.662
+    TIMEOUT nodes=301989888 solutions=0
+no solution produced in 80 tries; rejects: {'R': 0, 'r': 0, 'fix': 69, 'mass': 0, 'ratio': 1}
+### T130 seed=5 z0=29
+    TIMEOUT nodes=251658240 solutions=0
+  try 56: |R|=61 vR=0.16252 residual=0.33748 tail |A|=116 tailmass=0.35853 ratio=0.941
+  try 57: |R|=66 vR=0.15872 residual=0.34128 tail |A|=119 tailmass=0.35887 ratio=0.951
+no solution produced in 80 tries; rejects: {'R': 0, 'r': 0, 'fix': 76, 'mass': 0, 'ratio': 2}
+### T130 seed=5 z0=31
+    RESTART-TIMEOUT restarts=49 nodes=196000000 cpu=6.6s
+  try 67: |R|=92 vR=0.21300 residual=0.28700 tail |A|=152 tailmass=0.45033 ratio=0.637
+    RESTART-TIMEOUT restarts=57 nodes=228000000 cpu=6.8s
+no solution produced in 80 tries; rejects: {'R': 0, 'r': 0, 'fix': 72, 'mass': 0, 'ratio': 1}
+### T130 seed=7 z0=29
+    TIMEOUT nodes=268435456 solutions=0
+  try 34: |R|=73 vR=0.20249 residual=0.29751 tail |A|=108 tailmass=0.31931 ratio=0.932
+  try 67: |R|=60 vR=0.14003 residual=0.35997 tail |A|=118 tailmass=0.36069 ratio=0.998
+no solution produced in 80 tries; rejects: {'R': 0, 'r': 0, 'fix': 77, 'mass': 0, 'ratio': 2}
+### T130 seed=7 z0=31
+  try 67: |R|=52 vR=0.14330 residual=0.35670 tail |A|=145 tailmass=0.42405 ratio=0.841
+    TIMEOUT nodes=218103808 solutions=0
+  try 68: |R|=36 vR=0.09453 residual=0.40547 tail |A|=153 tailmass=0.44689 ratio=0.907
+no solution produced in 80 tries; rejects: {'R': 0, 'r': 0, 'fix': 74, 'mass': 0, 'ratio': 1}

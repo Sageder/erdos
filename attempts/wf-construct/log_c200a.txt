@@ -1,0 +1,2 @@
+T=200 N=1000 target=1/2 |A|=264  lcm bits=131  words=3
+  endgame at index 234 (element 896): distinct sums 114688 114688 172032  (0.0s)

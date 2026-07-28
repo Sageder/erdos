@@ -1,0 +1,4 @@
+start min=14 max=190 |U|=40 sum=1 r,cap=(17, 19)
+  T=14 thr=28 |Low|=12 q=54071657/91891800(0.58843) |High|=28
+    window[28,70] seed=0 Lbits=0 nodes=0 -> EMPTY
+    window[28,90] seed=0 Lbits=0 nodes=0 -> EMPTY

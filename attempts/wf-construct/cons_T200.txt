@@ -1,0 +1,20 @@
+### z0=31
+[200,1800] target=1/2 z0=31 z=1000000000  L0 has 101 bits
+  |S0|=498 smooth mass=0.79473; rough primes=222 rough candidates=633 mass=0.89657
+no solution produced in 30 tries; rejects: {'R': 0, 'r': 0, 'fix': 30, 'mass': 0, 'ratio': 0}
+### z0=37
+  |S0|=538 smooth mass=0.85167; rough primes=226 rough candidates=650 mass=0.90916
+  try 24: |R|=85 vR=0.12067 residual=0.37933 tail |A|=197 tailmass=0.38265 ratio=0.991
+  try 28: |R|=168 vR=0.24800 residual=0.25200 tail |A|=184 tailmass=0.34136 ratio=0.738
+    TIMEOUT nodes=83886080 solutions=0
+no solution produced in 30 tries; rejects: {'R': 0, 'r': 0, 'fix': 28, 'mass': 0, 'ratio': 1}
+### z0=41
+  try 20: |R|=80 vR=0.13448 residual=0.36552 tail |A|=243 tailmass=0.45535 ratio=0.803
+    TIMEOUT nodes=83886080 solutions=0
+  try 26: |R|=102 vR=0.14785 residual=0.35215 tail |A|=243 tailmass=0.45122 ratio=0.780
+    TIMEOUT nodes=67108864 solutions=0
+no solution produced in 30 tries; rejects: {'R': 0, 'r': 0, 'fix': 27, 'mass': 0, 'ratio': 0}
+### z0=47
+[200,1800] target=1/2 z0=47 z=1000000000  L0 has 133 bits
+  |S0|=647 smooth mass=1.00363; rough primes=236 rough candidates=671 mass=0.91291
+  try 8: |R|=119 vR=0.18020 residual=0.31980 tail |A|=302 tailmass=0.53575 ratio=0.597

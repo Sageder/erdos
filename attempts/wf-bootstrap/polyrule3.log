@@ -1,0 +1,3 @@
+scope: a<=6 |b|<=3 2<=L<=3 blocks<=2 nonlinear-depth=2 const-window=2
+linear parts with sum L/a = 1 : 259
+  ...0/259

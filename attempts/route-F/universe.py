@@ -77,8 +77,23 @@ def _good_elements(ws, p):
     return good
 
 
-def prune(x, y, D, spf, prime_cap=None, extra_ban=(), max_level=32):
+def prune(x, y, D, spf, prime_cap=None, extra_ban=(), max_level=32, pp_cap=None):
+    """prime_cap: keep only prime_cap-smooth n.
+    pp_cap: keep only n all of whose prime powers p^{nu_p(n)} are <= pp_cap
+            UNLESS p^{nu_p(n)} divides D (those cost no lambda bits)."""
     alive = set(range(x, y + 1))
+    if pp_cap is not None:
+        for n in list(alive):
+            m = n
+            while m > 1:
+                p = spf[m]
+                e = 0
+                while m % p == 0:
+                    m //= p
+                    e += 1
+                if p ** e > pp_cap and D % (p ** e) != 0:
+                    alive.discard(n)
+                    break
     if prime_cap is not None:
         for n in list(alive):
             m = n

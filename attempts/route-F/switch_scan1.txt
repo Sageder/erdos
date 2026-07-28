@@ -1,0 +1,2 @@
+250:500:40         |U|=35   Lam=19.6   lam=30   maxsum=0.1035 | gadgets: nodes=1685 out=5 (exhausted) | switches=508578 distinct|c|=249 min|c|=470 gcd=1
+501:1000:40        |U|=43   Lam=23.0   lam=36   maxsum=0.0632 | gadgets: nodes=5006 out=0 (exhausted) | switches=183794 distinct|c|=40 min|c|=4938 gcd=6

@@ -1,0 +1,8 @@
+200:400          |U|=45   lam=10   maxsum=0.1611 found=2000  in 0.0s range=[0.0713,0.1439]
+402:804          |U|=80   lam=31   maxsum=0.1411 found=2000  in 0.1s range=[0.0772,0.1220]
+806:1612         |U|=144  lam=48   maxsum=0.1262 found=2000  in 23.2s range=[0.0724,0.0909]
+1614:3228        |U|=164  lam=48   maxsum=0.0725 found=64    in 25.0s range=[0.0499,0.0537]
+3230:6460        |U|=152  lam=48   maxsum=0.0344 found=232   in 25.0s range=[0.0212,0.0280]
+6462:12924       |U|=180  lam=48   maxsum=0.0203 found=26    in 25.0s range=[0.0143,0.0160]
+12926:25852      |U|=157  lam=48   maxsum=0.0086 found=0     in 25.0s range=[-,-]
+25854:51708      |U|=135  lam=48   maxsum=0.0039 found=1     in 25.0s range=[0.0027,0.0027]

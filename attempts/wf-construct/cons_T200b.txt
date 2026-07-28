@@ -1,0 +1,20 @@
+### seed=21 z0=37
+  try 63: |R|=103 vR=0.13435 residual=0.36565 tail |A|=192 tailmass=0.37973 ratio=0.963
+  try 78: |R|=88 vR=0.14389 residual=0.35611 tail |A|=202 tailmass=0.38609 ratio=0.922
+  try 106: |R|=86 vR=0.12744 residual=0.37256 tail |A|=200 tailmass=0.39816 ratio=0.936
+no solution produced in 120 tries; rejects: {'R': 0, 'r': 0, 'fix': 114, 'mass': 0, 'ratio': 6}
+### seed=21 z0=41
+    RESTART-TIMEOUT restarts=45 nodes=180000000 cpu=6.3s
+  try 114: |R|=193 vR=0.26647 residual=0.23353 tail |A|=216 tailmass=0.41661 ratio=0.561
+    RESTART-TIMEOUT restarts=51 nodes=204000000 cpu=6.5s
+no solution produced in 120 tries; rejects: {'R': 0, 'r': 0, 'fix': 116, 'mass': 0, 'ratio': 1}
+### seed=22 z0=37
+  try 38: |R|=67 vR=0.10128 residual=0.39872 tail |A|=211 tailmass=0.41485 ratio=0.961
+  try 115: |R|=123 vR=0.18485 residual=0.31515 tail |A|=185 tailmass=0.36254 ratio=0.869
+  try 116: |R|=127 vR=0.18807 residual=0.31193 tail |A|=184 tailmass=0.36681 ratio=0.850
+no solution produced in 120 tries; rejects: {'R': 0, 'r': 0, 'fix': 117, 'mass': 0, 'ratio': 3}
+### seed=22 z0=41
+    RESTART-TIMEOUT restarts=44 nodes=176000000 cpu=6.2s
+  try 35: |R|=82 vR=0.13276 residual=0.36724 tail |A|=238 tailmass=0.44804 ratio=0.820
+    RESTART-TIMEOUT restarts=48 nodes=192000000 cpu=6.5s
+  try 36: |R|=83 vR=0.13246 residual=0.36754 tail |A|=240 tailmass=0.46271 ratio=0.794

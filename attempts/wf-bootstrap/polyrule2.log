@@ -1,0 +1,3 @@
+scope: a<=8 |b|<=4 2<=L<=4 blocks<=2 nonlinear-depth=3 const-window=3
+linear parts with sum L/a = 1 : 918
+  ...0/918

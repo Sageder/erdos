@@ -1,0 +1,19 @@
+x=200 D=3628800
+  y=800     cap=35  |U|=106   Lam=59.4    lam=33   maxsum=0.2898
+  y=800     cap=40  |U|=124   Lam=71.2    lam=38   maxsum=0.3287
+  y=800     cap=45  |U|=158   Lam=94.2    lam=49   maxsum=0.4106
+  y=800     cap=50  |U|=173   Lam=104.0   lam=55   maxsum=0.4451
+  y=800     cap=55  |U|=188   Lam=115.6   lam=60   maxsum=0.4814
+  y=800     cap=60  |U|=202   Lam=126.1   lam=66   maxsum=0.5127
+  y=1600    cap=35  |U|=175   Lam=95.2    lam=44   maxsum=0.3699
+  y=1600    cap=40  |U|=208   Lam=115.0   lam=49   maxsum=0.4227
+  y=1600    cap=45  |U|=287   Lam=162.8   lam=60   maxsum=0.5461
+  y=1600    cap=50  |U|=327   Lam=188.8   lam=67   maxsum=0.6030
+  y=1600    cap=55  |U|=363   Lam=212.6   lam=74   maxsum=0.6582
+  y=1600    cap=60  |U|=390   Lam=230.8   lam=80   maxsum=0.7019
+  y=3200    cap=35  |U|=246   Lam=132.0   lam=49   maxsum=0.4102
+  y=3200    cap=40  |U|=295   Lam=160.8   lam=55   maxsum=0.4694
+  y=3200    cap=45  |U|=402   Lam=226.0   lam=65   maxsum=0.6020
+  y=3200    cap=50  |U|=458   Lam=261.0   lam=72   maxsum=0.6661
+  y=3200    cap=55  |U|=529   Lam=305.4   lam=83   maxsum=0.7446
+  y=3200    cap=60  |U|=589   Lam=342.4   lam=89   maxsum=0.8023

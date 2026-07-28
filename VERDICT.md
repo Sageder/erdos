@@ -2,185 +2,154 @@
 
 ## Answer
 
-**The problem is NOT resolved by this run.** Neither branch was proved:
+**The problem is NOT resolved by this run.** Neither branch is proved:
 
 - **YES branch** ($\exists K\ \forall k\ge K:\ P(k)$): **not proved.**
 - **NO branch** (infinitely many $k$ with $\neg P(k)$): **not proved**, and now strongly
-  disfavoured — every candidate obstruction was refuted, and solutions are provably
-  plentiful in the range that can be searched.
+  disfavoured — every candidate obstruction was proved as a lemma and then refuted, and
+  solutions are abundant in every range that can be searched.
 
-Per the run protocol this is stated plainly and nothing below is presented as a resolution.
-The rest of this file records what *was* established rigorously and exactly where the
-problem now sits.
+Nothing below is presented as a resolution. The run reduced the problem to one clean
+statement, **(GAD)** below, and proved several theorems along the way, including an
+unconditional no-go that kills every local/parametric construction at once.
 
 ## The reformulation everything runs on
 
 A finite $U\subseteq\mathbb{Z}_{\ge2}$ is **legal** if it has no isolated point; equivalently
 $U$ is a disjoint union of blocks of length $\ge2$. With maximal-run lengths $L_1,\dots,L_r$
-put $r(U)=r$ and $M(U)=\sum_i\lfloor L_i/2\rfloor$ (the **capacity**).
+put $r(U)=r$ and $M(U)=\sum_i\lfloor L_i/2\rfloor$ (the **capacity**), and
+$\Sigma(U)=\sum_{n\in U}1/n$.
 
-> **Proposition.** $P(k)$ holds **iff** there is a legal $U$ with $\sum_{n\in U}1/n=1$ and
+> **Proposition (proved).** $P(k)$ holds **iff** there is a legal $U$ with $\Sigma(U)=1$ and
 > $r(U)\le k\le M(U)$.
 
-Proved in `PROBLEM.md` and `DRAFT.tex` (splitting lemma in both directions). So the problem
-is exactly: *do the intervals $[r(U),M(U)]$, over all solutions $U$, cover a cofinite set?*
+So the problem is exactly: *do the intervals $[r(U),M(U)]$ over all solutions cover a
+cofinite set?*
 
 ## Established, audited results
 
-All certificates are re-verified from scratch by `experiments/verify.py` and
-`experiments/certificates.py` using `fractions.Fraction` only — no float appears in any
-verification path. Audit in `AUDITS.md` walks PROMPT §7 item by item.
+Every certificate is re-verified from scratch — `fractions.Fraction`, and for the extreme
+ones also `sympy.Rational` and pure integer arithmetic $\sum L/n=L$ with $L=\mathrm{lcm}(U)$.
+No float occurs in any verification path. `AUDITS.md` walks PROMPT §7 item by item.
 
-1. **Solutions exist** (none were known to this run at the start; the first were found here).
-   The minimum possible $\max U$ is **exactly 85**, and there are **exactly four** solutions
-   attaining it. The smallest:
+1. **Solutions exist** (none were in hand when this run began). The minimum possible
+   $\max U$ is **exactly 85**, with **exactly four** solutions attaining it; the smallest is
    $$1=\tfrac15+\tfrac16+\tfrac1{14}+\tfrac1{15}+\tfrac1{17}+\tfrac1{18}+\tfrac1{20}+\tfrac1{21}+\tfrac1{22}+\tfrac1{27}+\tfrac1{28}+\tfrac1{33}+\tfrac1{34}+\tfrac1{44}+\tfrac1{45}+\tfrac1{54}+\tfrac1{55}+\tfrac1{84}+\tfrac1{85}.$$
-   Established by four independent engines (mine, and routes A, B, C), which agree on both
-   the emptiness below 85 and the count at 85.
+   Confirmed by four independent engines and by a pruning-free meet-in-the-middle count.
 
-2. **$P(k)$ is TRUE for $k=6,7,\dots,57$**, with explicit exactly-$k$ block certificates.
-   27 582 distinct solutions verified. Examples:
-   - $k=6$: $(\tfrac14+\tfrac15+\tfrac16)+(\tfrac19+\tfrac1{10})+(\tfrac1{19}+\tfrac1{20})+(\tfrac1{44}+\tfrac1{45})+(\tfrac1{132}+\tfrac1{133})+(\tfrac1{209}+\tfrac1{210})=1$;
-   - $k=57$: a 57-block certificate; solutions are known with every element $\ge 50$.
-   $P(1)$ is FALSE (Kürschák). $P(2),\dots,P(5)$ remain open (no solution with $\max U\le345$
-   has fewer than 6 blocks (the minimum run count over all 27 069 solutions is exactly 6, attained once)).
+2. **$P(k)$ is TRUE for $k=6,\dots,65$ (contiguous) and for $k=70,71,91,127,128$**, with
+   explicit exactly-$k$ block certificates in `experiments/CERTIFICATES.txt`. 39 269 distinct
+   solutions verified. $P(1)$ is FALSE (Kürschák); $P(2)\dots P(5)$ are open, and there is no
+   witness for them with $\max U\le400$ (proved: no solution has $\le5$ maximal runs and
+   $\max U\le400$, $1.58\cdot10^{10}$ nodes).
 
-3. **Rule (P)** (proved; strictly stronger than the two-attainer rule of PROBLEM.md B2). If
-   $\Sigma(U)=q$ and $p$ is prime with $E=\max\{\nu_p(n):n\in U\}$, then
-   $\sum_{n\in U,\;p\mid n}p^{E}/n\equiv0 \pmod{p^{E}}$. Iterating it together with legality
-   collapses the candidate universe: the fixpoint of $[2,N]$ is **empty for every $N\le76$**
-   — a millisecond proof replacing a $9\cdot10^{9}$-node exhaustive search — and the
-   surviving universe has a remarkably small lcm (68 bits at $N=300$), which is what makes
-   exact 128-bit searching possible far beyond the naive range.
+3. **Exhaustive negatives.** No solution with $\max U\le84$. The complete list for
+   $\max U\le170$ is exactly 25 650 certificates ($9.4\cdot10^{10}$ nodes).
 
-4. **The top run of any solution is prime-free** (proved). If $[c,N]$ is the top maximal run
-   then $c>N/2$ and $[c,N]$ contains no prime; hence its length is bounded by the largest
-   prime gap below $N$. Capacity therefore cannot be manufactured by one long final run.
+4. **Rule (P)** (proved; strictly stronger than the two-attainer rule): for every prime $p$,
+   $\nu_p\bigl(\sum_{n\in U,\,p\mid n}1/n\bigr)\ge0$, i.e. a subset-sum-to-zero condition
+   mod $p^{E}$ over the multiples of $p$, decidable by reachability DP. Iterated with
+   legality it makes "no solution with $\max U\le76$" a **millisecond** computation
+   (previously 547M nodes at $N=70$), and it keeps $\mathrm{lcm}$(universe) small enough for
+   exact machine arithmetic far beyond the naive range.
 
-5. **No block sum is a unit fraction**: $H(a,b)\ne1/N$ for all $b>a\ge1$, $N\ge1$ (proved via
-   the 2-adic level, a rough-part bound and Kummer, with the finitely many exceptional pairs
-   checked exactly). Independently corroborated: over $5\,053\,495$ block sums with
-   $a\le4000$ the smallest numerator is $5$, attained only by $H(2,3)=5/6$.
+5. **The top run of any solution is prime-free** and lies in $(N/2,N]$, $N=\max U$; its
+   length is at most the largest prime gap below $N$. Capacity cannot come from one long
+   final run.
 
-6. **A block *system* can sum to a unit fraction** — e.g.
-   $\tfrac12=\tfrac16+\tfrac17+\tfrac1{20}+\tfrac1{21}+\tfrac1{44}+\tfrac1{45}+\tfrac1{77}+\tfrac1{78}+\tfrac1{90}+\tfrac1{91}$
-   (max element 91), and similarly $\tfrac13$ and $\tfrac23$. This **refutes** the natural
-   conjecture (raised inside this run) that no unit fraction is a legal block sum, whose
-   exhaustive support only reached max element 85.
+6. **No block sum is a unit fraction**: $H(a,b)\ne1/N$ (proved, via the 2-adic level, a
+   rough-part bound and Kummer). But a block *system* can be: verified certificates give
+   $\tfrac12$, $\tfrac13$, $\tfrac23$, and — far out — $\tfrac12$ with all elements $\ge100$,
+   $\tfrac13$ with all elements $\ge200$, $\tfrac16$ with all elements $\ge500$.
 
-7. **The NO branch is dead.** Candidate obstructions O1–O9 ($p$-adic, parity, smoothness,
-   legality cascade, minimum-isolated-points, "many rationals but never 1") are each
-   *proved as lemmas* and each *refuted as obstructions*. The only survivor constrains
-   $\max U$ (it is never prime, nor one more than a prime), not existence. An honest
-   local–global count with **exactly computed** local densities predicts
-   $\#\{\text{solutions}:\max U\le N\}\approx e^{cN}\to\infty$ (fitted $e^{0.098N}$ on
-   $[80,200]$), matching the observed counts.
+7. **The NO branch is dead.** Candidate obstructions O1–O9 are each proved as lemmas and each
+   refuted as obstructions; the survivor only constrains $\max U$. A local–global count with
+   exactly computed local densities predicts $\#\{\text{solutions}:\max U\le N\}\approx e^{cN}$.
 
-## MAJOR ADVANCE (late in the run): the CRUX holds at $T=100$
+8. **Unconditional no-go for local constructions** (Lemma F3 / Cor. F4). Define a
+   *$D$-switch* as a pair $A,B$ of legal systems on a common window with
+   $\Sigma(B)-\Sigma(A)\in\tfrac1D\mathbb{Z}$. Then any $D$-switch with $\min\ge x$ satisfies
+   $|A\,\triangle\,B|\ge x/D$. Consequently **no family of switches with $D$ fixed and
+   $|A\triangle B|$ bounded exists.** This turns the run's earlier counting heuristic into a
+   theorem and kills, simultaneously, every identity-based move, the $c$-maps, the doubling
+   maps, atom splitting and blow-up families.
 
-A legal system with **all elements $\ge 100$** and reciprocal sum exactly $\tfrac12$ was found
-(`attempts/route-E/cert_T100_half.txt`): 145 elements in $[104,900]$, 65 runs, capacity 66,
-verified three independent ways (`Fraction`, `sympy.Rational`, integer $\sum L/n=L$).
-Combining it with the $\tfrac12$-gadget in $[6,91]$ gives a genuine **solution with 155
-elements, $r=70$, capacity $71$** — hence $P(70)$ and $P(71)$.
+9. **Anchor necessity** (Theorem F7). In any switch scheme $W=\bigsqcup X_i$ with
+   $X_i\in\{A_i,B_i\}$ and $\Sigma(B_i)-\Sigma(A_i)\in\tfrac1D\mathbb Z$, the requirement
+   $\Sigma(W)=\rho$ forces $\sum_i\Sigma(A_i)\in\rho+\tfrac1D\mathbb Z$ — the all-$A$ system
+   is itself a gadget. **Switches supply covering but can never replace the gadget condition.**
 
-**The method that worked** (and that makes a proof of the CRUX conceivable) is two-scale:
-(i) in a window, collect *gadgets* — legal systems whose sum has denominator dividing a
-**fixed smooth $D$** (here $D=10!$); (ii) in a disjoint higher window find a gadget
-$\sigma_2$ with $\tfrac12-\sigma_2$ among the first window's gadget values. A union of legal
-systems in separated windows is legal and sums add, so the combination is exact. This
-replaces one astronomically hard exact condition (denominators of size $\mathrm{lcm}$ of the
-window) by an exact condition modulo a **small fixed** $D$ — the first framework in this run
-in which the entropy comfortably exceeds the constraint.
+10. **Reductions** (R1–R3, proved). If for all large $x$ some legal $G\subseteq[x,Kx]$ has
+    $\Sigma(G)=1/D$, then the cofinite statement follows (take $D/2$ separated copies).
+    Moreover the set $R^\ast$ of rationals realisable arbitrarily far out is a **semigroup**,
+    so $1/(2n)\in R^\ast$ for a *single* $n$ already suffices. A covering lemma is proved in
+    the exact form needed: if $c_1\le\dots\le c_s$ are positive integers with $c_1=1$ and
+    $c_{j+1}\le1+\sum_{i\le j}c_i$, the subset sums are exactly $[0,\sum c_i]\cap\mathbb{Z}$.
 
 ## Where the problem now sits
 
-Solutions exist with all elements $\ge50$; as $T$ grows the searches keep producing solutions with $\min U\ge T$ (verified for $T$ up to 50). A legal system with
-elements $\asymp T$ and reciprocal sum $\tfrac12$ (or $1$) necessarily has $\asymp T$
-elements, so its capacity grows linearly in $T$. Hence:
+By item 10 everything reduces to a single statement:
 
-> **(CRUX)** For arbitrarily large $T$, is there a legal block system with all elements
-> $\ge T$ whose reciprocal sum is $\tfrac12$ (equivalently, a solution with $\min U\ge T$)?
+> **(GAD)** There are constants $K$ and $D$ such that for every large $x$ some legal
+> $G\subseteq[x,Kx]$ has $\Sigma(G)=1/D$.
 
-**If CRUX holds, the YES branch follows**: pair a fixed $\tfrac12$-gadget with a far-out one,
-or take the far-out solution directly; capacities then tend to infinity while run counts stay
-a bounded fraction of them, so the intervals $[r,M]$ chain and cover a cofinite set of $k$
-(`DRAFT.tex`, Prop. 5.1). Every mechanism examined in this run reduces to CRUX.
+**Evidence that (GAD) is true.** Gadgets have been *found* at three separated scales, each
+verified three ways: $\tfrac12$ with elements in $[104,900]$; $\tfrac13$ with elements in
+$[203,5720]$; $\tfrac16$ with elements in $[527,5985]$. Exact entropy minus exact constraint
+bits, $\Lambda-\lambda$, grows without bound with window width ($+18.6$ on $[100,400]$,
+$+582$ on $[1000,4000]$), at every scale tested.
 
-**Why it could not be closed here.** CRUX is the block-structured analogue of representing a
-rational by distinct unit fractions with denominators in a short interval (Croot, *Acta
-Arith.* 99 (2001); Bloom 2021). Those results could not be used: this session's egress policy
-returns 403 for arXiv, EuDML and the mirrors, so no external theorem could be quoted with its
-hypotheses verified — and reproving one, additionally constrained to block structure, is a
-research-paper-sized analytic task. The block constraint forces coprime consecutive pairs,
-which fights the multiplicative structure such proofs rely on.
+**Why it is not proved.** Converting that count into existence needs equidistribution of
+$\Sigma(U)$ modulo $\tfrac1D\mathbb{Z}$ over legal $U$ — a block-constrained Croot-type
+theorem. Theorem F7 says switches cannot get underneath it, and Corollary F4 says no local
+family can. The obstruction is structural: legality couples neighbouring integers
+($n\in U\Rightarrow n\pm1\in U$) while consecutive integers are coprime, which destroys
+exactly the independence a sieve or second-moment argument needs. The literature that
+handles the unconstrained analogue (Croot, *Acta Arith.* 99 (2001); Bloom 2021) could not be
+used: this session's egress policy returns 403 for arXiv, EuDML and the mirrors, so no
+external theorem could be quoted with its hypotheses verified.
 
-**Shortcuts that are ruled out** (each a real negative result of this run):
-- *Equal-sum blocks*: $H(a,b)=H(c,d)$ has no solution with $(a,b)\ne(c,d)$ for all blocks
-  with elements $\le3000$ (2.84M blocks, two independent 62-bit fingerprints); route D turns
-  this into a complete decision procedure with **no** element bound. So a block cannot be
-  swapped for a longer block of equal sum — which would have raised capacity at fixed run
-  count.
-- *Atom splitting*: $\tfrac1a+\tfrac1{a+1}=\tfrac1c+\tfrac1{c+1}+\tfrac1d+\tfrac1{d+1}$ has
-  no solution with $a\le400$, $c\ge a+2$, $d\ge c+2$.
-- *Capacity doubling by recolouring* (BALANCE): admissible colourings of the atom-doubling
-  map are exactly **prefix** colourings of each run, giving only $\prod(L_i+1)\approx3^{r}$
-  of them against a target of lcm-sized denominator; unsolvable for all 990 solutions tested,
-  and still unsolvable on the largest ones under branch-and-bound.
-- *Parametric families die for an arithmetic reason.* For $c\ge3$ the maps
-  $n\mapsto\{cn,cn+1\}$, $n\mapsto\{cn-1,cn\}$ give disjoint atoms for **every** colouring
-  ($2^{|U|}$ of them) and realise exactly $k=|U|$ blocks; but the coarse term has
-  denominators divisible by $cn$ while the corrections $\tfrac{2}{c^2n^2-1}$ have
-  denominators $(cn-1)(cn+1)$, coprime to $cn$ — the corrections can never repair the coarse
-  term. Blow-up families $n\mapsto[qn-d+s_n,qn+d+s_n]$ fail the same way. Exactness always
-  reduces to hitting a rational of lcm-sized denominator with $2^{O(k)}$ options; only the
-  full entropy of unrestricted legal sets, together with the $p$-adic conditions, suffices —
-  which is exactly why a short explicit construction does not exist.
-- *$B(T)$ is not shift-invariant*: $\tfrac56\in B(2)$ but $\tfrac56\notin B(5)$ even allowing
-  elements $\le66$; $\tfrac7{12}\in B(3)\setminus B(4)$.
+**Also ruled out along the way** (each an exhaustive search with a stated range, or a proof):
+$H(a,b)=H(c,d)$ has no solution with $(a,b)\ne(c,d)$; the two-atom split has none with
+$a\le400$; the balanced-doubling equation is unsolvable for every one of the 990+ solutions
+tested; no legal $U\subseteq[100,400]$ has $\Sigma=\tfrac12$ ($1.57\cdot10^{7}$ nodes), which
+is why the far-out $\tfrac12$ certificate needs the wider window $[104,900]$.
 
 ## Independent-verification plan
 
-- **Reproduce the certificates:** `python3 experiments/verify.py experiments/ALLSOLS.txt`
-  and `python3 experiments/certificates.py experiments/ALLSOLS.txt` (exact rationals only;
-  they import nothing from the search code).
-- **Reproduce the negative range:** `experiments/csearch.c` (`./csearch 80`) exhausts
-  $N\le80$ in $8.99\cdot10^{9}$ nodes; `csearch2.c` with an endgame table does $N\le86$
-  quickly; `attempts/route-C/prune.py` shows the Rule-(P)+legality fixpoint of $[2,76]$ is
-  empty. Three code paths, same answer.
-- **Reproduce the structure theorems:** `experiments/collide.c` (block-sum injectivity),
-  `experiments/two_to_block.c` (no unit fraction is a block sum),
-  `experiments/atom_split.py`, `experiments/balance.py`, `experiments/balance2.py`,
-  `experiments/cmap.py`, `experiments/blowup.py`.
-- **Lean sketch** (statements only; none of these is the headline). Against
+- **Certificates:** `python3 experiments/verify.py experiments/ALLSOLS.txt` and
+  `python3 experiments/certificates.py experiments/ALLSOLS.txt`; both use exact rationals and
+  import nothing from the search code.
+- **Negative range:** `experiments/csearch.c` exhausts $N\le80$ in $8.99\cdot10^{9}$ nodes;
+  `attempts/route-C/prune.py` shows the Rule (P)+legality fixpoint of $[2,76]$ is empty;
+  Route B's independent meet-in-the-middle reproduces the counts at $N=85,\dots,140$.
+- **Structure theorems:** `experiments/collide.c`, `two_to_block.c`, `atom_split.py`,
+  `balance.py`, `balance2.py`, `cmap.py`, `blowup.py`; `attempts/route-F/NOTES.md` §1–§4 for
+  Lemma F3, Cor. F4, Thm F7 and the covering lemma.
+- **Lean sketch** (statements only; the headline is unproved). Against
   `google-deepmind/formal-conjectures`, `ErdosProblems/289.lean`:
   ```lean
-  -- the reformulation actually used
   theorem legal_iff (k : ℕ) :
       (∃ I : Fin k → ℕ × ℕ, (∀ i, (I i).1 < (I i).2) ∧
          (∀ i j, i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧
          ∑ i, ∑ n ∈ Finset.Icc (I i).1 (I i).2, (n:ℚ)⁻¹ = 1)
     ↔ ∃ U : Finset ℕ, (∀ n ∈ U, 2 ≤ n) ∧ (∀ n ∈ U, n-1 ∈ U ∨ n+1 ∈ U) ∧
          (∑ n ∈ U, (n:ℚ)⁻¹ = 1) ∧ runCount U ≤ k ∧ k ≤ capacity U
-  -- a base certificate
   theorem P_nine : ∑ n ∈ ({5,6,14,15,17,18,20,21,22,27,28,33,34,44,45,54,55,84,85} :
       Finset ℕ), (n:ℚ)⁻¹ = 1
-  -- Rule (P)
   theorem ruleP (U : Finset ℕ) (h : ∑ n ∈ U, (n:ℚ)⁻¹ = 1) (p : ℕ) (hp : p.Prime) :
       0 ≤ padicValRat p (∑ n ∈ U.filter (p ∣ ·), (n:ℚ)⁻¹)
   ```
-  The headline statement to target remains `erdos_289`: the $\forall^{f}$-atTop statement
-  over `Fin k`-indexed disjoint intervals with the exact rational sum — **unproved here**.
-- **Before any external communication:** nothing in this run should be posted as a solution
-  or partial solution of 289. The externally interesting items are the certificates
-  (item 2), the exact minimum 85 (item 1), and the structure theorems (items 3–6); they are
-  statements *about* the problem, not a resolution of it.
+- **Before any external communication:** nothing here should be posted as a solution or a
+  partial solution of 289. The externally interesting items are the certificates, the exact
+  minimum 85, and the structure theorems (items 4–6, 8–10) — statements *about* the problem,
+  not a resolution of it.
 
 ## Honest bottom line
 
-The run turned Erdős 289 from "no example known here" into "examples are abundant and the
-statement is verified for every $k$ from 6 to 57", proved the exact threshold
-$\min\max U=85$, proved several structure theorems (Rule (P), prime-free top run, no block
-sum is a unit fraction), and killed the negative branch. It reduced the cofinite statement to
-one clean analytic question (CRUX) and ruled out, with proofs or exhaustive searches, every
-short constructive route to it. It did **not** resolve the problem in either direction.
+The run turned Erdős 289 from "no example known here" into "examples are abundant, the
+statement is verified for every $k$ from 6 to 65 and for several larger $k$, the exact
+threshold $\min\max U=85$ is known, and the negative branch is dead". It proved Rule (P), the
+prime-free top run, the non-existence of unit-fraction block sums, an unconditional no-go for
+every local/parametric construction, and a chain of reductions ending at the single statement
+(GAD). It did **not** resolve the problem in either direction.

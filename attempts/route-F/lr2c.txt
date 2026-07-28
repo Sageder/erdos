@@ -1,0 +1,4 @@
+[1002,2000] ppcap=60 |U|=146 maxsum=0.10439678222916614 band=[0.0,0.10439678222916614]
+  (appending to existing pool of 25000)
+  band 1/1  pool=40000  (330s)
+pool 40000 -> R2c.txt

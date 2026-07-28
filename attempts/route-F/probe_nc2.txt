@@ -1,0 +1,8 @@
+501:1000:0             |U|=113  lam=70   maxsum=0.1589  found=0    in 20.0s   range=[-,-]
+501:1200:0             |U|=216  lam=107  maxsum=0.2779  found=0    in 20.0s   range=[-,-]
+1001:2000:45           |U|=88   lam=54   maxsum=0.0641  found=0    in 12.9s   range=[-,-]
+1001:2000:50           |U|=115  lam=60   maxsum=0.0837  found=0    in 20.0s   range=[-,-]
+1001:2500:45           |U|=143  lam=60   maxsum=0.0923  found=0    in 20.0s   range=[-,-]
+2001:5000:45           |U|=156  lam=61   maxsum=0.0525  found=0    in 20.0s   range=[-,-]
+2001:5000:50           |U|=181  lam=66   maxsum=0.0602  found=0    in 20.0s   range=[-,-]
+1001:2000:0            |U|=322  lam=170  maxsum=0.2267  found=0    in 20.0s   range=[-,-]

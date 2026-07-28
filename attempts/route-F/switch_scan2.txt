@@ -1,0 +1,4 @@
+1001:2000:42       |U|=56   Lam=29.0   lam=41   maxsum=0.0412 | gadgets: nodes=47640 out=0 (exhausted) | switches=0 distinct|c|=0 min|c|=- gcd=0
+2001:4000:40       |U|=52   Lam=26.0   lam=36   maxsum=0.0202 | gadgets: nodes=45243 out=0 (exhausted) | switches=15488 distinct|c|=12 min|c|=1012 gcd=2
+4001:8000:42       |U|=52   Lam=26.0   lam=41   maxsum=0.0094 | gadgets: nodes=4274 out=0 (exhausted) | switches=0 distinct|c|=0 min|c|=- gcd=0
+8001:16000:44      |U|=60   Lam=31.0   lam=46   maxsum=0.0054 | gadgets: nodes=226078 out=0 (exhausted) | switches=0 distinct|c|=0 min|c|=- gcd=0

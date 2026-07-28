@@ -1,0 +1,23 @@
+### z0=19
+[104,900] target=1/2 z0=19 z=1000000000  L0 has 68 bits
+  |S0|=239 smooth mass=0.76335; rough primes=125 rough candidates=319 mass=0.91515
+no solution produced in 40 tries; rejects: {'R': 0, 'r': 0, 'fix': 40, 'mass': 0, 'ratio': 0}
+### z0=23
+[104,900] target=1/2 z0=23 z=1000000000  L0 has 77 bits
+  |S0|=271 smooth mass=0.85363; rough primes=128 rough candidates=331 mass=0.92006
+no solution produced in 40 tries; rejects: {'R': 0, 'r': 0, 'fix': 40, 'mass': 0, 'ratio': 0}
+### z0=29
+  try 5: |R|=32 vR=0.09228 residual=0.40772 tail |A|=111 tailmass=0.42207 ratio=0.966
+  try 8: |R|=52 vR=0.16592 residual=0.33408 tail |A|=112 tailmass=0.41242 ratio=0.810
+    done(cap) nodes=58213265 solutions=1 cpu=1.8s
+  *** SOLUTION VERIFIED {'distinct': True, 'ge2': True, 'legal': True, 'sum': Fraction(1, 2), 'sum_ok': True, 'int_ok': True, 'r': 56, 'cap': 63, 'min': 104, 'max': 875, 'minelt_ok': True}
+### z0=31
+    TIMEOUT nodes=83886080 solutions=0
+  try 38: |R|=40 vR=0.10504 residual=0.39496 tail |A|=143 tailmass=0.51447 ratio=0.768
+    TIMEOUT nodes=83886080 solutions=0
+no solution produced in 40 tries; rejects: {'R': 0, 'r': 0, 'fix': 28, 'mass': 0, 'ratio': 0}
+### z0=37
+    TIMEOUT nodes=83886080 solutions=0
+  try 15: |R|=72 vR=0.20891 residual=0.29109 tail |A|=152 tailmass=0.53877 ratio=0.540
+    TIMEOUT nodes=83886080 solutions=0
+  try 17: |R|=64 vR=0.20018 residual=0.29982 tail |A|=158 tailmass=0.54515 ratio=0.550

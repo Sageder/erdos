@@ -1,0 +1,3 @@
+[3402,4000] ppcap=60 |U|=0 maxsum=0.0 band=[0.0,0.0]
+  band 1/1  pool=0  (0s)
+pool 0 -> S4.txt

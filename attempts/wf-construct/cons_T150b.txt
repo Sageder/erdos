@@ -1,0 +1,6 @@
+### seed=11 z0=31
+    RESTART-TIMEOUT restarts=55 nodes=220000000 cpu=6.6s
+  try 104: |R|=101 vR=0.17339 residual=0.32661 tail |A|=159 tailmass=0.42180 ratio=0.774
+    RESTART-TIMEOUT restarts=75 nodes=300000000 cpu=9.6s
+no solution produced in 120 tries; rejects: {'R': 0, 'r': 0, 'fix': 106, 'mass': 0, 'ratio': 6}
+### seed=11 z0=37

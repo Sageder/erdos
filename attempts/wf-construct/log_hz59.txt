@@ -1,0 +1,3 @@
+T=104 N=900 target=1/2 |A|=292  lcm bits=94  words=2
+  endgame at index 264 (element 800): distinct sums 16384 16384 32768  (0.0s)
+RESTART-TIMEOUT restarts=2074 nodes=6222000000 cpu=176.9s

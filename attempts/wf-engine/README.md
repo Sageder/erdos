@@ -141,6 +141,9 @@ done(cap) nodes=1230007999 solutions=1 cpu=37.8s
 ### Certificates found here (all re-verified by `verify.py`, exact `Fraction`)
 
 * `sol_45_345.txt` — `|U| = 112`, `min = 45`, `max = 345`, `r = 40`, `cap = 49`.
+* `sol_min60.txt` — `|U| = 156`, `min = 60`, `max = 495`, `r = 56`, `cap = 69`
+  (`./esearch w_60_500.prob -k 30 -m 1 -R 41 -B 8000000 -p 86`, 66.7 s CPU,
+  2.36·10⁹ nodes).  **This is the record for the CRUX with target 1.**
 * `sol_min55.txt` — `|U| = 146`, `min = 55`, `max = 414`, `r = 49`, `cap = 65`:
 
 ```
@@ -208,3 +211,72 @@ done nodes=46915 solutions=1 cpu=0.1s
 1899 bits is 15x the old ceiling and costs 0.13 s.  `MAXW = 200` words allows
 12800-bit lcms; the pruned universes that actually arise need 80-250 bits
 (`[100,780]` = 152 bits, the case the old engines could not do).
+
+## Status, limits, and how to continue
+
+**Exhaustive decision.**  A range `[T,N]` is decided exhaustively as long as the
+pruned universe has `|A| ≲ 170`; that is the wall where the DFS tree explodes.
+Concretely the engine exhausts `[55,363]` (`|A| = 146`) in 0.2 s and `[60,390]`
+(`|A| = 163`) in 3.7 s, both with **no solution**, but `[60,396]` (`|A| = 166`)
+already runs past 90 s.  Combined with the `Nmin` table above this decides,
+exhaustively and rigorously,
+
+* `T = 55`: no solution with `min ≥ 55`, `max ≤ 363`;
+* `T = 60`: no solution with `min ≥ 60`, `max ≤ 390`;
+* `T = 70`: no solution with `min ≥ 70`, `max ≤ 524`;
+
+and `Nmin(T)` alone decides the whole family below the threshold up to `T = 200`.
+
+**Existence (the CRUX direction that matters).**  Found and verified here:
+`min U = 55` (`max = 414`) and then `min U = 60` (`max = 495`).  The previous
+best in the repository was `min U = 50`.
+
+An important empirical lesson: for *finding*, a WIDER window is better even
+though it enlarges the universe.  `T = 60` resisted ~40 core-minutes at
+`N = 430, 450, 470` (`|A| = 188, 193, 202`) and then fell in **66.7 s** at
+`N = 500` (`|A| = 211`), i.e. at `N/Nmin = 1.36` rather than `1.17`.  Slack
+buys solutions faster than it costs tree.  The recipe that works is therefore:
+`N ≈ 1.35·Nmin(T)` from `threshold.py`, `-p 85..87`, `-k 30`, several seeds in
+parallel.  Beyond `T ≈ 60` (`|A| ≳ 225`) the cost still grows like `c^{|A|}`
+with `|A| ≈ 3.7 T`, so more arithmetic width will not help — the arithmetic is
+no longer the bottleneck (1899-bit lcms cost 0.13 s).
+
+Ideas that are *not* the bottleneck any more, and one that is:
+* width — solved (rescaling + multiword);
+* the pooled `p`-adic prune — solved and now free;
+* the dynamic Rule-(P) lookahead — the single biggest win of this run;
+* **what still blocks**: window gluing loses too much universe (see the gadget
+  table above), and full meet-in-the-middle needs `1.55^{|A|/2}` memory.
+
+## Reproduction (exact commands)
+
+```bash
+gcc -O3 -march=native -o esearch esearch.c
+gcc -O3 -march=native -o gadget  gadget.c
+
+# validation
+python3 prune.py 2 76 1 1                                  # |A|=0  (empty fixpoint)
+python3 prune.py 2 84 1 1 -o p_2_84.txt && ./esearch p_2_84.txt      # 0 solutions, 0.02 s
+python3 prune.py 2 85 1 1 -o p_2_85.txt && ./esearch p_2_85.txt      # 4 solutions, 0.03 s
+python3 prune.py 2 130 1 1 -o p_2_130.txt && ./esearch p_2_130.txt -q -k 28   # 163, 0.7 s
+./esearch p_2_85.txt | python3 verify.py                   # exact Fraction re-check
+
+# multiword stress (554-bit and 1899-bit lcm)
+./esearch mw_test.prob -k 20 ; ./esearch mw_test2.prob -k 20
+
+# exhaustive negative results
+python3 threshold.py 45 50 55 60 70 80 90 100 110 120 150 200
+
+# far out (the CRUX)
+python3 prune.py 55 420 1 1 -o w_55_420.prob
+./esearch w_55_420.prob -k 30 -m 1 -R 1  -B 5000000 -p 85    # min U = 55, 37.8 s CPU
+python3 prune.py 60 500 1 1 -o w_60_500.prob
+./esearch w_60_500.prob -k 30 -m 1 -R 41 -B 8000000 -p 86    # min U = 60, 66.7 s CPU
+python3 verify.py --minelt 60 sol_min60.txt
+
+# gadget mode + gluing
+python3 pool.py 104 400 3628800 30 -lo 1/4 -hi 3/5 -seeds 3 -o pl_104_400.txt
+python3 glue.py 1 poolA.txt poolB.txt
+```
+
+Timings are on one core of a 4-core x86-64 box, 15 GB RAM, gcc 13.3, no GMP.

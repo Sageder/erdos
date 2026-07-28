@@ -1,0 +1,40 @@
+n=2 T=4 N=12(6n) EMPTY Lbits=0 nodes=0
+n=2 T=4 N=18(9n) EMPTY Lbits=0 nodes=0
+n=2 T=4 N=28(14n) EMPTY Lbits=0 nodes=0
+n=2 T=4 N=40(20n) rnd seed=0 EMPTY Lbits=0 nodes=0
+n=2 T=4 N=40(20n) rnd seed=1 EMPTY Lbits=0 nodes=0
+n=2 T=4 N=60(30n) rnd seed=0 EMPTY Lbits=0 nodes=0
+n=2 T=4 N=60(30n) rnd seed=1 EMPTY Lbits=0 nodes=0
+n=2 T=4 N=90(45n) rnd seed=0 NONE Lbits=31 nodes=31717
+n=2 T=4 N=90(45n) rnd seed=1 NONE Lbits=31 nodes=31717
+n=2 T=4 N=130(65n) RND-SOL seed=0 Lbits=38 nodes=4655  6 7 20 21 44 45 77 78 90 91
+n=3 T=6 N=18(6n) EMPTY Lbits=0 nodes=0
+n=3 T=6 N=27(9n) EMPTY Lbits=0 nodes=0
+n=3 T=6 N=42(14n) EMPTY Lbits=0 nodes=0
+n=3 T=6 N=60(20n) rnd seed=0 EMPTY Lbits=0 nodes=0
+n=3 T=6 N=60(20n) rnd seed=1 EMPTY Lbits=0 nodes=0
+n=3 T=6 N=90(30n) rnd seed=0 NONE Lbits=31 nodes=6010
+n=3 T=6 N=90(30n) rnd seed=1 NONE Lbits=31 nodes=6010
+n=3 T=6 N=135(45n) RND-SOL seed=0 Lbits=38 nodes=64700  24 25 27 28 35 36 54 55 56 77 78 90 91 99 100
+n=4 T=8 N=24(6n) EMPTY Lbits=0 nodes=0
+n=4 T=8 N=36(9n) EMPTY Lbits=0 nodes=0
+n=4 T=8 N=56(14n) EMPTY Lbits=0 nodes=0
+n=4 T=8 N=80(20n) rnd seed=0 NONE Lbits=25 nodes=742
+n=4 T=8 N=80(20n) rnd seed=1 NONE Lbits=25 nodes=742
+n=4 T=8 N=120(30n) rnd seed=0 NONE Lbits=38 nodes=42290
+n=4 T=8 N=120(30n) rnd seed=1 NONE Lbits=38 nodes=42290
+n=4 T=8 N=180(45n) rnd seed=0 TIMEOUT Lbits=49 nodes=0
+n=4 T=8 N=180(45n) rnd seed=1 TIMEOUT Lbits=49 nodes=0
+n=4 T=8 N=260(65n) rnd seed=0 TIMEOUT Lbits=68 nodes=0
+n=4 T=8 N=260(65n) rnd seed=1 TIMEOUT Lbits=68 nodes=0
+n=4 T=8 NO LIFT FOUND up to 65n
+n=5 T=10 N=30(6n) EMPTY Lbits=0 nodes=0
+n=5 T=10 N=45(9n) EMPTY Lbits=0 nodes=0
+n=5 T=10 N=70(14n) EMPTY Lbits=0 nodes=0
+n=5 T=10 N=100(20n) rnd seed=0 NONE Lbits=33 nodes=4248
+n=5 T=10 N=100(20n) rnd seed=1 NONE Lbits=33 nodes=4248
+n=5 T=10 N=150(30n) rnd seed=0 NONE Lbits=43 nodes=70495
+n=5 T=10 N=150(30n) rnd seed=1 NONE Lbits=43 nodes=70495
+n=5 T=10 N=225(45n) rnd seed=0 TIMEOUT Lbits=57 nodes=0
+n=5 T=10 N=225(45n) rnd seed=1 TIMEOUT Lbits=57 nodes=0
+n=5 T=10 N=325(65n) rnd seed=0 TIMEOUT Lbits=80 nodes=0

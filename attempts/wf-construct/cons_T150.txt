@@ -1,0 +1,18 @@
+### z0=29
+[150,1300] target=1/2 z0=29 z=1000000000  L0 has 87 bits
+  |S0|=370 smooth mass=0.80886; rough primes=166 rough candidates=467 mass=0.90003
+  try 10: |R|=159 vR=0.31739 residual=0.18261 tail |A|=111 tailmass=0.28975 ratio=0.630
+    TIMEOUT nodes=83886080 solutions=0
+no solution produced in 30 tries; rejects: {'R': 0, 'r': 0, 'fix': 29, 'mass': 0, 'ratio': 0}
+### z0=31
+  try 3: |R|=55 vR=0.10942 residual=0.39058 tail |A|=174 tailmass=0.45557 ratio=0.857
+    TIMEOUT nodes=83886080 solutions=0
+  try 14: |R|=104 vR=0.21371 residual=0.28629 tail |A|=164 tailmass=0.43014 ratio=0.666
+    TIMEOUT nodes=83886080 solutions=0
+no solution produced in 30 tries; rejects: {'R': 0, 'r': 0, 'fix': 28, 'mass': 0, 'ratio': 0}
+### z0=37
+[150,1300] target=1/2 z0=37 z=1000000000  L0 has 103 bits
+  |S0|=436 smooth mass=0.93457; rough primes=171 rough candidates=481 mass=0.89500
+  try 3: |R|=103 vR=0.22744 residual=0.27256 tail |A|=182 tailmass=0.43807 ratio=0.622
+    TIMEOUT nodes=83886080 solutions=0
+  try 8: |R|=67 vR=0.14539 residual=0.35461 tail |A|=194 tailmass=0.49759 ratio=0.713

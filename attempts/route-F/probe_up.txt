@@ -1,0 +1,6 @@
+801:3200:35            |U|=114  lam=41   maxsum=0.0759  found=42   in 25.0s   range=[0.0469,0.0610]
+801:3200:40            |U|=147  lam=49   maxsum=0.0982  found=9    in 25.0s   range=[0.0739,0.0781]
+3201:12800:35          |U|=110  lam=53   maxsum=0.0189  found=1    in 25.0s   range=[0.0125,0.0125]
+3201:12800:40          |U|=162  lam=64   maxsum=0.0282  found=0    in 25.0s   range=[-,-]
+3201:12800:45          |U|=268  lam=75   maxsum=0.0462  found=0    in 25.0s   range=[-,-]
+801:6400:35            |U|=183  lam=51   maxsum=0.0951  found=0    in 25.0s   range=[-,-]

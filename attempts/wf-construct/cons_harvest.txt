@@ -1,0 +1,1 @@
+  *** SOLUTION VERIFIED {'distinct': True, 'ge2': True, 'legal': True, 'sum': Fraction(1, 2), 'sum_ok': True, 'int_ok': True, 'r': 58, 'cap': 66, 'min': 104, 'max': 897, 'minelt_ok': True}
