@@ -1,5 +1,39 @@
 # NOTES.md — lab notebook, newest entries at top
 
+## 2026-07-28 (Opus-5) — WAVE-2 WORKFLOW COMPLETE: three of MY OWN programmes closed
+- R17: CO-SUPPLY IS **REFUTED**, in two lines. Every value-record is CLOSED (u open at d
+  => u+d precedes u => a larger value precedes u => u not a record). Lambda is infinite,
+  so infinitely many closed values exist. => Theorem 16's chain programme is DEAD, not
+  merely stuck. Also: EVERY propagation-style weakening is refuted as a family (in any
+  digraph with position-descending edges, closures finite => every maximal chain ends at a
+  sink); measured 40-67% of forcing edges land on a closed value (84% at N=9). And my
+  quantitative reading of Thm 16(b) was WRONG: |Cl(u)| >= f(u) only gives pos(u) >= f(u),
+  a contradiction iff #{u : f(u) <= P} < P; for Thm 16's own digraph no admissible f
+  exists since |Cl(w)|=1 at records.
+  NET POSITIVE: G*, a six-rule forced-descent digraph removing the record obstruction
+  (sinks 40-65% -> 1-3%, longest chain 14 -> 132 at N=320); and an omega-free chain
+  construction quantifying R5's barrier (one anchor buys <= log2 m steps; adversary holds
+  it to 2-3 regardless of N).
+- R18: Theorem 16 imposes **ZERO** constraint on block architectures — in any layered
+  permutation every forcing edge stays INSIDE one block, so bounded closures are free.
+  The bounded-closure mission I commissioned was vacuous (sigma_N has no open value at
+  all). Its UNSAT direction would not have been a YES theorem either.
+  NET POSITIVE: exact block decomposition of 4-AP-freeness (2-3 orders faster, localizes
+  each death to one block); geometric cuts r=3, r=4 dead; parity-inside-blocks collapses
+  to 2-SAT and is dead for every ratio.
+- R19: the unweighted LEDGER CEILING IS EXACTLY 2 — for triadic, Sum_j tau_j = (3/4)N^2 +
+  N/2 exactly (K=2..9), so C_ledger(N) < 2 for every N. No unweighted-ledger argument can
+  reach C >= 2. And Thm 16's forcing step IS Thm 12's demand mechanism, so closures and
+  the ledger are the SAME tool, not independent ones.
+- CORE.md now carries Theorems 44, 45, 46 recording all three closures, and VERDICT.md has
+  an UPDATE section with the revised bottom line.
+- Running tally of self-corrections is now SIX: Remark 17 (meaning of linear extinction),
+  correction to Remark 22 (block layouts not dead), Thm 16(c) vacuity, Remarks 31/36
+  (degenerate objective, dropped clauses), Prop 38 Case 2 (densification unsupported), and
+  now the Thm 16(b) quantitative mis-reading. Same root cause every time.
+- STILL RUNNING: wave-3 workflow (12 agents) on Conjecture R21-C from both sides, plus
+  t01_realize2.py (T=1 joint realizability; SAT at N=60,100 with full end-to-end checks).
+
 ## 2026-07-28 (Opus-5) — R21: the experiment I commissioned was VACUOUS (proved), but it
 ## closed the entire arithmetic delay world by proof
 - MY MIS-SPECIFICATION, recorded (CORE Remark 31): I endorsed R20's recommendation and
