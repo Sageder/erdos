@@ -107,17 +107,23 @@ Using §4(b)'s reformulation — for `p ∥ n+j` the condition is exactly `κ_p(
 the cofactor has some base-`p` digit `≥ ⌈p/2⌉` — the failure density at primes `p ≤ n^{1/u}`
 and the smooth-pair density were measured exhaustively for `n ≤ 2·10⁵`:
 
-| `u` | `F(u)` = failure density | `2^{−u}` | `S(u)` = smooth-pair density | `ρ(u)²` | `S/F` |
+| `u` | `F(u)` = failure density | `S(u)` = smooth-pair density | `ρ(u)` | `ρ(u)²` | `S/F` |
 |---|---|---|---|---|---|
-| 2.0 | 0.40964 | 0.25000 | 0.05919 | 0.094159 | 0.1445 |
-| 2.5 | 0.25813 | 0.17678 | 0.00907 | 0.016983 | 0.0352 |
-| 3.0 | 0.16852 | 0.12500 | 0.00094 | 0.002361 | 0.0056 |
-| 4.0 | 0.07934 | 0.06250 | 0.00002 | 0.000024 | 0.0003 |
-| 5.0 | 0.03265 | 0.03125 | 0.00000 | 0.000000 | 0.0000 |
+| 2.0 | 0.46415 | 0.05919 | 0.306853 | 0.094159 | 0.1275 |
+| 2.5 | 0.32421 | 0.00907 | 0.130317 | 0.016983 | 0.0280 |
+| 3.0 | 0.23765 | 0.00094 | 0.048594 | 0.002361 | 0.0040 |
+| 4.0 | 0.14099 | 0.00002 | 0.004871 | 0.000024 | 0.0001 |
+| 5.0 | 0.07782 | 0.00000 | 0.000329 | 0.000000 | 0.0000 |
 
-`F(u)` tracks `2^{−u}` (geometric decay: one digit-poor cofactor is a `2^{−D}` event with
-`D ≈ u` usable digits), while `S(u)` tracks `ρ(u)² ≈ u^{−2u}` (super-exponential). Hence
-`S(u)/F(u) → 0` **monotonically, for every `u`**:
+(CORRECTION 2026-07-28: an earlier run of this table used the proxy `κ_p(W) = 0` for the
+failure event; the table above uses the EXACT condition `κ_p(n) < 2ν_p(n+j)`, which makes the
+obstruction strictly stronger. Note `F(u) > ρ(u) ≥ S(u)` already at `u = 2`, so the obstruction
+is decisive at every measured threshold, not only asymptotically.)
+
+`F(u) ≫ 2^{−u}/u` (a digit-poor cofactor is a `2^{−D}` event with `D ≈ 1/β` usable digits,
+integrated against Mertens), while `S(u) ≤ ρ(u) = u^{−u(1+o(1))}` (super-exponential). Hence
+`S(u)/F(u) → 0`. This is now PROVED, not merely measured — see DRAFT.tex Proposition 5.1
+(Dickman upper bound for `S`; digit-poor counting + Mertens + Bonferroni lower bound for `F`):
 
 > **First-moment obstruction.** No unconditional first-moment / union-bound argument over all
 > `n` can exhibit a member of `S_2`, at any smoothness threshold `n^{1/u}`: the set of `n`

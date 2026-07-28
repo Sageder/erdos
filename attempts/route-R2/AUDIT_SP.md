@@ -5,21 +5,29 @@ Auditor: independent adversarial pass. Inputs read: `PROBLEM.md`, `attempts/rout
 `NOTES.md`, or `ROUTES.md` was read. All numerical claims below were re-derived with scripts
 written from scratch for this audit:
 
-`audit_sp_1.py`, `audit_sp_2.py`, `audit_sp_3.py`, `audit_sp_4.py`,
-`audit_sp_5.py`, `audit_sp_6.py`, `audit_sp_7.py`, `audit_sp_8.py`
-(outputs: `audit6.out`, `audit7.out`, `audit8.out`; the rest print to stdout).
+`audit_sp_1.py` (SP.0–SP.3 + PROBLEM.md data), `audit_sp_2.py` (SP.6–SP.9 + scalars),
+`audit_sp_4.py` (Section 7–8 prose numbers), `audit_sp_6.py` (corollary algebra, testability),
+`audit_sp_8.py` (remaining PROBLEM.md counts), `audit_sp_9.py` (end-to-end at (H1)–(H4)-compliant
+`M`), `audit_sp_10.py` (exact spike counts + exhaustive counting bounds), `audit_sp_11.py`
+(broad sweep). Outputs: `audit6.out`, `audit8.out`, `audit9.out`, `audit10.out`, `audit11.out`;
+`audit_sp_1/2` print to stdout. (`audit_sp_3.py`, `audit_sp_5.py`, `audit_sp_7.py` were earlier,
+slower drafts superseded by 9/10/11 — kept for transparency.)
 
 ---
 
 ## VERDICT: **PASS — with (cosmetic) repairs**
 
-Every mathematical statement in LEMMA_SP.md — SP.0, SP.K, SP.1, SP.2, SP.3, SP.4, SP.5, SP.6,
-SP.7, SP.8, SP.9, the Master Lemma parts (1)(2)(3), and Corollaries SP-A/SP-B/SP-C — is
-**correct as stated**. I recomputed every identity from scratch, re-derived every constant by
-hand, and hunted for counterexamples exhaustively and by exact sampling. **I found no fatal
-error and no false theorem.** The document is also honest about its scope: Remark 7.1 states
-explicitly that only primes `p ≤ P(M)` are handled and that nothing here touches the
-`p ∈ (√(2n), n+k]` regime.
+Every **theorem** in LEMMA_SP.md — SP.0, SP.K, SP.1, SP.2, SP.3, SP.4, SP.5, SP.6, SP.7, SP.8,
+SP.9, the Master Lemma parts (1)(2)(3), and Corollaries SP-A/SP-B/SP-C — is **true as stated**,
+and every **load-bearing** step of every proof is correct. I recomputed each identity from
+scratch, re-derived each constant by hand, and hunted for counterexamples exhaustively and by
+exact computation at astronomically large `M`. **I found no fatal error and no false theorem.**
+The document is also honest about its scope: Remark 7.1 states explicitly that only primes
+`p ≤ P(M)` are handled and that nothing here touches the `p ∈ (√(2n), n+k]` regime.
+
+Three *non*-load-bearing assertions are wrong (R1: a `⟺` threshold in a hypothesis check whose
+correct value is `60`, not `80`, and which is over-satisfied either way; R2 and R3: two
+illustrative numbers in the discussion remarks). None is used to derive anything.
 
 The repairs listed below are all in *prose/illustrative* text (Section 6 hypothesis-check
 bookkeeping, Remark 7.2, Section 8 commentary) and in how the numerical certificate is
@@ -93,8 +101,9 @@ half-says this ("the exact per-instance version … gates every configuration"),
 row "packaged lemma at `M = 2^64 … 10^60`" reads as if the lemma's hypotheses were met.
 **Fix:** relabel that row "part-(1) chain, with SP.9's conclusion verified per instance
 ((H1)–(H4) themselves are numerically unreachable)". *I closed this gap independently*: see
-§4, where I re-ran the end-to-end test at genuinely (H1)–(H4)-compliant `M` (`M = 13^{600}`,
-`11^{782}`, `101^{1600}`, `3^{1308}`, `2^{600}`, … up to `~10^{3300}`).
+§4, where I re-ran the end-to-end test at genuinely (H1)–(H4)-compliant `M`
+(`M = 2^{600}, 3^{600}, 3^{1309}, 7^{1511}, 11^{816}, 13^{600}, 13^{1200}, 101^{720},
+251^{1040}` — from 181 to 2496 decimal digits).
 
 ---
 
@@ -155,32 +164,101 @@ where explicitly comparing to the document's own float constants.
    `q₀ ∈ {1,2,P,2^{10}3^4,720720}`, `t = 3`): 0 failures, min margin `70.3`; plus 240 further
    points at `M = 2^{200..3000}`.
 9. **Master Lemma parts (1)+(2) end-to-end at genuinely (H1)–(H4)-compliant `M`**
-   (`audit_sp_3.py`): see the run log below. Every sampled `m ∈ G` satisfies
+   (`audit_sp_9.py`, part F1): see the run log below. 13 configurations, `M` from `2^{600}`
+   (181 digits) to `251^{1040}` (2496 digits). Every sampled `m ∈ G` satisfies
    `κ_p(m) ≥ W_p(m)` for **every** `p ≤ P`, and (where part (2)'s hypothesis is imposed) the
-   surplus `κ_p − W_p ≥ (1/120)log M/log p`.
-10. **Counting bounds `|BadC_p|`, `|BadS_p|` by exhaustion** over all of `[M,2M]` for
-    `M ∈ {2·10⁴, 3·10⁴, 5·10⁴, 6·10⁴, 10⁵}`, `q₀ ∈ {1,2,24,105,1024,2^8,3^6,2^5 3^3,7^4}`,
-    `p ≤ 13`, `k ∈ {2,3,5,7,16}`, `t ∈ {3,4,6}` — these two bounds are proved without
-    (H1)–(H4), so they must (and do) hold at reachable `M`: 0 violations.
-11. **Broad randomized sweep** (`audit_sp_7.py`) at `M = 2^{200},2^{400},2^{800},2^{1600}`,
-    `k ∈ {2,3,4,8,20,50}`, `q₀ ∈ {1,2,24,1024,2^{10}3^4,720720,2^{20}}`, `P ≤ 127`,
-    `t ∈ {3,6}`, gated on the exact SP.9 conclusion: looking for any `m ∈ G` violating the
-    criterion, and comparing empirical bad-rates to the proved per-prime bounds.
-12. **Section 8 density claims** (`audit_sp_4.py`) — all reproduced **exactly**:
+   surplus `κ_p − W_p ≥ (1/120)log M/log p`. **0 violations.**
+10. **Counting bounds `|BadC_p|`, `|BadS_p|` by exhaustion** over all of `[M,2M]`
+    (`audit_sp_10.py`, part G-B) for `M ∈ {2·10⁴, 5·10⁴, 10⁵}`,
+    `q₀ ∈ {1,2,6,24,105,1024,2401,2^5 3^3,3^6}`, `p ≤ 13`, `k ∈ {2,3,7,16}`, `t ∈ {3,4,6}` —
+    these two bounds are proved without (H1)–(H4), so they must (and do) hold at reachable
+    `M`: **1620 checks, 0 violations.**
+11. **Exact `|BadS_p|` at astronomical `M`** (`audit_sp_10.py`, part G-A). Rather than sample,
+    I computed `|BadS_p ∩ AP ∩ [M,2M]|` **exactly** by CRT (the `2k` spike classes are pairwise
+    disjoint, so the count is a sum of exact residue-class counts) at
+    `M ∈ {2^{200}, 2^{500}, 10^{300}, 3^{400}}`, `q₀ ∈ {1,2,24,1024,2^{10}3^4,720720,2^{30},3^{20}}`,
+    four residues `a` each, `k ∈ {2,3,4,8,20,200}`, `p ∈ {2,3,5,7,11,13,23,31,127}`,
+    `t ∈ {3,4,6,10}` — **25920 exact checks, 0 violations**, worst
+    `exact/bound = 0.8889`. This settles the spike bound completely.
+12. **Broad randomized sweep** (`audit_sp_11.py`) at `M = 2^{400},2^{900},2^{1800}`,
+    `k ∈ {2,3,4,8,20,50,200}`, `q₀ ∈ {1,2,24,1024,2^{10}3^4,720720,2^{30}}`, `P ≤ 127`,
+    `t ∈ {3,6}`, gated on the exact SP.9 conclusion: hunting for any `m ∈ G` violating the
+    criterion, with per-prime bad-rate diagnostics in log space and a Poisson tail test.
+13. **Section 8 density claims** (`audit_sp_4.py`) — all reproduced **exactly**:
     `0.6264` (`M=10⁵`) and `0.7970` (`M=10⁶`) for the criterion at all `p ≤ 13`, `k=3`;
     union sums `0.4414` and `0.2222`; per-prime rates
     `p=2:0.1167, 3:0.1063, 5:0.1014, 7:0.0502, 11:0.0287, 13:0.0381` (`M=10⁵`);
     `0.8237` in `m ≡ 7 (mod 24)`; `0.0000` in `m ≡ 0 (mod 2^{10})`; spike rate `0.0440`.
-13. **Scalar constants**: `(1−log2)/2 = 0.153426 ≥ 1/8`; `Σ_{n≥2}n^{−t} ≤ 3·2^{−t}` (`3≤t≤40`);
+14. **Cross-check against PROBLEM.md's own carries-vs-borrows form.** On 3000 random
+    `(k ≤ 10, m ≤ 10⁶, p < 100)`: `W_p(m) = ν_p(binom(2m,2k)) + ν_p((2k)!)`,
+    `(p−1)ν_p((2k)!) = 2k − s_p(2k)`, and `(p−1)(c_p−b_p) ≥ 2k−s_p(2k) ⟺ κ_p ≥ W_p` — 0
+    mismatches. PROBLEM.md's concrete `k=2` numbers (`c_2−b_2 ≥ 3`, `c_3−b_3 ≥ 1`,
+    `c_p ≥ b_p` for `p ≥ 5`) are exactly `ν_2(4!)=3, ν_3(4!)=1, ν_5(4!)=0`. So LEMMA_SP's
+    `W_p` really is the governing demand, with the `2k`-deficit in the right place.
+15. **Testability finding** (`audit_sp_6.py`). Fully exhaustive verification of the part-(1)
+    chain with the lemma's own `L_p` is *impossible* at reachable `M`: even in the easiest case
+    (`k=2, q₀=1, t=3, p=2`) SP.9's threshold needs `Λ_2 ≳ 36`, i.e. `M ≳ 2^{45}`. This is why
+    every end-to-end test (mine and the document's) is a sampling test.
+16. **Scalar constants**: `(1−log2)/2 = 0.153426 ≥ 1/8`; `Σ_{n≥2}n^{−t} ≤ 3·2^{−t}` (`3≤t≤40`);
     `c−7/(240c) ≤ −1/120` on `(0,1/6]` with equality at `1/6`; `2e^{1/24}=2.0851<3`;
     `e^{100/9}=66910 < 70000` (so `M ≥ 70000` really does give (H3) headroom in SP-A);
     `7/240 > log2/120`; `(120 log 36)² = 184919 ≈ 1.85·10⁵`; `7/60 − 1/10 = 1/60`.
-14. **`verify_sp.out`** was inspected only to check the claim "all tests pass": it does end in
+17. **`verify_sp.out`** was inspected only to check the claim "all tests pass": it does end in
     `ALL CHECKS PASSED`, and every number in it that I recomputed matches mine.
 
-### Run log (end-to-end, (H1)–(H4)-compliant)
+### Run log (end-to-end, at `M` that genuinely satisfies (H1)–(H4))
 
-<!--RUNLOG-->
+`audit_sp_9.py`, part F1. `M = P^E` with `E = ⌈f·(2k+log₂(2k)+t+1)⌉`, `f = 60` for parts
+(1), `f = 120` for part (2); the (H1)–(H4) audit is an assertion inside the runner, so a
+non-compliant configuration aborts rather than passing silently.
+
+```
+k=  2 P=  13 t=3 q0=1        E=600  digits(M)=669   SP.9-ok Lam>=18  |G|/N=378/400  part1-viol=0 part2-viol=0
+k=  2 P=  13 t=3 q0=24       E=600  digits(M)=669   SP.9-ok Lam>=18  |G|/N=395/400  part1-viol=0 part2-viol=0
+k=  2 P=  13 t=3 q0=2^10·3^4 E=600  digits(M)=669   SP.9-ok Lam>=18  |G|/N=397/400  part1-viol=0 part2-viol=0
+k=  3 P=  11 t=4 q0=1        E=816  digits(M)=850   SP.9-ok Lam>=18  |G|/N=289/300  part1-viol=0 part2-viol=0
+k=  3 P=  11 t=4 q0=30030    E=816  digits(M)=850   SP.9-ok Lam>=18  |G|/N=298/300  part1-viol=0 part2-viol=0
+k=  2 P=   2 t=3 q0=1        E=600  digits(M)=181   SP.9-ok Lam>=18  |G|/N=382/400  part1-viol=0 part2-viol=0
+k=  2 P=   3 t=3 q0=1        E=600  digits(M)=287   SP.9-ok Lam>=18  |G|/N=383/400  part1-viol=0 part2-viol=0
+k=  7 P=   3 t=3 q0=1        E=1309 digits(M)=625   SP.9-ok Lam>=18  |G|/N=230/250  part1-viol=0 part2-viol=0
+k=  2 P= 101 t=5 q0=1        E=720  digits(M)=1444  SP.9-ok Lam>=18  |G|/N=145/150  part1-viol=0 part2-viol=0
+k=  5 P= 251 t=3 q0=1        E=1040 digits(M)=2496  SP.9-ok Lam>=18  |G|/N=115/120  part1-viol=0 part2-viol=0
+k=  2 P=  13 t=3 q0=1        E=1200 digits(M)=1337  SP.9-ok Lam>=18  |G|/N=240/250  part1-viol=0 part2-viol=0   (part 2)
+k=  2 P=  13 t=3 q0=2^10·3^4 E=1200 digits(M)=1337  SP.9-ok Lam>=18  |G|/N=247/250  part1-viol=0 part2-viol=0   (part 2)
+k=  3 P=   7 t=3 q0=2^20     E=1511 digits(M)=1277  SP.9-ok Lam>=18  |G|/N=197/200  part1-viol=0 part2-viol=0   (part 2)
+TOTAL violations: 0
+```
+
+At these (and only these) parameters the density claim (3) is also non-vacuous, and it holds
+with room. Comparing the document's `Ê` against my measured bad fraction:
+
+| config | `Ê` (terms `3P e^{−(7/240)E}`, `6·2^{−t}`, `3M^{−1/20}`) | measured `|Bad|/|AP|` |
+|---|---|---|
+| `k=2,P=13,t=3,q₀=1` | `0.7500` (`9.8e−7`, `0.75`, `1.2e−33`) | `0.0550` |
+| `k=3,P=11,t=4,q₀=1` | `0.3750` (`1.5e−9`, `0.375`, `1e−42`) | `0.0367` |
+| `k=2,P=101,t=5,q₀=1` | `0.1875` (`2.3e−7`, `0.1875`, `2e−72`) | `0.0333` |
+| `k=7,P=3,t=3,q₀=1` | `0.7500` | `0.0800` |
+| `k=5,P=251,t=3,q₀=1` | `0.7500` | `0.0417` |
+
+(13/13 configurations OK; `Ê` is dominated entirely by the `6·2^{−t}` spike term, which is the
+term the document's own Remark 3 identifies as the crude one.)
+
+### Exact spike-count log (`audit_sp_10.py`)
+
+```
+G-A: exact |BadS_p| by CRT at M = 2^200, 2^500, 10^300, 3^400 : 25920 checks, 0 violations,
+     worst exact/bound ratio 0.8889
+G-B: exhaustive |BadC_p|,|BadS_p| over all of [M,2M], M in {2e4,5e4,1e5},
+     q0 in {1,2,6,24,105,1024,2401,2^5·3^3,3^6}, p<=13, k in {2,3,7,16}, t in {3,4,6}:
+     1620 checks, 0 violations
+```
+
+**Note on a false alarm I raised and then closed.** An earlier sampling sweep flagged ~10
+`(config, p)` pairs where the *empirical* spike-failure rate (`1/120` or `2/120`) exceeded the
+proved bound plus 4 Gaussian sigma. This was an artifact of my own test: for events with true
+rate `~10⁻⁴–10⁻⁶`, `√(rate/N)` is a meaningless error bar and a single hit trips it. The exact
+CRT computation above (25920 configurations, no sampling at all) shows the bound is never
+violated — worst case it is `89%` saturated. **No defect in the document.**
 
 ---
 
@@ -207,10 +285,21 @@ where explicitly comparing to the document's own float constants.
 7. **Circularity / unproved auxiliary infinitude** — NONE. No infinitude is assumed or claimed;
    Kummer and Chernoff are proved in place; the background paper is used for methods only, and
    the one place its results are invoked (Remark 3, h1) is labeled heuristic and unused.
-8. **Edge cases** — small `M` (lemma vacuous, correctly so); `q₀ = 1`; `q₀` a high prime power;
-   `p | q₀` with `e_p > 0`; `Λ_p ≥ 18` proved so patterns are well-defined; `V_p = 0`;
-   `V_p < J_p`; `p > 2k` (`J_p = 0`, `ν_p((2k)!) = 0`); `p = 2` with odd `i` (empty); `P < 2`
-   in SP-A (vacuous, and correctly declared so); `n = m − k ≥ M − k ≥ 1`. All checked.
+8. **Edge cases** — all checked:
+   - small `M` (lemma vacuous, correctly so); `M ≥ 70000` is exactly what SP-A's (H3) check
+     needs (`e^{100/9} = 66910 < 70000`);
+   - `q₀ = 1`; `q₀` a high prime power (`2^{10}, 2^{20}, 2^{30}, 3^{20}, 7^4`); `p | q₀`
+     with `e_p > 0` (masking + `ν_p(2q₀)`);
+   - prime powers / **spike-class collisions** (the brief's "`r = s` collisions"): the `2k`
+     classes `{m : p^{T_p} | 2m−i}` are pairwise *disjoint* (distinct residues mod `p^{T_p}`,
+     resp. mod `2^{T_2−1}`), so the union bound over `i` is not even lossy; I confirmed this by
+     computing the exact union count, which equals the sum;
+   - **digit-expansion validity**: `p^{L_p} ≤ M^{4/5} < M ≤ m`, so positions `0..L_p−1` are
+     genuine digits of every `m ∈ [M,2M]`, and `Λ_p = L_p − e_p ≥ 18 ≥ 1` is proved inside
+     SP.9, so the pattern space `{0,…,p−1}^{Λ_p}` is legitimate;
+   - `V_p = 0`; `V_p < J_p`; `p > 2k` (`J_p = 0`, `ν_p((2k)!) = 0`); `p = 2k` (`k=1,p=2`);
+     `p = 2` with odd `i` (empty solution set); `T_p > e_p` always, so SP.7 never degenerates;
+   - `P < 2` in SP-A (vacuous, and correctly declared so); `n = m − k ≥ M − k ≥ 1`.
 
 ---
 

@@ -1,10 +1,9 @@
-n <= 200000;  F(u) = failure density at primes p <= n^(1/u);  S(u) = smooth-pair density
-    u       F(u)       2^-u       S(u)     rho(u)^2        S/F
-  2.0    0.40964    0.25000    0.05919     0.094159     0.1445
-  2.5    0.25813    0.17678    0.00907     0.016983     0.0352
-  3.0    0.16852    0.12500    0.00094     0.002361     0.0056
-  4.0    0.07934    0.06250    0.00002     0.000024     0.0003
-  5.0    0.03265    0.03125    0.00000     0.000000     0.0000
+EXACT failure condition kappa_p(n) < 2 nu_p(window); n <= 200000
+    u       F(u)   2^-u/u*c       S(u)     rho(u)^2     rho(u)       S/F
+  2.0    0.46415    0.34625    0.05919     0.094159   0.306853    0.1275
+  2.5    0.32421    0.19587    0.00907     0.016983   0.130317    0.0280
+  3.0    0.23765    0.11542    0.00094     0.002361   0.048594    0.0040
+  4.0    0.14099    0.04328    0.00002     0.000024   0.004871    0.0001
+  5.0    0.07782    0.01731    0.00000     0.000000   0.000329    0.0000
 
-Interpretation: S/F < 1 for every u means the unconditional first moment can never
-beat the smooth density -- failures must be counted inside the smooth set.
+S/F decreasing to 0 => the unconditional first moment can never beat the smooth set.

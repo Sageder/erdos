@@ -1,0 +1,304 @@
+                                                               SYMMETRIC PRIMES REVISITED
+arXiv:1908.06161v2 [math.NT] 26 Aug 2019
+
+
+
+
+                                                       WILLIAM BANKS, PAUL POLLACK, AND CARL POMERANCE
+
+
+
+
+                                                                 In memory of Peter Fletcher (1939–2019)
+
+                                                   Abstract. A pair of odd primes is said to be symmetric if each prime is
+                                                   congruent to one modulo their difference. A theorem from 1996 by Fletcher,
+                                                   Lindgren, and the third author provides an upper bound on the number of
+                                                   primes up to x that belong to a symmetric pair. In the present paper, that
+                                                   theorem is improved to what is likely to be the best possible result. We also
+                                                   establish that there exist infinitely many symmetric pairs of primes. In fact,
+                                                   we show that for every integer m ⩾ 2 there is a string of m consecutive primes,
+                                                   any two of which form a symmetric pair.
+
+
+
+
+                                                                               1. Introduction
+                                             A pair of distinct odd primes {p, q} is said to be a symmetric pair if
+
+                                                                          gcd(p − 1, q − 1) = |p − q|.
+
+                                           For example, every twin prime pair {p, p + 2} is a symmetric pair. We say that
+                                           a prime is symmetric if it is a member of some symmetric pair; otherwise, we say
+                                           that it is asymmetric.
+                                              Symmetric primes arise naturally when ruminating on a common textbook proof
+                                           of Gauss’s quadratic reciprocity law (QRL). Consider the rectangle S with (0, 0)
+                                           and (p/2, q/2) as opposite corners, and let l be the diagonal joining those corners.
+                                           Let S(q, p) (resp., S(p, q)) be the number of interior lattice points below (resp.,
+                                           above) l. Eisenstein, in his version of Gauss’s third QRL proof, showed that
+                                                                                         
+                                                                q                           p
+                                                                    = (−1)S(q,p) , and          = (−1)S(p,q) .
+                                                                p                           q
+                                           Since ℓ has no interior lattice points, S(q, p) + S(p, q) is the total number of lattice
+                                           points interior to S, which is p−1 2
+                                                                                 q−1
+                                                                                   2 ; the law of quadratic reciprocity follows
+                                           immediately. It is shown in §2 of Fletcher et al. [4] that {p, q} is symmetric precisely
+                                           when S(q, p) = S(p, q).
+                                              Most primes are asymmetric; this is a consequence of [4, Theorem 3.1], which
+                                           asserts that the number S(x) of symmetric primes p ⩽ x is O(π(x)/(log x)0.027 ). It
+                                           is conjectured in [4] that the exponent 0.027 can be improved to η + o(1), where
+                                                                               1 + log log 2
+                                                                    η := 1 −                 = 0.08607 · · · .
+                                                                                  log 2
+                                           In this note we prove the conjecture.
+
+                                                                                         1
+2             WILLIAM BANKS, PAUL POLLACK, AND CARL POMERANCE
+
+
+Theorem 1.1. For all large x, we have
+                                        π(x)
+                           S(x) ⩽              (log log x)O(1) .
+                                      (log x)η
+    The constant η appears at several places in the literature. An early appearance
+is in connection with the Erdős multiplication table problem where, thanks to the
+work of Erdős, Tenenbaum, and Ford, we now know that the number M (N ) of
+distinct entries in the N × N multiplication table is N 2 (log N )−η (log log N )O(1) .
+(In fact, Ford [5] has further shown that if the implied constant O(1) is replaced
+with −3/2, the resulting expression has the same magnitude as M (N ).) A more
+recent appearance of η occurs in Chow and Pomerance [3], where the odd legs in
+integer-sided right triangles with prime hypotenuse are considered. (The present
+note uses some techniques from [3].)
+    It was left as an open problem in [4] to prove that there are infinitely many
+symmetric primes. The next theorem uses an old result of Heath-Brown [8] together
+with the framework of the recent results of Zhang, Maynard, Tao, et al. on small
+gaps between primes.
+Theorem 1.2. For every integer m ⩾ 2, there exists a string of m consecutive
+primes, any two of which form a symmetric pair.
+   Of course, Theorem 1.2 implies the infinitude of symmetric primes. Our proof
+of Lemma 3.2 below, in conjunction with the methods of [11, 12, 13], could be
+developed to prove that S(x) ≫ π(x)/(log x)49 . Comparing this lower bound
+with the upper bound of Theorem 1.1, it is tempting to conjecture that S(x) =
+π(x)/(log x)c+o(1) , as x → ∞, for some positive constant c. In [4] a heuristic ar-
+gument is presented suggesting that this conjecture holds with c = η; that is, the
+inequality of Theorem 1.1 is actually an equality.
+   In Sections 2 and 3 we prove the theorems. In Section 4 we present some new
+computations of symmetric primes. In Section 5 we close with a few problems of a
+somewhat different nature.
+
+                         2. The proof of Theorem 1.1
+   Let ω(n) denote the number of distinct primes that divide n, and let Ω(n) denote
+the number of prime factors of n counted with multiplicity. Let P + (n) denote the
+largest prime factor of n > 1, and put P + (1) = 0.
+   Let S1 (x) denote the number of primes p ⩽ x with P + (p − 1) ⩽ x1/ log log x .
+Since the number of integers n ⩽ x with P + (n) ⩽ x1/ log log x is O(x/(log x)2 ) (see
+de Bruijn [2, Eq. (1.6)]) it follows that S1 (x) = O(π(x)/ log x).
+   Next, let S2 (x) denote the number of primes p ⩽ x with P + (p − 1) > x1/ log log x
+and Ω(p − 1) > L, where L = ⌊(1/ log 2) log log x⌋. We claim that
+                                        π(x)
+(2.1)                      S2 (x) ⩽            (log log x)O(1) .
+                                      (log x)η
+For any prime counted by S2 (x), write p = ar+1, where r = P + (p−1) > x1/ log log x .
+For any fixed choice of a < x1−1/ log log x , the number of primes r ⩽ x/a with ar + 1
+prime is (by Brun’s method; see [6, Eq. (6.1)]) at most
+                                   x
+                                          (log log x)O(1) .
+                              a(log x)2
+                             SYMMETRIC PRIMES REVISITED                                   3
+
+
+We sum this expression over a assuming      PΩ(a) ⩾ L. For1−η  L ⩽ Ω(a) ⩽ 1.9 log log x
+we use [7, Theorem 08], finding that          1/a ⩽ (log x)        (log log x)O(1) ; this is
+consistent
+        P with our goal0.69  (2.1). For larger values of Ω(a) we use [7, Exercise 05],
+getting    1/a ≪ (log x) . This establishes the claim (2.1).
+   To finish the proof, we bound the number of symmetric primes p ⩽ x with
+P + (p − 1) > x1/ log log x and Ω(p − 1) ⩽ L. For any such prime, write p = ar + 1
+with r = P + (p − 1) > x1/ log log x and Ω(a) < L. Since p is symmetric, there is
+some d | a with at least one of p + d, p − d, p + dr, p − dr prime. Write a = dm.
+For a given pair d, m with dm < x1−1/ log log x , let R(x, d, m) denote the number of
+primes r ⩽ x/dm with dmr + 1 prime and at least one of dmr + d + 1, dmr − d + 1,
+dmr + dr + 1, dmr − dr + 1 prime. Again by Brun’s method we have uniformly for
+x large that
+                                            x
+                         R(x, d, m) ⩽             (log log x)O(1) .
+                                       dm(log x)3
+It remains to sum this expression over pairs d, m with dm < x1−1/ log log x and
+Ω(dm) < L. Let E denote the reciprocal sum of all primes and prime powers less
+than x. We have
+                 X              1   X X 1 X 1
+                                  ⩽
+                               dm          d m<x m
+            dm<x1−1/ log log x        i+j<L d<x
+               Ω(dm)<L                     ω(d)=i   ω(m)=j
+                                    X 1   1     X 1     X k!
+                                  ⩽     Ei Ej =      Ek
+                                      i! j!       k!      i!j!
+                                      i+j<L              k<L        i+j=k
+                                      X 1             1
+                                  =            (2E)k ≪ (2E)L ,
+                                            k!        L!
+                                      k<L
+
+since E = log log x + O(1). A short calculation then shows that this expression
+is (log x)2−η (log log x)O(1) . Thus, the sum of R(x, d, m) over pairs d, m is at most
+π(x)(log x)−η (log log x)O(1) , so completing the proof.
+
+                           3. The proof of Theorem 1.2
+   In her dissertation, Spiro [14] showed that the equation d(n) = d(n + 5040) has
+infinitely many solutions, where d(n) is the divisor function. Heath-Brown [8] has
+shown that one can replace 5040 with 1 in this theorem, a key ingredient (see also
+[9, 10]) being the existence of sets with the property described in the next lemma
+(and another property that is not needed here).
+Lemma 3.1. For every k ⩾ 2 there is a set Ak ⊂ N with k elements such that
+gcd(a, b) = |a − b| for all a, b ∈ Ak , a 6= b.
+   An example of such a set when k = 4 is {6, 8, 9, 12}.
+   If we have two numbers a < b with gcd(a, b) = b − a and an integer n for which
+p = an + 1 and q = bn + 1 are both prime, then {p, q} is a symmetric pair. Thus,
+under the prime k-tuples conjecture we obtain infinitely many symmetric pairs.
+Alternatively, the prime k-tuples conjecture implies the existence of infinitely many
+twin prime pairs {p, p + 2}, which are symmetric.
+   The preceding statements are still conjectural, but the Maynard-Tao theorem
+gives us a path for producing infinitely many symmetric primes.
+4               WILLIAM BANKS, PAUL POLLACK, AND CARL POMERANCE
+
+
+Lemma 3.2. For every m ⩾ 2 there is a set Pm of m primes such that for all
+p, q ∈ Pm , p 6= q, we have gcd(p − 1, q − 1) = |p − q|. Moreover, one can find such
+a set whose least element exceeds m.
+
+                             of linear forms {gi t + hi }ki=1 is said to be admissible
+Proof. Recall that a k-tuple Q
+if the associated polynomial i (gi t + hi ) has no fixed prime divisor, i.e., for each
+prime p there is an integer t with none of gi t + hi divisible by p. To prove the
+lemma, we apply a remarkable theorem of Maynard (see, e.g., [11, Theorem 3.4])
+and Tao (unpublished) in the direction of the prime k-tuples conjecture.
+
+Theorem 3.3 (Maynard–Tao). For every m ⩾ 2 there is an integer k = km ,
+depending only on m, such that if {gi t + hi }ki=1 is admissible,
+                                          Q
+             g1 , . . . , gk > 0, and        1⩽i<j⩽k (gi hj − gj hi ) 6= 0,
+
+then {gi n+hi }ki=1 contains m primes for infinitely many n ∈ N. In fact, the number
+of such n ⩽ x is ≫ x/(log x)k .
+
+   We apply Theorem 3.3 to the linear forms {ai t + 1}ki=1 , where k = km and the
+integers ai are the elements of a set Ak of the type described in Lemma 3.1. Then
+{ai n + 1}ki=1 contains m primes for infinitely many n ∈ N, and Lemma 3.2 follows
+at once.                                                                        
+
+   One can adapt the work of [12, 13] to show that 50 is an acceptable value of k2
+in Theorem 3.3. This explains the “49” in the lower bound S(x) ≫ π(x)/(log x)49
+claimed in the introduction.
+   To prove Theorem 1.2, which asserts that some of the sets Pm in Lemma 3.2
+consist of consecutive primes, we use the following result from Banks et al. [1].
+
+Theorem 3.4 (Banks–Freiberg–Turnage-Butterbaugh). Let m ⩾ 2 and k = km ,
+where km is as in the Maynard–Tao theorem. Let b1 , . . . , bk be distinct integers
+such that {t + bj }kj=1 is admissible, and let g be an arbitrary positive integer that is
+coprime to b1 · · · bk . Then, for some subset {h1 , . . . , hm } ⊆ {b1 , . . . , bk }, there are
+infinitely many n ∈ N such that gn + h1 , . . . , gn + hm are consecutive primes.
+
+    Now, let m ⩾ 2 and k ⩾ km . By Lemma 3.2 there exists a set of primes
+Pk = {b1 , . . . , bk } such that gcd(bi − 1, bj − 1) = |bi − bj | for all 1 ⩽ i < j ⩽ k, and
+                                                   k
+each bi exceeds k (thus, Q the k-tuple {t + bj }j=1 is admissible).
+    Notice that g = i (bi − 1) is coprime to b1 · · · bk . Otherwise, there are indices
+i, j, with i 6= j, for which bj | bi − 1. But then bi ⩾ 2bj + 1, and
+
+                     bj + 1 ⩽ bi − bj = gcd(bi − 1, bj − 1) ⩽ bj − 1,
+
+which is absurd.
+   By Theorem 3.4 there is a subset {h1 , . . . , hm } ⊆ {b1 , . . . , bk } with the property
+that P1 = gn + h1 , . . . , Pm = gn + hm are consecutive primes for infinitely many
+n ∈ N. Since hi − 1 | Pi − 1 for each i, and
+
+           |Pi − Pj | = |hi − hj | = gcd(hi − 1, hj − 1)         (1 ⩽ i < j ⩽ m),
+
+it follows that |Pi −Pj | = gcd(Pi −1, Pj −1) when i 6= j, i.e., {Pi , Pj } is a symmetric
+pair. This completes the proof of Theorem 1.2
+                                SYMMETRIC PRIMES REVISITED                                       5
+
+
+                                     4. Computations
+   In [4] some values of S(x) for x up to the 105 th prime were given. The data did
+not strongly suggest that S(x) = o(π(x)); in fact, it seemed more plausible that
+S(x)/π(x) ≈ 0.83. Using Mathematica we have extended the calculation to the
+108 th prime and we see that S(x)/π(x) continues to be in no hurry to get to zero,
+but progress towards this limit is somewhat discernible. The descent to zero does
+indeed appear to be not so different than the main term in our upper bound.
+
+         Table 1. Tabulation of S(pn ), the number of symmetric primes
+         to the nth prime.
+
+                          n        S(pn )     S(pn )/n     1/(log pn )η
+                          10          9        0.9000         0.9008
+                          102        86        0.8600         0.8536
+                          103       864        0.8640         0.8279
+                          104       8473       0.8473         0.8101
+                          105      83263       0.8326         0.7964
+                          106     819848       0.8198         0.7854
+                          107    8098086       0.8098         0.7761
+                          108    80112625      0.8011         0.7681
+
+
+
+                                    5. Graph problems
+   Consider a graph on the odd primes where two primes are connected by an edge if
+they form a symmetric pair. The asymmetric primes are isolated nodes. Must every
+connected component be finite? At the other extreme, removing the asymmetric
+primes, is the graph connected? If not, what is the least symmetric prime that is
+not in the component containing the prime 3? Does the graph have infinitely many
+components? Does it contain a complete graph Km on m vertices for every m? The
+answer to this last question is “yes”, from Theorem 1.2. Clearly there cannot exist
+an infinite complete subgraph since if p < q are a symmetric pair, then q < 2p. Say
+a prime p is m-symmetric if it is in a Km . It would be interesting to investigate the
+distribution of m-symmetric primes; the number of them to x is π(x)/(log x)Om (1) ,
+but what can be said about the exponent here?
+
+Acknowledgment. We thank James Maynard for some helpful comments.
+
+                                         References
+ 1. W. D. Banks, T. Freiberg, and C. Turnage-Butterbaugh, Consecutive primes in tuples. Acta
+    Arith. 167 (2015), 261–266.
+ 2. N. G. de Bruijn, On the number of positive integers ⩽ x and free of prime factors > y. Nederl.
+    Akad. Wetensch. Proc. Ser. A 54 (1951), 50–60.
+ 3. S. Chow and C. Pomerance, Triangles with prime hypotenuse. Research in Number Theory 3
+    (2017), Art. 21, 10 pp., http://rdcu.be/wApe .
+ 4. P. Fletcher, W. Lindgren, and C. Pomerance, Symmetric and asymmetric primes. J. Number
+    Theory 58 (1996), 89–99.
+ 5. K. Ford, The distribution of integers with a divisor in a given interval. Ann. of Math. (2) 168
+    (2008), 367–433.
+6               WILLIAM BANKS, PAUL POLLACK, AND CARL POMERANCE
+
+
+ 6. H. Halberstam and H.-E. Richert, Sieve methods, London Mathematical Society Monographs,
+    No. 4. Academic Press [A subsidiary of Harcourt Brace Jovanovich, Publishers], London–New
+    York, 1974.
+ 7. R. R. Hall and G. Tenenbaum, Divisors, Cambridge University Press, Cambridge, 1988.
+ 8. D. R. Heath-Brown, The divisor function at consecutive integers. Mathematika 31 (1984),
+    141–149.
+ 9. D. R. Heath-Brown, Consecutive almost-primes. J. Indian Math. Soc. (N.S.) 52 (1987), 39–49
+    (1988).
+10. D. R. Heath-Brown, A note on the paper: “Consecutive almost-primes”. J. Indian Math. Soc.
+    (N.S.) 66 (1999), 203–205.
+11. J. Maynard, Dense clusters of primes in subsets, Compositio Math. 152 (2016), 1517–1554.
+12. D. H. J. Polymath, Variants of the Selberg sieve, and bounded intervals containing many
+    primes, Res. Math.Sci. 1 (2014), Art. 12, 83 pp.
+13. D. H. J. Polymath, Erratum to: Variants of the Selberg sieve, and bounded intervals containing
+    many primes, Res. Math.Sci. Res. Math. Sci. 2 (2015), Art. 15, 2 pp.
+14. C. A. Spiro, The frequency with which an integral-valued, prime-independent, multiplicative
+    or additive function of n divides a polynomial function of n, Ph.D. Thesis, Univ. Illinois,
+    Urbana, IL 1981.
+
+    Department of Mathematics, University of Missouri, Columbia, MO 65211, USA
+    E-mail address: bankswd@missouri.edu
+
+    Department of Mathematics, University of Georgia, Athens, GA 30602, USA
+    E-mail address: pollack@uga.edu
+
+    Mathematics Department, Dartmouth College, Hanover, NH 03755, USA
+    E-mail address: carl.pomerance@dartmouth.edu
+
