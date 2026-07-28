@@ -1,0 +1,13 @@
+greedy least-value monotone-4-AP-avoider, 400 steps (41.1s)
+first 40 values: [1, 2, 3, 5, 6, 8, 9, 10, 15, 16, 17, 19, 26, 27, 29, 30, 31, 34, 37, 49, 50, 51, 53, 54, 56, 57, 58, 63, 65, 66, 67, 80, 87, 88, 89, 91, 94, 99, 102, 105]
+step | value | maxval | unused<=max | min-unused
+   250 |  1268 |   1268 |  1018 |     4
+   400 |  2517 |   2517 |  2117 |     4
+validated checker: no monotone 4-AP in the greedy prefix  [OK]
+
+PERMANENT NON-SURJECTIVITY CERTIFICATE:
+  values 1,2,3 occupy positions 1,2,3 (ascending).
+  placing 4 at ANY later position completes the ascending monotone
+  4-AP 1,2,3,4 -> value 4 is blocked forever: the greedy sequence is
+  injective and 4-AP-free but NOT a permutation of N.
+  deficiency explodes: at step 400, 2117 of the values <= 2517 unused (84%).

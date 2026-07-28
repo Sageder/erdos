@@ -2,3 +2,4 @@
 [A C=5/2c] N=50: SAT (42s)
 [A C=5/2c] N=55: SAT (109s)
 [A C=5/2c] N=60: SAT (212s)
+[A C=5/2c] N=65: SAT (966s)

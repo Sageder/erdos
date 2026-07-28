@@ -433,3 +433,32 @@ Machine verification: independent prefix check (values 1..19682): profile and
 inc-4-AP-freeness confirmed; dyadic analogue REFUTED — (1, 6, 11, 16) sits at positions
 (1, 5, 12, 31), an increasing 4-AP, so ratio 2 does not work (ratio ≥ 3 is forced;
 route R6 proved ratio → 3 is exactly the boundary in this family).
+
+## Lemma 15 (record- and grounded-anchored nets — Lemma 4 at infinitely many anchors)
+
+Let a be any monotone-4-AP-free permutation of ℕ, Λ its records, Γ its grounded values
+(Lemma 11; both infinite).
+
+(a) For EVERY record w ∈ Λ and EVERY e ≥ 1: ¬( pos(w+e) < pos(w+2e) < pos(w+3e) ).
+    Moreover (w, w+e, w+2e) is an increasing monotone 3-AP iff pos(w+e) < pos(w+2e)
+    (the first leg w ≺ w+e is automatic for records).
+
+(b) For EVERY grounded g ∈ Γ and every e ≥ 1 with g − 3e ≥ 1:
+    ¬( pos(g−3e) < pos(g−2e) < pos(g−e) ).
+
+Proof. (a) A record precedes every larger value, so w ≺ w+e, w+2e, w+3e; if the three
+displayed positions increased, (w, w+e, w+2e, w+3e) would be an increasing monotone
+4-AP. (b) A grounded value follows every smaller value, so pos(g−e) < pos(g); if the
+three displayed positions increased, (g−3e, g−2e, g−e, g) would be an increasing
+monotone 4-AP. ∎
+
+Remarks. (i) Lemma 4's (★★) needed j > E(v); at records/grounded values the net is
+unconditional at all steps. (ii) Counting consequence: for fixed e, each net instance
+forces a drop (pos(u) < pos(u−e)) landing at u ∈ {w+2e, w+3e}, and each u serves at
+most 2 records; so #{u ≤ N with an e-drop} ≥ |Λ ∩ [1..N−3e]|/2 — a record-weighted
+demand complementing Theorem 12's. Since Λ may be made sparse (records can jump), this
+alone does not improve the constant; the ledger is exactly tight on sparse-record
+big-jump structures (a huge early record W has e*(W) ≈ W − w and pos(W) ≈ C·w). Any
+improvement past C*_inc-style ceilings must couple the two orientations (Theorem 14).
+(iii) These nets are the natural constraint set for the two-point supply hunt (R13):
+record–record and record–grounded pairs carry overlapping unconditional nets.

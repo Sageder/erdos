@@ -7,3 +7,10 @@ families: 18  first core: 8
    in-core: ('ext+', 0, 2, 2) # 235
    in-core: ('ext+', 1, 2, 2) # 489
    in-core: ('ext+', 2, 2, 2) # 1976
+greedy-minimal family core (time-capped):
+    ('+', 0, 1, 2, 2) # 88
+    ('+', 1, 2, 2, 2) # 816
+    ('+', 2, 2, 2, 2) # 3876
+    ('-', 2, 2, 2, 2) # 3876
+    ('ext+', 1, 2, 2) # 489
+    ('ext+', 2, 2, 2) # 1976
