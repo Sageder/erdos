@@ -1808,3 +1808,36 @@ as it must.
 individually demanded. That version reported conflicts for EVERY family including ones that
 are certainly realizable, which is how the error surfaced: it contradicted a verified SAT
 solution. The conjunction/disjunction distinction is the whole content of the fix.
+
+## Proposition 52 (bounded delay ⟹ LINEAR displacement — the bounded class-architecture family cannot produce a counterexample unless linear profiles survive)
+
+Let c = j + t with j(v) = ⌊log_b v⌋ and 0 ≤ t ≤ T bounded, classes emitted in increasing
+index order. Then for every v,
+
+    pos(v) ≤ |{w : c(w) ≤ c(v)}| ≤ |{w : j(w) ≤ j(v) + T}| = b^{j(v)+T+1} − 1 ≤ b^{T+1}·v,
+
+so the architecture has a LINEAR displacement profile with constant at most b^{T+1}.
+Verified numerically (exact counting, b ∈ {3,4}, T ∈ {0,1,2,3}, N = b⁷, random delays): the
+measured maximum of the position bound over v is 3.0, 6.2, 13.2, 30.4 for b = 3 and
+4.0, 10.8, 28.6, 84.5 for b = 4 — always below the predicted b^{T+1}.
+
+**Consequences, and a scoping of my own recent experiments.**
+1. Every bounded-delay class architecture lives in the linear-profile family. By
+   REQUIREMENTS B6 those are certified extinct up to C = 2, and by the extinction law they
+   would first die around N ≈ 4·exp(3.89(C−1.25)) — for C = 9 (the b = 3, T = 1 bound) that
+   is astronomically far beyond reach. So finite searches in this family are uninformative
+   about its ultimate fate, exactly as Remark 27 says.
+2. Therefore the joint delay-and-order experiments of this session (tension.py, tension8.py,
+   tension9.py, all at T = 1) explore a family that CANNOT yield a counterexample unless
+   linear-displacement profiles survive at large constants — i.e. unless the LP conjecture
+   fails. Their satisfiability at N = 100 with a properly scoped rate condition is a real
+   datum about the finite structure, but it is not evidence that a counterexample exists.
+3. This confirms from a second direction what route R20 concluded: the class-architecture
+   programme must use UNBOUNDED delay, which is also the only way to get the superlinear
+   displacement that REQUIREMENTS B6 demands. Bounded-delay work — including Conjecture
+   R21-C's T = 1 case, Proposition 37's characterization, and everything built on it — is
+   structural information about a family that is very probably dead for an independent and
+   much simpler reason.
+
+Recorded so that the T = 1 results in this file are not later mistaken for progress toward
+a counterexample. They are progress in understanding the constraint system, nothing more.
