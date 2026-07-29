@@ -1841,3 +1841,40 @@ measured maximum of the position bound over v is 3.0, 6.2, 13.2, 30.4 for b = 3 
 
 Recorded so that the T = 1 results in this file are not later mistaken for progress toward
 a counterexample. They are progress in understanding the constraint system, nothing more.
+
+## Proposition 53 (the class-architecture framework is UNIVERSAL — a reparametrization, not a restriction)
+
+Every permutation a of ℕ arises as a class architecture: take c := pos_a. Its fibres are
+singletons (finite), classes are emitted in increasing index order by construction, and the
+within-class orders are vacuous. Moreover for this c, condition (ii) — "no 4-AP has a
+strictly monotone class sequence" — is literally the statement that a has no monotone 4-AP.
+
+So the framework introduces no loss of generality whatsoever, and the two layers trade off
+against each other:
+
+- **c injective** (singleton fibres): condition (ii) IS the whole problem, and the
+  realizability layer is empty.
+- **c with large fibres**: condition (ii) is weak (ties are not strictly monotone, so most
+  4-APs impose nothing), and all the difficulty moves into the realizability layer — the
+  within-class orders must themselves avoid monotone 4-APs.
+
+The hard part does not disappear; it moves. This is, I believe, the structural reason the
+class-architecture programme kept producing vacuity results (Remarks 31, 42; Propositions
+41, 52): statements proved "for all class architectures" are statements about all
+permutations, hence either false or equivalent to the problem, unless they use a genuine
+restriction on the fibres.
+
+**What the real hypotheses are.** Propositions 29 and 30 do not assume mere class structure
+— they assume a GEOMETRIC fibre design (|F_j| ≍ b^j). That is where their content comes
+from, and it is exactly what a counterexample is free to violate: nothing forces a
+counterexample's natural coarsening to have geometrically growing fibres. Likewise
+Proposition 52's linear-displacement conclusion assumes bounded delay on top of geometric
+fibres.
+
+**Consequence for the surviving negative-branch corridor.** "Unbounded-delay class
+architecture" is not a well-defined restricted family until the fibre growth is pinned down:
+with unbounded delay AND unconstrained fibres it is just "some permutation", and the
+programme is circular. Anyone continuing must specify the fibre growth law and check that
+the resulting family is (i) strictly smaller than all permutations and (ii) not already
+killed by Propositions 29–30 or 52. That is the precise gap in the current formulation of
+the corridor, and it should be closed before more search is spent there.
