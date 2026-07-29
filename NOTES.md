@@ -16,7 +16,7 @@ $M$ its capacity.
 2. **No solution has $\max U\le84$** — three independent engines agree (mine with the pooled
    $p$-adic prune, route B's Rule (P) DP, route C's RULE A+B fixpoint, which is EMPTY for
    all $N\le76$).
-3. **$P(k)$ is TRUE for $k=6,\dots,57$**, with explicit exactly-$k$ block certificates
+3. **$P(k)$ is TRUE for $k=6,\dots,65$ (contiguous) and for $k=70,71,91,127,128$**, with explicit exactly-$k$ block certificates
    emitted and re-verified by `experiments/certificates.py` (count $=k$, all lengths $\ge2$,
    pairwise disjoint, elements $\ge2$, sum $=1$ in $\mathbb{Q}$).
 4. **$P(1)$ is FALSE** (Kürschák). $P(2)\dots P(5)$ are OPEN. What *is* proved is that the
@@ -60,10 +60,21 @@ $M$ its capacity.
 - **$B(T)$ is not shift-invariant** (route D): $5/6\in B(2)$ but $5/6\notin B(5)$ even
   allowing elements $\le66$ (491.9M nodes); $7/12\in B(3)\setminus B(4)$.
 
-### The CRUX (the whole remaining gap)
+### The CRUX (the whole remaining gap) — now sharpened to (GAD)
 
 > **(CRUX)** For arbitrarily large $T$, is $\tfrac12$ (or some fixed rational) the sum of a
 > legal block system with all elements $\ge T$?
+
+**Answered affirmatively at three scales** (verified three ways): $\tfrac12$ on $[104,900]$,
+$\tfrac13$ on $[203,5720]$, $\tfrac16$ on $[527,5985]$. Route F then proved the reduction
+$R^\ast$ is a *semigroup*, so everything reduces to
+
+> **(GAD)** there are $K,D$ with: for every large $x$ some legal $G\subseteq[x,Kx]$ has
+> $\Sigma(G)=1/D$.
+
+and proved two no-go theorems (Cor. F4: any $D$-switch with $\min\ge x$ has
+$|A\triangle B|\ge x/D$, so no local/parametric family exists at all; Thm F7: switches
+supply covering but can never replace the gadget condition). See VERDICT.md items 8–10.
 
 If YES: $1=\tfrac12+\tfrac12$ with one fixed gadget in $[6,91]$ and one far out gives
 solutions whose capacity $\to\infty$ (a $\tfrac12$-system with elements $\asymp T$ needs
@@ -97,6 +108,6 @@ with the RULE A+B fixpoint that holds up to $N=600$ (126 bits) — 68 bits at $N
 ### Next actions
 1. Await routes A, B, E (E is searching $\tfrac12$ on $[100,350]$ and $[100,400]$ — the
    direct CRUX test).
-2. Keep pushing exhaustive/size-targeted searches for larger $k$ (currently 57).
+2. Keep pushing exhaustive/size-targeted searches for larger $k$ (currently 65 contiguous).
 3. If CRUX stays open, VERDICT.md must say the problem is NOT resolved and record exactly
    what is proved.
