@@ -1878,3 +1878,37 @@ programme is circular. Anyone continuing must specify the fibre growth law and c
 the resulting family is (i) strictly smaller than all permutations and (ii) not already
 killed by Propositions 29–30 or 52. That is the precise gap in the current formulation of
 the corridor, and it should be closed before more search is spent there.
+
+## Remark 54 (non-base-b numeration does not help — and why "a novel mechanism" is not a real category)
+
+**Fibonacci/Zeckendorf tested and dead.** The one concrete idea for escaping the
+digit-comparator dichotomy was to change the numeration system: Zeckendorf representation
+(sums of non-consecutive Fibonacci numbers) has a different carry structure from base b, and
+the dichotomy of REQUIREMENTS B2 is a statement about base-b digit priority. Tested
+(experiments/fib_mechanism.py, fast checker cross-validated against brute force): Fibonacci
+blocks [F_k, F_{k+1}) with five different Zeckendorf-based within-block keys — LSD, MSD,
+length-then-digits, digit-count parity, lowest-index — each with and without alternating
+block reversal. **All ten die immediately**, the first monotone 4-AP appearing at
+(x, d) = (1,1), (2,2) or (9,1) in every case, at N = 376.
+
+The reason is structural, not accidental: Fibonacci blocks have ratio → φ ≈ 1.618 < 3, and
+route R1's DC0 already showed in-order block layouts need ratio ≥ 3 (below that, a 4-AP
+spreads across four or more blocks and is automatically monotone in the block order). The
+numeration system changes the digit combinatorics but not the two facts that actually bind.
+
+**The general point, which subsumes the attempt.** An order of type ω on ℕ is exactly a rank
+function — a bijection to ℕ. So "find a mechanism outside the block and digit families" is
+not a restricted search: every mechanism is some rank function, and the family of rank
+functions is the family of all permutations. Combined with Proposition 53 (the
+class-architecture framework is likewise universal), this says something uncomfortable but
+useful about the whole negative branch as pursued here: each reformulation we adopted was a
+reparametrization of the same object, and the difficulty reappeared in the new coordinates
+every time.
+
+Concretely, the two facts that survive every reparametrization are:
+(a) order type ω forces the coarsest layer of any construction to be most-significant-first,
+    i.e. a block structure, because only that partitions ℕ into finite pieces;
+(b) at ratio ≥ 3 a 4-AP's last three terms split as pair + singleton, so the two-pair
+    mechanism that settles length 5 is unavailable — and at ratio < 3 the AP spreads over
+    too many blocks and dies for the opposite reason.
+Any genuine escape must break (a) or (b), and neither is about digits or bases.
