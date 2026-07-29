@@ -1,0 +1,55 @@
+## [10, 28] @M=82
+    eager/cadical195: UNSAT [0s]
+    eager/glucose42: UNSAT [0s]
+    eager/minisat22: UNSAT [0s]
+    cpsat-ranks: UNSAT [26s]
+## [1, 2, 4, 10, 28] @M=82
+    eager/cadical195: UNSAT [0s]
+    eager/glucose42: UNSAT [0s]
+    eager/minisat22: UNSAT [0s]
+    cpsat-ranks: UNSAT [20s]
+## [8, 26, 76] @M=152
+    eager/cadical195: UNSAT [1s]
+    eager/glucose42: UNSAT [1s]
+    eager/minisat22: UNSAT [1s]
+    cpsat-ranks: UNSAT [49s]
+## [2, 8, 26, 76] @M=152
+    eager/cadical195: UNSAT [2s]
+    eager/glucose42: UNSAT [1s]
+    eager/minisat22: UNSAT [1s]
+    cpsat-ranks: UNSAT [48s]
+## [10, 28, 82] @M=82
+    eager/cadical195: UNSAT [0s]
+    eager/glucose42: UNSAT [0s]
+    eager/minisat22: UNSAT [0s]
+    cpsat-ranks: UNSAT [7s]
+## [1, 2, 4, 10, 33] @M=97
+    eager/cadical195: UNSAT [1s]
+    eager/glucose42: UNSAT [0s]
+    eager/minisat22: UNSAT [1s]
+    cpsat-ranks: UNSAT [44s]
+## [1, 2, 4, 10, 34] @M=100
+    eager/cadical195: UNSAT [1s]
+    eager/glucose42: UNSAT [1s]
+    eager/minisat22: UNSAT [0s]
+    cpsat-ranks: UNSAT [59s]
+## [11, 31] @M=124
+    eager/cadical195: UNSAT [2s]
+    eager/glucose42: UNSAT [2s]
+    eager/minisat22: UNSAT [2s]
+    cpsat-ranks: UNSAT [50s]
+## [12, 34] @M=136
+    eager/cadical195: UNSAT [3s]
+    eager/glucose42: UNSAT [2s]
+    eager/minisat22: UNSAT [2s]
+    cpsat-ranks: UNSAT [79s]
+## [20, 58] @M=172
+    eager/cadical195: UNSAT [4s]
+    eager/glucose42: UNSAT [3s]
+    eager/minisat22: UNSAT [3s]
+    cpsat-ranks: UNSAT [45s]
+## [30, 88] @M=262
+    eager/cadical195: UNSAT [21s]
+    eager/glucose42: UNSAT [16s]
+    eager/minisat22: UNSAT [16s]
+    cpsat-ranks: UNKNOWN [900s]

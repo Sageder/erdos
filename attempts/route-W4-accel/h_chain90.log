@@ -1,0 +1,7 @@
+## the mission's depth-5 accelerating survivors, HORIZON-EXTENDED
+   S=[1, 2, 4, 10, 28] M=28 -> SAT* [0s]
+   S=[1, 2, 4, 10, 28] M=42 -> SAT* [0s]
+   S=[1, 2, 4, 10, 28] M=56 -> SAT* [0s]
+   S=[1, 2, 4, 10, 28] M=82 -> UNSAT [0s]
+   S=[1, 2, 4, 10, 90] M=90 -> SAT* [5s]
+   S=[1, 2, 4, 10, 90] M=135 -> SAT* [9s]

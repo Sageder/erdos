@@ -1,0 +1,6 @@
+## the accelerating chain's own pairs, horizon sweep
+   N(4,10,28) -> SAT* [0s]
+   N(4,10,40) -> SAT* [0s]
+   N(4,10,50) -> SAT* [0s]
+   N(4,10,60) -> SAT* [0s]
+   N(10,90,268) -> TIME_CAP [975s]

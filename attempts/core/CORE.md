@@ -1731,3 +1731,37 @@ cut-based.
 own summary implied. The right target is an indecomposable permutation of ℕ, and the tools
 that still bite on it are the class-architecture propositions and the displacement bounds —
 not the cut certificates. REQUIREMENTS.md B4 should be read with this scope attached.
+
+## Remark 50 (the descent/realizability tension, and a finite-proxy subtlety in testing it)
+
+**The tension, stated.** For a class architecture to be a counterexample candidate it must
+have NO tame progression (Prop 29: along a tame progression the displacement is linear,
+which the certified extinctions make fatal). Non-tameness along a progression P means the
+class function c descends infinitely often along P. But c → ∞ along P, so descents force c
+to REVISIT values: every progression then contains infinitely many SAME-CLASS pairs. And
+same-class pairs are precisely where condition (ii) has no content — their relative order is
+decided inside the class — so each one lying in a 4-AP imposes a within-class ordering
+constraint, i.e. feeds the realizability layer that Proposition 41 found hard.
+
+So non-tameness manufactures exactly the constraints realizability struggles with. This is
+the sharpest formulation of the obstruction to class architectures obtained here.
+
+**Testing it — and two proxy subtleties, both mine, both caught before publication.**
+The right experiment searches JOINTLY for the delay and the within-class orders (Prop 41
+fixed the delay first, which is a much smaller search space and correspondingly easier to
+make UNSAT). Doing that (experiments/tension.py) gave SAT at N = 60 and N = 100 with
+verified 4-AP-freeness — apparently reopening the family. But:
+
+1. The descent-rate condition was imposed only for progressions of step ≤ 4, and the N = 100
+   solution turned out to have TAME progressions at step 6 — fatal by Prop 29. The SAT did
+   not mean what it appeared to.
+2. Widening to step ≤ 8 (experiments/tension8.py) is still not enough at small N: the
+   constraint skips progressions with fewer than L+2 = 12 elements, while the tameness CHECK
+   accepts progressions with ≥ 8 elements. At N = 60 the step-7 and step-8 progressions have
+   only 8 elements, so they are checked but never constrained — and duly came back tame. For
+   the experiment to mean anything one needs N ≥ q·(L+2), i.e. N ≥ 96 for steps up to 8.
+
+Both are the same failure mode this run keeps hitting: a finite proxy for an asymptotic
+condition must bound a RATE, and its scope must MATCH the scope of the check. The meaningful
+data starts at N ≥ 100 and is being collected; nothing should be concluded from the N = 60
+rows.

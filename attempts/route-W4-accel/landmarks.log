@@ -1,0 +1,19 @@
+## [8, 26, 76]  (R1 shoulder)
+     M=76: SAT* [0s]
+     M=114: SAT* [0s]
+     M=152: UNSAT [3s]
+## [2, 8, 26, 76]  (R1 shoulder, depth 4)
+     M=76: SAT* [0s]
+     M=114: SAT* [0s]
+     M=152: UNSAT [2s]
+## [5, 25, 125]  (R1 pure ratio-5 geometric)
+     M=125: SAT* [5s]
+     M=187: SAT* [7s]
+     M=250: TIME_CAP [1317s]
+## [8, 26, 130]  (R1 ratio-5 island)
+     M=130: SAT* [6s]
+     M=195: SAT* [11s]
+     M=260: TIME_CAP [1493s]
+## [8, 28, 140]  (R1 island)
+     M=140: SAT* [15s]
+     M=210: SAT* [38s]

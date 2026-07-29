@@ -1,0 +1,233 @@
+### validate.log
+== A. raw-enumeration validation (small cut sets, all in-order layouts) ==
+  533 cut/horizon systems, 0 mismatches
+== B. reproduce published verdicts (route-R1 / final AUDIT) ==
+  [8, 26, 80] M=80: UNSAT (expect UNSAT) OK [1s]
+  [8, 26, 76] M=76: SAT (expect SAT) OK witness verified [0s]
+  [4, 16, 56] M=56: UNSAT (expect UNSAT) OK [0s]
+  [4, 16, 68] M=68: SAT (expect SAT) OK witness verified [0s]
+  [2, 4, 10] M=10: SAT (expect SAT) OK witness verified [0s]
+  [4, 10, 28] M=28: SAT (expect SAT) OK witness verified [0s]
+  [1, 2, 4, 10, 28] M=28: SAT (expect SAT) OK witness verified [0s]
+  [10, 28, 82] M=82: UNSAT (expect UNSAT) OK [1s]
+  [9, 28, 82] M=82: UNSAT (expect UNSAT) OK [1s]
+  [8, 28, 82] M=82: SAT (expect SAT) OK witness verified [1s]
+  [11, 31, 91] M=91: UNSAT (expect UNSAT) OK [1s]
+  [8, 26, 130] M=130: SAT (expect SAT) OK witness verified [10s]
+  [9, 26, 130] M=130: UNSAT (expect UNSAT) OK [1s]
+  [16, 46, 136] M=136: UNSAT (expect UNSAT) OK [1s]
+  [10, 46, 136] M=136: SAT (expect SAT) OK witness verified [6s]
+  [1, 5, 6, 16, 46] M=46: SAT (expect SAT) OK witness verified [0s]
+  [1, 7, 8, 22, 64] M=64: SAT (expect SAT) OK witness verified [0s]
+  [2, 8, 26, 76] M=76: SAT (expect SAT) OK witness verified [0s]
+  [1, 2, 4, 10, 28, 82] M=82: UNSAT (expect UNSAT) OK [1s]
+  disagreements: 0
+== C. CP-SAT (second encoding) spot agreement ==
+  [8, 26, 80]: sat=UNSAT cpsat=UNSAT OK
+  [8, 26, 76]: sat=SAT cpsat=SAT OK
+  [10, 28, 82]: sat=UNSAT cpsat=UNSAT OK
+  [8, 28, 82]: sat=SAT cpsat=SAT OK
+  [2, 4, 10]: sat=SAT cpsat=SAT OK
+
+### brackets.log
+  [10, 28]: SAT at M=81 (witness verified vs apcheck);  UNSAT at M=82
+  [1, 2, 4, 10, 28]: SAT at M=81 (witness verified vs apcheck);  UNSAT at M=82
+  [8, 26, 76]: SAT at M=138 (witness verified vs apcheck);  UNSAT at M=139
+  [2, 8, 26, 76]: SAT at M=138 (witness verified vs apcheck);  UNSAT at M=139
+  [11, 31]: SAT at M=113 (witness verified vs apcheck);  UNSAT at M=114
+  [12, 34]: SAT at M=118 (witness verified vs apcheck);  UNSAT at M=119
+  [13, 37]: SAT at M=106 (witness verified vs apcheck);  UNSAT at M=107
+  [20, 58]: SAT at M=161 (witness verified vs apcheck);  UNSAT at M=162
+
+### verify2.log
+## [10, 28] @M=82
+    eager/cadical195: UNSAT [0s]
+    eager/glucose42: UNSAT [0s]
+    eager/minisat22: UNSAT [0s]
+    cpsat-ranks: UNSAT [26s]
+## [1, 2, 4, 10, 28] @M=82
+    eager/cadical195: UNSAT [0s]
+    eager/glucose42: UNSAT [0s]
+    eager/minisat22: UNSAT [0s]
+    cpsat-ranks: UNSAT [20s]
+## [8, 26, 76] @M=152
+    eager/cadical195: UNSAT [1s]
+    eager/glucose42: UNSAT [1s]
+    eager/minisat22: UNSAT [1s]
+    cpsat-ranks: UNSAT [49s]
+## [2, 8, 26, 76] @M=152
+    eager/cadical195: UNSAT [2s]
+    eager/glucose42: UNSAT [1s]
+    eager/minisat22: UNSAT [1s]
+    cpsat-ranks: UNSAT [48s]
+## [10, 28, 82] @M=82
+    eager/cadical195: UNSAT [0s]
+    eager/glucose42: UNSAT [0s]
+    eager/minisat22: UNSAT [0s]
+    cpsat-ranks: UNSAT [7s]
+## [1, 2, 4, 10, 33] @M=97
+    eager/cadical195: UNSAT [1s]
+    eager/glucose42: UNSAT [0s]
+    eager/minisat22: UNSAT [1s]
+    cpsat-ranks: UNSAT [44s]
+## [1, 2, 4, 10, 34] @M=100
+    eager/cadical195: UNSAT [1s]
+    eager/glucose42: UNSAT [1s]
+    eager/minisat22: UNSAT [0s]
+    cpsat-ranks: UNSAT [59s]
+## [11, 31] @M=124
+    eager/cadical195: UNSAT [2s]
+    eager/glucose42: UNSAT [2s]
+    eager/minisat22: UNSAT [2s]
+    cpsat-ranks: UNSAT [50s]
+## [12, 34] @M=136
+    eager/cadical195: UNSAT [3s]
+    eager/glucose42: UNSAT [2s]
+    eager/minisat22: UNSAT [2s]
+    cpsat-ranks: UNSAT [79s]
+## [20, 58] @M=172
+    eager/cadical195: UNSAT [4s]
+    eager/glucose42: UNSAT [3s]
+    eager/minisat22: UNSAT [3s]
+    cpsat-ranks: UNSAT [45s]
+## [30, 88] @M=262
+    eager/cadical195: UNSAT [21s]
+    eager/glucose42: UNSAT [16s]
+    eager/minisat22: UNSAT [16s]
+    cpsat-ranks: UNKNOWN [900s]
+
+### c_diag.log
+## P-diagonal U = 3W-2 (the smallest legal successor of W)
+  (10,28): DEAD M0<=82 ratio=2.93 [1s]
+  (11,31): DEAD M0<=124 ratio=4.00 [2s]
+  (12,34): DEAD M0<=136 ratio=4.00 [2s]
+  (13,37): DEAD M0<=109 ratio=2.95 [0s]
+  (14,40): DEAD M0<=118 ratio=2.95 [1s]
+  (15,43): DEAD M0<=127 ratio=2.95 [1s]
+  (16,46): DEAD M0<=136 ratio=2.96 [1s]
+  (17,49): DEAD M0<=145 ratio=2.96 [1s]
+  (18,52): DEAD M0<=154 ratio=2.96 [1s]
+  (19,55): DEAD M0<=163 ratio=2.96 [1s]
+  (20,58): DEAD M0<=172 ratio=2.97 [1s]
+  (21,61): DEAD M0<=181 ratio=2.97 [2s]
+  (22,64): DEAD M0<=190 ratio=2.97 [2s]
+  (23,67): DEAD M0<=199 ratio=2.97 [4s]
+  (24,70): DEAD M0<=208 ratio=2.97 [3s]
+  (25,73): DEAD M0<=217 ratio=2.97 [6s]
+  (26,76): DEAD M0<=226 ratio=2.97 [3s]
+  (27,79): DEAD M0<=235 ratio=2.97 [3s]
+  (28,82): DEAD M0<=244 ratio=2.98 [8s]
+  (29,85): DEAD M0<=253 ratio=2.98 [9s]
+  (30,88): DEAD M0<=262 ratio=2.98 [7s]
+  (31,91): DEAD M0<=271 ratio=2.98 [9s]
+  (32,94): DEAD M0<=280 ratio=2.98 [5s]
+  (33,97): DEAD M0<=289 ratio=2.98 [7s]
+  (34,100): DEAD M0<=298 ratio=2.98 [14s]
+  (35,103): DEAD M0<=307 ratio=2.98 [21s]
+  (36,106): DEAD M0<=316 ratio=2.98 [36s]
+  (37,109): DEAD M0<=325 ratio=2.98 [51s]
+  (38,112): DEAD M0<=334 ratio=2.98 [48s]
+  (39,115): DEAD M0<=343 ratio=2.98 [144s]
+  (40,118): DEAD M0<=352 ratio=2.98 [132s]
+
+### row10.log
+  pair (10,11): ALIVE M0=78 ratio=7.09 [1s]
+  pair (10,12): ALIVE M0=86 ratio=7.17 [1s]
+  pair (10,13): ALIVE M0=93 ratio=7.15 [1s]
+  pair (10,14): ALIVE M0=102 ratio=7.29 [3s]
+  pair (10,15): DEAD M0=43 ratio=2.87 [0s]
+  pair (10,16): DEAD M0=46 ratio=2.88 [0s]
+  pair (10,17): DEAD M0=49 ratio=2.88 [0s]
+  pair (10,18): DEAD M0=52 ratio=2.89 [0s]
+  pair (10,19): DEAD M0=55 ratio=2.89 [0s]
+  pair (10,20): DEAD M0=58 ratio=2.90 [0s]
+  pair (10,21): DEAD M0=61 ratio=2.90 [0s]
+  pair (10,22): DEAD M0=160 ratio=7.27 [210s]
+  pair (10,23): DEAD M0=127 ratio=5.52 [22s]
+  pair (10,24): DEAD M0=107 ratio=4.46 [7s]
+  pair (10,25): DEAD M0=73 ratio=2.92 [0s]
+  pair (10,26): DEAD M0=76 ratio=2.92 [0s]
+  pair (10,27): DEAD M0=103 ratio=3.81 [6s]
+  pair (10,28): DEAD M0=82 ratio=2.93 [0s]
+  pair (10,29): DEAD M0=85 ratio=2.93 [0s]
+  pair (10,30): DEAD M0=152 ratio=5.07 [313s]
+
+### cv5.log
+## which V5 survive the horizon test after [1,2,4,10]?
+   [1, 2, 4, 10, 28] @M=82 -> UNSAT [2s]
+   [1, 2, 4, 10, 29] @M=85 -> UNSAT [1s]
+   [1, 2, 4, 10, 30] @M=88 -> UNSAT [1s]
+   [1, 2, 4, 10, 31] @M=91 -> SAT* [2s]
+   [1, 2, 4, 10, 31] @M=155 -> UNSAT [16s]
+   [1, 2, 4, 10, 32] @M=94 -> SAT* [2s]
+   [1, 2, 4, 10, 32] @M=160 -> UNSAT [9s]
+   [1, 2, 4, 10, 33] @M=97 -> UNSAT [1s]
+   [1, 2, 4, 10, 34] @M=100 -> UNSAT [1s]
+   [1, 2, 4, 10, 35] @M=103 -> UNSAT [1s]
+   [1, 2, 4, 10, 36] @M=106 -> SAT* [1s]
+   [1, 2, 4, 10, 36] @M=180 -> UNSAT [14s]
+   [1, 2, 4, 10, 37] @M=109 -> UNSAT [1s]
+   [1, 2, 4, 10, 38] @M=112 -> UNSAT [1s]
+   [1, 2, 4, 10, 39] @M=115 -> UNSAT [2s]
+   [1, 2, 4, 10, 40] @M=118 -> SAT* [1s]
+
+### v5scan.log
+  V5=40: M=118:SAT[1s] M=200:TIME_CAP[243s]
+  V5=41: M=121:SAT[1s] M=205:UNSAT[64s]
+  V5=42: M=124:SAT[1s] M=210:UNSAT[1120s]
+  V5=43: M=127:SAT[2s] M=215:TIME_CAP[694s]
+
+### v5scan2.log
+
+### landmarks.log
+## [8, 26, 76]  (R1 shoulder)
+     M=76: SAT* [0s]
+     M=114: SAT* [0s]
+     M=152: UNSAT [3s]
+## [2, 8, 26, 76]  (R1 shoulder, depth 4)
+     M=76: SAT* [0s]
+     M=114: SAT* [0s]
+     M=152: UNSAT [2s]
+## [5, 25, 125]  (R1 pure ratio-5 geometric)
+     M=125: SAT* [5s]
+     M=187: SAT* [7s]
+     M=250: TIME_CAP [1317s]
+## [8, 26, 130]  (R1 ratio-5 island)
+     M=130: SAT* [6s]
+     M=195: SAT* [11s]
+
+### k5.log
+# reference: does CORE Thm21's permutation really avoid monotone 5-APs?
+   prefix of 1023 values, monotone 5-AP present: True
+   cuts among (3,15,63,255) verified present: [3, 15, 63, 255]
+# CONTROL: k=5 pair systems that MUST be satisfiable
+   k=5  N(15,63,189) -> SAT [2s]
+   k=5  N(15,63,315) -> SAT [24s]
+   k=5  N(3,15,45) -> SAT [0s]
+   k=5  N(15,63,400) -> SAT [61s]
+
+### smallest.log
+  smallest-M death for (8,15): M=43  (|C|=28)
+  smallest-M death for (8,16): M=46  (|C|=30)
+
+### pk_c.log
+## does a dead pair stay dead as U grows?  W=10 fixed
+   N(10,28,82) -> UNSAT [0s]
+   N(10,31,91) -> SAT* [0s]
+   N(10,34,100) -> SAT* [0s]
+   N(10,40,118) -> SAT* [1s]
+   N(10,46,136) -> SAT* [2s]
+   N(10,55,163) -> SAT* [25s]
+   N(10,64,190) -> SAT* [554s]
+
+### h_w10.log
+## pair {10,U}: push the horizon
+   S=[10, 31] M=91 -> SAT* [0s]
+   S=[10, 31] M=124 -> SAT* [2s]
+   S=[10, 31] M=155 -> UNSAT [9s]
+   S=[10, 34] M=100 -> SAT* [0s]
+   S=[10, 34] M=136 -> SAT* [1s]
+   S=[10, 34] M=170 -> UNSAT [41s]
+   S=[10, 40] M=118 -> SAT* [1s]
+   S=[10, 40] M=160 -> SAT* [63s]
+

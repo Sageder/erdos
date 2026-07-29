@@ -1,0 +1,8 @@
+# reference: does CORE Thm21's permutation really avoid monotone 5-APs?
+   prefix of 1023 values, monotone 5-AP present: True
+   cuts among (3,15,63,255) verified present: [3, 15, 63, 255]
+# CONTROL: k=5 pair systems that MUST be satisfiable
+   k=5  N(15,63,189) -> SAT [2s]
+   k=5  N(15,63,315) -> SAT [24s]
+   k=5  N(3,15,45) -> SAT [0s]
+   k=5  N(15,63,400) -> SAT [61s]

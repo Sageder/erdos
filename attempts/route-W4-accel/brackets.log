@@ -1,0 +1,8 @@
+  [10, 28]: SAT at M=81 (witness verified vs apcheck);  UNSAT at M=82
+  [1, 2, 4, 10, 28]: SAT at M=81 (witness verified vs apcheck);  UNSAT at M=82
+  [8, 26, 76]: SAT at M=138 (witness verified vs apcheck);  UNSAT at M=139
+  [2, 8, 26, 76]: SAT at M=138 (witness verified vs apcheck);  UNSAT at M=139
+  [11, 31]: SAT at M=113 (witness verified vs apcheck);  UNSAT at M=114
+  [12, 34]: SAT at M=118 (witness verified vs apcheck);  UNSAT at M=119
+  [13, 37]: SAT at M=106 (witness verified vs apcheck);  UNSAT at M=107
+  [20, 58]: SAT at M=161 (witness verified vs apcheck);  UNSAT at M=162

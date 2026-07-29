@@ -1,0 +1,8 @@
+## does a dead pair stay dead as U grows?  W=10 fixed
+   N(10,28,82) -> UNSAT [0s]
+   N(10,31,91) -> SAT* [0s]
+   N(10,34,100) -> SAT* [0s]
+   N(10,40,118) -> SAT* [1s]
+   N(10,46,136) -> SAT* [2s]
+   N(10,55,163) -> SAT* [25s]
+   N(10,64,190) -> SAT* [554s]

@@ -1,0 +1,2 @@
+T=1 N=60: SAT (0s, 164 rounds)  (verified 4-AP-free; delay values used: [0, 1])
+T=1 N=100: SAT (36s, 8553 rounds)  (verified 4-AP-free; delay values used: [0, 1])

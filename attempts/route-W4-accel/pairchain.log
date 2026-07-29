@@ -1,0 +1,4 @@
+## chain [1, 2, 4, 10, 90]
+   pair {1,2}: ALIVE (M=10)
+   pair {1,4}: ALIVE (M=20)
+   pair {1,10}: ALIVE (M=50)

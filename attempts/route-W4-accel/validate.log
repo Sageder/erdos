@@ -1,0 +1,29 @@
+== A. raw-enumeration validation (small cut sets, all in-order layouts) ==
+  533 cut/horizon systems, 0 mismatches
+== B. reproduce published verdicts (route-R1 / final AUDIT) ==
+  [8, 26, 80] M=80: UNSAT (expect UNSAT) OK [1s]
+  [8, 26, 76] M=76: SAT (expect SAT) OK witness verified [0s]
+  [4, 16, 56] M=56: UNSAT (expect UNSAT) OK [0s]
+  [4, 16, 68] M=68: SAT (expect SAT) OK witness verified [0s]
+  [2, 4, 10] M=10: SAT (expect SAT) OK witness verified [0s]
+  [4, 10, 28] M=28: SAT (expect SAT) OK witness verified [0s]
+  [1, 2, 4, 10, 28] M=28: SAT (expect SAT) OK witness verified [0s]
+  [10, 28, 82] M=82: UNSAT (expect UNSAT) OK [1s]
+  [9, 28, 82] M=82: UNSAT (expect UNSAT) OK [1s]
+  [8, 28, 82] M=82: SAT (expect SAT) OK witness verified [1s]
+  [11, 31, 91] M=91: UNSAT (expect UNSAT) OK [1s]
+  [8, 26, 130] M=130: SAT (expect SAT) OK witness verified [10s]
+  [9, 26, 130] M=130: UNSAT (expect UNSAT) OK [1s]
+  [16, 46, 136] M=136: UNSAT (expect UNSAT) OK [1s]
+  [10, 46, 136] M=136: SAT (expect SAT) OK witness verified [6s]
+  [1, 5, 6, 16, 46] M=46: SAT (expect SAT) OK witness verified [0s]
+  [1, 7, 8, 22, 64] M=64: SAT (expect SAT) OK witness verified [0s]
+  [2, 8, 26, 76] M=76: SAT (expect SAT) OK witness verified [0s]
+  [1, 2, 4, 10, 28, 82] M=82: UNSAT (expect UNSAT) OK [1s]
+  disagreements: 0
+== C. CP-SAT (second encoding) spot agreement ==
+  [8, 26, 80]: sat=UNSAT cpsat=UNSAT OK
+  [8, 26, 76]: sat=SAT cpsat=SAT OK
+  [10, 28, 82]: sat=UNSAT cpsat=UNSAT OK
+  [8, 28, 82]: sat=SAT cpsat=SAT OK
+  [2, 4, 10]: sat=SAT cpsat=SAT OK
