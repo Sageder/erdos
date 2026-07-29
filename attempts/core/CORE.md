@@ -1765,3 +1765,46 @@ Both are the same failure mode this run keeps hitting: a finite proxy for an asy
 condition must bound a RATE, and its scope must MATCH the scope of the check. The meaningful
 data starts at N ≥ 100 and is being collected; nothing should be concluded from the N = 60
 rows.
+
+## Proposition 51 (a direct, solver-free unrealizability criterion for class architectures)
+
+Setting: class function c with finite fibres, classes emitted in increasing index order,
+within-class orders free; positions follow (class, within-class rank).
+
+For a 4-AP t₁<t₂<t₃<t₄ with class sequence (c₁,c₂,c₃,c₄):
+- if the class sequence is NON-monotone, positions are automatically non-monotone — no
+  constraint;
+- if it is STRICTLY monotone, positions are monotone whatever the within-class orders do —
+  this is exactly condition (ii);
+- if it is WEAKLY monotone with ties, avoiding a monotone position sequence constrains the
+  within-class order of the tied terms.
+
+**The demand is unconditional exactly when there is ONE tie.** With a single tie at
+(t_i, t_{i+1}):
+    weakly increasing ⟹ demand pos(t_i) > pos(t_{i+1})
+    weakly decreasing ⟹ demand pos(t_i) < pos(t_{i+1}).
+With two or more ties the requirement is a DISJUNCTION ("at least one tie inverted") and
+forces nothing by itself.
+
+**CRITERION.** If some pair u < w with c(u) = c(w) is the single tied pair of BOTH a weakly
+increasing and a weakly decreasing 4-AP, the two demands are opposite and no within-class
+order can work: the architecture is unrealizable, whatever else is chosen. This is a
+solver-free sufficient condition for death.
+
+**Status: sound but INCOMPLETE.** Measured at N = 400 (experiments/conflict.py): a random
+delay with values in [0,3] produces 53 conflicts (e.g. the pair (233,234) forced both ways
+by the APs at (x,d) = (231,1) and (233,1)), so the criterion has teeth. But it produces ZERO
+conflicts for t ≡ 0, t = v₂(v), t = 1_odd and t = v mod 3 — and t ≡ 0 is the plain ratio-3
+block layout, which route R1 proved dead. So those deaths come from the DISJUNCTIVE
+constraints (two or more ties) together with transitivity, which this criterion does not
+see. It is a cheap sufficient test, not a characterization.
+
+**Validation.** Applied to an architecture that provably IS realizable — the joint
+delay-and-order solution of experiments/tension9.py at N = 100, verified monotone-4-AP-free
+against the trusted checker — the criterion reports 146 tied-pair demands and 0 conflicts,
+as it must.
+
+**Correction recorded.** My first version treated every tie in a multi-tie AP as
+individually demanded. That version reported conflicts for EVERY family including ones that
+are certainly realizable, which is how the error surfaced: it contradicted a verified SAT
+solution. The conjunction/disjunction distinction is the whole content of the fix.
